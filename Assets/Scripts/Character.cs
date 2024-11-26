@@ -14,7 +14,7 @@ public abstract class Character : MonoBehaviour
     [SerializeField] protected float atkSpeed;   //공격속도
 
     [SerializeField] protected bool isDead;
-
+    [Header("----------------------------")]
     protected Rigidbody rb;
     protected Collider col;
     protected Animator animator;

@@ -6,12 +6,12 @@ public class BulletProjectile : MonoBehaviour
 {
     public float Damage;
     public float Speed;
-    public float Lifetime = 5f; // 총알의 생명 시간 (초)
+    public float Lifetime = 3f; // 총알의 생명 시간 (초)
+    public ParticleSystem HitParticle;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-
+        DestroyPrefabs();
     }
 
     // Update is called once per frame
@@ -25,7 +25,17 @@ public class BulletProjectile : MonoBehaviour
     {
         // 충돌한 객체가 적인지 확인 
         // 적에게 데미지 전달 (Enemy 스크립트 필요)
-
+        if(other.CompareTag("Enemy"))
+        {
+            ParticleSystem hitParticle = Instantiate(HitParticle, other.transform.position, transform.rotation);
+            hitParticle.Play();
+            
+            Destroy(this);
+        }
         // 충돌 시 총알 파괴
+    }
+    private void DestroyPrefabs()
+    {
+        Destroy(gameObject, Lifetime);
     }
 }
