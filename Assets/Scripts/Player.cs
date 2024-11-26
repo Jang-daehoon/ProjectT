@@ -49,7 +49,8 @@ namespace HoonsCodes
 
             if (Input.GetKeyDown(KeyCode.Z) && isAttack == false)
             {
-                Attack();
+                isAttack = true;  // 공격 상태로 변경
+                animator.SetTrigger("Attack");
             }
             if(Input.GetKeyDown(KeyCode.X) && usingSkillX == false)
             {
@@ -63,7 +64,7 @@ namespace HoonsCodes
 
         public override void Move()
         {
-            if(isAttack == false && usingSkillX == false && isDash == false && isDead == false )
+            if(isDead == false)
             {
                 float horizontal = Input.GetAxis("Horizontal");
                 float vertical = Input.GetAxis("Vertical");
@@ -76,7 +77,7 @@ namespace HoonsCodes
         }
         public void PlayerRotation()
         {
-            if (dir != Vector3.zero)
+            if (dir != Vector3.zero && isDash == false)
             {
                 Quaternion rotation = Quaternion.LookRotation(dir, Vector3.up);// 해당 방향을 바라봄
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotSpeed * Time.deltaTime);
@@ -85,12 +86,7 @@ namespace HoonsCodes
 
         public void Attack()
         {
-            if(!isAttack)  // 공격이 진행 중이 아닐 때만 실행
-            {
-                animator.SetTrigger("Attack");
-                isAttack = true;  // 공격 상태로 변경
-                StartCoroutine(FireArrow());
-            }
+            StartCoroutine(FireArrow());
         }
         public void XSkill()
         {
@@ -111,11 +107,16 @@ namespace HoonsCodes
         }
         private IEnumerator Dodge()
         {
+            // 회피 시작
             isDash = true;
             animator.SetTrigger("Dodge");
-            
-            yield return new WaitForSeconds(dashCooltime);
-            isDash = false;
+
+            // 회피 애니메이션이 끝날 때까지 기다리거나 쿨타임을 설정
+            yield return new WaitForSeconds(dashDuration); // dashDuration은 회피 지속시간
+            isDash = false; // 대시 상태 비활성화
+
+            // 회피 후 쿨타임 처리
+            yield return new WaitForSeconds(dashCooltime); // 쿨타임 대기
         }
         private void ParticlePlay(ParticleSystem usedParticle)
         {
