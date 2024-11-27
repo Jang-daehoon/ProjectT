@@ -21,11 +21,15 @@ namespace HoonsCodes
         protected Collider col;
         protected Animator animator;
 
+        private void Awake()
+        {
+            rb = GetComponent<Rigidbody>();
+            col = GetComponent<Collider>();
+            animator = GetComponent<Animator>();
+        }
+
         //정의 필수.
         public abstract void Move();
         public abstract void Dead();
-
     }
 }
-    
-
