@@ -116,7 +116,7 @@ public class NMRabby : Character, ITakeDamage
     private IEnumerator AtkOff()//공격 딜레이
     {
         attackRange.gameObject.SetActive(true);
-        attackRange.OnRange();
+        attackRange.OnRange();//공격범위 표시
         yield return new WaitForSeconds(atkSpeed / 2);
         attackRange.gameObject.SetActive(false);
         yield return new WaitForSeconds(atkSpeed / 2);
