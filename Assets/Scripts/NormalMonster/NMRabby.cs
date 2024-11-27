@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using HoonsCodes;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class NMRabby : Character
+public class NMRabby : Character, ITakeDamage
 {
     private enum State
     {
@@ -44,24 +44,25 @@ public class NMRabby : Character
         state = State.Move;
         isDead = false;
         //플레이어 스크립트 가져와서 타겟설정
+        GameObject.FindGameObjectWithTag("Player");
 
     }
 
     private void Update()
     {
-        float dirplayer = Vector3.Distance(transform.position, target.position);
-        if (curHp <= 0 && isDead == false)
+        float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
+        if (curHp <= 0 && isDead == false)//죽으면 한번 발동
         {
             isDead = true;
             agent.isStopped = true;
             ChangeState(State.Die);
         }
-        if (dirplayer <= range && isDead == false)
+        if (dirplayer <= range && isDead == false)//공격범위내에 들어오면 공격으로 변경
         {
             agent.isStopped = true;
             ChangeState(State.Attack);
         }
-        if (dirplayer > range && isDead == false)
+        if (dirplayer > range && isDead == false)//공격범위내에 없으면 이동
         {
             ChangeState(State.Move);
         }
@@ -90,13 +91,14 @@ public class NMRabby : Character
         transform.LookAt(target);//뚝뚝끊기지만 일단은 공격직전 타겟방향으로 회전
         isAtk = true;
         animator.SetTrigger("Attack");
+        //원거리 공격
         GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
         nmbullet.GetComponent<NMBullet>().bulletDamage = this.dmgValue;
         nmbullet.GetComponent<NMBullet>().bulletSpeed = this.bulletSpeed;
         StartCoroutine(AtkOff());
     }
 
-    private IEnumerator AtkOff()
+    private IEnumerator AtkOff()//공격 딜레이
     {
         yield return new WaitForSeconds(atkSpeed);
         isAtk = false;
@@ -113,7 +115,7 @@ public class NMRabby : Character
         agent.SetDestination(target.transform.position);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage)//인터페이스
     {
         curHp -= damage;
         if (isAtk == false)

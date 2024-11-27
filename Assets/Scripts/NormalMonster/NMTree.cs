@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using HoonsCodes;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class NMTree : Character
+public class NMTree : Character, ITakeDamage
 {
     private enum State
     {
@@ -34,23 +34,24 @@ public class NMTree : Character
         state = State.Move;
         isDead = false;
         //플레이어 스크립트 가져와서 타겟설정
+        GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        float dirplayer = Vector3.Distance(transform.position, target.position);
-        if (curHp <= 0 && isDead == false)
+        float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
+        if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
             isDead = true;
             agent.isStopped = true;
             ChangeState(State.Die);
         }
-        if (dirplayer <= range && isDead == false)
+        if (dirplayer <= range && isDead == false)//공격범위내에 들어오면 공격으로 변경
         {
             agent.isStopped = true;
             ChangeState(State.Attack);
         }
-        if (dirplayer > range && isDead == false)
+        if (dirplayer > range && isDead == false)//공격범위내에 없으면 이동
         {
             ChangeState(State.Move);
         }
@@ -80,11 +81,12 @@ public class NMTree : Character
         isAtk = true;
         animator.SetTrigger("Attack");
         StartCoroutine(AtkOff());
+        Debug.Log("Player를 공격");
         //타겟 공격
-        //target.GetComponent<Character>().TakeDamage(dmgValue);
+        //target.GetComponent<Player>().TakeDamage(dmgValue);
     }
 
-    private IEnumerator AtkOff()
+    private IEnumerator AtkOff()//공격 딜레이
     {
         yield return new WaitForSeconds(atkSpeed);
         isAtk = false;
@@ -101,7 +103,7 @@ public class NMTree : Character
         agent.SetDestination(target.transform.position);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage)//인터페이스
     {
         curHp -= damage;
         if (isAtk == false)

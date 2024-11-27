@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3335dd7f5565e4841ba7d28d30719072, type: 3}
+  m_Name: EnemyBeez
+  m_EditorClassIdentifier: 
+  info: 1
+  characterName: BeezDarkness
+  characterDesc: "\uC790\uD3ED\uACF5\uACA9 \uC720\uB2DB"
+  maxHp: 10
+  damage: 10
+  moveSpeed: 10
+  attackSpeed: 1
+  attackDelay: 1
