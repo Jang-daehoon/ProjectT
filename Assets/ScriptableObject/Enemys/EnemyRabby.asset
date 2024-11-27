@@ -15,7 +15,7 @@ MonoBehaviour:
   info: 1
   characterName: RabbyQueen
   characterDesc: "\uC6D0\uAC70\uB9AC\uACF5\uACA9 \uC720\uB2DB"
-  maxHp: 10
+  maxHp: 100
   damage: 10
   moveSpeed: 10
   attackSpeed: 1

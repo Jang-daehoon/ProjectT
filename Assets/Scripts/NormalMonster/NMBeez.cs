@@ -14,17 +14,23 @@ public class NMBeez : Character, ITakeDamage
         Die
     }
     private State state;
+    [Tooltip("회전 속도")]
+    public float rotationSpeed;
     public Transform target;
     private NavMeshAgent agent;
 
     [Tooltip("공격 범위")]
     [SerializeField] private float range;
+    [Tooltip("폭발 범위")]
+    [SerializeField] private float attackRange;
 
     [Tooltip("폭발 파티클")]
     public ParticleSystem particle;
 
     [Tooltip("터지는데 걸리는 시간")]
     public float delay;
+
+    public NMBeezRange beezRange;
 
     private bool isAtk = false;
 
@@ -40,8 +46,13 @@ public class NMBeez : Character, ITakeDamage
     {
         state = State.Move;
         isDead = false;
+        agent.speed = moveSpeed;
+        agent.angularSpeed = rotationSpeed;
+        agent.acceleration = 1000f;
         //플레이어 스크립트 가져와서 타겟설정
         GameObject.FindGameObjectWithTag("Player");
+        beezRange.radius = attackRange;
+        beezRange.gameObject.SetActive(false);
     }
 
     //private void OnDrawGizmos()
@@ -53,6 +64,7 @@ public class NMBeez : Character, ITakeDamage
     private void Update()
     {
         if (isAtk == true) return;//자폭 발동시 정지
+        Look();
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
@@ -89,17 +101,27 @@ public class NMBeez : Character, ITakeDamage
         this.state = changestate;
     }
 
+    private void Look()//회전
+    {
+        Vector3 direction = target.position - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
     private void Attack()
     {
-        transform.LookAt(target);//뚝뚝끊기지만 일단은 공격직전 타겟방향으로 회전
         isAtk = true;
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;//즉시 정지
+        beezRange.gameObject.SetActive(true);
+        beezRange.OnRange();//공격범위 표시
         Invoke("Boom", delay);//그자리에서 딜레이후 자폭
         //달려가서 자폭(?)
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = new Color(Color.red.r, Color.red.g, Color.red.b, 0.3f);
         Gizmos.DrawSphere(transform.position, range);
     }
 
@@ -111,7 +133,7 @@ public class NMBeez : Character, ITakeDamage
         var main = particle.main;
         main.stopAction = ParticleSystemStopAction.Destroy;
         float dirplayer = Vector3.Distance(transform.position, target.position);
-        if (dirplayer <= range && isDead == false)
+        if (dirplayer <= attackRange && isDead == false)
         {
             Debug.Log("Player를 공격");
             //공격

@@ -120,6 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04719c786c9239d458e741b1e7c1ffc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 0.1
+  bulletSpeed: 1
   bulletDamage: 0
   bulletLifeTime: 3

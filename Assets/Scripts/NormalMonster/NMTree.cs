@@ -14,6 +14,8 @@ public class NMTree : Character, ITakeDamage
         Die
     }
     private State state;
+    [Tooltip("회전 속도")]
+    public float rotationSpeed;
     public Transform target;
     private NavMeshAgent agent;
     [Tooltip("공격 범위")]
@@ -33,12 +35,16 @@ public class NMTree : Character, ITakeDamage
     {
         state = State.Move;
         isDead = false;
+        agent.speed = moveSpeed;
+        agent.angularSpeed = rotationSpeed;
+        agent.acceleration = 1000f;
         //플레이어 스크립트 가져와서 타겟설정
         GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
+        Look();
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
@@ -75,9 +81,15 @@ public class NMTree : Character, ITakeDamage
         this.state = changestate;
     }
 
+    private void Look()//회전
+    {
+        Vector3 direction = target.position - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
     private void Attack()
     {
-        transform.LookAt(target);//뚝뚝끊기지만 일단은 공격직전 타겟방향으로 회전
         isAtk = true;
         animator.SetTrigger("Attack");
         StartCoroutine(AtkOff());

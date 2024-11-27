@@ -226,6 +226,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1455227175361837841}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2049034209384775138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2823314809240352921}
+  - component: {fileID: 2656622724816010910}
+  m_Layer: 0
+  m_Name: Range
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2823314809240352921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049034209384775138}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8545420802391215737}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2656622724816010910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049034209384775138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86875051e94d14647bdbe1bdfb06369a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  segments: 50
+  material: {fileID: 2100000, guid: 024d4eed28f0fde44a5843803dcac658, type: 2}
+  lineWidth: 0.1
 --- !u!1 &2119266033983564177
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8545420802391215737
 Transform:
   m_ObjectHideFlags: 0
@@ -420,6 +468,7 @@ Transform:
   m_Children:
   - {fileID: 8520269574880307737}
   - {fileID: 5242420618440409015}
+  - {fileID: 2823314809240352921}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2403138703210718700
@@ -529,14 +578,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 10
   curHp: 10
-  moveSpeed: 10
-  dmgValue: 10
+  moveSpeed: 5
+  dmgValue: 1
   atkSpeed: 1
   isDead: 0
+  rotationSpeed: 3
   target: {fileID: 0}
-  range: 5
+  range: 1
+  attackRange: 5
   particle: {fileID: 3911229923933492813, guid: 590c18679dd71a1498b1042ea72a7dac, type: 3}
   delay: 3
+  beezRange: {fileID: 2656622724816010910}
 --- !u!1 &8007505156654481308
 GameObject:
   m_ObjectHideFlags: 0

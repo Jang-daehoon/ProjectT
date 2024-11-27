@@ -490,7 +490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6550167429406276173
 Transform:
   m_ObjectHideFlags: 0
@@ -616,12 +616,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 10
   curHp: 10
-  moveSpeed: 10
-  dmgValue: 10
+  moveSpeed: 5
+  dmgValue: 1
   atkSpeed: 1
   isDead: 0
+  rotationSpeed: 3
   target: {fileID: 0}
-  range: 10
+  range: 5
 --- !u!1 &8905011602012697523
 GameObject:
   m_ObjectHideFlags: 0
