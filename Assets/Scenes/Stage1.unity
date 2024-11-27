@@ -406,11 +406,11 @@ MonoBehaviour:
   dir: {x: 0, y: 0, z: 0}
   rotSpeed: 5
   isDash: 0
-  dashSpeed: 5
-  dashPower: 10
+  dashSpeed: 1
+  dashPower: 1
   dashDuration: 0.5
   dashCooltime: 1
-  dashDistance: 7
+  dashDistance: 3
   usingSkillX: 0
   isAttack: 0
   isHit: 0

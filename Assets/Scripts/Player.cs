@@ -35,7 +35,7 @@ namespace HoonsCodes
         private delegate IEnumerator SkillDelegate();
         private SkillDelegate currentSkill;  // 현재 사용할 스킬을 담을 변수
 
-        private Vector3 targetPosition; // 이동할 목표 위치
+        public Vector3 targetPosition; // 이동할 목표 위치
 
         private void Awake()
         {
@@ -48,7 +48,7 @@ namespace HoonsCodes
 
         private void Update()
         {
-            if (!isDash && !isAttack) // 대시나 공격 중이 아닐 때만 이동
+            if (!isDash && !isAttack && !usingSkillX) // 대시나 공격 중이 아닐 때만 이동
             {
                 Move();
                 PlayerRotation();
@@ -67,6 +67,7 @@ namespace HoonsCodes
             {
                 RotateToClickPosition();
                 animator.SetTrigger("SkillX");
+                usingSkillX = true;
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && isDash == false)
@@ -85,11 +86,12 @@ namespace HoonsCodes
                 animator.SetFloat("Speed", step);
                 Debug.Log("이동 속도:" + step);
                 // 목표에 도달하면 이동을 멈춤
-                if (transform.position == targetPosition || isAttack == true)
+                if (transform.position == targetPosition)
                 {
                     targetPosition = Vector3.zero;
                     animator.SetFloat("Speed", 0);
                 }
+
             }
 
         }
@@ -105,7 +107,7 @@ namespace HoonsCodes
 
         public void LookMouseCursor()
         {
-            if (Input.GetMouseButtonDown(1) && isAttack == false) // 마우스 우클릭 시
+            if (Input.GetMouseButton(1) && isAttack == false && usingSkillX == false) // 마우스 우클릭 혹은 홀딩 시
             {
                 // 마우스 좌표를 화면에서 월드 좌표로 변환
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -152,16 +154,19 @@ namespace HoonsCodes
 
         public void Attack()
         {
+            targetPosition = Vector3.zero;
             StartCoroutine(FireArrow());
         }
 
         public void XSkill()
         {
+            targetPosition = Vector3.zero;
             ParticleSystem xParticle = Instantiate(xSkillParticle, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), transform.rotation);
             ParticlePlay(xParticle);
             // 파티클이 끝날 때 Destroy 하기 위해 StopAction 설정
             var main = xParticle.main;
             main.stopAction = ParticleSystemStopAction.Destroy;
+            usingSkillX = false;
         }
 
         private IEnumerator FireArrow()
@@ -176,17 +181,60 @@ namespace HoonsCodes
 
         private IEnumerator Dodge()
         {
+            usingSkillX = false ;
+            isAttack = false ;
+            targetPosition = Vector3.zero;
             // 회피 시작
             isDash = true;
             animator.SetTrigger("Dodge");
 
+            // 마우스 방향으로 회피 방향 계산
+            Vector3 mouseDirection = GetMouseDirection();
+            RotateToClickPosition();    //마우스 방향 바라보기
+            // 회피 이동 목표 위치 계산
+            Vector3 dodgeTarget = transform.position + mouseDirection * dashDistance;  // 마우스 방향으로 고정 거리 이동
+
             // 회피 애니메이션이 끝날 때까지 기다리거나 쿨타임을 설정
-            yield return new WaitForSeconds(dashDuration); // dashDuration은 회피 지속시간
-            isDash = false; // 대시 상태 비활성화
+            float startTime = Time.time;
+            float journeyLength = Vector3.Distance(transform.position, dodgeTarget); // 이동 거리
+            float endTime = startTime + dashDuration;
+
+            // 이동 시작
+            while (Time.time < endTime)
+            {
+                float distanceCovered = (Time.time - startTime) * dashSpeed;  // 이동 거리
+                float fractionOfJourney = distanceCovered / journeyLength; // 이동 비율
+
+                // 부드럽게 이동
+                transform.position = Vector3.Lerp(transform.position, dodgeTarget, fractionOfJourney);
+                yield return null;
+            }
+
+            // 이동이 끝나면 대시 상태 비활성화
+            isDash = false;
 
             // 회피 후 쿨타임 처리
             yield return new WaitForSeconds(dashCooltime); // 쿨타임 대기
         }
+
+        // 마우스 방향 계산 함수
+        private Vector3 GetMouseDirection()
+        {
+            // 마우스 위치를 화면에서 월드 좌표로 변환
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            // 마우스 위치에서 레이캐스트를 쏴서 클릭한 지점 찾기
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
+            {
+                // 마우스 위치를 기준으로 방향 계산
+                Vector3 direction = (hit.point - transform.position).normalized;
+                return direction;  // 마우스 방향 반환
+            }
+
+            return Vector3.zero;  // 실패 시 기본 방향
+        }
+
 
         private void ParticlePlay(ParticleSystem usedParticle)
         {
