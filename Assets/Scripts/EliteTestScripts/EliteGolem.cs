@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using EnemyController;
-using System;
+using HoonsCodes;
 
 public class EliteGolem : Character
 {
@@ -65,10 +65,6 @@ public class EliteGolem : Character
             animator.SetBool("isChasing", true);
             agent.SetDestination(target.position);
         }
-    }
-
-    public override void TakeDamage(float damage)
-    {
     }
 
     public override void Dead()
