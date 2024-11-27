@@ -30,6 +30,8 @@ namespace HoonsCodes
 
         [Header("CheckGround")]
         public LayerMask groundLayer;
+        [Header("PlayerData")]
+        public CharacterData playerData;
 
         // Delegate 선언
         private delegate IEnumerator SkillDelegate();
@@ -253,6 +255,13 @@ namespace HoonsCodes
 
         private void InitPlayerStatus()
         {
+            name = playerData.name;
+            maxHp = playerData.maxHp;
+            dmgValue = playerData.damage;
+            moveSpeed = playerData.moveSpeed;
+            atkSpeed = playerData.attackSpeed;  //애니메이션 실행속도
+            //애니메이션에 맞춰서 공격하므로 공격 딜레이가 필요 없다.
+
             curHp = maxHp;
             isDead = false;
 
