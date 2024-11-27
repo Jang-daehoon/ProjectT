@@ -401,7 +401,7 @@ MonoBehaviour:
   curHp: 0
   moveSpeed: 5
   dmgValue: 10
-  atkSpeed: 1
+  atkSpeed: 0.5
   isDead: 0
   dir: {x: 0, y: 0, z: 0}
   rotSpeed: 5
@@ -419,6 +419,9 @@ MonoBehaviour:
   bulletProjectile: {fileID: 2291847376546814979, guid: 85ee2b3ae7534db48b28f3412f940781, type: 3}
   fireParticle: {fileID: 1531578553}
   xSkillParticle: {fileID: 198659754889719218, guid: 09a2baab97fbf474f9499bf610686e4d, type: 3}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!95 &8019654
 Animator:
   serializedVersion: 5
@@ -3581,7 +3584,7 @@ GameObject:
   - component: {fileID: 382933208}
   - component: {fileID: 382933207}
   - component: {fileID: 382933206}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3933,7 +3936,7 @@ GameObject:
   - component: {fileID: 412447744}
   - component: {fileID: 412447743}
   - component: {fileID: 412447742}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5488,7 +5491,7 @@ GameObject:
   - component: {fileID: 605466128}
   - component: {fileID: 605466127}
   - component: {fileID: 605466126}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9403,7 +9406,7 @@ GameObject:
   - component: {fileID: 1123577824}
   - component: {fileID: 1123577823}
   - component: {fileID: 1123577822}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9819,7 +9822,7 @@ GameObject:
   - component: {fileID: 1173612686}
   - component: {fileID: 1173612685}
   - component: {fileID: 1173612684}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12470,7 +12473,7 @@ GameObject:
   - component: {fileID: 1511193438}
   - component: {fileID: 1511193437}
   - component: {fileID: 1511193436}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13252,7 +13255,7 @@ GameObject:
   - component: {fileID: 1568509156}
   - component: {fileID: 1568509155}
   - component: {fileID: 1568509154}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13362,7 +13365,7 @@ GameObject:
   - component: {fileID: 1576092197}
   - component: {fileID: 1576092196}
   - component: {fileID: 1576092195}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14782,7 +14785,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1669923126}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14987,7 +14990,7 @@ GameObject:
   - component: {fileID: 1693767206}
   - component: {fileID: 1693767205}
   - component: {fileID: 1693767204}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
