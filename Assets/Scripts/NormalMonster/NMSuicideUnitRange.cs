@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NMBeezRange : MonoBehaviour
+public class NMSuicideUnitRange : MonoBehaviour
 {
     public float radius = 5f;         // 원의 반지름
     public int segments = 50;         // 원의 세그먼트 수 (원형 분할 정도)

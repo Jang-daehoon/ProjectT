@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using HoonsCodes;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class NMRabby : Character, ITakeDamage
+public class NMSuicideUnit : Character, ITakeDamage
 {
     private enum State
     {
@@ -19,19 +19,18 @@ public class NMRabby : Character, ITakeDamage
     public Transform target;
     private NavMeshAgent agent;
 
-    [Tooltip("공격 인식 범위")]
+    [Tooltip("공격 범위")]
     [SerializeField] private float range;
+    [Tooltip("폭발 범위")]
+    [SerializeField] private float attackRange;
 
-    [Tooltip("투사체")]
-    public GameObject bullet;
+    [Tooltip("폭발 파티클")]
+    public ParticleSystem particle;
 
-    [Tooltip("투사체 속도")]
-    [SerializeField] private float bulletSpeed;
+    [Tooltip("터지는데 걸리는 시간")]
+    public float delay;
 
-    [Tooltip("총알 생성 위치")]
-    public Transform shootPos;
-
-    public NMRabbyRange attackRange;
+    public NMSuicideUnitRange beezRange;
 
     private bool isAtk = false;
 
@@ -52,15 +51,21 @@ public class NMRabby : Character, ITakeDamage
         agent.acceleration = 1000f;
         //플레이어 스크립트 가져와서 타겟설정
         GameObject.FindGameObjectWithTag("Player");
-        attackRange.gameObject.SetActive(false);
-
+        beezRange.radius = attackRange;
+        beezRange.gameObject.SetActive(false);
     }
+
+    //private void OnDrawGizmos() //공격범위표시 파티클 작업할때 쓰세요
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawSphere(transform.position, range);
+    //}
 
     private void Update()
     {
-        Look();
+        if (isAtk == true) return;//자폭 발동시 정지
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
-        if (curHp <= 0 && isDead == false)//죽으면 한번 발동
+        if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
             isDead = true;
             agent.isStopped = true;
@@ -105,22 +110,34 @@ public class NMRabby : Character, ITakeDamage
     private void Attack()
     {
         isAtk = true;
-        animator.SetTrigger("Attack");
-        //원거리 공격
-        GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
-        nmbullet.GetComponent<NMBullet>().bulletDamage = this.dmgValue;
-        nmbullet.GetComponent<NMBullet>().bulletSpeed = this.bulletSpeed;
-        StartCoroutine(AtkOff());
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;//즉시 정지
+        beezRange.gameObject.SetActive(true);
+        beezRange.OnRange();//공격범위 표시
+        Invoke("Boom", delay);//그자리에서 딜레이후 자폭
+        //달려가서 자폭(?)
     }
 
-    private IEnumerator AtkOff()//공격 딜레이
+    private void OnDrawGizmos()
     {
-        attackRange.gameObject.SetActive(true);
-        attackRange.OnRange();//공격범위 표시
-        yield return new WaitForSeconds(atkSpeed / 2);
-        attackRange.gameObject.SetActive(false);
-        yield return new WaitForSeconds(atkSpeed / 2);
-        isAtk = false;
+        Gizmos.color = new Color(Color.red.r, Color.red.g, Color.red.b, 0.3f);
+        Gizmos.DrawSphere(transform.position, range);
+    }
+
+    private void Boom()//자폭
+    {
+        animator.SetTrigger("Attack");
+        Instantiate(particle, transform.position, transform.rotation);
+        particle.Play();
+        var main = particle.main;
+        main.stopAction = ParticleSystemStopAction.Destroy;
+        float dirplayer = Vector3.Distance(transform.position, target.position);
+        if (dirplayer <= attackRange && isDead == false)
+        {
+            Debug.Log("Player를 공격");
+            //공격
+        }
+        Dead();
     }
 
     public override void Dead()

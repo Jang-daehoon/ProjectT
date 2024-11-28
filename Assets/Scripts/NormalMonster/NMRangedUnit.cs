@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using HoonsCodes;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class NMTree : Character, ITakeDamage
+public class NMRangedUnit : Character, ITakeDamage
 {
     private enum State
     {
@@ -18,8 +18,20 @@ public class NMTree : Character, ITakeDamage
     public float rotationSpeed;
     public Transform target;
     private NavMeshAgent agent;
-    [Tooltip("공격 범위")]
+
+    [Tooltip("공격 인식 범위")]
     [SerializeField] private float range;
+
+    [Tooltip("투사체")]
+    public GameObject bullet;
+
+    [Tooltip("투사체 속도")]
+    [SerializeField] private float bulletSpeed;
+
+    [Tooltip("총알 생성 위치")]
+    public Transform shootPos;
+
+    public NMRangedUnitRange attackRange;
 
     private bool isAtk = false;
 
@@ -27,7 +39,7 @@ public class NMTree : Character, ITakeDamage
     {
         agent = GetComponent<NavMeshAgent>();
         rb = this.GetComponent<Rigidbody>();
-        col = this.GetComponent <CapsuleCollider>();
+        col = this.GetComponent<CapsuleCollider>();
         animator = this.GetComponent<Animator>();
     }
 
@@ -40,13 +52,14 @@ public class NMTree : Character, ITakeDamage
         agent.acceleration = 1000f;
         //플레이어 스크립트 가져와서 타겟설정
         GameObject.FindGameObjectWithTag("Player");
+        attackRange.gameObject.SetActive(false);
+
     }
 
     private void Update()
     {
-        Look();
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
-        if (curHp <= 0 && isDead == false)//죽을때 한번 발동
+        if (curHp <= 0 && isDead == false)//죽으면 한번 발동
         {
             isDead = true;
             agent.isStopped = true;
@@ -57,7 +70,7 @@ public class NMTree : Character, ITakeDamage
             agent.isStopped = true;
             ChangeState(State.Attack);
         }
-        if (dirplayer > range && isDead == false)//공격범위내에 없으면 이동
+        if (dirplayer > range && isDead == false && isAtk == false)//공격범위내에 없으면 이동
         {
             ChangeState(State.Move);
         }
@@ -92,15 +105,20 @@ public class NMTree : Character, ITakeDamage
     {
         isAtk = true;
         animator.SetTrigger("Attack");
+        //원거리 공격
+        GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
+        nmbullet.GetComponent<NMRangedUnitBullet>().bulletDamage = this.dmgValue;
+        nmbullet.GetComponent<NMRangedUnitBullet>().bulletSpeed = this.bulletSpeed;
         StartCoroutine(AtkOff());
-        Debug.Log("Player를 공격");
-        //타겟 공격
-        //target.GetComponent<Player>().TakeDamage(dmgValue);
     }
 
     private IEnumerator AtkOff()//공격 딜레이
     {
-        yield return new WaitForSeconds(atkSpeed);
+        attackRange.gameObject.SetActive(true);
+        attackRange.OnRange();//공격범위 표시
+        yield return new WaitForSeconds(atkSpeed / 2);
+        attackRange.gameObject.SetActive(false);
+        yield return new WaitForSeconds(atkSpeed / 2);
         isAtk = false;
     }
 

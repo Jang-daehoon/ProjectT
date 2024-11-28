@@ -576,13 +576,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53129825ce96ab84c9f60fc389602b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
-  curHp: 10
-  moveSpeed: 5
+  maxHp: 100
+  curHp: 100
+  moveSpeed: 7
   dmgValue: 1
   atkSpeed: 1
   isDead: 0
-  rotationSpeed: 3
+  rotationSpeed: 1000
   target: {fileID: 0}
   range: 1
   attackRange: 5
