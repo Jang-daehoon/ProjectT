@@ -23,7 +23,7 @@ public class NodeTest : MonoBehaviour
 
     private bool isEnable = false;
 
-    //private StageData _stageData;
+    private StageData _stageData;
 
     public List<NodeTest> connectedNodes;
 
@@ -116,7 +116,7 @@ public class NodeTest : MonoBehaviour
     }
     public void SetStageType(StageData stageData, RoomType roomType)
     {
-        stageData = stageData;
+        _stageData = stageData;
 
         //이미지, 아웃라인 바꾸기
         outLineImage.sprite = stageData.spriteOutline;

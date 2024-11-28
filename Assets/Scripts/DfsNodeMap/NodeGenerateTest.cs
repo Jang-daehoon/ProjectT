@@ -35,6 +35,12 @@ public class NodeGenerateTest : MonoBehaviour
 
     private RoomManager roomManager => ServiceLocator.Instance.GetSecvice<RoomManager>();
 
+    private void Start()
+    {
+        // 초기 설정: 맵 생성
+        GenerateMap();
+    }
+
     /// <summary>
     /// 맵을 생성해서 반환하는 메서드
     /// 모든 씬의 맵의 크기는 동일하다.
