@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using HoonsCodes;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class NMMeleeUnit : Character, ITakeDamage
+public class NMSuicideUnit : Character, ITakeDamage
 {
     private enum State
     {
@@ -16,10 +16,22 @@ public class NMMeleeUnit : Character, ITakeDamage
     private State state;
     [Tooltip("회전 속도")]
     public float rotationSpeed;
+
     [Tooltip("공격 범위")]
     [SerializeField] private float range;
+    [Tooltip("폭발 범위")]
+    [SerializeField] private float attackRange;
+
+    [Tooltip("폭발 파티클")]
+    public ParticleSystem particle;
+
+    [Tooltip("터지는데 걸리는 시간")]
+    public float delay;
+
     public Transform target;
     private NavMeshAgent agent;
+
+    public NMSuicideUnitRange boomRange;
     public EnemyHPbar hpBar;
 
     private bool isAtk = false;
@@ -28,7 +40,7 @@ public class NMMeleeUnit : Character, ITakeDamage
     {
         agent = GetComponent<NavMeshAgent>();
         rb = this.GetComponent<Rigidbody>();
-        col = this.GetComponent <CapsuleCollider>();
+        col = this.GetComponent<CapsuleCollider>();
         animator = this.GetComponent<Animator>();
         hpBar.maxHp = this.maxHp;
         hpBar.currentHp = this.curHp;
@@ -43,11 +55,20 @@ public class NMMeleeUnit : Character, ITakeDamage
         agent.acceleration = 1000f;
         //플레이어 스크립트 가져와서 타겟설정
         GameObject.FindGameObjectWithTag("Player");
+        boomRange.radius = attackRange;
+        boomRange.gameObject.SetActive(false);
     }
+
+    //private void OnDrawGizmos() //공격범위표시 파티클 작업할때 쓰세요
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawSphere(transform.position, range);
+    //}
 
     private void Update()
     {
         HpBarUpdate();
+        if (isAtk == true) return;//자폭 발동시 정지
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
@@ -100,21 +121,35 @@ public class NMMeleeUnit : Character, ITakeDamage
 
     private void Attack()
     {
-        Look();
         isAtk = true;
-        animator.SetTrigger("Attack");
-        StartCoroutine(AtkOff());
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;//즉시 정지
+        boomRange.gameObject.SetActive(true);
+        boomRange.OnRange();//공격범위 표시
+        Invoke("Boom", delay);//그자리에서 딜레이후 자폭
+        //달려가서 자폭(?)
     }
 
-    private IEnumerator AtkOff()//공격 딜레이
+    private void OnDrawGizmos()
     {
-        //공격범위 표시
-        yield return new WaitForSeconds(atkSpeed / 2);
-        Debug.Log("Player를 공격");
-        //타겟 공격
-        //target.GetComponent<Player>().TakeDamage(dmgValue);
-        yield return new WaitForSeconds(atkSpeed / 2);
-        isAtk = false;
+        Gizmos.color = new Color(Color.red.r, Color.red.g, Color.red.b, 0.3f);
+        Gizmos.DrawSphere(transform.position, range);
+    }
+
+    private void Boom()//자폭
+    {
+        animator.SetTrigger("Attack");
+        Instantiate(particle, transform.position, transform.rotation);
+        particle.Play();
+        var main = particle.main;
+        main.stopAction = ParticleSystemStopAction.Destroy;
+        float dirplayer = Vector3.Distance(transform.position, target.position);
+        if (dirplayer <= attackRange && isDead == false)
+        {
+            Debug.Log("Player를 공격");
+            //공격
+        }
+        Dead();
     }
 
     public override void Dead()
@@ -131,6 +166,7 @@ public class NMMeleeUnit : Character, ITakeDamage
     public void TakeDamage(float damage)//인터페이스
     {
         curHp -= damage;
+        hpBar.HpBarUpdate();
         if (isAtk == false)
         {
             animator.SetTrigger("Damage");

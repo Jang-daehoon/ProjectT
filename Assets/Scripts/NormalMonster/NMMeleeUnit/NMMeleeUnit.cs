@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using HoonsCodes;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class NMRangedUnit : Character, ITakeDamage
+public class NMMeleeUnit : Character, ITakeDamage
 {
     private enum State
     {
@@ -16,34 +16,20 @@ public class NMRangedUnit : Character, ITakeDamage
     private State state;
     [Tooltip("회전 속도")]
     public float rotationSpeed;
+    [Tooltip("공격 범위")]
+    [SerializeField] private float range;
     public Transform target;
     private NavMeshAgent agent;
-
-    [Tooltip("공격 인식 범위")]
-    [SerializeField] private float range;
-
-    [Tooltip("투사체")]
-    public GameObject bullet;
-
-    [Tooltip("투사체 속도")]
-    [SerializeField] private float bulletSpeed;
-
-    [Tooltip("투사체 지속시간")]
-    [SerializeField] private float bulletLifeTime;
-
-    [Tooltip("총알 생성 위치")]
-    public Transform shootPos;
-
-    public NMRangedUnitRange attackRange;
     public EnemyHPbar hpBar;
 
-    private bool isAtk = false;
+    protected bool isAtk = false;
+    public bool isGolem;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = this.GetComponent<Rigidbody>();
-        col = this.GetComponent<CapsuleCollider>();
+        col = this.GetComponent <CapsuleCollider>();
         animator = this.GetComponent<Animator>();
         hpBar.maxHp = this.maxHp;
         hpBar.currentHp = this.curHp;
@@ -58,15 +44,13 @@ public class NMRangedUnit : Character, ITakeDamage
         agent.acceleration = 1000f;
         //플레이어 스크립트 가져와서 타겟설정
         GameObject.FindGameObjectWithTag("Player");
-        attackRange.gameObject.SetActive(false);
-
     }
 
     private void Update()
     {
         HpBarUpdate();
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
-        if (curHp <= 0 && isDead == false)//죽으면 한번 발동
+        if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
             isDead = true;
             agent.isStopped = true;
@@ -77,7 +61,7 @@ public class NMRangedUnit : Character, ITakeDamage
             agent.isStopped = true;
             ChangeState(State.Attack);
         }
-        if (dirplayer > range && isDead == false && isAtk == false)//공격범위내에 없으면 이동
+        if (dirplayer > range && isDead == false)//공격범위내에 없으면 이동
         {
             ChangeState(State.Move);
         }
@@ -85,7 +69,11 @@ public class NMRangedUnit : Character, ITakeDamage
         switch (state)
         {
             case State.Attack:
-                if (isAtk == false) Attack();
+                if (isAtk == false && isGolem == false) Attack();
+                if (isAtk == false && isGolem == true)
+                {
+                    gameObject.GetComponent<MeleeGolemAttack>().GolemAttackON();
+                }
                 break;
             case State.Move:
                 Move();
@@ -108,7 +96,7 @@ public class NMRangedUnit : Character, ITakeDamage
         this.state = changestate;
     }
 
-    private void Look()//회전
+    protected void Look()//회전
     {
         Vector3 direction = target.position - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
@@ -123,16 +111,13 @@ public class NMRangedUnit : Character, ITakeDamage
         StartCoroutine(AtkOff());
     }
 
-    private IEnumerator AtkOff()//공격 딜레이
+    protected IEnumerator AtkOff()//공격 딜레이
     {
-        attackRange.gameObject.SetActive(true);
-        attackRange.OnRange();//공격범위 표시
+        //공격범위 표시
         yield return new WaitForSeconds(atkSpeed / 2);
-        attackRange.gameObject.SetActive(false);
-        GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
-        nmbullet.GetComponent<NMRangedUnitBullet>().bulletDamage = this.dmgValue;
-        nmbullet.GetComponent<NMRangedUnitBullet>().bulletSpeed = this.bulletSpeed;
-        nmbullet.GetComponent<NMRangedUnitBullet>().bulletLifeTime = this.bulletLifeTime;
+        Debug.Log("Player를 공격");
+        //타겟 공격
+        //target.GetComponent<Player>().TakeDamage(dmgValue);
         yield return new WaitForSeconds(atkSpeed / 2);
         isAtk = false;
     }
@@ -151,6 +136,7 @@ public class NMRangedUnit : Character, ITakeDamage
     public void TakeDamage(float damage)//인터페이스
     {
         curHp -= damage;
+        hpBar.HpBarUpdate();
         if (isAtk == false)
         {
             animator.SetTrigger("Damage");
