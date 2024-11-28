@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private GameManagerEx _game = new GameManagerEx();
 
-    // Update is called once per frame
-    void Update()
+    public static GameManagerEx Game => Instance._game;
+
+    private bool _isInit = false;
+
+    public void Init()
     {
-        
+
+        if (!_isInit)
+        {
+            _isInit = true;
+
+            _game.Init();
+        }
     }
 }

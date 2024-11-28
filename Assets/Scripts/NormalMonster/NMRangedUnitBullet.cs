@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NMBullet : MonoBehaviour
+public class NMRangedUnitBullet : MonoBehaviour
 {
     public float bulletSpeed;
     public float bulletDamage;
     public float bulletLifeTime;
 
+    private void Start()
+    {
+        StartCoroutine(BulletDestroy());
+    }
+
     void Update()
     {
         transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);
-        //고치기
     }
 
     private IEnumerator BulletDestroy()
@@ -24,6 +28,7 @@ public class NMBullet : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Player를 공격");
             //other.GetComponent<Character>().TakeDamage(bulletDamage);
             Destroy(this.gameObject);
         }

@@ -30,8 +30,8 @@ namespace HoonsCodes
             {
                 ParticleSystem hitParticle = Instantiate(HitParticle, other.transform.position, transform.rotation);
                 hitParticle.Play();
-
-                Destroy(this);
+                other.GetComponent<ITakeDamage>().TakeDamage(Damage);
+                Destroy(gameObject);
             }
             // Ãæµ¹ ½Ã ÃÑ¾Ë ÆÄ±«
         }
