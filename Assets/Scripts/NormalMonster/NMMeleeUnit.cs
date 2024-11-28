@@ -60,7 +60,7 @@ public class NMMeleeUnit : Character, ITakeDamage
             agent.isStopped = true;
             ChangeState(State.Attack);
         }
-        if (dirplayer > range && isDead == false && isAtk == false)//공격범위내에 없으면 이동
+        if (dirplayer > range && isDead == false)//공격범위내에 없으면 이동
         {
             ChangeState(State.Move);
         }
@@ -100,6 +100,7 @@ public class NMMeleeUnit : Character, ITakeDamage
 
     private void Attack()
     {
+        Look();
         isAtk = true;
         animator.SetTrigger("Attack");
         StartCoroutine(AtkOff());

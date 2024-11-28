@@ -117,6 +117,7 @@ public class NMRangedUnit : Character, ITakeDamage
 
     private void Attack()
     {
+        Look();
         isAtk = true;
         animator.SetTrigger("Attack");
         StartCoroutine(AtkOff());
