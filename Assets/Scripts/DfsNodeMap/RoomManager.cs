@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour, IRegisterable
 {
+    //[SerializeField] private MapUI mapUI;
+
+    //[Header("Battle")]
+    //[SerializeField] private List<BattleData> firstAct1BattleData;
+    //[SerializeField] private List<BattleData> secondAct1BattleData;
+    //[SerializeField] private List<BattleData> eliteAct1BattleData;
+    //[SerializeField] private List<BattleData> bossAct1BattleData;
+    //[Space(3)]
+
+    private bool _isEarly = true;
+    private bool isBossGoable = false;
+    private int height = 1;
+
     private int battle1Index = 0;
     private int battle2Index = 0;
     private int unknownIndex = 0;
