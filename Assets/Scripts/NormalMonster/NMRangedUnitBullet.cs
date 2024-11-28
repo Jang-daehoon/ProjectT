@@ -8,6 +8,11 @@ public class NMRangedUnitBullet : MonoBehaviour
     public float bulletDamage;
     public float bulletLifeTime;
 
+    private void Start()
+    {
+        StartCoroutine(BulletDestroy());
+    }
+
     void Update()
     {
         transform.Translate(Vector3.forward * bulletSpeed * Time.deltaTime);

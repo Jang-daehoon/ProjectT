@@ -16,10 +16,11 @@ public class NMMeleeUnit : Character, ITakeDamage
     private State state;
     [Tooltip("회전 속도")]
     public float rotationSpeed;
-    public Transform target;
-    private NavMeshAgent agent;
     [Tooltip("공격 범위")]
     [SerializeField] private float range;
+    public Transform target;
+    private NavMeshAgent agent;
+    public EnemyHPbar hpBar;
 
     private bool isAtk = false;
 
@@ -29,6 +30,8 @@ public class NMMeleeUnit : Character, ITakeDamage
         rb = this.GetComponent<Rigidbody>();
         col = this.GetComponent <CapsuleCollider>();
         animator = this.GetComponent<Animator>();
+        hpBar.maxHp = this.maxHp;
+        hpBar.currentHp = this.curHp;
     }
 
     private void Start()
@@ -44,6 +47,7 @@ public class NMMeleeUnit : Character, ITakeDamage
 
     private void Update()
     {
+        HpBarUpdate();
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
@@ -75,6 +79,13 @@ public class NMMeleeUnit : Character, ITakeDamage
         }
     }
 
+    private void HpBarUpdate()
+    {
+        hpBar.maxHp = this.maxHp;
+        hpBar.currentHp = this.curHp;
+        hpBar.GetHpBoost();
+    }
+
     private void ChangeState(State changestate)
     {
         this.state = changestate;
@@ -92,14 +103,16 @@ public class NMMeleeUnit : Character, ITakeDamage
         isAtk = true;
         animator.SetTrigger("Attack");
         StartCoroutine(AtkOff());
-        Debug.Log("Player를 공격");
-        //타겟 공격
-        //target.GetComponent<Player>().TakeDamage(dmgValue);
     }
 
     private IEnumerator AtkOff()//공격 딜레이
     {
-        yield return new WaitForSeconds(atkSpeed);
+        //공격범위 표시
+        yield return new WaitForSeconds(atkSpeed / 2);
+        Debug.Log("Player를 공격");
+        //타겟 공격
+        //target.GetComponent<Player>().TakeDamage(dmgValue);
+        yield return new WaitForSeconds(atkSpeed / 2);
         isAtk = false;
     }
 

@@ -28,10 +28,14 @@ public class NMRangedUnit : Character, ITakeDamage
     [Tooltip("투사체 속도")]
     [SerializeField] private float bulletSpeed;
 
+    [Tooltip("투사체 지속시간")]
+    [SerializeField] private float bulletLifeTime;
+
     [Tooltip("총알 생성 위치")]
     public Transform shootPos;
 
     public NMRangedUnitRange attackRange;
+    public EnemyHPbar hpBar;
 
     private bool isAtk = false;
 
@@ -41,6 +45,8 @@ public class NMRangedUnit : Character, ITakeDamage
         rb = this.GetComponent<Rigidbody>();
         col = this.GetComponent<CapsuleCollider>();
         animator = this.GetComponent<Animator>();
+        hpBar.maxHp = this.maxHp;
+        hpBar.currentHp = this.curHp;
     }
 
     private void Start()
@@ -58,6 +64,7 @@ public class NMRangedUnit : Character, ITakeDamage
 
     private void Update()
     {
+        HpBarUpdate();
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (curHp <= 0 && isDead == false)//죽으면 한번 발동
         {
@@ -89,6 +96,13 @@ public class NMRangedUnit : Character, ITakeDamage
         }
     }
 
+    private void HpBarUpdate()
+    {
+        hpBar.maxHp = this.maxHp;
+        hpBar.currentHp = this.curHp;
+        hpBar.GetHpBoost();
+    }
+
     private void ChangeState(State changestate)
     {
         this.state = changestate;
@@ -105,10 +119,6 @@ public class NMRangedUnit : Character, ITakeDamage
     {
         isAtk = true;
         animator.SetTrigger("Attack");
-        //원거리 공격
-        GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
-        nmbullet.GetComponent<NMRangedUnitBullet>().bulletDamage = this.dmgValue;
-        nmbullet.GetComponent<NMRangedUnitBullet>().bulletSpeed = this.bulletSpeed;
         StartCoroutine(AtkOff());
     }
 
@@ -118,6 +128,10 @@ public class NMRangedUnit : Character, ITakeDamage
         attackRange.OnRange();//공격범위 표시
         yield return new WaitForSeconds(atkSpeed / 2);
         attackRange.gameObject.SetActive(false);
+        GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
+        nmbullet.GetComponent<NMRangedUnitBullet>().bulletDamage = this.dmgValue;
+        nmbullet.GetComponent<NMRangedUnitBullet>().bulletSpeed = this.bulletSpeed;
+        nmbullet.GetComponent<NMRangedUnitBullet>().bulletLifeTime = this.bulletLifeTime;
         yield return new WaitForSeconds(atkSpeed / 2);
         isAtk = false;
     }
