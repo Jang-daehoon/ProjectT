@@ -16,8 +16,6 @@ public class NMSuicideUnit : Character, ITakeDamage
     private State state;
     [Tooltip("회전 속도")]
     public float rotationSpeed;
-    public Transform target;
-    private NavMeshAgent agent;
 
     [Tooltip("공격 범위")]
     [SerializeField] private float range;
@@ -30,7 +28,11 @@ public class NMSuicideUnit : Character, ITakeDamage
     [Tooltip("터지는데 걸리는 시간")]
     public float delay;
 
-    public NMSuicideUnitRange beezRange;
+    public Transform target;
+    private NavMeshAgent agent;
+
+    public NMSuicideUnitRange boomRange;
+    public EnemyHPbar hpBar;
 
     private bool isAtk = false;
 
@@ -40,6 +42,8 @@ public class NMSuicideUnit : Character, ITakeDamage
         rb = this.GetComponent<Rigidbody>();
         col = this.GetComponent<CapsuleCollider>();
         animator = this.GetComponent<Animator>();
+        hpBar.maxHp = this.maxHp;
+        hpBar.currentHp = this.curHp;
     }
 
     private void Start()
@@ -51,8 +55,8 @@ public class NMSuicideUnit : Character, ITakeDamage
         agent.acceleration = 1000f;
         //플레이어 스크립트 가져와서 타겟설정
         GameObject.FindGameObjectWithTag("Player");
-        beezRange.radius = attackRange;
-        beezRange.gameObject.SetActive(false);
+        boomRange.radius = attackRange;
+        boomRange.gameObject.SetActive(false);
     }
 
     //private void OnDrawGizmos() //공격범위표시 파티클 작업할때 쓰세요
@@ -63,6 +67,7 @@ public class NMSuicideUnit : Character, ITakeDamage
 
     private void Update()
     {
+        HpBarUpdate();
         if (isAtk == true) return;//자폭 발동시 정지
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (curHp <= 0 && isDead == false)//죽을때 한번 발동
@@ -95,6 +100,13 @@ public class NMSuicideUnit : Character, ITakeDamage
         }
     }
 
+    private void HpBarUpdate()
+    {
+        hpBar.maxHp = this.maxHp;
+        hpBar.currentHp = this.curHp;
+        hpBar.GetHpBoost();
+    }
+
     private void ChangeState(State changestate)
     {
         this.state = changestate;
@@ -112,8 +124,8 @@ public class NMSuicideUnit : Character, ITakeDamage
         isAtk = true;
         agent.isStopped = true;
         agent.velocity = Vector3.zero;//즉시 정지
-        beezRange.gameObject.SetActive(true);
-        beezRange.OnRange();//공격범위 표시
+        boomRange.gameObject.SetActive(true);
+        boomRange.OnRange();//공격범위 표시
         Invoke("Boom", delay);//그자리에서 딜레이후 자폭
         //달려가서 자폭(?)
     }
