@@ -31,7 +31,7 @@ namespace HoonsCodes
                 ParticleSystem hitParticle = Instantiate(HitParticle, other.transform.position, transform.rotation);
                 hitParticle.Play();
                 other.GetComponent<ITakeDamage>().TakeDamage(Damage);
-                Destroy(this);
+                Destroy(gameObject);
             }
             // Ãæµ¹ ½Ã ÃÑ¾Ë ÆÄ±«
         }
