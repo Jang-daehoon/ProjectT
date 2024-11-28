@@ -6982,8 +6982,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0437639e28e51dc4ab899eab27ca480e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodePrefab: {fileID: 407518185431140745, guid: 60b5cdafa9f7fe341b635b46cab89b17, type: 3}
-  mapGenerator: {fileID: 908874916}
 --- !u!1001 &745568833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8251,8 +8249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f145b97f82eea7644976f77938537847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 5
-  height: 5
 --- !u!1001 &911161097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10592,8 +10588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0aad90f78cce646acff96d974bd82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapGenerator: {fileID: 908874916}
-  nodeVisualizer: {fileID: 744162037}
 --- !u!4 &1201492468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2793364243118680952, guid: cf5310e6915870948aadb598976434a3, type: 3}
@@ -19742,3 +19736,6 @@ SceneRoots:
   - {fileID: 744162036}
   - {fileID: 908874915}
   - {fileID: 1198407699}
+  - {fileID: 1463013249}
+  - {fileID: 309102528}
+  - {fileID: 1437140306}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NMRabbyRange : MonoBehaviour
+public class NMRangedUnitRange : MonoBehaviour
 {
     public Transform firePoint;     // ÃÑ¾Ë ¹ß»ç ÁöÁ¡ (ÃÑ±¸)
     public float maxRange = 20f;    // ÃÑ¾Ë »ç°Å¸®

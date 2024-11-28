@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NMBullet : MonoBehaviour
+public class NMRangedUnitBullet : MonoBehaviour
 {
     public float bulletSpeed;
     public float bulletDamage;

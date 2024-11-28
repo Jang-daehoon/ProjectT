@@ -244,7 +244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8997699524010860548
 Transform:
   m_ObjectHideFlags: 0
@@ -368,15 +368,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23f048f6041d7849a6b1a0fd5f95f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
-  curHp: 10
-  moveSpeed: 5
-  dmgValue: 1
+  maxHp: 100
+  curHp: 100
+  moveSpeed: 3
+  dmgValue: 0.5
   atkSpeed: 1
   isDead: 0
-  rotationSpeed: 3
+  rotationSpeed: 1000
   target: {fileID: 0}
-  range: 5
+  range: 10
   bullet: {fileID: 5903291857521493889, guid: e6bec730a9c60fa48a4230ebf2ef332e, type: 3}
   bulletSpeed: 20
   shootPos: {fileID: 4844408027014599523}
