@@ -1090,7 +1090,7 @@ GameObject:
   - component: {fileID: 3464917436094021395}
   - component: {fileID: 5791590244532435925}
   - component: {fileID: 8616089064493780700}
-  - component: {fileID: 311836670227147008}
+  - component: {fileID: 2657869000456055812}
   m_Layer: 0
   m_Name: Suicide_Planta
   m_TagString: Enemy
@@ -1210,7 +1210,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &311836670227147008
+--- !u!114 &2657869000456055812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2746194847584564971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53129825ce96ab84c9f60fc389602b26, type: 3}
+  m_Script: {fileID: 11500000, guid: c382e2b28d392ba4e9f4bb40d199eb49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
@@ -1230,12 +1230,12 @@ MonoBehaviour:
   isDead: 0
   rotationSpeed: 1000
   range: 1
+  target: {fileID: 0}
+  hpBar: {fileID: 8493404331971747201}
   attackRange: 5
   particle: {fileID: 3911229923933492813, guid: 590c18679dd71a1498b1042ea72a7dac, type: 3}
-  delay: 2
-  target: {fileID: 0}
+  delay: 3
   boomRange: {fileID: 7766224387243106618}
-  hpBar: {fileID: 8493404331971747201}
 --- !u!1 &3997033376582318919
 GameObject:
   m_ObjectHideFlags: 0

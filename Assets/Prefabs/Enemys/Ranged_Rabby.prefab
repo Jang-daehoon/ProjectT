@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 2891685455329779673}
   - component: {fileID: 3654848755054789169}
   - component: {fileID: 4248820993622916670}
-  - component: {fileID: 4674205659783794472}
+  - component: {fileID: 1502814301081522651}
   m_Layer: 0
   m_Name: Ranged_Rabby
   m_TagString: Enemy
@@ -1243,7 +1243,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4674205659783794472
+--- !u!114 &1502814301081522651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1252,24 +1252,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 3846656827387528596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e23f048f6041d7849a6b1a0fd5f95f81, type: 3}
+  m_Script: {fileID: 11500000, guid: dc30823ccc66d4f4d9bba643a2ab6d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
   curHp: 100
   moveSpeed: 3
-  dmgValue: 0.5
+  dmgValue: 1
   atkSpeed: 1
   isDead: 0
   rotationSpeed: 1000
-  target: {fileID: 0}
   range: 10
+  target: {fileID: 0}
+  hpBar: {fileID: 7912849799519495349}
   bullet: {fileID: 3358862366651384204, guid: 1c2e7a67008856c44941273ced173694, type: 3}
   bulletSpeed: 20
   bulletLifeTime: 1
   shootPos: {fileID: 4844408027014599523}
   attackRange: {fileID: 5014479731945667837}
-  hpBar: {fileID: 7912849799519495349}
 --- !u!1 &3941406132115181898
 GameObject:
   m_ObjectHideFlags: 0

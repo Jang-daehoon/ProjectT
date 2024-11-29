@@ -1755,7 +1755,7 @@ GameObject:
   - component: {fileID: 4860265947680562417}
   - component: {fileID: 78714340195762893}
   - component: {fileID: 2639475571149244349}
-  - component: {fileID: 2284926005922289225}
+  - component: {fileID: 7080884196619316634}
   m_Layer: 0
   m_Name: Suicide_Beez
   m_TagString: Enemy
@@ -1875,7 +1875,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2284926005922289225
+--- !u!114 &7080884196619316634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1884,7 +1884,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7200847296096653468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53129825ce96ab84c9f60fc389602b26, type: 3}
+  m_Script: {fileID: 11500000, guid: 946a9a8741a93114992ce4f27cf3a20f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
@@ -1895,12 +1895,12 @@ MonoBehaviour:
   isDead: 0
   rotationSpeed: 1000
   range: 1
+  target: {fileID: 0}
+  hpBar: {fileID: 1509055793941016073}
   attackRange: 5
   particle: {fileID: 3911229923933492813, guid: 590c18679dd71a1498b1042ea72a7dac, type: 3}
-  delay: 2
-  target: {fileID: 0}
+  delay: 3
   boomRange: {fileID: 2656622724816010910}
-  hpBar: {fileID: 1509055793941016073}
 --- !u!1 &7385195353537696188
 GameObject:
   m_ObjectHideFlags: 0

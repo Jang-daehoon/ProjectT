@@ -9,11 +9,11 @@ public class NMSuicideUnitRange : MonoBehaviour
     public Material material;         // LineRenderer에 적용할 마테리얼
     public float lineWidth = 0.1f;    // 선의 두께
 
-    LineRenderer lineRenderer;
-    void Start()
+    private LineRenderer lineRenderer;
+    private void Awake()
     {
         // LineRenderer 컴포넌트 추가
-        lineRenderer = gameObject.AddComponent<LineRenderer>();
+        lineRenderer = gameObject.GetComponent<LineRenderer>();
     }
 
     public void OnRange()

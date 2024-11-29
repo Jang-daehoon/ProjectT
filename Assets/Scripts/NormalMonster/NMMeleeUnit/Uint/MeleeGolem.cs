@@ -1,27 +1,30 @@
+using HoonsCodes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.WSA;
 
-public class MeleeGolemAttack : NMMeleeUnit
+public class MeleeGolem : NMRangedUnit
 {
-    private bool isOnGolemAttack = false;
-    private SphereCollider coll;
+    private bool isGolemAttack = false;
+    private bool isHit;
 
-    private void Start()
+    protected override void Awake()
     {
-        coll = gameObject.GetComponent<SphereCollider>();
+        base.Awake();
     }
 
-    private void Update()
+    protected override void Start()
     {
-        if(isOnGolemAttack == true)
-        {
-            //Collider[] colls = Physics.OverlapSphere(coll,coll.radius); 
-        }
+        base.Start();
     }
 
-    public void GolemAttackON()
+    protected override void Update()
+    {
+        base.Update();
+    }
+
+    protected override void Attack()
     {
         Look();
         isAtk = true;
@@ -37,11 +40,25 @@ public class MeleeGolemAttack : NMMeleeUnit
         animator.SetBool("Idel", false);
         //달려가기 시작 && 공격애니메이션 시작
         animator.SetBool("Attack", true);
+        isGolemAttack = true;
+        isHit = false;
         //닿으면 공격
         //온콜라이더엔터로 공격
         yield return new WaitForSeconds(1f);
         animator.SetBool("Attack", false);
+        isGolemAttack = false;
         isAtk = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (isGolemAttack == false) return;
+        if (isHit == false)
+        {
+            //collision.gameObject.GetComponent<Player>().TakeDamage();
+            //플레이어 공격
+            isHit = true;
+        }
     }
 
 }
