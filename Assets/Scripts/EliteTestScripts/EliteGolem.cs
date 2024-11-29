@@ -54,7 +54,6 @@ public class EliteGolem : Character
             case EliteState.IDLE:
                 if (isPlayerInRange == true)
                 {
-                    animator.SetBool("isAttack", false);
                     currentState = EliteState.ATTACK;
                 }
                 else if
@@ -63,8 +62,7 @@ public class EliteGolem : Character
             case EliteState.CHASE:
                 if (isPlayerInRange == true)
                     currentState = EliteState.ATTACK; // 범위 내 진입 체크
-                else if
-                    (Attacking() == false) Move();
+                else if (Attacking() == false) Move();
                 break;
             case EliteState.ATTACK:
                 agent.isStopped = true;
@@ -108,13 +106,12 @@ public class EliteGolem : Character
                 animator.SetBool("isChasing", false);
                 animator.SetBool("isAttack", true);
 
-                while (isPlayerInRange == true)
+                if (isPlayerInRange == true)
                 {
                     if (animator.GetBool("comboAttack") == true)
                     {
                         animator.SetBool("isAttack", false);
                         yield return new WaitForSeconds(attackDelay);
-                        animator.SetBool("isAttack", true);
                         currentState = EliteState.IDLE;
                     }
 
@@ -123,6 +120,8 @@ public class EliteGolem : Character
                     if (animator.GetBool("comboAttack") == false)
                         animator.SetBool("comboAttack", true);
                 }
+                else
+                    currentState = EliteState.IDLE;
             }
         }
     }
