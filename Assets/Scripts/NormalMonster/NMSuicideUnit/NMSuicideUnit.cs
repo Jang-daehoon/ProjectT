@@ -78,7 +78,7 @@ public class NMSuicideUnit : EnemyUint
                 Move();
                 break;
             case State.Die:
-                animator.SetTrigger("Die");
+                Attack();
                 break;
         }
     }

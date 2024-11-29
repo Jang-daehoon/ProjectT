@@ -31,7 +31,7 @@ public class MeleeGolem : NMMeleeUnit
     {
         if (isGolemAttack == true)
         {
-            transform.position = Vector3.Lerp(transform.position, attackRange.transform.position, Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, attackRange.end, Time.deltaTime);
         }
         if (isGolemAttackOn == true)
         {

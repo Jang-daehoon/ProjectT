@@ -2003,7 +2003,7 @@ MonoBehaviour:
   target: {fileID: 0}
   hpBar: {fileID: 1509055793941016073}
   attackRange: 5
-  particle: {fileID: 3911229923933492813, guid: 590c18679dd71a1498b1042ea72a7dac, type: 3}
+  particle: {fileID: 3318890699136200962, guid: 796c95ffe1d2ac748a54b17162f03c8b, type: 3}
   delay: 3
   boomRange: {fileID: 2656622724816010910}
 --- !u!1 &7385195353537696188
