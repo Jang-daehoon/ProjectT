@@ -31,7 +31,7 @@ public class GameManagerEx
                 _selectedRoom.IsBigger = false;
 
             _selectedRoom = value;
-
+            
             _selectedRoom.IsBigger = true;
         }
     }

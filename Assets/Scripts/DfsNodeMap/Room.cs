@@ -4,6 +4,7 @@ using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.UI;
 
+//StagePrefab이 가지고 있어야하는 스크립트.
 public class Room : MonoBehaviour
 {
     public delegate void OnSelectRoom(); // 해당 방 터치시 실행될 델리게이트
@@ -37,13 +38,18 @@ public class Room : MonoBehaviour
     [SerializeField]
     private GameObject _clearCheck;
 
-    public float PosX => _posX;
-    public float PosY => _posY;
-    public bool IsGenerate { get { return _isGenerate; } set { _isGenerate = value; } }
+    //캡슐화
+    //Property 정의 (람다 표현식을 사용해 속성의 값을 간단히 반환)
+    public float PosX => _posX; //읽기전용 속성 _posX의 값을 읽어온다.
+    public float PosY => _posY; //읽기전용 속성 _posY의 값을 읽어온다.
+    public bool IsGenerate { get { return _isGenerate; } set { _isGenerate = value; } } //새로운 값을 value로 접근
+    //완전 자동 구현 속성으로 변환 가능이 속성은 추가 로직이 없으므로 자동 구현 속성으로 단순화할 수 있습니다:
+    //public bool IsGenerate { get; set; }   
+    
     public bool IsGoable
     {
         get { return _isGoable; }
-        set
+        set //새로운 값이 value로 전달되며, 필드 _isGoable에 저장
         {
             _isGoable = value;
 
@@ -56,7 +62,7 @@ public class Room : MonoBehaviour
         }
     }
 
-    public bool IsBigger
+    public bool IsBigger    //맵의 선택 가능한 아이콘이 커졌다 작아졌다 하도록 하는 애니메이션 실행
     {
         get { return _isBigger; }
         set
@@ -70,7 +76,7 @@ public class Room : MonoBehaviour
         }
     }
 
-    public bool IsHighlight
+    public bool IsHighlight //기본색 -> 하이라이트색 반복적으로 색이 변경되는 애니메이션 실행
     {
         get { return _isHighlight; }
         set
@@ -103,7 +109,7 @@ public class Room : MonoBehaviour
     {
         _isEnable = false;
     }
-
+    //방의 위치와 상태를 초기화하고, 버튼 클릭 이벤트를 설정
     public void InitRoom(float posX, float posY)
     {
         _posX = posX;
@@ -121,10 +127,12 @@ public class Room : MonoBehaviour
 
     public void Positioning()
     {
+        //부모 오브젝트 기준으로 오브젝트의 로컬 좌표 설정
         transform.localPosition = new Vector3(_posX, _posY, 0);
-        transform.SetAsLastSibling();
+        transform.SetAsLastSibling();   //현재 오브젝트를 자신의 부모 오브젝트 내에서 마지막 순서로 이동
     }
 
+    //스테이지의 타입을 설정하는 메서드
     public void SetStageType(StageData stageData, ERoomType roomType)
     {
         _stageData = stageData;
