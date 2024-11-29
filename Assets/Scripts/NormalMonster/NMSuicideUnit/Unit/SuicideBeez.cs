@@ -28,6 +28,7 @@ public class SuicideBeez : NMSuicideUnit
         boomRange.OnRange();//공격범위 표시
         Invoke("Boom", delay);//그자리에서 딜레이후 자폭
         //달려가서 자폭(?)
+        //
     }
 
     private void Boom()//자폭
