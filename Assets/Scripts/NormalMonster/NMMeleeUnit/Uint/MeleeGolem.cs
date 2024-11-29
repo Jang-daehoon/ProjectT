@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.WSA;
 
-public class MeleeGolem : NMRangedUnit
+public class MeleeGolem : NMMeleeUnit
 {
     private bool isGolemAttack = false;
     private bool isHit;

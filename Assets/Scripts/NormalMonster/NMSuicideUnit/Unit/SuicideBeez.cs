@@ -42,6 +42,7 @@ public class SuicideBeez : NMSuicideUnit
         {
             Debug.Log("Player를 공격");
             //공격
+            //
         }
         Dead();
     }
