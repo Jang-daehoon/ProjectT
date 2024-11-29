@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class GameManagerEx : MonoBehaviour
+public class GameManagerEx
 {
     // 오른 층 수
     // 처치한 적
@@ -19,11 +18,11 @@ public class GameManagerEx : MonoBehaviour
 
     public int totalDamage;          // 내가 준 총 피해량
 
-    private NodeTest[,] _mapArray = new NodeTest[16, 7];
-    private NodeTest _selectedRoom; // 터치한 방
-    private NodeTest _currentRoom; // 현재 위치한 방
+    private Room[,] _mapArray = new Room[16, 7];
+    private Room _selectedRoom; // 터치한 방
+    private Room _currentRoom; // 현재 위치한 방
 
-    public NodeTest SelectedRoom
+    public Room SelectedRoom
     {
         get { return _selectedRoom; }
         set
@@ -37,7 +36,7 @@ public class GameManagerEx : MonoBehaviour
         }
     }
 
-    public NodeTest CurrentRoom
+    public Room CurrentRoom
     {
         get { return _currentRoom; }
         set
@@ -63,7 +62,7 @@ public class GameManagerEx : MonoBehaviour
 
     }
 
-    public void SetMapArray(NodeTest[,] mapArray)
+    public void SetMapArray(Room[,] mapArray)
     {
         _mapArray = mapArray;
     }
@@ -80,7 +79,7 @@ public class GameManagerEx : MonoBehaviour
         }
     }
 
-    public void ShowRoomWithType(RoomType roomType)
+    public void ShowRoomWithType(ERoomType roomType)
     {
         for (int y = 0; y < _mapArray.GetLength(0); y++)
         {
