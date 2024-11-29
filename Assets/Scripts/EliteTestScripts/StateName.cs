@@ -6,6 +6,7 @@ namespace EnemyController
 {
     public enum EliteState
     {
+        RISE,
         IDLE,
         CHASE,
         ATTACK,
