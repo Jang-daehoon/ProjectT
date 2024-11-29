@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using EnemyController;
 using HoonsCodes;
+using System;
+using UnityEditor;
 public class EliteGolem : Character
 {
     public Transform target;
@@ -13,11 +15,9 @@ public class EliteGolem : Character
     public Rigidbody rigidBody { get; private set; }
     public StateMachine stateMachine { get; private set; }
 
-    [SerializeField] private float curAnimationTime;
-    [SerializeField] private float attackDelay = 2.7f;
+    [SerializeField] private float attackDelay = 2.5f;
     [SerializeField] private float attackSpeed = 1f;
     [SerializeField] private bool isAttacking = false; // 공격 중 여부 플래그
-    [SerializeField] private bool attackDontMove = false;
 
     [SerializeField] private float skillCoolTime = 10.0f; // 쿨타임 (초)
 
@@ -33,12 +33,16 @@ public class EliteGolem : Character
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
-        currentState = EliteState.IDLE;
+        currentState = EliteState.RISE;
     }
     private void Start()
     {
+        StartCoroutine(GolemRise());
+        StartCoroutine(Attack());
         StartCoroutine(UseSkill());
+        StartCoroutine(DeadMotion());
     }
+
     private void Update()
     {
         switch (currentState)
@@ -49,63 +53,83 @@ public class EliteGolem : Character
                     currentState = EliteState.ATTACK;
                     break;
                 }
-                if (target != null) currentState = EliteState.CHASE;
+                else if (target != null) currentState = EliteState.CHASE;
                 break;
             case EliteState.CHASE:
-                animator.SetBool("isAttack", false);
-                animator.SetInteger("comboAttack", 0);
-                if (isPlayerInRange == true) currentState = EliteState.ATTACK; // 범위 내 진입 체크
-                if (Attacking() == false) Move();
+                if (isPlayerInRange == true)
+                {
+                    currentState = EliteState.ATTACK; // 범위 내 진입 체크
+                    break;
+                }
+                else if (Attacking() == false) Move();
                 break;
             case EliteState.ATTACK:
-                if (attackDontMove == false) StartCoroutine(Attack());
-                if (isPlayerInRange == false) currentState = EliteState.CHASE; // 범위 나감
+                if (isPlayerInRange == false) currentState = EliteState.IDLE; // 범위 나감
                 break;
             case EliteState.SKILL:
                 agent.isStopped = true;
                 break;
             case EliteState.DIE:
-                animator.SetTrigger("Die");
+                agent.isStopped = true;
                 break;
         }
+        // 골렘 사망 테스트
+        if (Input.GetKeyDown(KeyCode.Space))
+            currentState = EliteState.DIE;
+    }
+    private IEnumerator GolemRise()
+    {
+        animator.SetTrigger("Rise");
+
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName("Rise") == false)
+            yield return null; // 애니메이션 시작 대기
+
+        float riseDuration = animator.GetCurrentAnimatorStateInfo(0).length;
+        agent.SetDestination(transform.position);
+        agent.isStopped = true;
+
+        yield return new WaitForSeconds(riseDuration);
+        currentState = EliteState.IDLE;
     }
     public IEnumerator Attack()
     {
-        if (attackDontMove) yield break;
-
-        Debug.Log($"Attack 시작, comboAttack: {animator.GetInteger("comboAttack")}");
-        attackDontMove = true;
-
-        animator.SetFloat("AttackSpeed", attackSpeed);
-        animator.SetBool("isChasing", false);
-        animator.SetBool("isAttack", true);
-
-        while (animator.GetBool("isAttack") == true) // 공격 상태가 유지되는 동안
+        while (true)
         {
-            // 현재 위치 고정
-            agent.SetDestination(transform.position);
-            agent.isStopped = true;
+            if (currentState != EliteState.ATTACK) yield return null;
 
-            // 연속 공격간 딜레이 설정
-            yield return new WaitForSeconds(attackDelay);
-
-            // 애니메이션 상태 갱신
-            if (animator.GetInteger("comboAttack") == 0)
-                animator.SetInteger("comboAttack", 1);
             else
-                animator.SetInteger("comboAttack", 0);
+            {
+            animator.SetFloat("AttackSpeed", attackSpeed);
+            animator.SetBool("isChasing", false);
+            animator.SetBool("isAttack", true);
 
-            float delay = animator.GetCurrentAnimatorStateInfo(0).length;
-            attackDelay = delay;
+                while (isPlayerInRange == true) // 공격 범위에 있는 동안
+                {
+                    // 현재 위치 고정
+                    agent.SetDestination(transform.position);
+                    agent.isStopped = true;
+
+                    if (animator.GetInteger("comboAttack") == 0)
+                        animator.SetInteger("comboAttack", 1);
+                    else
+                        animator.SetInteger("comboAttack", 0);
+
+                    // 연속 공격간 딜레이 설정
+                    yield return new WaitForSeconds(attackDelay);
+                }
+            }
         }
-
-        attackDontMove = false;
     }
+    // 공격 애니메이션 진행중 
     public bool Attacking()
     {
-        isAttacking = animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")
-            || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2")
-            || animator.GetCurrentAnimatorStateInfo(0).IsName("Skill");
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        if ((stateInfo.IsName("Attack1") || stateInfo.IsName("Attack2")) && stateInfo.normalizedTime < 1f)
+            isAttacking = true; // 애니메이션 진행 중
+        else
+            isAttacking = false; // 애니메이션 종료
+
         return isAttacking;
     }
     private IEnumerator UseSkill()
@@ -113,16 +137,13 @@ public class EliteGolem : Character
         while (true)
         {
             yield return new WaitForSeconds(skillCoolTime);
-            Debug.Log("스킬 발동!");
             currentState = EliteState.SKILL;
 
-            // 스킬 실행 중 NavMeshAgent 멈춤
             agent.isStopped = true;
             agent.SetDestination(transform.position);   
             animator.SetTrigger("Skill");
 
-            // 스킬 지속 시간 대기
-            yield return new WaitForSeconds(4f); // 스킬 애니메이션이 끝나는 시간
+            yield return new WaitForSeconds(4f);
             currentState = EliteState.IDLE;
         }
     }
@@ -136,6 +157,11 @@ public class EliteGolem : Character
 
     public override void Move()
     {
+        // 움직임 시작하면 공격 초기화
+        EndAttackWarning();
+        animator.SetBool("isAttack", false);
+        animator.SetInteger("comboAttack", 0);
+
         agent.isStopped = false;
         animator.SetBool("isChasing", true);
         agent.SetDestination(target.position);
@@ -159,23 +185,40 @@ public class EliteGolem : Character
     }
     public override void Dead()
     {
+        //animator.SetTrigger("Die");
+    }
+    private IEnumerator DeadMotion()
+    {
+        while (true)
+        {
+            if (currentState == EliteState.DIE)
+            {
+                EndAttackWarning(); 
+                animator.SetTrigger("Die");
+                gameObject.GetComponent<Collider>().enabled = false;
+                yield return new WaitForSeconds(1.7f);
+                Destroy(gameObject);
+            }
+            else
+                yield return null;
+        }
     }
     public void ShowAttackWarning()
     {
-        if (currentState == EliteState.ATTACK)
-        {
-            Quaternion baseRotation = attackRange.transform.rotation; // BoxCollider의 회전값
-            attackWarning.ShowWarning(attackRange.bounds.center, baseRotation, currentState);
-        }
-        else if (currentState == EliteState.SKILL)
+        if (currentState == EliteState.SKILL)
         {
             Quaternion baseRotation = transform.rotation;
             attackWarning.ShowWarning(transform.position, baseRotation, currentState);
         }
+        else
+        {
+            Quaternion baseRotation = attackRange.transform.rotation; // BoxCollider의 회전값
+            attackWarning.ShowWarning(attackRange.bounds.center, baseRotation, currentState);
+        }
     }
     public void EndAttackWarning()
     {
-        attackWarning.HideWarning(currentState);
+        attackWarning.HideWarning();
     }
     protected void OnTriggerEnter(Collider other)
     {
