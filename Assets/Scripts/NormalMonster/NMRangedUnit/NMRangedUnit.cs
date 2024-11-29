@@ -19,7 +19,7 @@ public class NMRangedUnit : EnemyUint
     [Tooltip("총알 생성 위치")]
     public Transform shootPos;
 
-    public NMRangedUnitRange attackRange;
+    public UnitRange attackRange;
 
     protected virtual void Awake()
     {
