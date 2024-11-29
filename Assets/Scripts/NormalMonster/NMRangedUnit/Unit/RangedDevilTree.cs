@@ -12,15 +12,15 @@ public class RangedDevilTree : NMRangedUnit
     protected override void Start()
     {
         base.Start();
+        for (int i = 0; i < 3; i++)
+        {
+            attackRange[i].gameObject.transform.Rotate(new Vector3(0, -30 + (i * 30), 0));
+        }
     }
 
     protected override void Update()
     {
         base.Update();
-        for(int i = 0; i < 3; i++)
-        {
-            attackRange[i].gameObject.transform.Rotate(new Vector3(0, -30 + (i * 30), 0));
-        }
     }
 
     protected override void Attack()
@@ -35,13 +35,13 @@ public class RangedDevilTree : NMRangedUnit
     {
         for (int i = 0; i < 3; i++)
         {
-            attackRange[i].gameObject.SetActive(false);//사격범위 표시 Off
-            attackRange[i].transform.position = this.transform.position;
+            attackRange[i].gameObject.SetActive(true);//사격범위 표시 Off
         }
         yield return new WaitForSeconds(atkSpeed / 2);
         for (int i = 0; i < 3; i++)
         {
             attackRange[i].gameObject.SetActive(false);//사격범위 표시 Off
+            attackRange[i].transform.position = this.transform.position;
             Vector3 bulletPos = new Vector3(0, -30 + (i * 30), 0);
             GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
             nmbullet.transform.Rotate(bulletPos);

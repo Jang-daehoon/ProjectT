@@ -1146,7 +1146,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9107874657029370842}
   m_Father: {fileID: 3839703403725920133}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &6442480076013592004
@@ -1195,7 +1196,7 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 7
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -2805,7 +2806,6 @@ Transform:
   - {fileID: 8779530031922042213}
   - {fileID: 4881343649220545426}
   - {fileID: 8325523743713736971}
-  - {fileID: 9107874657029370842}
   - {fileID: 6825688851472075619}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2950,12 +2950,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8227109439469084558}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3839703403725920133}
+  m_Father: {fileID: 8325523743713736971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8449866333909039998
 GameObject:
