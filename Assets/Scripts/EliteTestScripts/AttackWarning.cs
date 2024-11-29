@@ -1,22 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Timeline;
-
+using EnemyController;
 public class AttackWarning : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer; // Ground 레이어
-    [SerializeField] private GameObject warningIndicator; // 경고 표시 객체
-    [SerializeField] private float warningDuration = 1f; // 경고 표시 지속 시간
+    [SerializeField] private GameObject warningIndicatorAttack; // 경고 표시 객체
+    [SerializeField] private GameObject warningIndicatorSkill; // 경고 표시 객체
+    [SerializeField] private float warningDuration = 1.2f; // 경고 표시 지속 시간
 
     private Transform owner;
 
     private void Start()
     {
-        if (warningIndicator != null)
-        {
-            warningIndicator.SetActive(false); // 초기에는 비활성화
-        }
+        warningIndicatorAttack.SetActive(false); // 초기에는 비활성화
+        warningIndicatorSkill.SetActive(false);
     }
 
     public void Initialize(Transform owner)
@@ -24,34 +22,37 @@ public class AttackWarning : MonoBehaviour
         this.owner = owner;
     }
 
-    public void ShowWarning(Vector3 position)
+    public void ShowWarning(Vector3 position, Quaternion baseRotation, EliteState state)
     {
-        if (warningIndicator == null) return;
-
         // 땅 레이어와의 교차점 계산
-        Ray ray = new Ray(position + Vector3.up * 1f, Vector3.down); // 위에서 아래로 Raycast
+        Ray ray = new Ray(new Vector3(position.x, position.y + 10f, position.z), Vector3.down);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
         {
-            // Quad를 땅의 위치에 배치
-            warningIndicator.transform.position = hit.point + Vector3.up * 0.01f; // 약간 위로 올림
-            warningIndicator.transform.rotation = Quaternion.Euler(90, 0, 0); // 평면 정렬
-            warningIndicator.SetActive(true);
+            if (state == EliteState.SKILL)
+            {
+                if (warningIndicatorAttack != null) warningIndicatorAttack.SetActive(false);
+                // Quad를 땅의 위치에 배치
+                warningIndicatorSkill.transform.position = hit.point + Vector3.up * 0.01f; // 약간 위로 올림
 
-            // 일정 시간 후 경고 숨기기
-            CancelInvoke(nameof(HideWarning));
-            Invoke(nameof(HideWarning), warningDuration);
-        }
-        else
-        {
-            Debug.LogWarning("Ground 레이어와 교차하지 않았습니다!");
+                // 기본 회전값에 X축 90도 회전 추가
+                warningIndicatorSkill.transform.rotation = baseRotation;
+                warningIndicatorSkill.SetActive(true);
+            }
+            else
+            {
+                // Quad를 땅의 위치에 배치
+                warningIndicatorAttack.transform.position = hit.point + Vector3.up * 0.01f; // 약간 위로 올림
+
+                // 기본 회전값에 X축 90도 회전 추가
+                warningIndicatorAttack.transform.rotation = baseRotation * Quaternion.Euler(90, 0, 0);
+                warningIndicatorAttack.SetActive(true);
+            }
         }
     }
 
     public void HideWarning()
     {
-        if (warningIndicator != null)
-        {
-            warningIndicator.SetActive(false);
-        }
+        warningIndicatorAttack.SetActive(false);
+        warningIndicatorSkill.SetActive(false);
     }
 }
