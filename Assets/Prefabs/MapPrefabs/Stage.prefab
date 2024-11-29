@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 7434081379308059}
   - component: {fileID: 7873403575820490901}
   - component: {fileID: 2130519797097099604}
-  - component: {fileID: 6831806005174017697}
+  - component: {fileID: 7021106964673712119}
   m_Layer: 5
   m_Name: Stage
   m_TagString: Untagged
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6831806005174017697
+--- !u!114 &7021106964673712119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,15 +207,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2259376268864885331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8abf053dc104a48a66cb9ef6e2fe5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 69d9e8d7d95634948926de2936df3db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes: []
-  outLineImage: {fileID: 0}
-  childImage: {fileID: 6707908775024123184}
-  unSelectedColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
-  selectedColor: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}
-  clearCheck: {fileID: 0}
+  connectedRooms: []
+  _anim: {fileID: 0}
+  _outLineImage: {fileID: 7873403575820490901}
+  _childImage: {fileID: 6707908775024123184}
+  _unSelectedColor: {r: 0, g: 0, b: 0, a: 0}
+  _selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  _clearCheck: {fileID: 4600146306060012792}
 --- !u!1 &4600146306060012792
 GameObject:
   m_ObjectHideFlags: 0
