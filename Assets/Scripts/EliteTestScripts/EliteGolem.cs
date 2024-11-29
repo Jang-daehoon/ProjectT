@@ -11,11 +11,13 @@ public class EliteGolem : Character
     public Transform target;
     public BoxCollider attackRange;
     public ParticleSystem skillParticle;
+    public ParticleSystem attackParticleRight;
+    public ParticleSystem attackParticleLeft;
     public NavMeshAgent agent { get; private set; }
     public Rigidbody rigidBody { get; private set; }
     public StateMachine stateMachine { get; private set; }
 
-    [SerializeField] private float attackDelay = 2.5f;
+    [SerializeField] private float attackDelay = 1.5f;
     [SerializeField] private float attackSpeed = 1f;
     [SerializeField] private bool isAttacking = false; // 공격 중 여부 플래그
 
@@ -33,6 +35,8 @@ public class EliteGolem : Character
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
+        attackParticleRight.gameObject.SetActive(false);
+        attackParticleLeft.gameObject.SetActive(false);
         currentState = EliteState.RISE;
     }
     private void Start()
@@ -50,21 +54,20 @@ public class EliteGolem : Character
             case EliteState.IDLE:
                 if (isPlayerInRange == true)
                 {
+                    animator.SetBool("isAttack", false);
                     currentState = EliteState.ATTACK;
-                    break;
                 }
-                else if (target != null) currentState = EliteState.CHASE;
+                else if
+                    (target != null) currentState = EliteState.CHASE;
                 break;
             case EliteState.CHASE:
                 if (isPlayerInRange == true)
-                {
                     currentState = EliteState.ATTACK; // 범위 내 진입 체크
-                    break;
-                }
-                else if (Attacking() == false) Move();
+                else if
+                    (Attacking() == false) Move();
                 break;
             case EliteState.ATTACK:
-                if (isPlayerInRange == false) currentState = EliteState.IDLE; // 범위 나감
+                agent.isStopped = true;
                 break;
             case EliteState.SKILL:
                 agent.isStopped = true;
@@ -89,33 +92,36 @@ public class EliteGolem : Character
         agent.isStopped = true;
 
         yield return new WaitForSeconds(riseDuration);
+        attackParticleRight.gameObject.SetActive(true);
+        attackParticleLeft.gameObject.SetActive(true);
         currentState = EliteState.IDLE;
     }
     public IEnumerator Attack()
     {
         while (true)
         {
-            if (currentState != EliteState.ATTACK) yield return null;
+            if (isPlayerInRange == false) yield return null;
 
             else
             {
-            animator.SetFloat("AttackSpeed", attackSpeed);
-            animator.SetBool("isChasing", false);
-            animator.SetBool("isAttack", true);
+                animator.SetFloat("AttackSpeed", attackSpeed);
+                animator.SetBool("isChasing", false);
+                animator.SetBool("isAttack", true);
 
-                while (isPlayerInRange == true) // 공격 범위에 있는 동안
+                while (isPlayerInRange == true)
                 {
-                    // 현재 위치 고정
-                    agent.SetDestination(transform.position);
-                    agent.isStopped = true;
+                    if (animator.GetBool("comboAttack") == true)
+                    {
+                        animator.SetBool("isAttack", false);
+                        yield return new WaitForSeconds(attackDelay);
+                        animator.SetBool("isAttack", true);
+                        currentState = EliteState.IDLE;
+                    }
 
-                    if (animator.GetInteger("comboAttack") == 0)
-                        animator.SetInteger("comboAttack", 1);
-                    else
-                        animator.SetInteger("comboAttack", 0);
-
-                    // 연속 공격간 딜레이 설정
                     yield return new WaitForSeconds(attackDelay);
+
+                    if (animator.GetBool("comboAttack") == false)
+                        animator.SetBool("comboAttack", true);
                 }
             }
         }
@@ -138,11 +144,7 @@ public class EliteGolem : Character
         {
             yield return new WaitForSeconds(skillCoolTime);
             currentState = EliteState.SKILL;
-
-            agent.isStopped = true;
-            agent.SetDestination(transform.position);   
             animator.SetTrigger("Skill");
-
             yield return new WaitForSeconds(4f);
             currentState = EliteState.IDLE;
         }
@@ -154,13 +156,12 @@ public class EliteGolem : Character
         main.loop = false;
         main.stopAction = ParticleSystemStopAction.Destroy;
     }
-
     public override void Move()
     {
         // 움직임 시작하면 공격 초기화
         EndAttackWarning();
         animator.SetBool("isAttack", false);
-        animator.SetInteger("comboAttack", 0);
+        animator.SetBool("comboAttack", false);
 
         agent.isStopped = false;
         animator.SetBool("isChasing", true);
@@ -185,7 +186,6 @@ public class EliteGolem : Character
     }
     public override void Dead()
     {
-        //animator.SetTrigger("Die");
     }
     private IEnumerator DeadMotion()
     {
@@ -193,7 +193,7 @@ public class EliteGolem : Character
         {
             if (currentState == EliteState.DIE)
             {
-                EndAttackWarning(); 
+                EndAttackWarning();
                 animator.SetTrigger("Die");
                 gameObject.GetComponent<Collider>().enabled = false;
                 yield return new WaitForSeconds(1.7f);
