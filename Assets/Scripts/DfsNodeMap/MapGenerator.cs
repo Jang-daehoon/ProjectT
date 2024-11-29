@@ -4,6 +4,7 @@ using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.UI;
 
+//MapÀÇ Room Á¾·ù
 public enum ERoomType
 {
     Elite = 0,
