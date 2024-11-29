@@ -1,6 +1,7 @@
 using HoonsCodes;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.WSA;
 
@@ -8,47 +9,78 @@ public class MeleeGolem : NMMeleeUnit
 {
     private bool isGolemAttack = false;
     private bool isHit;
+    private bool isGolemAttackOn = false;
+
+    public UnitRange attackRange;
+    public ParticleSystem particle;
 
     protected override void Awake()
     {
         base.Awake();
+        particle.gameObject.SetActive(false);
+        particle.Stop();
     }
 
     protected override void Start()
     {
         base.Start();
+        attackRange.gameObject.SetActive(false);
     }
 
     protected override void Update()
     {
+        if (isGolemAttack == true)
+        {
+            transform.position = Vector3.Lerp(transform.position, attackRange.end, Time.deltaTime);
+        }
+        if (isGolemAttackOn == true)
+        {
+            Move();
+        }
+        if (isAtk == true) return;
         base.Update();
     }
 
     protected override void Attack()
-    {
-        Look();
+    { 
         isAtk = true;
+        agent.velocity = Vector3.zero;
+        Look();
         StartCoroutine(GolemMoveAttack());
+        StartCoroutine(IsAtk());
     }
 
     private IEnumerator GolemMoveAttack()
     {
         animator.SetBool("Idel", true);
-        //차징 + 이동공격범위표시
-        //테일 렌더러 사용
-        yield return new WaitForSeconds(1f);
+        attackRange.transform.position = this.transform.position;
+        attackRange.gameObject.SetActive(true);//이동범위 표시 On
+
+        yield return new WaitForSeconds(1f);//돌진시작
         animator.SetBool("Idel", false);
-        //달려가기 시작 && 공격애니메이션 시작
         animator.SetBool("Attack", true);
+        attackRange.gameObject.SetActive(false);//이동범위 표시 Off
         isGolemAttack = true;
         isHit = false;
-        //닿으면 공격
-        //온콜라이더엔터로 공격
+        particle.gameObject.SetActive(true);
+        particle.Play();
+
         yield return new WaitForSeconds(1f);
-        animator.SetBool("Attack", false);
         isGolemAttack = false;
-        isAtk = false;
+        attackRange.transform.position = this.transform.position;
+        animator.SetBool("Attack", false);
+        particle.gameObject.SetActive(false);
+        particle.Stop();
+        isGolemAttackOn = true;
     }
+
+    private IEnumerator IsAtk()
+    {
+        yield return new WaitForSeconds(atkSpeed);
+        isAtk = false;
+        isGolemAttackOn = false;
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {

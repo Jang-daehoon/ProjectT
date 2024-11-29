@@ -19,7 +19,7 @@ public class NMRangedUnit : EnemyUint
     [Tooltip("총알 생성 위치")]
     public Transform shootPos;
 
-    public NMRangedUnitRange attackRange;
+    public UnitRange[] attackRange;
 
     protected virtual void Awake()
     {
@@ -40,8 +40,11 @@ public class NMRangedUnit : EnemyUint
         agent.acceleration = 1000f;
         //플레이어 스크립트 가져와서 타겟설정
         GameObject.FindGameObjectWithTag("Player");
-        attackRange.gameObject.SetActive(false);
-
+        foreach (var a in attackRange)
+        {
+            a.gameObject.SetActive(false);
+            a.tr.time = atkSpeed / 2;
+        }
     }
 
     protected virtual void Update()

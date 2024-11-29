@@ -16,13 +16,14 @@ public class MeleeSkeleton : NMMeleeUnit
 
     protected override void Update()
     {
+        if (isAtk == true) return;
         base.Update();
     }
 
     protected override void Attack()
     {
-        Look();
         isAtk = true;
+        Look();
         animator.SetTrigger("Attack");
         StartCoroutine(AtkOff());
     }

@@ -21,22 +21,26 @@ public class RangedRabby : NMRangedUnit
 
     protected override void Attack()
     {
-        Look();
         isAtk = true;
-        animator.SetTrigger("Attack");
+        Look();
         StartCoroutine(AtkOff());
+       
     }
 
     private IEnumerator AtkOff()//공격 딜레이
     {
-        attackRange.gameObject.SetActive(true);
-        attackRange.OnRange();//공격범위 표시
+        attackRange[0].gameObject.SetActive(true);//사격범위 표시 On
+
         yield return new WaitForSeconds(atkSpeed / 2);
-        attackRange.gameObject.SetActive(false);
+        attackRange[0].gameObject.SetActive(false);//사격범위 표시 Off
+        attackRange[0].transform.position = this.transform.position;
+        animator.SetTrigger("Attack");
+
         GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
         nmbullet.GetComponent<NMRangedUnitBullet>().bulletDamage = this.dmgValue;
         nmbullet.GetComponent<NMRangedUnitBullet>().bulletSpeed = this.bulletSpeed;
         nmbullet.GetComponent<NMRangedUnitBullet>().bulletLifeTime = this.bulletLifeTime;
+        
         yield return new WaitForSeconds(atkSpeed / 2);
         isAtk = false;
     }

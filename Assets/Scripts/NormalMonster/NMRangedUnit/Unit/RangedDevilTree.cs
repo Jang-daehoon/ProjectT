@@ -12,6 +12,10 @@ public class RangedDevilTree : NMRangedUnit
     protected override void Start()
     {
         base.Start();
+        for (int i = 0; i < 3; i++)
+        {
+            attackRange[i].gameObject.transform.Rotate(new Vector3(0, -30 + (i * 30), 0));
+        }
     }
 
     protected override void Update()
@@ -21,22 +25,30 @@ public class RangedDevilTree : NMRangedUnit
 
     protected override void Attack()
     {
-        Look();
         isAtk = true;
+        Look();
         animator.SetTrigger("Attack");
         StartCoroutine(AtkOff());
     }
 
     private IEnumerator AtkOff()//공격 딜레이
     {
-        attackRange.gameObject.SetActive(true);
-        attackRange.OnRange();//공격범위 표시
+        for (int i = 0; i < 3; i++)
+        {
+            attackRange[i].gameObject.SetActive(true);//사격범위 표시 Off
+        }
         yield return new WaitForSeconds(atkSpeed / 2);
-        attackRange.gameObject.SetActive(false);
-        GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
-        nmbullet.GetComponent<NMRangedUnitBullet>().bulletDamage = this.dmgValue;
-        nmbullet.GetComponent<NMRangedUnitBullet>().bulletSpeed = this.bulletSpeed;
-        nmbullet.GetComponent<NMRangedUnitBullet>().bulletLifeTime = this.bulletLifeTime;
+        for (int i = 0; i < 3; i++)
+        {
+            attackRange[i].gameObject.SetActive(false);//사격범위 표시 Off
+            attackRange[i].transform.position = this.transform.position;
+            Vector3 bulletPos = new Vector3(0, -30 + (i * 30), 0);
+            GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
+            nmbullet.transform.Rotate(bulletPos);
+            nmbullet.GetComponent<NMRangedUnitBullet>().bulletDamage = this.dmgValue;
+            nmbullet.GetComponent<NMRangedUnitBullet>().bulletSpeed = this.bulletSpeed;
+            nmbullet.GetComponent<NMRangedUnitBullet>().bulletLifeTime = this.bulletLifeTime;
+        }
         yield return new WaitForSeconds(atkSpeed / 2);
         isAtk = false;
     }
