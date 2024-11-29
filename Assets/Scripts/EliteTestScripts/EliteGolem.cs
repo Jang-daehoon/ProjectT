@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using EnemyController;
 using HoonsCodes;
-using System;
-using UnityEngine.Timeline;
-
 public class EliteGolem : Character
 {
     public Transform target;
@@ -26,17 +23,8 @@ public class EliteGolem : Character
 
     [SerializeField] private AttackWarning attackWarning; // 경고 관리 스크립트
 
-    private State currentState;
+    private EliteState currentState;
     private bool isPlayerInRange = false; // 플레이어가 범위 내에 있는지 여부
-
-    private enum State
-    {
-        IDLE,
-        CHASE,
-        ATTACK,
-        SKILL,
-        DIE
-    }
 
     private void Awake()
     {
@@ -45,7 +33,7 @@ public class EliteGolem : Character
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
-        currentState = State.IDLE;
+        currentState = EliteState.IDLE;
     }
     private void Start()
     {
@@ -55,24 +43,28 @@ public class EliteGolem : Character
     {
         switch (currentState)
         {
-            case State.IDLE:
-                if (isPlayerInRange) currentState = State.ATTACK;
-                if (target != null) currentState = State.CHASE;
+            case EliteState.IDLE:
+                if (isPlayerInRange == true)
+                {
+                    currentState = EliteState.ATTACK;
+                    break;
+                }
+                if (target != null) currentState = EliteState.CHASE;
                 break;
-            case State.CHASE:
+            case EliteState.CHASE:
                 animator.SetBool("isAttack", false);
                 animator.SetInteger("comboAttack", 0);
-                if (isPlayerInRange) currentState = State.ATTACK; // 범위 내 진입 체크
+                if (isPlayerInRange == true) currentState = EliteState.ATTACK; // 범위 내 진입 체크
                 if (Attacking() == false) Move();
                 break;
-            case State.ATTACK:
+            case EliteState.ATTACK:
                 if (attackDontMove == false) StartCoroutine(Attack());
-                if (isPlayerInRange == false) currentState = State.CHASE; // 범위 나감
+                if (isPlayerInRange == false) currentState = EliteState.CHASE; // 범위 나감
                 break;
-            case State.SKILL:
+            case EliteState.SKILL:
                 agent.isStopped = true;
                 break;
-            case State.DIE:
+            case EliteState.DIE:
                 animator.SetTrigger("Die");
                 break;
         }
@@ -108,7 +100,6 @@ public class EliteGolem : Character
         }
 
         attackDontMove = false;
-        Debug.Log("Attack 종료");
     }
     public bool Attacking()
     {
@@ -123,17 +114,16 @@ public class EliteGolem : Character
         {
             yield return new WaitForSeconds(skillCoolTime);
             Debug.Log("스킬 발동!");
-            currentState = State.SKILL;
+            currentState = EliteState.SKILL;
 
-            agent.SetDestination(transform.position); // 현재 위치 고정
+            // 스킬 실행 중 NavMeshAgent 멈춤
+            agent.isStopped = true;
+            agent.SetDestination(transform.position);   
             animator.SetTrigger("Skill");
 
             // 스킬 지속 시간 대기
             yield return new WaitForSeconds(4f); // 스킬 애니메이션이 끝나는 시간
-
-            // 스킬 종료 후 다시 추적 상태로 전환
-            currentState = State.IDLE;
-            agent.isStopped = true;
+            currentState = EliteState.IDLE;
         }
     }
     private void SkillParticle()
@@ -172,8 +162,20 @@ public class EliteGolem : Character
     }
     public void ShowAttackWarning()
     {
-        if (attackWarning != null) attackWarning.ShowWarning(attackRange.bounds.center);
-        else attackWarning.HideWarning();
+        if (currentState == EliteState.ATTACK)
+        {
+            Quaternion baseRotation = attackRange.transform.rotation; // BoxCollider의 회전값
+            attackWarning.ShowWarning(attackRange.bounds.center, baseRotation, currentState);
+        }
+        else if (currentState == EliteState.SKILL)
+        {
+            Quaternion baseRotation = transform.rotation;
+            attackWarning.ShowWarning(transform.position, baseRotation, currentState);
+        }
+    }
+    public void EndAttackWarning()
+    {
+        attackWarning.HideWarning(currentState);
     }
     protected void OnTriggerEnter(Collider other)
     {

@@ -4,16 +4,12 @@ using UnityEngine;
 
 namespace EnemyController
 {
-    public enum StateName
+    public enum EliteState
     {
-        ENEMY_MOVE = 100,
-        ENEMY_ATTACK,
-        ENEMY_HIT,
-        ENEMY_DIE,
-        ENEMY_STAY,
-        ENEMY_CHARGE,
-        ENEMY_CHARGE_HIT,
-        ENEMY_CLOSE_SKILL,
-        ENEMY_FAR_SKILL
+        IDLE,
+        CHASE,
+        ATTACK,
+        SKILL,
+        DIE
     }
 }
