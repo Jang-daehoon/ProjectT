@@ -2627,7 +2627,7 @@ GameObject:
   - component: {fileID: 8483173114880075021}
   - component: {fileID: 7071502724537801834}
   - component: {fileID: 6025246388557059225}
-  - component: {fileID: 2903987819247614950}
+  - component: {fileID: 2516512753723159560}
   m_Layer: 0
   m_Name: Melee_MiniGolem
   m_TagString: Enemy
@@ -2746,7 +2746,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2903987819247614950
+--- !u!114 &2516512753723159560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2755,20 +2755,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8218977476529634470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbee3c38c2fa50d438fe6eea188caab2, type: 3}
+  m_Script: {fileID: 11500000, guid: b0078124768ce7d4f97fe4908546b6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
   curHp: 100
   moveSpeed: 5
-  dmgValue: 0.5
+  dmgValue: 1
   atkSpeed: 1
   isDead: 0
   rotationSpeed: 1000
   range: 5
   target: {fileID: 0}
   hpBar: {fileID: 6458724502534259626}
-  isGolem: 1
 --- !u!1 &8449866333909039998
 GameObject:
   m_ObjectHideFlags: 0

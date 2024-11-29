@@ -2367,7 +2367,7 @@ GameObject:
   - component: {fileID: 1626557299411139571}
   - component: {fileID: 5823691405154124117}
   - component: {fileID: 5669278337935941401}
-  - component: {fileID: 4561277002556665474}
+  - component: {fileID: 8269958556667356817}
   m_Layer: 0
   m_Name: Ranged_DevilTree
   m_TagString: Enemy
@@ -2487,7 +2487,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4561277002556665474
+--- !u!114 &8269958556667356817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2496,24 +2496,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 8891932949587243875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e23f048f6041d7849a6b1a0fd5f95f81, type: 3}
+  m_Script: {fileID: 11500000, guid: 34b5bba3a8436524cbff95db3c79ba6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
   curHp: 100
   moveSpeed: 3
-  dmgValue: 0.5
+  dmgValue: 1
   atkSpeed: 1
   isDead: 0
   rotationSpeed: 1000
-  target: {fileID: 0}
   range: 10
+  target: {fileID: 0}
+  hpBar: {fileID: 8437926693225863180}
   bullet: {fileID: 3358862366651384204, guid: 1c2e7a67008856c44941273ced173694, type: 3}
   bulletSpeed: 20
   bulletLifeTime: 1
   shootPos: {fileID: 1251350724271744013}
   attackRange: {fileID: 9011668587767497053}
-  hpBar: {fileID: 8437926693225863180}
 --- !u!1 &8905011602012697523
 GameObject:
   m_ObjectHideFlags: 0

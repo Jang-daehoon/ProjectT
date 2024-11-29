@@ -5,27 +5,9 @@ using UnityEngine.AI;
 using HoonsCodes;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class NMMeleeUnit : Character, ITakeDamage
+public class NMMeleeUnit : EnemyUint
 {
-    private enum State
-    {
-        Move,
-        Attack,
-        Die
-    }
-    private State state;
-    [Tooltip("회전 속도")]
-    public float rotationSpeed;
-    [Tooltip("공격 범위")]
-    [SerializeField] private float range;
-    public Transform target;
-    private NavMeshAgent agent;
-    public EnemyHPbar hpBar;
-
-    protected bool isAtk = false;
-    public bool isGolem;
-
-    private void Awake()
+    protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = this.GetComponent<Rigidbody>();
@@ -35,7 +17,7 @@ public class NMMeleeUnit : Character, ITakeDamage
         hpBar.currentHp = this.curHp;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         state = State.Move;
         isDead = false;
@@ -46,13 +28,14 @@ public class NMMeleeUnit : Character, ITakeDamage
         GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         HpBarUpdate();
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
             isDead = true;
+            col.enabled = false;
             agent.isStopped = true;
             ChangeState(State.Die);
         }
@@ -69,11 +52,7 @@ public class NMMeleeUnit : Character, ITakeDamage
         switch (state)
         {
             case State.Attack:
-                if (isAtk == false && isGolem == false) Attack();
-                if (isAtk == false && isGolem == true)
-                {
-                    gameObject.GetComponent<MeleeGolemAttack>().GolemAttackON();
-                }
+                if (isAtk == false) Attack();
                 break;
             case State.Move:
                 Move();
@@ -84,62 +63,9 @@ public class NMMeleeUnit : Character, ITakeDamage
         }
     }
 
-    private void HpBarUpdate()
+    protected virtual void Attack()
     {
-        hpBar.maxHp = this.maxHp;
-        hpBar.currentHp = this.curHp;
-        hpBar.GetHpBoost();
+
     }
 
-    private void ChangeState(State changestate)
-    {
-        this.state = changestate;
-    }
-
-    protected void Look()//회전
-    {
-        Vector3 direction = target.position - transform.position;
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-    }
-
-    private void Attack()
-    {
-        Look();
-        isAtk = true;
-        animator.SetTrigger("Attack");
-        StartCoroutine(AtkOff());
-    }
-
-    protected IEnumerator AtkOff()//공격 딜레이
-    {
-        //공격범위 표시
-        yield return new WaitForSeconds(atkSpeed / 2);
-        Debug.Log("Player를 공격");
-        //타겟 공격
-        //target.GetComponent<Player>().TakeDamage(dmgValue);
-        yield return new WaitForSeconds(atkSpeed / 2);
-        isAtk = false;
-    }
-
-    public override void Dead()
-    {
-        Destroy(this.gameObject);
-    }
-
-    public override void Move()
-    {
-        agent.isStopped = false;
-        agent.SetDestination(target.transform.position);
-    }
-
-    public void TakeDamage(float damage)//인터페이스
-    {
-        curHp -= damage;
-        hpBar.HpBarUpdate();
-        if (isAtk == false)
-        {
-            animator.SetTrigger("Damage");
-        }
-    }
 }
