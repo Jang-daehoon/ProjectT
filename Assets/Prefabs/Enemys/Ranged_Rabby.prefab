@@ -1271,7 +1271,8 @@ MonoBehaviour:
   bulletSpeed: 20
   bulletLifeTime: 1
   shootPos: {fileID: 8700286947087506876}
-  attackRange: {fileID: 5578184993486926466}
+  attackRange:
+  - {fileID: 5578184993486926466}
 --- !u!1 &3941406132115181898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,8 +1572,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f6d3abea3addf4dbefc1769ac15d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tr: {fileID: 0}
   endPos: {fileID: 5437276333007406161}
   onDraw: 0
+  end: {x: 0, y: 0, z: 0}
 --- !u!1 &5437276333007406161
 GameObject:
   m_ObjectHideFlags: 0
