@@ -12,6 +12,7 @@ public class SuicidePlanta : NMSuicideUnit
     protected override void Start()
     {
         base.Start();
+        
     }
 
     protected override void Update()

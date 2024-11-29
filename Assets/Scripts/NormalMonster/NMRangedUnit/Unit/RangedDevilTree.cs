@@ -29,14 +29,20 @@ public class RangedDevilTree : NMRangedUnit
 
     private IEnumerator AtkOff()//공격 딜레이
     {
-        attackRange.gameObject.SetActive(true);
-        attackRange.OnRange();//공격범위 표시
+        attackRange.transform.position = this.transform.position;
+        attackRange.gameObject.SetActive(true);//사격범위 표시 On
         yield return new WaitForSeconds(atkSpeed / 2);
-        attackRange.gameObject.SetActive(false);
-        GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
-        nmbullet.GetComponent<NMRangedUnitBullet>().bulletDamage = this.dmgValue;
-        nmbullet.GetComponent<NMRangedUnitBullet>().bulletSpeed = this.bulletSpeed;
-        nmbullet.GetComponent<NMRangedUnitBullet>().bulletLifeTime = this.bulletLifeTime;
+        attackRange.gameObject.SetActive(false);//사격범위 표시 Off
+        for (int i = 0; i < 3; i++)
+        {
+            Vector3 bulletPos = new Vector3(0, -30 + (i * 30), 0);
+            GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
+            nmbullet.transform.Rotate(bulletPos);
+            nmbullet.GetComponent<NMRangedUnitBullet>().bulletDamage = this.dmgValue;
+            nmbullet.GetComponent<NMRangedUnitBullet>().bulletSpeed = this.bulletSpeed;
+            nmbullet.GetComponent<NMRangedUnitBullet>().bulletLifeTime = this.bulletLifeTime;
+        }
+
         yield return new WaitForSeconds(atkSpeed / 2);
         isAtk = false;
     }
