@@ -15,8 +15,8 @@ public class DescDialogSystem : MonoBehaviour
     private bool isAutoStart = true;    //자동시작 여부
     private bool isFirst = true;    //최초 1회만 호출하기 위한 변수
     private int currentDialogIndex = -1;    //현재 대사 순번
-    [SerializeField]private int currentDialogIndexNum = 0;  //현재 설명을 하는 dialogIndex의 배열 순번
-    private float typingSpeed = 0.1f;   //텍스트 타이핑 효과의 재생속도
+    private int currentDialogIndexNum = 0;  //현재 설명을 하는 dialogIndex의 배열 순번
+    [SerializeField]private float typingSpeed = 0.1f;   //텍스트 타이핑 효과의 재생속도
     private bool isTypingEffect = false;    //텍스트 타이핑 효과를 재생중인지 확인하는 변수
 
     private void Awake()
