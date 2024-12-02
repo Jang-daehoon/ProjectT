@@ -12,8 +12,8 @@ public class UnitRange : MonoBehaviour
     private void Start()
     {
         tr = GetComponent<TrailRenderer>();
-        tr.startColor = Color.red;
-        tr.endColor = Color.red;
+        tr.startColor = new Color(Color.red.r, Color.red.g, Color.red.b, 0.5f);
+        tr.endColor = new Color(Color.red.r, Color.red.g, Color.red.b, 0.5f);
         tr.time = 1f;
     }
 
