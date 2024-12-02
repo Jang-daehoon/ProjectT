@@ -15,11 +15,14 @@ public class TutorialManager : MonoBehaviour
         if (isFirstTutirial == false)
         {
             isFirstTutirial = true;
+            Time.timeScale = 0;
             //튜토리얼 대사 시작
             yield return new WaitUntil(() => firstTutorialDialog.UpdateDialog());
 
+            Time.timeScale = 1;
             //몬스터 생성
             Debug.Log("몬스터 생성 메서드 시작");
+
             Time.timeScale = 0;
 
             secondTutorialDialog.gameObject.SetActive(true);

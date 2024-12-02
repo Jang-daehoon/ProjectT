@@ -17,6 +17,10 @@ namespace HoonsCodes
 
         [SerializeField] protected bool isDead;
         [Header("----------------------------")]
+
+        [Header("CharacterData")]
+        public CharacterData characterData; //ScriptableObj
+
         protected Rigidbody rb;
         protected Collider col;
         protected Animator animator;
