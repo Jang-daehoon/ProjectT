@@ -24,6 +24,7 @@ public class MeleeGolem : NMMeleeUnit
     protected override void Start()
     {
         base.Start();
+        attackRange.gameObject.transform.position = this.transform.position;
         attackRange.gameObject.SetActive(false);
     }
 
@@ -31,7 +32,7 @@ public class MeleeGolem : NMMeleeUnit
     {
         if (isGolemAttack == true)
         {
-            transform.position = Vector3.Lerp(transform.position, attackRange.end, Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, attackRange.end, Time.deltaTime * 2f);
         }
         if (isGolemAttackOn == true)
         {
