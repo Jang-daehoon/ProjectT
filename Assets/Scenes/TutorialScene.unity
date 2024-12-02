@@ -5611,6 +5611,8 @@ MonoBehaviour:
   ActiveEnemies: []
   rewardItemPrefab: {fileID: 2746194847584564971, guid: 07ae4fd42939316469dd3d0b29f3654e, type: 3}
   rewardSpawnPoint: {fileID: 2005171806}
+  potalPrefab: {fileID: 0}
+  potalSpawnPoint: {fileID: 0}
 --- !u!1001 &487654808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23887,6 +23889,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7250686114685688305, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250686114685688305, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250686114685688305, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7442429840179179645, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
