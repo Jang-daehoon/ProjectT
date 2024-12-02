@@ -9,16 +9,18 @@ using UnityEditor;
 public class EliteGolem : Character
 {
     public Transform target;
+    [Tooltip("공격 범위")]
     public Collider attackRange;
     public ParticleSystem skillParticle;
     public ParticleSystem attackParticleRight;
     public ParticleSystem attackParticleLeft;
     public NavMeshAgent agent { get; private set; }
-    public StateMachine stateMachine { get; private set; }
 
+    [Tooltip("공격")]
     [SerializeField] private float attackDelay = 1.5f;
     [SerializeField] private float attackSpeed = 1f;
 
+    [Tooltip("스킬")]
     [SerializeField] private float skillCoolTime = 15.0f; // 스킬 쿨타임
     [SerializeField] private float skillGroggy = 13.0f; // 스킬 쿨타임
 
@@ -40,6 +42,9 @@ public class EliteGolem : Character
         currentState = EliteState.RISE;
         StartCoroutine(GolemRise());
         StartCoroutine(UseSkill());
+    }
+    private void OnEnable()
+    {
     }
 
     private void Update()
