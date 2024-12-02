@@ -3894,6 +3894,7 @@ MonoBehaviour:
   dmgValue: 0
   atkSpeed: 0
   isDead: 0
+  characterData: {fileID: 11400000, guid: 2b73c86c1b2cd3d49bf4750965915452, type: 2}
   target: {fileID: 362983477}
   attackRange: {fileID: 780349382}
   skillParticle: {fileID: 198662300647181020, guid: fbab27c98b168764eb295cfff1e9f61f, type: 3}
@@ -3902,6 +3903,7 @@ MonoBehaviour:
   attackDelay: 1.5
   attackSpeed: 1
   skillCoolTime: 15
+  skillGroggy: 13
   attackWarning: {fileID: 1490182638}
 --- !u!195 &1490182636
 NavMeshAgent:
