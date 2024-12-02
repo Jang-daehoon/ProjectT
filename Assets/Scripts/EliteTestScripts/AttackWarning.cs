@@ -7,7 +7,6 @@ public class AttackWarning : MonoBehaviour
     [SerializeField] private LayerMask groundLayer; // Ground 레이어
     [SerializeField] private GameObject warningIndicatorAttack; // 경고 표시 객체
     [SerializeField] private GameObject warningIndicatorSkill; // 경고 표시 객체
-    [SerializeField] private float warningDuration = 1.2f; // 경고 표시 지속 시간
 
     private Transform owner;
 

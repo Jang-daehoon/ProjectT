@@ -16,13 +16,12 @@ public class EliteGolem : Character
     public ParticleSystem attackParticleLeft;
     public NavMeshAgent agent { get; private set; }
 
-    [Tooltip("공격")]
-    [SerializeField] private float attackDelay = 1.5f;
-    [SerializeField] private float attackSpeed = 1f;
+    [Header("공격 관련 수치")]
+    [SerializeField] private float attackDelay = 2f; // 공격간 딜레이
 
-    [Tooltip("스킬")]
+    [Header("스킬 관련 수치")]
     [SerializeField] private float skillCoolTime = 15.0f; // 스킬 쿨타임
-    [SerializeField] private float skillGroggy = 13.0f; // 스킬 쿨타임
+    [SerializeField] private float skillGroggy = 7.0f; // 스킬 쿨타임
 
     [SerializeField] private AttackWarning attackWarning; // 경고 관리 스크립트
 
@@ -31,6 +30,7 @@ public class EliteGolem : Character
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
@@ -45,8 +45,8 @@ public class EliteGolem : Character
     }
     private void OnEnable()
     {
+        EliteInitStats();
     }
-
     private void Update()
     {
         switch (currentState)
@@ -85,6 +85,7 @@ public class EliteGolem : Character
                 break;
             case EliteState.ATTACK:
                 agent.isStopped = true;
+                agent.SetDestination(transform.position);
                 animator.SetBool("isAttack", true);
                 break;
             case EliteState.SKILL:
@@ -103,6 +104,7 @@ public class EliteGolem : Character
             yield return null; // 애니메이션 시작 대기
 
         agent.isStopped = true;
+        agent.SetDestination(transform.position);
         attackParticleRight.gameObject.SetActive(true);
         attackParticleLeft.gameObject.SetActive(true);
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
@@ -141,8 +143,8 @@ public class EliteGolem : Character
     private void HandleAttackState()
     {
         agent.isStopped = true;
-        agent.velocity = Vector3.zero;
-        animator.SetFloat("AttackSpeed", attackSpeed);
+        agent.SetDestination(transform.position);
+        animator.SetFloat("AttackSpeed", atkSpeed);
         animator.SetBool("isChasing", false);
         animator.SetBool("isAttack", true);
 
@@ -154,24 +156,22 @@ public class EliteGolem : Character
             return;
         }
         // 공격 실행
-        StartCoroutine(PerformComboAttack());
+        StartCoroutine(ComboAttack());
     }
 
-    private IEnumerator PerformComboAttack()
+    private IEnumerator ComboAttack()
     {
         // 첫 번째 공격
         animator.SetTrigger("Attack1");
         yield return new WaitForSeconds(attackDelay);
 
-        // 플레이어가 여전히 범위 안에 있으면 두 번째 공격
         if (isPlayerInRange)
         {
             animator.SetTrigger("Attack2");
             yield return new WaitForSeconds(attackDelay);
         }
 
-        // 공격 후 잠깐 쉬고 IDLE 전환
-        yield return new WaitForSeconds(attackDelay * 2f);
+        yield return new WaitForSeconds(attackDelay * 4f);
         ChangeState(EliteState.IDLE);
     }
     private IEnumerator EndAttackWait(EliteState nextState)
@@ -193,6 +193,7 @@ public class EliteGolem : Character
         EndAttackWarning();
         animator.SetTrigger("Skill");
         agent.isStopped = true;
+        agent.SetDestination(transform.position);
 
         // 스킬 이펙트 생성은 이벤트로
         yield return new WaitForSeconds(skillGroggy);
@@ -204,19 +205,16 @@ public class EliteGolem : Character
     {
         while (true)
         {
-            yield return new WaitForSeconds(skillCoolTime); // 15초 대기
+            yield return new WaitForSeconds(skillCoolTime);
+            ChangeState(EliteState.SKILL);
 
-            // 스킬 발동 가능한 상태인지 확인
-            if (currentState != EliteState.SKILL)
-            {
-                ChangeState(EliteState.SKILL);
-            }
         }
     }
 
     private IEnumerator HandleDieState()
     {
         agent.isStopped = true;
+        agent.SetDestination(transform.position);
         animator.SetTrigger("Die");
         gameObject.GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
@@ -255,6 +253,16 @@ public class EliteGolem : Character
     }
     public override void Dead()
     {
+    }
+    private void EliteInitStats()
+    {
+        maxHp = characterData.maxHp;
+        curHp = maxHp;
+        atkSpeed = characterData.attackSpeed;
+        attackDelay = characterData.attackDelay;
+        moveSpeed = characterData.moveSpeed;
+        dmgValue = characterData.damage;
+        isDead = false;
     }
     public void ShowAttackWarning()
     {
