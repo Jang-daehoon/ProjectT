@@ -5681,10 +5681,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1636821990726149326, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 1830282537476590287, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5789,10 +5785,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4827326795630966457, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 5130977321827494352, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5812,10 +5804,6 @@ PrefabInstance:
     - target: {fileID: 5334463307957369350, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5360542761935092130, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5390903599910650058, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5848,10 +5836,6 @@ PrefabInstance:
     - target: {fileID: 6138325865133581647, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6358949151220177644, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6550167429406276173, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5917,18 +5901,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7999648954858063081, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 8269958556667356817, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 8019650}
-    - target: {fileID: 8629678405850242278, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
-      propertyPath: m_Parameters.widthMultiplier
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 8891932949587243875, guid: d7cbdd60cb89c114caaabe8f4e69edf3, type: 3}
       propertyPath: m_Name
       value: Ranged_DevilTree
@@ -16353,10 +16329,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee_MiniGolem
       objectReference: {fileID: 0}
-    - target: {fileID: 8325523743713736971, guid: 7c09a15b3c8611b4dad62d0c6cedeb60, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8543783606579637054, guid: 7c09a15b3c8611b4dad62d0c6cedeb60, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -16380,10 +16352,6 @@ PrefabInstance:
     - target: {fileID: 8931268327515338304, guid: 7c09a15b3c8611b4dad62d0c6cedeb60, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9107874657029370842, guid: 7c09a15b3c8611b4dad62d0c6cedeb60, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

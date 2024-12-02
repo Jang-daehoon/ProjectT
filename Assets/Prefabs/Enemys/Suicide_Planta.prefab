@@ -1333,7 +1333,6 @@ MonoBehaviour:
   dmgValue: 1
   atkSpeed: 1
   isDead: 0
-  rotationSpeed: 1000
   range: 3
   target: {fileID: 0}
   hpBar: {fileID: 8493404331971747201}
