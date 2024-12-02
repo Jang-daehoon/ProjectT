@@ -86,7 +86,7 @@ namespace HoonsCodes
                 float step = moveSpeed * Time.deltaTime; // 이동 속도
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
                 animator.SetFloat("Speed", step);
-                Debug.Log("이동 속도:" + step);
+                //Debug.Log("이동 속도:" + step);
                 // 목표에 도달하면 이동을 멈춤
                 if (transform.position == targetPosition)
                 {

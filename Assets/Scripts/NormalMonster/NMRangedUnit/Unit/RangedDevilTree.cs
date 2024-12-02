@@ -28,6 +28,7 @@ public class RangedDevilTree : NMRangedUnit
         isAtk = true;
         Look();
         StartCoroutine(AtkOff());
+        StartCoroutine(CoolTime());
         animator.SetBool("Idle", true);
     }
 
@@ -37,7 +38,7 @@ public class RangedDevilTree : NMRangedUnit
         {
             attackRange[i].gameObject.SetActive(true);//사격범위 표시 Off
         }
-        yield return new WaitForSeconds(atkSpeed / 2);
+        yield return new WaitForSeconds(atkSpeed);
         animator.SetBool("Idle", false);
         animator.SetTrigger("Attack");
         for (int i = 0; i < 3; i++)
@@ -51,7 +52,10 @@ public class RangedDevilTree : NMRangedUnit
             nmbullet.GetComponent<NMRangedUnitBullet>().bulletSpeed = this.bulletSpeed;
             nmbullet.GetComponent<NMRangedUnitBullet>().bulletLifeTime = this.bulletLifeTime;
         }
-        yield return new WaitForSeconds(atkSpeed / 2);
+    }
+    private IEnumerator CoolTime()
+    {
+        yield return new WaitForSeconds(attDelay);
         isAtk = false;
     }
 

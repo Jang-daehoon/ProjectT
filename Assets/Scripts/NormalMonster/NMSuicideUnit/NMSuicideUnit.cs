@@ -14,7 +14,6 @@ public class NMSuicideUnit : EnemyUint
     public ParticleSystem particle;
 
     [Tooltip("터지는데 걸리는 시간")]
-    public float delay;
 
     public NMSuicideUnitRange boomRange;
 
@@ -24,12 +23,20 @@ public class NMSuicideUnit : EnemyUint
         rb = this.GetComponent<Rigidbody>();
         col = this.GetComponent<CapsuleCollider>();
         animator = this.GetComponent<Animator>();
+        attDelay = characterData.attackDelay;
+        atkSpeed = characterData.attackSpeed;
+        moveSpeed = characterData.moveSpeed;
+        dmgValue = characterData.damage;
+        maxHp = characterData.maxHp;
+        curHp = maxHp;
         hpBar.maxHp = this.maxHp;
         hpBar.currentHp = this.curHp;
+        target = GameManager.Instance.player.transform;
     }
 
     protected virtual void Start()
     {
+        unitType = UnitType.Suicide;
         state = State.Move;
         isDead = false;
         agent.speed = moveSpeed;
@@ -40,12 +47,6 @@ public class NMSuicideUnit : EnemyUint
         boomRange.radius = attackRange;
         boomRange.gameObject.SetActive(false);
     }
-
-    //private void OnDrawGizmos() //공격범위표시 파티클 작업할때 쓰세요
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawSphere(transform.position, range);
-    //}
 
     protected virtual void Update()
     {
