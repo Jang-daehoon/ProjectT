@@ -58,7 +58,7 @@ namespace HoonsCodes
 
             LookMouseCursor();
 
-            if (Input.GetMouseButtonDown(0) && isAttack == false)
+            if (Input.GetMouseButton(0) && isAttack == false)
             {
                 RotateToClickPosition();
                 isAttack = true;  // 공격 상태로 변경
