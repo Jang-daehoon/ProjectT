@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,42 +9,37 @@ using UnityEditor;
 public class EliteGolem : Character
 {
     public Transform target;
-    public BoxCollider attackRange;
+    public Collider attackRange;
     public ParticleSystem skillParticle;
     public ParticleSystem attackParticleRight;
     public ParticleSystem attackParticleLeft;
     public NavMeshAgent agent { get; private set; }
-    public Rigidbody rigidBody { get; private set; }
     public StateMachine stateMachine { get; private set; }
 
     [SerializeField] private float attackDelay = 1.5f;
     [SerializeField] private float attackSpeed = 1f;
-    [SerializeField] private bool isAttacking = false; // °ø°İ Áß ¿©ºÎ ÇÃ·¡±×
 
-    [SerializeField] private float skillCoolTime = 10.0f; // ÄğÅ¸ÀÓ (ÃÊ)
+    [SerializeField] private float skillCoolTime = 15.0f; // ìŠ¤í‚¬ ì¿¨íƒ€ì„
+    [SerializeField] private float skillGroggy = 13.0f; // ìŠ¤í‚¬ ì¿¨íƒ€ì„
 
-    [SerializeField] private AttackWarning attackWarning; // °æ°í °ü¸® ½ºÅ©¸³Æ®
+    [SerializeField] private AttackWarning attackWarning; // ê²½ê³  ê´€ë¦¬ ìŠ¤í¬ë¦½íŠ¸
 
     private EliteState currentState;
-    private bool isPlayerInRange = false; // ÇÃ·¹ÀÌ¾î°¡ ¹üÀ§ ³»¿¡ ÀÖ´ÂÁö ¿©ºÎ
+    private bool isPlayerInRange = false; // í”Œë ˆì´ì–´ê°€ ë²”ìœ„ ë‚´ì— ìˆëŠ”ì§€ ì—¬ë¶€
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
         attackParticleRight.gameObject.SetActive(false);
         attackParticleLeft.gameObject.SetActive(false);
-        currentState = EliteState.RISE;
     }
     private void Start()
     {
+        currentState = EliteState.RISE;
         StartCoroutine(GolemRise());
-        StartCoroutine(Attack());
         StartCoroutine(UseSkill());
-        StartCoroutine(DeadMotion());
     }
 
     private void Update()
@@ -52,101 +47,183 @@ public class EliteGolem : Character
         switch (currentState)
         {
             case EliteState.IDLE:
-                if (isPlayerInRange == true)
-                {
-                    currentState = EliteState.ATTACK;
-                }
-                else if
-                    (target != null) currentState = EliteState.CHASE;
+                HandleIdleState();
                 break;
             case EliteState.CHASE:
-                if (isPlayerInRange == true)
-                    currentState = EliteState.ATTACK; // ¹üÀ§ ³» ÁøÀÔ Ã¼Å©
-                else if (Attacking() == false) Move();
+                HandleChaseState();
+                break;
+            case EliteState.ATTACK:
+                HandleAttackState();
+                break;
+            case EliteState.SKILL:
+                // ìŠ¤í‚¬ì€ ì½”ë£¨í‹´ìœ¼ë¡œ ëŒì•„ê°
+                break;
+            case EliteState.DIE:
+                // ì£½ìŒ ìƒíƒœ ì²˜ë¦¬
+                break;
+        }
+        // ê³¨ë ˜ ì‚¬ë§ í…ŒìŠ¤íŠ¸
+        if (Input.GetKeyDown(KeyCode.Space))
+            ChangeState(EliteState.DIE);
+        print($"í˜„ì¬ ìƒíƒœ : {currentState}, ë²”ìœ„ ì•ˆ? : {isPlayerInRange}");
+    }
+    private void ChangeState(EliteState newState)
+    {
+        currentState = newState;
+
+        switch (newState)
+        {
+            case EliteState.CHASE:
+                if (Attacking()) return; // ê³µê²© ìƒíƒœì—ì„œ ì¶”ì  ìƒíƒœë¡œ ì „í™˜ ì œí•œ
+                agent.isStopped = false;
+                animator.SetBool("isChasing", true);
                 break;
             case EliteState.ATTACK:
                 agent.isStopped = true;
+                animator.SetBool("isAttack", true);
                 break;
             case EliteState.SKILL:
-                agent.isStopped = true;
+                StartCoroutine(HandleSkillState());
                 break;
             case EliteState.DIE:
-                agent.isStopped = true;
+                StartCoroutine(HandleDieState());
                 break;
         }
-        // °ñ·½ »ç¸Á Å×½ºÆ®
-        if (Input.GetKeyDown(KeyCode.Space))
-            currentState = EliteState.DIE;
     }
     private IEnumerator GolemRise()
     {
         animator.SetTrigger("Rise");
 
         while (animator.GetCurrentAnimatorStateInfo(0).IsName("Rise") == false)
-            yield return null; // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÃÀÛ ´ë±â
+            yield return null; // ì• ë‹ˆë©”ì´ì…˜ ì‹œì‘ ëŒ€ê¸°
 
-        float riseDuration = animator.GetCurrentAnimatorStateInfo(0).length;
-        agent.SetDestination(transform.position);
         agent.isStopped = true;
-
-        yield return new WaitForSeconds(riseDuration);
         attackParticleRight.gameObject.SetActive(true);
         attackParticleLeft.gameObject.SetActive(true);
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // ì¼ì–´ë‚˜ëŠ” ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
         currentState = EliteState.IDLE;
     }
-    public IEnumerator Attack()
+    private void HandleIdleState()
     {
-        while (true)
-        {
-            if (isPlayerInRange == false) yield return null;
-
-            else
-            {
-                animator.SetFloat("AttackSpeed", attackSpeed);
-                animator.SetBool("isChasing", false);
-                animator.SetBool("isAttack", true);
-
-                if (isPlayerInRange == true)
-                {
-                    if (animator.GetBool("comboAttack") == true)
-                    {
-                        animator.SetBool("isAttack", false);
-                        yield return new WaitForSeconds(attackDelay);
-                        currentState = EliteState.IDLE;
-                    }
-
-                    yield return new WaitForSeconds(attackDelay);
-
-                    if (animator.GetBool("comboAttack") == false)
-                        animator.SetBool("comboAttack", true);
-                }
-                else
-                    currentState = EliteState.IDLE;
-            }
-        }
+        if (isPlayerInRange)
+            ChangeState(EliteState.ATTACK);
+        else if (target != null)
+            ChangeState(EliteState.CHASE);
     }
-    // °ø°İ ¾Ö´Ï¸ŞÀÌ¼Ç ÁøÇàÁß 
-    public bool Attacking()
+    private void HandleChaseState()
     {
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-        if ((stateInfo.IsName("Attack1") || stateInfo.IsName("Attack2")) && stateInfo.normalizedTime < 1f)
-            isAttacking = true; // ¾Ö´Ï¸ŞÀÌ¼Ç ÁøÇà Áß
+        if (isPlayerInRange)
+            ChangeState(EliteState.ATTACK);
         else
-            isAttacking = false; // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+            Move();
+    }
+    public override void Move()
+    {
+        if (Attacking())
+            return;
+        EndAttackWarning();
+        agent.isStopped = false;
+        agent.SetDestination(target.position);
+        animator.SetBool("isChasing", true);
+    }
+    private IEnumerator DelayStateChange(EliteState nextState, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ChangeState(nextState);
+    }
+    private void HandleAttackState()
+    {
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;
+        animator.SetFloat("AttackSpeed", attackSpeed);
+        animator.SetBool("isChasing", false);
+        animator.SetBool("isAttack", true);
 
-        return isAttacking;
+        if (Attacking())
+            return; // ê³µê²© ì¤‘ì´ë©´ ìƒíƒœ ì „í™˜ì„ ì œí•œ
+        if (!isPlayerInRange)
+        {
+            StartCoroutine(EndAttackWait(EliteState.IDLE));
+            return;
+        }
+        // ê³µê²© ì‹¤í–‰
+        StartCoroutine(PerformComboAttack());
+    }
+
+    private IEnumerator PerformComboAttack()
+    {
+        // ì²« ë²ˆì§¸ ê³µê²©
+        animator.SetTrigger("Attack1");
+        yield return new WaitForSeconds(attackDelay);
+
+        // í”Œë ˆì´ì–´ê°€ ì—¬ì „íˆ ë²”ìœ„ ì•ˆì— ìˆìœ¼ë©´ ë‘ ë²ˆì§¸ ê³µê²©
+        if (isPlayerInRange)
+        {
+            animator.SetTrigger("Attack2");
+            yield return new WaitForSeconds(attackDelay);
+        }
+
+        // ê³µê²© í›„ ì ê¹ ì‰¬ê³  IDLE ì „í™˜
+        yield return new WaitForSeconds(attackDelay * 2f);
+        ChangeState(EliteState.IDLE);
+    }
+    private IEnumerator EndAttackWait(EliteState nextState)
+    {
+        // ê³µê²© ì• ë‹ˆë©”ì´ì…˜ì´ ëë‚  ë•Œê¹Œì§€ ëŒ€ê¸°
+        while (Attacking())
+            yield return null;
+
+        // NavMeshAgent ë‹¤ì‹œ í™œì„±í™”
+        agent.isStopped = false;
+        animator.SetBool("isAttack", false);
+
+        // ìƒíƒœ ì „í™˜
+        ChangeState(nextState);
+    }
+    private IEnumerator HandleSkillState()
+    {
+        // ìŠ¤í‚¬ ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
+        EndAttackWarning();
+        animator.SetTrigger("Skill");
+        agent.isStopped = true;
+
+        // ìŠ¤í‚¬ ì´í™íŠ¸ ìƒì„±ì€ ì´ë²¤íŠ¸ë¡œ
+        yield return new WaitForSeconds(skillGroggy);
+
+        // ìŠ¤í‚¬ ì¢…ë£Œ í›„ Idle ìƒíƒœë¡œ ì „í™˜
+        ChangeState(EliteState.IDLE);
     }
     private IEnumerator UseSkill()
     {
         while (true)
         {
-            yield return new WaitForSeconds(skillCoolTime);
-            currentState = EliteState.SKILL;
-            animator.SetTrigger("Skill");
-            yield return new WaitForSeconds(4f);
-            currentState = EliteState.IDLE;
+            yield return new WaitForSeconds(skillCoolTime); // 15ì´ˆ ëŒ€ê¸°
+
+            // ìŠ¤í‚¬ ë°œë™ ê°€ëŠ¥í•œ ìƒíƒœì¸ì§€ í™•ì¸
+            if (currentState != EliteState.SKILL)
+            {
+                ChangeState(EliteState.SKILL);
+            }
         }
+    }
+
+    private IEnumerator HandleDieState()
+    {
+        agent.isStopped = true;
+        animator.SetTrigger("Die");
+        gameObject.GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        Destroy(gameObject);
+    }
+
+    public bool Attacking()
+    {
+        var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        // ê³µê²© ì• ë‹ˆë©”ì´ì…˜ ì§„í–‰í•˜ëŠ” ë™ì•ˆ TRUE
+        return (stateInfo.IsName("Attack1") || stateInfo.IsName("Attack2")) && stateInfo.normalizedTime < 1f;
     }
     private void SkillParticle()
     {
@@ -155,21 +232,9 @@ public class EliteGolem : Character
         main.loop = false;
         main.stopAction = ParticleSystemStopAction.Destroy;
     }
-    public override void Move()
-    {
-        // ¿òÁ÷ÀÓ ½ÃÀÛÇÏ¸é °ø°İ ÃÊ±âÈ­
-        EndAttackWarning();
-        animator.SetBool("isAttack", false);
-        animator.SetBool("comboAttack", false);
-
-        agent.isStopped = false;
-        animator.SetBool("isChasing", true);
-        agent.SetDestination(target.position);
-    }
-
     public void ApplyDamage()
     {
-        // °ø°İ ¹üÀ§ ¾ÈÀÇ ¸ğµç ´ë»ó Ã£±â
+        // ê³µê²© ë²”ìœ„ ì•ˆì˜ ëª¨ë“  ëŒ€ìƒ ì°¾ê¸°
         Collider[] hitColliders = Physics.OverlapBox(attackRange.bounds.center,
             attackRange.bounds.extents, Quaternion.identity, LayerMask.GetMask("Player"));
 
@@ -178,29 +243,13 @@ public class EliteGolem : Character
             //PlayerHealth playerHealth = hit.GetComponent<PlayerHealth>();
             //if (playerHealth != null)
             //{
-            //    playerHealth.TakeDamage(attackDamage); // attackDamage´Â GolemÀÇ °ø°İ·Â
-            //    Debug.Log("Player¿¡°Ô µ¥¹ÌÁö Àû¿ë!");
+            //    playerHealth.TakeDamage(attackDamage); // attackDamageëŠ” Golemì˜ ê³µê²©ë ¥
+            //    Debug.Log("Playerì—ê²Œ ë°ë¯¸ì§€ ì ìš©!");
             //}
         }
     }
     public override void Dead()
     {
-    }
-    private IEnumerator DeadMotion()
-    {
-        while (true)
-        {
-            if (currentState == EliteState.DIE)
-            {
-                EndAttackWarning();
-                animator.SetTrigger("Die");
-                gameObject.GetComponent<Collider>().enabled = false;
-                yield return new WaitForSeconds(1.7f);
-                Destroy(gameObject);
-            }
-            else
-                yield return null;
-        }
     }
     public void ShowAttackWarning()
     {
@@ -211,7 +260,7 @@ public class EliteGolem : Character
         }
         else
         {
-            Quaternion baseRotation = attackRange.transform.rotation; // BoxColliderÀÇ È¸Àü°ª
+            Quaternion baseRotation = attackRange.transform.rotation; // BoxColliderì˜ íšŒì „ê°’
             attackWarning.ShowWarning(attackRange.bounds.center, baseRotation, currentState);
         }
     }
@@ -222,22 +271,16 @@ public class EliteGolem : Character
     protected void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
             isPlayerInRange = true;
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            isPlayerInRange = true;
-        }
     }
     protected void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-
+        {
+            animator.ResetTrigger("Attack1");
+            animator.ResetTrigger("Attack2");
             isPlayerInRange = false;
+        }
     }
 }
 
