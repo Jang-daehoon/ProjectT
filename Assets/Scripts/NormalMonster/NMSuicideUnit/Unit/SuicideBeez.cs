@@ -22,6 +22,7 @@ public class SuicideBeez : NMSuicideUnit
     protected override void Attack()
     {
         isAtk = true;
+        col.isTrigger = true;
         agent.isStopped = true;
         agent.velocity = Vector3.zero;//즉시 정지
         boomRange.gameObject.SetActive(true);
