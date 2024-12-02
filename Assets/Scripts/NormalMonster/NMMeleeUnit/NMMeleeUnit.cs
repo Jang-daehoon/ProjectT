@@ -7,18 +7,27 @@ using HoonsCodes;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NMMeleeUnit : EnemyUint
 {
+
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = this.GetComponent<Rigidbody>();
         col = this.GetComponent <CapsuleCollider>();
         animator = this.GetComponent<Animator>();
+        attDelay = characterData.attackDelay;
+        atkSpeed = characterData.attackSpeed;
+        moveSpeed = characterData.moveSpeed;
+        dmgValue = characterData.damage;
+        maxHp = characterData.maxHp;
+        curHp = maxHp;
         hpBar.maxHp = this.maxHp;
         hpBar.currentHp = this.curHp;
+        target = GameManager.Instance.player.transform;
     }
 
     protected virtual void Start()
     {
+        unitType = UnitType.Melee;
         state = State.Move;
         isDead = false;
         agent.speed = moveSpeed;
@@ -30,13 +39,12 @@ public class NMMeleeUnit : EnemyUint
 
     protected virtual void Update()
     {
-        HpBarUpdate();
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
-        if (curHp <= 0 && isDead == false)//죽을때 한번 발동
+        if (isDead == true)//죽을때 한번 발동
         {
-            isDead = true;
             col.enabled = false;
             agent.isStopped = true;
+            agent.velocity = Vector3.zero;
             ChangeState(State.Die);
         }
         if (dirplayer <= range && isDead == false)//공격범위내에 들어오면 공격으로 변경

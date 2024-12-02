@@ -8,8 +8,8 @@ using UnityEngine.WSA;
 public class MeleeGolem : NMMeleeUnit
 {
     private bool isGolemAttack = false;
-    private bool isHit;
-    private bool isGolemAttackOn = false;
+    private bool isHit = false;
+    private bool isGolemAttackCollTime = false;
 
     public UnitRange attackRange;
     public ParticleSystem particle;
@@ -30,15 +30,23 @@ public class MeleeGolem : NMMeleeUnit
 
     protected override void Update()
     {
+        HpBarUpdate();
+        if (curHp <= 0)//죽을때 한번 발동
+        {
+            isDead = true;
+        }
         if (isGolemAttack == true)
         {
             transform.position = Vector3.Lerp(transform.position, attackRange.end, Time.deltaTime * 2f);
         }
-        if (isGolemAttackOn == true)
+        if (isGolemAttackCollTime == true)
         {
             Move();
         }
-        if (isAtk == true) return;
+        if (isDead == false)
+        {
+            if (isAtk == true) return;
+        }
         base.Update();
     }
 
@@ -48,7 +56,7 @@ public class MeleeGolem : NMMeleeUnit
         agent.velocity = Vector3.zero;
         Look();
         StartCoroutine(GolemMoveAttack());
-        StartCoroutine(IsAtk());
+        StartCoroutine(AtkCoolTime());
     }
 
     private IEnumerator GolemMoveAttack()
@@ -58,6 +66,7 @@ public class MeleeGolem : NMMeleeUnit
         attackRange.gameObject.SetActive(true);//이동범위 표시 On
 
         yield return new WaitForSeconds(1f);//돌진시작
+        col.isTrigger = true;
         animator.SetBool("Idel", false);
         animator.SetBool("Attack", true);
         attackRange.gameObject.SetActive(false);//이동범위 표시 Off
@@ -67,31 +76,37 @@ public class MeleeGolem : NMMeleeUnit
         particle.Play();
 
         yield return new WaitForSeconds(1f);
+        col.isTrigger = false;
         isGolemAttack = false;
         attackRange.transform.position = this.transform.position;
         animator.SetBool("Attack", false);
         particle.gameObject.SetActive(false);
         particle.Stop();
-        isGolemAttackOn = true;
+        isGolemAttackCollTime = true;
     }
 
-    private IEnumerator IsAtk()
+    private IEnumerator AtkCoolTime()
     {
-        yield return new WaitForSeconds(atkSpeed);
+        yield return new WaitForSeconds(attDelay);
         isAtk = false;
-        isGolemAttackOn = false;
+        isGolemAttackCollTime = false;
     }
-
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         if (isGolemAttack == false) return;
         if (isHit == false)
         {
-            //collision.gameObject.GetComponent<Player>().TakeDamage();
-            //플레이어 공격
-            isHit = true;
+            if (other.CompareTag("Player"))
+            {
+                Vector3 dir = transform.position - other.transform.position;
+                other.GetComponent<Rigidbody>().AddForce(-dir * 30f, ForceMode.Impulse);
+                Debug.Log($"{other.name} Hit");
+                //collision.gameObject.GetComponent<Player>().TakeDamage();
+                //플레이어 공격
+                isHit = true;
+            }
         }
     }
+
 
 }

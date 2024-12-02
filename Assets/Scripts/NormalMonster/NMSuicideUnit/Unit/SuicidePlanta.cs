@@ -28,7 +28,7 @@ public class SuicidePlanta : NMSuicideUnit
         agent.velocity = Vector3.zero;//즉시 정지
         boomRange.gameObject.SetActive(true);
         boomRange.OnRange();//공격범위 표시
-        Invoke("Boom", delay);//그자리에서 딜레이후 자폭
+        Invoke("Boom", attDelay);//그자리에서 딜레이후 자폭
         //달려가서 자폭(?)
     }
     private void Boom()//자폭
