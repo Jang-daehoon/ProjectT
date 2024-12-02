@@ -9,6 +9,7 @@ public class GameManager : Singleton<GameManager>
     public Player player;
 
     private GameManagerEx _game = new GameManagerEx();
+    
 
     public static GameManagerEx Game => Instance._game;
 
