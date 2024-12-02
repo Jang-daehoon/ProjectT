@@ -41,6 +41,7 @@ public class DialogSystem : MonoBehaviour
         //대사 분기가 시작될 때 1회만 호출
         if (isFirst == true)
         {
+            UiManager.Instance.isDialogUiActive = true;
             //초기화, 설명 이미지는 활성화 하고, 대사 관련 UI는 모두 비활성화
             Setup();
 
@@ -80,6 +81,7 @@ public class DialogSystem : MonoBehaviour
                 //현재 대화에 참여했던 모든 캐릭터, 대화 관련 UI를 보이지 않게 비활성화
                 for (int i = 0; i < speakers.Length; ++i)
                 {
+                    UiManager.Instance.isDialogUiActive = false;
                     SetActiveObjects(speakers[i], false);
                     //SetActiveObjects()에 캐릭터 이미지를 보이지 않게 하는 부분이 없기에 별도로 호출
                     speakers[i].characterImage.gameObject.SetActive(false);
