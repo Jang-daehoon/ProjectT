@@ -14,8 +14,7 @@ public class EnemyUint : Character, ITakeDamage
         Attack,
         Die
     }
-    [Tooltip("회전 속도")]
-    public float rotationSpeed;
+    protected float rotationSpeed = 1000f;
     [Tooltip("공격 범위")]
     [SerializeField] protected float range;
     protected State state;

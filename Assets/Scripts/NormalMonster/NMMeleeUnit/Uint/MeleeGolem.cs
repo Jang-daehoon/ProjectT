@@ -53,7 +53,7 @@ public class MeleeGolem : NMMeleeUnit
     private IEnumerator GolemMoveAttack()
     {
         animator.SetBool("Idel", true);
-        attackRange.transform.position = this.transform.position;
+        attackRange.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
         attackRange.gameObject.SetActive(true);//이동범위 표시 On
 
         yield return new WaitForSeconds(1f);//돌진시작
