@@ -114,7 +114,7 @@ public class DialogSystem : MonoBehaviour
     {
         speakers.characterImage.gameObject.SetActive(visible); //캐릭터 이미지 활성화
         speakers.charNameImage.gameObject.SetActive(visible);   //캐릭터 이름 이미지 활성화
-        speakers.textDialogue.gameObject.SetActive(visible);    //대화창 이미지 활성화
+        speakers.dialogImage.gameObject.SetActive(visible);  //캐릭터 대화창 이미지 활성화
         speakers.textName.gameObject.SetActive(visible);    //캐릭터 이름 활성화
         speakers.textDialogue.gameObject.SetActive(visible);   //대화창 텍스트 이미지 활성화
 
