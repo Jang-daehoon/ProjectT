@@ -1262,6 +1262,7 @@ MonoBehaviour:
   dmgValue: 1
   atkSpeed: 1
   isDead: 0
+  characterData: {fileID: 11400000, guid: fcf5e829e3c08fe47a502cd54b531465, type: 2}
   range: 10
   target: {fileID: 0}
   hpBar: {fileID: 7912849799519495349}
@@ -1600,7 +1601,7 @@ Transform:
   m_GameObject: {fileID: 5437276333007406161}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

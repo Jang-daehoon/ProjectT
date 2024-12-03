@@ -6,6 +6,8 @@ public class MeleeSkeleton : NMMeleeUnit
 {
     public TrailRenderer swordRender;
     private bool isAtkMotion = false;
+    private bool isCollTime = false;
+    public NMSuicideUnitRange atkRange;
 
     protected override void Awake()
     {
@@ -16,10 +18,17 @@ public class MeleeSkeleton : NMMeleeUnit
     {
         base.Start();
         swordRender.enabled = false;
+        atkRange.radius = range;
+        atkRange.gameObject.SetActive(false);
     }
 
     protected override void Update()
     {
+        HpBarUpdate();
+        if (curHp <= 0)//죽을때 한번 발동
+        {
+            isDead = true;
+        }
         if (isAtkMotion == false)
         {
             swordRender.enabled = false;
@@ -27,9 +36,15 @@ public class MeleeSkeleton : NMMeleeUnit
         if (isAtkMotion == true)
         {
             swordRender.enabled = true;
-            return;
         }
-
+        if (isCollTime == true)
+        {
+            Move();
+        }
+        if (isDead == false)
+        {
+            if (isAtk == true) return;
+        }
         base.Update();
     }
 
@@ -37,7 +52,10 @@ public class MeleeSkeleton : NMMeleeUnit
     {
         isAtk = true;
         isAtkMotion = true;
+        agent.velocity = Vector3.zero;
         Look();
+        atkRange.gameObject.SetActive(true);
+        atkRange.OnRange();
         animator.SetTrigger("Attack");
         StartCoroutine(AtkOff());
         StartCoroutine(AtkCoolTime());
@@ -46,17 +64,20 @@ public class MeleeSkeleton : NMMeleeUnit
     private IEnumerator AtkOff()//공격 딜레이
     {
         //공격범위 표시
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(atkSpeed * 0.5f);
         Debug.Log("Player를 공격");
         //타겟 공격
         //target.GetComponent<Player>().TakeDamage(dmgValue);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(atkSpeed * 0.5f);
         isAtkMotion = false;
+        atkRange.gameObject.SetActive(false);
+        isCollTime = true;
     }
 
     private IEnumerator AtkCoolTime()
     {
-        yield return new WaitForSeconds(atkSpeed);
+        yield return new WaitForSeconds(attDelay);
+        isCollTime = false;
         isAtk = false;
     }
 }

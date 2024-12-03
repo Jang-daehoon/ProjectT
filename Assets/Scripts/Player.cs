@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 namespace HoonsCodes
 {
     public class Player : Character
     {
-        [Header("DashInfo")]
+        [Header("AttackInfo")]
+        [SerializeField] private int AttackCnt; //공격 횟수
+        [Header("DodgeInfo")]
         [SerializeField] private Vector3 dir;
         [SerializeField] private float rotSpeed;
         [SerializeField] private bool isDash;
@@ -18,7 +21,7 @@ namespace HoonsCodes
         [Header("----------------------------")]
         [Header("SkillInfo")]
         [SerializeField] private bool usingSkillX;
-        [SerializeField] private bool isAttack;
+        public bool isAttack;
         [SerializeField] private bool isHit;
         [Header("----------------------------")]
         [Header("ProjectileInfo")]
@@ -77,7 +80,27 @@ namespace HoonsCodes
                 StartCoroutine(Dodge());
             }
         }
+        private void OnTriggerEnter(Collider other)
+        {
 
+            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
+            {
+                Debug.Log("보상 상자와 접촉");
+            }
+        }
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false
+                && other.GetComponent<ChestReward>().isOpen == false && Input.GetKeyDown(KeyCode.F))
+            {
+                //UI상호작용 가능 문구 출력
+                StartCoroutine(other.GetComponent<ChestReward>().ArcanaResult());
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            //UI상호작용 가능 문구 비활성화
+        }
         public override void Move()
         {
             if (targetPosition != Vector3.zero)
@@ -86,7 +109,7 @@ namespace HoonsCodes
                 float step = moveSpeed * Time.deltaTime; // 이동 속도
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
                 animator.SetFloat("Speed", step);
-                Debug.Log("이동 속도:" + step);
+                //Debug.Log("이동 속도:" + step);
                 // 목표에 도달하면 이동을 멈춤
                 if (transform.position == targetPosition)
                 {
@@ -120,7 +143,7 @@ namespace HoonsCodes
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
                 {
                     // 충돌 지점이 있을 때
-                    Debug.Log("충돌 지점: " + hit.point);  // 충돌한 지점의 위치 출력
+                    //Debug.Log("충돌 지점: " + hit.point);  // 충돌한 지점의 위치 출력
 
                     // 레이 캐스트의 시작점(transform.position)에서 끝점(hit.point)으로 레이 표시
                     Debug.DrawRay(transform.position, hit.point - transform.position, Color.red, 2f);
@@ -157,7 +180,17 @@ namespace HoonsCodes
         public void Attack()
         {
             targetPosition = Vector3.zero;
-            StartCoroutine(FireArrow());
+            if(ArcanaManager.Instance.canEnhanceMeleeAttack == true && AttackCnt == 3)
+            {
+                AttackCnt = 0;
+                StartCoroutine(ArcanaManager.Instance.EnhanceFireArrow());
+            }
+            else
+            {
+                if(ArcanaManager.Instance.canEnhanceMeleeAttack == true)
+                    AttackCnt++;
+                StartCoroutine(FireArrow());
+            }
         }
 
         public void XSkill()
@@ -238,7 +271,7 @@ namespace HoonsCodes
         }
 
 
-        private void ParticlePlay(ParticleSystem usedParticle)
+        public void ParticlePlay(ParticleSystem usedParticle)
         {
             usedParticle.Play();
         }

@@ -8,20 +8,28 @@ using UnityEditor;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyUint : Character, ITakeDamage
 {
+    protected enum UnitType
+    {
+        Melee,
+        Ranged,
+        Suicide
+    }
     protected enum State
     {
         Move,
         Attack,
         Die
     }
-    protected float rotationSpeed = 1000f;
+    protected float rotationSpeed = 500f;
     [Tooltip("공격 범위")]
     [SerializeField] protected float range;
+    protected UnitType unitType;
     protected State state;
     public Transform target;
     protected NavMeshAgent agent;
     public EnemyHPbar hpBar;
     protected bool isAtk = false;
+    protected float attDelay;
 
 
     protected void HpBarUpdate()

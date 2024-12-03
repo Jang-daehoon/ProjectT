@@ -15,6 +15,8 @@ public class UnitRange : MonoBehaviour
         tr.startColor = new Color(Color.red.r, Color.red.g, Color.red.b, 0.5f);
         tr.endColor = new Color(Color.red.r, Color.red.g, Color.red.b, 0.5f);
         tr.time = 1f;
+        endPos.transform.localPosition = new Vector3(0,+0.5f,+10);
+        end = endPos.transform.position;
     }
 
     private void Update()

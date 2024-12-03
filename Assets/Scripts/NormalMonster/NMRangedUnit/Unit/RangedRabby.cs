@@ -24,14 +24,14 @@ public class RangedRabby : NMRangedUnit
         isAtk = true;
         Look();
         StartCoroutine(AtkOff());
-       
+        StartCoroutine(CoolTime());
     }
 
     private IEnumerator AtkOff()//공격 딜레이
     {
         attackRange[0].gameObject.SetActive(true);//사격범위 표시 On
 
-        yield return new WaitForSeconds(atkSpeed / 2);
+        yield return new WaitForSeconds(atkSpeed);
         attackRange[0].gameObject.SetActive(false);//사격범위 표시 Off
         attackRange[0].transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, this.transform.position.z);
         animator.SetTrigger("Attack");
@@ -40,8 +40,11 @@ public class RangedRabby : NMRangedUnit
         nmbullet.GetComponent<NMRangedUnitBullet>().bulletDamage = this.dmgValue;
         nmbullet.GetComponent<NMRangedUnitBullet>().bulletSpeed = this.bulletSpeed;
         nmbullet.GetComponent<NMRangedUnitBullet>().bulletLifeTime = this.bulletLifeTime;
-        
-        yield return new WaitForSeconds(atkSpeed / 2);
+    }
+
+    private IEnumerator CoolTime()
+    {
+        yield return new WaitForSeconds(attDelay);
         isAtk = false;
     }
 }
