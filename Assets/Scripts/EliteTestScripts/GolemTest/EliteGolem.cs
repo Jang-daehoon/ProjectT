@@ -21,12 +21,13 @@ public class EliteGolem : Character
 
     [Header("스킬 관련 수치")]
     [SerializeField] private float skillCoolTime = 15.0f; // 스킬 쿨타임
-    [SerializeField] private float skillGroggy = 7.0f; // 스킬 쿨타임
+    [SerializeField] private float skillGroggy = 5.0f;
 
     [SerializeField] private AttackWarning attackWarning; // 경고 관리 스크립트
 
     private EliteState currentState;
     private bool isPlayerInRange = false; // 플레이어가 범위 내에 있는지 여부
+    private bool isSkillExecuting = false; // 스킬 상태 실행 여부 플래그
 
     private void Awake()
     {
@@ -70,12 +71,25 @@ public class EliteGolem : Character
         // 골렘 사망 테스트
         if (Input.GetKeyDown(KeyCode.Space))
             ChangeState(EliteState.DIE);
-        print($"현재 상태 : {currentState}, 범위 안? : {isPlayerInRange}");
+        //print($"현재 상태 : {currentState}, 범위 안? : {isPlayerInRange}");
     }
     private void ChangeState(EliteState newState)
     {
-        currentState = newState;
+        Debug.Log($"[ChangeState] Called from: " +
+            $"{new System.Diagnostics.StackTrace().GetFrame(1).GetMethod().Name}" +
+            $" | Current: {currentState} -> New: {newState}");
 
+        if (currentState == newState)
+            return; // 상태가 이미 동일하면 실행하지 않음
+
+        if (isSkillExecuting && newState != EliteState.DIE)
+            return;
+
+        // 공격 중 이동 금지
+        if (newState != EliteState.ATTACK && Attacking())
+            return;
+
+        currentState = newState;
         switch (newState)
         {
             case EliteState.CHASE:
@@ -94,6 +108,11 @@ public class EliteGolem : Character
             case EliteState.DIE:
                 StartCoroutine(HandleDieState());
                 break;
+            case EliteState.IDLE:
+                agent.isStopped = true;
+                animator.SetBool("isChasing", false);
+                animator.SetBool("isAttack", false);
+                break;
         }
     }
     private IEnumerator GolemRise()
@@ -104,12 +123,11 @@ public class EliteGolem : Character
             yield return null; // 애니메이션 시작 대기
 
         agent.isStopped = true;
-        agent.SetDestination(transform.position);
-        attackParticleRight.gameObject.SetActive(true);
-        attackParticleLeft.gameObject.SetActive(true);
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
         // 일어나는 애니메이션 종료
+        attackParticleRight.gameObject.SetActive(true);
+        attackParticleLeft.gameObject.SetActive(true);
         currentState = EliteState.IDLE;
     }
     private void HandleIdleState()
@@ -128,17 +146,14 @@ public class EliteGolem : Character
     }
     public override void Move()
     {
-        if (Attacking())
+        // 스킬 또는 공격 상태 중 이동 금지
+        if (currentState == EliteState.SKILL || currentState == EliteState.ATTACK || Attacking())
             return;
+
         EndAttackWarning();
         agent.isStopped = false;
         agent.SetDestination(target.position);
         animator.SetBool("isChasing", true);
-    }
-    private IEnumerator DelayStateChange(EliteState nextState, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        ChangeState(nextState);
     }
     private void HandleAttackState()
     {
@@ -149,7 +164,10 @@ public class EliteGolem : Character
         animator.SetBool("isAttack", true);
 
         if (Attacking())
-            return; // 공격 중이면 상태 전환을 제한
+        {
+            agent.SetDestination(transform.position); // 현재 위치 유지
+            return;
+        }
         if (!isPlayerInRange)
         {
             StartCoroutine(EndAttackWait(EliteState.IDLE));
@@ -170,12 +188,15 @@ public class EliteGolem : Character
             animator.SetTrigger("Attack2");
             yield return new WaitForSeconds(attackDelay);
         }
+        yield return new WaitForSeconds(attackDelay);
 
-        yield return new WaitForSeconds(attackDelay * 4f);
-        ChangeState(EliteState.IDLE);
+        if (currentState == EliteState.ATTACK)
+            ChangeState(EliteState.IDLE);
     }
     private IEnumerator EndAttackWait(EliteState nextState)
     {
+        // 애니메이션 시작하는 딜레이 대기
+        yield return new WaitForSeconds(0.1f); 
         // 공격 애니메이션이 끝날 때까지 대기
         while (Attacking())
             yield return null;
@@ -189,16 +210,16 @@ public class EliteGolem : Character
     }
     private IEnumerator HandleSkillState()
     {
-        // 스킬 애니메이션 실행
+        if (isSkillExecuting)
+            yield break;
+
+        isSkillExecuting = true;
         EndAttackWarning();
         animator.SetTrigger("Skill");
-        agent.isStopped = true;
-        agent.SetDestination(transform.position);
-
-        // 스킬 이펙트 생성은 이벤트로
+        agent.isStopped = true; 
         yield return new WaitForSeconds(skillGroggy);
 
-        // 스킬 종료 후 Idle 상태로 전환
+        isSkillExecuting = false;
         ChangeState(EliteState.IDLE);
     }
     private IEnumerator UseSkill()
@@ -206,11 +227,17 @@ public class EliteGolem : Character
         while (true)
         {
             yield return new WaitForSeconds(skillCoolTime);
-            ChangeState(EliteState.SKILL);
 
+            // 공격 중이면 대기 후 스킬 상태로 전환
+            if (currentState == EliteState.ATTACK && Attacking())
+                yield return new WaitUntil(() => !Attacking());
+
+            if (currentState == EliteState.SKILL || currentState == EliteState.DIE)
+                continue;
+
+            ChangeState(EliteState.SKILL);
         }
     }
-
     private IEnumerator HandleDieState()
     {
         agent.isStopped = true;
