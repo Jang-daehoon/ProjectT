@@ -67,10 +67,11 @@ public class MeleeGolem : NMMeleeUnit
 
         yield return new WaitForSeconds(1f);//돌진시작
         col.isTrigger = true;
+        isGolemAttack = true;
+        attackRange.gameObject.SetActive(false);//이동범위 표시 Off
+        yield return null;
         animator.SetBool("Idel", false);
         animator.SetBool("Attack", true);
-        attackRange.gameObject.SetActive(false);//이동범위 표시 Off
-        isGolemAttack = true;
         isHit = false;
         particle.gameObject.SetActive(true);
         particle.Play();
@@ -91,7 +92,7 @@ public class MeleeGolem : NMMeleeUnit
         isAtk = false;
         isGolemAttackCollTime = false;
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (isGolemAttack == false) return;
         if (isHit == false)
@@ -99,7 +100,7 @@ public class MeleeGolem : NMMeleeUnit
             if (other.CompareTag("Player"))
             {
                 Vector3 dir = transform.position - other.transform.position;
-                other.GetComponent<Rigidbody>().AddForce(-dir * 30f, ForceMode.Impulse);
+                other.GetComponent<Rigidbody>().AddForce(-dir.normalized * 30f, ForceMode.Impulse);
                 Debug.Log($"{other.name} Hit");
                 //collision.gameObject.GetComponent<Player>().TakeDamage();
                 //플레이어 공격

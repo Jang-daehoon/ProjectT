@@ -2942,6 +2942,7 @@ MonoBehaviour:
   dmgValue: 1
   atkSpeed: 1
   isDead: 0
+  characterData: {fileID: 11400000, guid: 36aa3e08ccacdb348a1e766a0e990e14, type: 2}
   range: 10
   target: {fileID: 0}
   hpBar: {fileID: 8437926693225863180}
