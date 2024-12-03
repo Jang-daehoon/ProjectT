@@ -12,10 +12,6 @@ public class RangedDevilTree : NMRangedUnit
     protected override void Start()
     {
         base.Start();
-        for (int i = 0; i < 3; i++)
-        {
-            attackRange[i].gameObject.transform.Rotate(new Vector3(0, -30 + (i * 30), 0));
-        }
     }
 
     protected override void Update()
