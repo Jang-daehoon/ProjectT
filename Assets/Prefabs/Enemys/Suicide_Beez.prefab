@@ -1998,12 +1998,12 @@ MonoBehaviour:
   dmgValue: 1
   atkSpeed: 1
   isDead: 0
-  range: 3
+  characterData: {fileID: 11400000, guid: 040711be2c788b74dbca49bde05e9e80, type: 2}
+  range: 1
   target: {fileID: 0}
   hpBar: {fileID: 1509055793941016073}
   attackRange: 5
   particle: {fileID: 3318890699136200962, guid: 796c95ffe1d2ac748a54b17162f03c8b, type: 3}
-  delay: 3
   boomRange: {fileID: 2656622724816010910}
 --- !u!1 &7385195353537696188
 GameObject:
