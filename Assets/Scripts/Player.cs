@@ -120,7 +120,7 @@ namespace HoonsCodes
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
                 {
                     // 충돌 지점이 있을 때
-                    Debug.Log("충돌 지점: " + hit.point);  // 충돌한 지점의 위치 출력
+                    //Debug.Log("충돌 지점: " + hit.point);  // 충돌한 지점의 위치 출력
 
                     // 레이 캐스트의 시작점(transform.position)에서 끝점(hit.point)으로 레이 표시
                     Debug.DrawRay(transform.position, hit.point - transform.position, Color.red, 2f);
@@ -135,7 +135,7 @@ namespace HoonsCodes
                 else
                 {
                     // 레이가 groundLayer에 충돌하지 않았을 때
-                    Debug.Log("레이가 groundLayer에 충돌하지 않음");
+                    //Debug.Log("레이가 groundLayer에 충돌하지 않음");
                 }
             }
         }

@@ -51,15 +51,16 @@ public class NMSuicideUnit : EnemyUint
     protected virtual void Update()
     {
         HpBarUpdate();
-        if (isAtk == true) return;//자폭 발동시 정지
-        float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
             isDead = true;
             col.enabled = false;
             agent.isStopped = true;
             ChangeState(State.Die);
+            animator.SetTrigger("Die");
         }
+        if (isAtk == true) return;//자폭 발동시 정지
+        float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (dirplayer <= range && isDead == false)//공격범위내에 들어오면 공격으로 변경
         {
             agent.isStopped = true;
@@ -79,7 +80,7 @@ public class NMSuicideUnit : EnemyUint
                 Move();
                 break;
             case State.Die:
-                Attack();
+                animator.SetTrigger("Die");
                 break;
         }
     }
