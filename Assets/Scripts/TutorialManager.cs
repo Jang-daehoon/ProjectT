@@ -32,11 +32,8 @@ public class TutorialManager : MonoBehaviour
             //튜토리얼 대사 시작
             yield return new WaitUntil(() => firstTutorialDialog.UpdateDialog());
 
-            Time.timeScale = 1;
             //몬스터 생성
             Debug.Log("몬스터 생성 메서드 시작");
-
-            Time.timeScale = 0;
 
             secondTutorialDialog.gameObject.SetActive(true);
             yield return null;
@@ -51,7 +48,7 @@ public class TutorialManager : MonoBehaviour
             //생성된 모든 몬스터 처치
             yield return new WaitUntil(() => AreAllEnemiesDefeated());
             Debug.Log("모든 적을 처치했습니다!");
-            //처치 완료 시 보상 아이템 생성
+            //처치 완료 시 보상 아이템 생성 ->튜토리얼이라 확정 생성
             Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
             Debug.Log("보상 아이템이 생성되었습니다.");
 
@@ -62,16 +59,20 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitUntil(() => thirdTutorialDialog.UpdateDialog());
             Time.timeScale = 1;
 
-            //보상 아이템 획득 시 포탈 생성
+            if(ResultManager.Instance.getReward == true)
+            {
+                //보상 아이템 획득 시 포탈 생성
+                Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
+                //튜토리얼 대사 시작
+                //포탈 상호작용 시 Map UI 활성화
+                //튜토리얼 대사 시작
 
-            //튜토리얼 대사 시작
+                //맵 UI 클릭 시 해당 위치로 이동 
 
-            //포탈 상호작용 시 Map UI 활성화
-            //튜토리얼 대사 시작
 
-            //맵 UI 클릭 시 해당 위치로 이동 
+                //->튜토리얼 종료
 
-            //->튜토리얼 종료
+            }
         }
         else
             yield break;

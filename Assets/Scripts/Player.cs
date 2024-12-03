@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 namespace HoonsCodes
 {
     public class Player : Character
     {
-        [Header("DashInfo")]
+        [Header("AttackInfo")]
+        [SerializeField] private int AttackCnt; //공격 횟수
+        [Header("DodgeInfo")]
         [SerializeField] private Vector3 dir;
         [SerializeField] private float rotSpeed;
         [SerializeField] private bool isDash;
@@ -18,7 +21,7 @@ namespace HoonsCodes
         [Header("----------------------------")]
         [Header("SkillInfo")]
         [SerializeField] private bool usingSkillX;
-        [SerializeField] private bool isAttack;
+        public bool isAttack;
         [SerializeField] private bool isHit;
         [Header("----------------------------")]
         [Header("ProjectileInfo")]
@@ -77,7 +80,27 @@ namespace HoonsCodes
                 StartCoroutine(Dodge());
             }
         }
+        private void OnTriggerEnter(Collider other)
+        {
 
+            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
+            {
+                Debug.Log("보상 상자와 접촉");
+            }
+        }
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false
+                && other.GetComponent<ChestReward>().isOpen == false && Input.GetKeyDown(KeyCode.F))
+            {
+                //UI상호작용 가능 문구 출력
+                StartCoroutine(other.GetComponent<ChestReward>().ArcanaResult());
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            //UI상호작용 가능 문구 비활성화
+        }
         public override void Move()
         {
             if (targetPosition != Vector3.zero)
@@ -157,7 +180,17 @@ namespace HoonsCodes
         public void Attack()
         {
             targetPosition = Vector3.zero;
-            StartCoroutine(FireArrow());
+            if(ArcanaManager.Instance.canEnhanceMeleeAttack == true && AttackCnt == 3)
+            {
+                AttackCnt = 0;
+                StartCoroutine(ArcanaManager.Instance.EnhanceFireArrow());
+            }
+            else
+            {
+                if(ArcanaManager.Instance.canEnhanceMeleeAttack == true)
+                    AttackCnt++;
+                StartCoroutine(FireArrow());
+            }
         }
 
         public void XSkill()
@@ -238,7 +271,7 @@ namespace HoonsCodes
         }
 
 
-        private void ParticlePlay(ParticleSystem usedParticle)
+        public void ParticlePlay(ParticleSystem usedParticle)
         {
             usedParticle.Play();
         }
