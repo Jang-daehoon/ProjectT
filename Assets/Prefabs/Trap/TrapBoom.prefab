@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 536690036521904764}
   - component: {fileID: 4717899940850961061}
   m_Layer: 0
-  m_Name: Boom
+  m_Name: TrapBoom
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

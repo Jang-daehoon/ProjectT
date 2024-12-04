@@ -7,7 +7,6 @@ public class TrapSting : Trap
 {
     public GameObject trapObject;
 
-    public float damage;
     public float attCoolTime;
     public float attDelay;
     private bool isAtk = false;
