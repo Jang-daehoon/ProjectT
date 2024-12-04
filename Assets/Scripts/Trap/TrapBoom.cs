@@ -7,7 +7,6 @@ public class TrapBoom : Trap, ITakeDamage
 {
     public ParticleSystem boomParticle;
     public float range;
-    public float damage;
     public float boomDelay;
     public Transform rangePos;
 
@@ -44,8 +43,8 @@ public class TrapBoom : Trap, ITakeDamage
             if (/*coll.CompareTag("Player") ||*/ coll.CompareTag("Enemy"))
             {
                 coll.GetComponent<ITakeDamage>().TakeDamage(damage);
+                Debug.Log($"{coll.name} Æø¹ß ÇÇÇØ");
             }
-            Debug.Log($"{coll.name} Æø¹ß ÇÇÇØ");
         }
     }
 

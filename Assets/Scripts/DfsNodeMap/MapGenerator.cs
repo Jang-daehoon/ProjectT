@@ -37,7 +37,7 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
-        GenerateMap();
+
     }
     /// <summary>
     /// 맵을 생성해서 반환하는 메소드입니다.
@@ -274,7 +274,7 @@ public class MapGenerator : MonoBehaviour
         bossStage.transform.localPosition = new Vector3(0, 1070f, 0);   // 보스방 위치 설정
 
         // 보스방 클릭 이벤트 추가
-        //bossStage.onClick.AddListener(() => roomManager.OnEnterBossRoom());
+        bossStage.onClick.AddListener(() => RoomManager.Instance.OnEnterBossRoom());
     }
 
 

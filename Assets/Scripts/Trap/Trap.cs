@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Tooltip("트랩 데미지")]
+    public float damage;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

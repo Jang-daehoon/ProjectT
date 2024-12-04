@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Cinemachine;
 
 public class GameManager : Singleton<GameManager>
 {
     public Player player;
+    public CinemachineVirtualCamera playerCamera;
+
 
     private GameManagerEx _game = new GameManagerEx();
     
@@ -15,7 +18,14 @@ public class GameManager : Singleton<GameManager>
 
     private bool _isInit = false;
 
+    private void Awake()
+    {
+        // 씬 전환 전에 플레이어와 카메라를 씬 전환 후에도 유지되도록 설정
+        DontDestroyOnLoad(player.gameObject);
+        DontDestroyOnLoad(playerCamera.gameObject);
 
+        Init();
+    }
     public void Init()
     {
 
