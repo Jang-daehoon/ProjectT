@@ -2700,7 +2700,7 @@ GameObject:
   - component: {fileID: 7376634680698876940}
   - component: {fileID: 215802359116730967}
   m_Layer: 0
-  m_Name: Range (6)
+  m_Name: RangeMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
