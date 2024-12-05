@@ -90,10 +90,6 @@ public class EliteGolem : Character
         if (isSkillExecuting && newState != EliteState.DIE)
             return;
 
-        // 공격 중 이동 금지
-        if (newState != EliteState.ATTACK && Attacking())
-            return;
-
         currentState = newState;
         switch (newState)
         {
@@ -134,6 +130,7 @@ public class EliteGolem : Character
     {
         if (isPlayerInRange == true)
             ChangeState(EliteState.ATTACK);
+
         else if (target != null)
             ChangeState(EliteState.CHASE);
     }
