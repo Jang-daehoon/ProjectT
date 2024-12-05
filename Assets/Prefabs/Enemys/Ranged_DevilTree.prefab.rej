@@ -1,0 +1,10 @@
+diff a/Assets/Prefabs/Enemys/Ranged_DevilTree.prefab b/Assets/Prefabs/Enemys/Ranged_DevilTree.prefab	(rejected hunks)
+@@ -2448,7 +2448,7 @@
+   - component: {fileID: 6439852051812695494}
+   - component: {fileID: 2866203951152611818}
+   m_Layer: 0
+-  m_Name: Range (3)
++  m_Name: RangeMiddle
+   m_TagString: Untagged
+   m_Icon: {fileID: 0}
+   m_NavMeshLayer: 0
