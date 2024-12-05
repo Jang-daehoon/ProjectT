@@ -16,6 +16,7 @@ public class BossDryad : Character
 
     [SerializeField] private float skillGroggy = 3.5f;
     [SerializeField] private float LeafStormCoolTime = 20f;
+    [SerializeField] private float LeafRainCoolTime = 20f;
 
     public ParticleSystem LeafStormParticle;
 
