@@ -31,7 +31,13 @@ public class ArcanaManager : Singleton<ArcanaManager>
         enhanceArrow.Damage = ArcanaData[0].baseDamage;
         enhanceArrow.HitParticle = enhanceHitParticle;
         enhanceArrow.isEnhanced = true;
-        GameManager.Instance.player.ParticlePlay(enhanceAttackParticle);
+        // ParticleSystem prefab을 소환
+        ParticleSystem enhanceAttackParticles = Instantiate(
+            enhanceAttackParticle, // 소환할 ParticleSystem 프리팹
+            GameManager.Instance.player.firePoint.position, // 소환 위치
+            GameManager.Instance.player.firePoint.transform.rotation // 소환 회전값
+        );
+
         yield return null;
         GameManager.Instance.player.isAttack = false;
     }
