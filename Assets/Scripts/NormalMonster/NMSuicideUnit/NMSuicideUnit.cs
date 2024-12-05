@@ -74,7 +74,7 @@ public class NMSuicideUnit : EnemyUint
         switch (state)
         {
             case State.Attack:
-                if (isAtk == false) Attack();
+                if (isAtk == false) Attack(); 
                 break;
             case State.Move:
                 Move();

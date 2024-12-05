@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4512374693251954343}
   - component: {fileID: -4651546945097042576}
   - component: {fileID: 2464784406614962268}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4904,7 +4904,7 @@ GameObject:
   - component: {fileID: 3463295680591858233}
   - component: {fileID: 402516204820442057}
   - component: {fileID: 4341887613900143924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9880,7 +9880,7 @@ GameObject:
   - component: {fileID: 997981130674043966}
   - component: {fileID: 5402488781663523528}
   - component: {fileID: 2259177972346132028}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: electric
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14852,7 +14852,7 @@ GameObject:
   - component: {fileID: 1595572845986858209}
   - component: {fileID: 2886521769104823668}
   - component: {fileID: 6418449672762017655}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: back_circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19752,7 +19752,7 @@ GameObject:
   - component: {fileID: 5607108117415016784}
   - component: {fileID: 3769250382050946496}
   - component: {fileID: 5017510155827943098}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: inner_core
   m_TagString: Untagged
   m_Icon: {fileID: 0}

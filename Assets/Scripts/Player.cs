@@ -7,6 +7,10 @@ namespace HoonsCodes
 {
     public class Player : Character
     {
+        [Header("Exp")]
+        public float exp = 0;
+        public int Level = 1;
+        private float[] maxExp = { 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150 };
         [Header("AttackInfo")]
         [SerializeField] private int AttackCnt; //°ø°Ý È½¼ö
         [Header("DodgeInfo")]
@@ -325,6 +329,27 @@ namespace HoonsCodes
             isAttack = false;
             usingSkillX = false;
             isDash = false;
+        }
+
+        public void ExpPlus(float expplus)
+        {
+            exp += expplus;
+            if (exp >= maxExp[Level - 1])
+            {
+                LevelUp();
+            }
+        }
+
+        private void LevelUp()
+        {
+            exp -= maxExp[Level - 1];
+            Level++;
+        }
+
+        public void HpPlus(float Hpplus)
+        {
+            maxHp += Hpplus;
+            curHp += Hpplus;
         }
     }
 }
