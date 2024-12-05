@@ -76,7 +76,7 @@ public class EliteGolem : Character
         // 골렘 사망 테스트
         if (Input.GetKeyDown(KeyCode.Space))
             ChangeState(EliteState.DIE);
-        //print($"현재 상태 : {currentState}, 범위 안? : {isPlayerInRange}");
+
     }
     private void ChangeState(EliteState newState)
     {
@@ -113,11 +113,6 @@ public class EliteGolem : Character
             case EliteState.DIE:
                 StartCoroutine(HandleDieState());
                 break;
-            case EliteState.IDLE:
-                agent.isStopped = true;
-                animator.SetBool("isChasing", false);
-                animator.SetBool("isAttack", false);
-                break;
         }
     }
     private IEnumerator GolemRise()
@@ -137,14 +132,14 @@ public class EliteGolem : Character
     }
     private void HandleIdleState()
     {
-        if (isPlayerInRange)
+        if (isPlayerInRange == true)
             ChangeState(EliteState.ATTACK);
         else if (target != null)
             ChangeState(EliteState.CHASE);
     }
     private void HandleChaseState()
     {
-        if (isPlayerInRange)
+        if (isPlayerInRange == true)
             ChangeState(EliteState.ATTACK);
         else
             Move();
@@ -156,8 +151,8 @@ public class EliteGolem : Character
             return;
 
         EndAttackWarning();
-        agent.isStopped = false;
         Look(lookSpeed);
+        agent.isStopped = false;
         agent.SetDestination(target.position);
         animator.SetBool("isChasing", true);
     }
@@ -167,14 +162,13 @@ public class EliteGolem : Character
         agent.SetDestination(transform.position);
         animator.SetFloat("AttackSpeed", atkSpeed);
         animator.SetBool("isChasing", false);
-        animator.SetBool("isAttack", true);
 
         if (Attacking())
         {
             agent.SetDestination(transform.position); // 현재 위치 유지
             return;
         }
-        if (!isPlayerInRange)
+        if (isPlayerInRange == false)
         {
             StartCoroutine(EndAttackWait(EliteState.IDLE));
             return;
@@ -189,7 +183,7 @@ public class EliteGolem : Character
         animator.SetTrigger("Attack1");
         yield return new WaitForSeconds(attackDelay);
 
-        if (isPlayerInRange)
+        if (isPlayerInRange == true)
         {
             animator.SetTrigger("Attack2");
             yield return new WaitForSeconds(attackDelay);
@@ -216,7 +210,7 @@ public class EliteGolem : Character
     }
     private IEnumerator HandleSkillState()
     {
-        if (isSkillExecuting)
+        if (isSkillExecuting == true)
             yield break;
 
         isSkillExecuting = true;
