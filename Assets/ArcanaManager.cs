@@ -17,6 +17,10 @@ public class ArcanaManager : Singleton<ArcanaManager>
     public ParticleSystem enhanceAttackParticle;    //강화 공격 파티클
     public ParticleSystem enhanceHitParticle;   //강화공격 피격 파티클
 
+    public BulletProjectile RandomProjectile;   //랜덤 투사체 프리펩
+    public ParticleSystem randomAttackParticle; //랜덤 공격 파티클
+    public ParticleSystem randomHitParticle;    //랜덤 공격 피격 파티클
+
 
     private void Awake()
     {
@@ -24,6 +28,7 @@ public class ArcanaManager : Singleton<ArcanaManager>
         enhanceMeleeProjectile = ArcanaData[0].EnhancedBullet;
         enhanceHitParticle = ArcanaData[0].EnhancedHitParticle;
     }
+    //기본공격 강화 (폭발)
     public IEnumerator EnhanceFireArrow()
     {
         BulletProjectile enhanceArrow = Instantiate(enhanceMeleeProjectile, GameManager.Instance.player.firePoint.position, GameManager.Instance.player.firePoint.transform.rotation);
@@ -41,5 +46,50 @@ public class ArcanaManager : Singleton<ArcanaManager>
         yield return null;
         GameManager.Instance.player.isAttack = false;
     }
+    //엑스트라 어택(추가 타격)
+    public IEnumerator RandomExtraArrow()
+    {
+        // ArcanaData[1]의 RandomExtraShotRate 확률에 따라 랜덤 투사체 발사
+        if (canRandomBulletInit && Random.value <= ArcanaData[1].RandomExtraShotRate) // Random.value는 0.0 ~ 1.0 사이의 난수
+        {
+            // 랜덤 투사체 선택
+            int randomIndex = Random.Range(0, ArcanaData[1].RandomBulletPrefab.Length);
+            GameObject randomBulletPrefab = ArcanaData[1].RandomBulletPrefab[randomIndex];
+
+            // 선택된 프로젝타일 정보 디버깅
+            Debug.Log($"선택된 랜덤 투사체: {randomBulletPrefab.name} (Index: {randomIndex})");
+
+            // 랜덤 투사체 생성
+            BulletProjectile randomProjectile = Instantiate(
+                randomBulletPrefab.GetComponent<BulletProjectile>(),
+                GameManager.Instance.player.randomExtraShotPoint.position,
+                GameManager.Instance.player.randomExtraShotPoint.transform.rotation
+            );
+
+            // 랜덤 투사체 속도와 데미지 설정
+            randomProjectile.Speed = ArcanaData[1].randomExtraShotSpeed;
+            randomProjectile.Damage = ArcanaData[1].baseDamage;
+            randomProjectile.HitParticle = ArcanaData[1].RandomHitParticle[randomIndex];
+            randomProjectile.isEnhanced = false;
+
+            // 파티클 효과 생성
+            ParticleSystem attackParticle = Instantiate(
+                ArcanaData[1].RandomAttackParticle[randomIndex],
+                GameManager.Instance.player.randomExtraShotPoint.position,
+                GameManager.Instance.player.randomExtraShotPoint.transform.rotation
+            );
+
+            Debug.Log("RandomExtraShot 발사 완료!");
+            // 발사 후 대기
+            yield return null;
+        }
+        else
+        {
+            // 랜덤 투사체 발사가 실패한 경우 다른 처리(필요 시 구현)
+            Debug.Log("랜덤 발사 실패.");
+            yield return null;
+        }
+    }
+
 
 }

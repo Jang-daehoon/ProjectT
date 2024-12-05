@@ -1245,7 +1245,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ArcanaData:
   - {fileID: 11400000, guid: cc337d26610fb7249b7852efb2e52b5d, type: 2}
-  - {fileID: 11400000, guid: cc337d26610fb7249b7852efb2e52b5d, type: 2}
+  - {fileID: 11400000, guid: 375a422dd2a8f514aaffdd39014328d2, type: 2}
+  - {fileID: 11400000, guid: c8811a84809ce8040bcaabd6b76a8fcf, type: 2}
+  - {fileID: 11400000, guid: 375a422dd2a8f514aaffdd39014328d2, type: 2}
   - {fileID: 11400000, guid: cc337d26610fb7249b7852efb2e52b5d, type: 2}
   canEnhanceMeleeAttack: 0
   canRandomBulletInit: 0
@@ -1253,6 +1255,9 @@ MonoBehaviour:
   enhanceMeleeProjectile: {fileID: 0}
   enhanceAttackParticle: {fileID: 0}
   enhanceHitParticle: {fileID: 0}
+  RandomProjectile: {fileID: 0}
+  randomAttackParticle: {fileID: 0}
+  randomHitParticle: {fileID: 0}
 --- !u!4 &88108105 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 870801350361238748, guid: 2732ea62c0ccbb94d88392bb0fac1e5e, type: 3}
@@ -24673,11 +24678,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7999707251636466060, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
+      propertyPath: randomExtraShotPoint
+      value: 
+      objectReference: {fileID: 7363479742846875132}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
+--- !u!4 &7363479742846875132 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 497051825901116705, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
+  m_PrefabInstance: {fileID: 7363479742846875131}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

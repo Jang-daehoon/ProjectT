@@ -113,8 +113,10 @@ public class UiManager : Singleton<UiManager>
             Debug.Log($"Selected Arcana: {selectedArcana.name}");
 
             // 선택된 아르카나에 대한 로직을 여기에 추가
-            if(selectedArcana.EnhanceAttackCnt == 3)
-                ArcanaManager.Instance.canEnhanceMeleeAttack = true;    
+            if (selectedArcana.ArcanaId == 0)
+                ArcanaManager.Instance.canEnhanceMeleeAttack = true;
+            if (selectedArcana.ArcanaId == 1)
+                ArcanaManager.Instance.canRandomBulletInit = true;
         }
         //ChestReward를 가진 오브젝트를 찾아 
         //ChestReward컴포넌트 내부 변수의 getReward의 값을 true로 변경 
