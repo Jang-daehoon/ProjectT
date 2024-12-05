@@ -34,7 +34,7 @@ public class LeafStorm : MonoBehaviour
             yield return null;
         }
 
-        stormDuration.Stop();
+        stormDuration.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         stormEnd.Play();
 
         // 종료 파티클이 끝날 때까지 대기

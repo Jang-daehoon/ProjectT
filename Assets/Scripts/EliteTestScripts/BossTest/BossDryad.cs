@@ -15,13 +15,14 @@ public class BossDryad : Character
     [SerializeField] private float attackDelay = 1.5f; // 공격간 딜레이
 
     [SerializeField] private float skillGroggy = 3.5f;
-    [SerializeField] private float LeafStormCoolTime = 15f;
+    [SerializeField] private float LeafStormCoolTime = 20f;
+
+    public ParticleSystem LeafStormParticle;
 
     private BossState currentState;
     [SerializeField] private bool isPlayerInRange = false; // 플레이어가 범위 내에 있는지 여부
     [SerializeField] private bool isSkillExecuting = false; // 스킬 상태 실행 여부 플래그
 
-    public ParticleSystem LeafStormParticle;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
