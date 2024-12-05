@@ -23,14 +23,14 @@ public class NMRangedUnitBullet : MonoBehaviour
         yield return new WaitForSeconds(bulletLifeTime);
         Destroy(this.gameObject);
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player¸¦ °ø°Ý");
-            //other.GetComponent<Character>().TakeDamage(bulletDamage);
+            //collision.gameObject.GetComponent<Character>().TakeDamage(bulletDamage);
             Destroy(this.gameObject);
         }
     }
+
 }

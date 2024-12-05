@@ -17,5 +17,6 @@ MonoBehaviour:
   relicID: 3
   relicSprite: {fileID: 0}
   relicDesc: 
-  relicStats: float maxHp
+  isLevelPlus: 0
+  relicStats: maxHp
   relicStatsPoint: 50

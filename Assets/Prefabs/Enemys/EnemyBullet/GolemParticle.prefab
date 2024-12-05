@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4890755702986347313}
   - component: {fileID: 474548454875052273}
   - component: {fileID: 706369025849471729}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: front_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4862,7 +4862,7 @@ GameObject:
   - component: {fileID: 389398343907472058}
   - component: {fileID: 931347292982695590}
   - component: {fileID: 1028449877030454758}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GolemParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9765,7 +9765,7 @@ GameObject:
   - component: {fileID: 2714153028041045098}
   - component: {fileID: 2776455987748554003}
   - component: {fileID: 4992201346553392330}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14616,7 +14616,7 @@ GameObject:
   - component: {fileID: 45540373910313624}
   - component: {fileID: 8046769806238553794}
   - component: {fileID: 6686422833951009599}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: helix
   m_TagString: Untagged
   m_Icon: {fileID: 0}

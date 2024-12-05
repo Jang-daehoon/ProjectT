@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2146266974845916596}
   - component: {fileID: 3318890699136200962}
   - component: {fileID: 7481507724197602457}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BeezBoomParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4927,7 +4927,7 @@ GameObject:
   - component: {fileID: 5685816921623217064}
   - component: {fileID: 1891441589482354125}
   - component: {fileID: 4087673773470748063}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: smoke_spread
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9961,7 +9961,7 @@ GameObject:
   - component: {fileID: 8145292652004285382}
   - component: {fileID: 8572598319329920299}
   - component: {fileID: 5176486884401397490}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sharp_out
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15111,7 +15111,7 @@ GameObject:
   - component: {fileID: 3267282273177537027}
   - component: {fileID: 5571784470985204053}
   - component: {fileID: 4531883032769725398}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20029,7 +20029,7 @@ GameObject:
   - component: {fileID: 1218159804586966026}
   - component: {fileID: 7706169849268494977}
   - component: {fileID: 3611733177141984917}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24938,7 +24938,7 @@ GameObject:
   - component: {fileID: 6861916306154508442}
   - component: {fileID: 3427991623840531869}
   - component: {fileID: 3771061305695915607}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: smoke_circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29972,7 +29972,7 @@ GameObject:
   - component: {fileID: 8525501243313805845}
   - component: {fileID: 5437859786625586457}
   - component: {fileID: 5458663090315490359}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: smoke_spread_add
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35006,7 +35006,7 @@ GameObject:
   - component: {fileID: 4643030309048331430}
   - component: {fileID: 5690694910891056609}
   - component: {fileID: 5388157197976360462}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

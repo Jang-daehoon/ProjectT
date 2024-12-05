@@ -14,6 +14,13 @@ public class RelicData : ScriptableObject
         Legendary,
         Mythic
     }
+    public enum StatsName
+    {
+        maxHp,
+        moveSpeed,
+        atkSpeed,
+        dmgValue
+    }
     [Tooltip("유물 등급")]
     public Rarity rarity;
     [Tooltip("유물 이름")]
@@ -24,8 +31,10 @@ public class RelicData : ScriptableObject
     public Sprite relicSprite;
     [Tooltip("유물 설명"), TextArea(3,3)]
     public string relicDesc;
-    [Tooltip("오르는 스텟 이름")]
-    public string relicStats;
+    [Tooltip("레벨 관여 여부")]
+    public bool isLevelPlus;
+    [Tooltip("유물이 올리는 스텟")]
+    public StatsName statName;
     [Tooltip("오르는 수치")]
     public float relicStatsPoint;
 }

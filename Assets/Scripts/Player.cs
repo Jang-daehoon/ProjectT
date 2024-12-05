@@ -7,6 +7,10 @@ namespace HoonsCodes
 {
     public class Player : Character
     {
+        [Header("Exp")]
+        public float exp = 0;
+        public int Level = 1;
+        private float[] maxExp = { 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150 };
         [Header("AttackInfo")]
         [SerializeField] private int AttackCnt; //공격 횟수
         [Header("DodgeInfo")]
@@ -30,6 +34,9 @@ namespace HoonsCodes
         public BulletProjectile bulletProjectile;
         public ParticleSystem fireParticle;
         public ParticleSystem xSkillParticle;
+
+        public Transform randomExtraShotPoint;  //랜덤투사체 발사 위치
+
 
         [Header("CheckGround")]
         public LayerMask groundLayer;
@@ -88,13 +95,13 @@ namespace HoonsCodes
             {
                 Debug.Log("보상 상자와 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
-                UiManager.Instance.InteractiveUIActive();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
             else if(other.CompareTag("Potal"))
             {
                 Debug.Log("Potal과 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 포탈을 이용할 수 있어.";
-                UiManager.Instance.InteractiveUIActive();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
         private void OnTriggerStay(Collider other)
@@ -107,7 +114,7 @@ namespace HoonsCodes
             }
             else if(other.CompareTag("Potal") && Input.GetKeyDown(KeyCode.F))
             {
-                UiManager.Instance.MapUIActive();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
             }
 
         }
@@ -117,12 +124,12 @@ namespace HoonsCodes
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
             {
                 Debug.Log("보상 상자 접촉 해제");
-                UiManager.Instance.InteractiveUIActive();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
             else if (other.CompareTag("Potal"))
             {
                 Debug.Log("Potal 접촉 해제");
-                UiManager.Instance.InteractiveUIActive();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
         public override void Move()
@@ -208,12 +215,20 @@ namespace HoonsCodes
             {
                 AttackCnt = 0;
                 StartCoroutine(ArcanaManager.Instance.EnhanceFireArrow());
+                if(ArcanaManager.Instance.canRandomBulletInit == true)
+                {
+                    StartCoroutine(ArcanaManager.Instance.RandomExtraArrow());
+                }
             }
             else
             {
                 if(ArcanaManager.Instance.canEnhanceMeleeAttack == true)
                     AttackCnt++;
                 StartCoroutine(FireArrow());
+                if (ArcanaManager.Instance.canRandomBulletInit == true)
+                {
+                    StartCoroutine(ArcanaManager.Instance.RandomExtraArrow());
+                }
             }
         }
 
@@ -325,6 +340,27 @@ namespace HoonsCodes
             isAttack = false;
             usingSkillX = false;
             isDash = false;
+        }
+
+        public void ExpPlus(float expplus)
+        {
+            exp += expplus;
+            if (exp >= maxExp[Level - 1])
+            {
+                LevelUp();
+            }
+        }
+
+        private void LevelUp()
+        {
+            exp -= maxExp[Level - 1];
+            Level++;
+        }
+
+        public void HpPlus(float Hpplus)
+        {
+            maxHp += Hpplus;
+            curHp += Hpplus;
         }
     }
 }
