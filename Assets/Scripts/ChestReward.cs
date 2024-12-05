@@ -10,6 +10,15 @@ public class ChestReward : MonoBehaviour
     private void Awake() => animator = GetComponentInChildren<Animator>();
     [Header("아르카나 데이터")]
     public bool isOpen;   //상자 열렸는지 확인
+
+    private void Awake() => animator = GetComponentInChildren<Animator>();
+
+    private void OnEnable()
+    {
+        getReward = false;
+        isOpen = false;
+    }
+    
     
     //아르카나 보상 
     public IEnumerator ArcanaResult()

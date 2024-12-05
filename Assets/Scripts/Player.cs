@@ -44,6 +44,7 @@ namespace HoonsCodes
 
         private void Awake()
         {
+
             rb = GetComponent<Rigidbody>();
             col = GetComponent<Collider>();
             animator = GetComponent<Animator>();
@@ -86,6 +87,14 @@ namespace HoonsCodes
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
             {
                 Debug.Log("보상 상자와 접촉");
+                UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
+                UiManager.Instance.InteractiveUIActive();
+            }
+            else if(other.CompareTag("Potal"))
+            {
+                Debug.Log("Potal과 접촉");
+                UiManager.Instance.interactiveText.text = "F를 눌러 포탈을 이용할 수 있어.";
+                UiManager.Instance.InteractiveUIActive();
             }
         }
         private void OnTriggerStay(Collider other)
@@ -96,10 +105,25 @@ namespace HoonsCodes
                 //UI상호작용 가능 문구 출력
                 StartCoroutine(other.GetComponent<ChestReward>().ArcanaResult());
             }
+            else if(other.CompareTag("Potal") && Input.GetKeyDown(KeyCode.F))
+            {
+                UiManager.Instance.MapUIActive();
+            }
+
         }
         private void OnTriggerExit(Collider other)
         {
             //UI상호작용 가능 문구 비활성화
+            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
+            {
+                Debug.Log("보상 상자 접촉 해제");
+                UiManager.Instance.InteractiveUIActive();
+            }
+            else if (other.CompareTag("Potal"))
+            {
+                Debug.Log("Potal 접촉 해제");
+                UiManager.Instance.InteractiveUIActive();
+            }
         }
         public override void Move()
         {

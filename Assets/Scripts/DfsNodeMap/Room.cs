@@ -16,7 +16,7 @@ public class Room : MonoBehaviour
     private float _posX;
     private float _posY;
     private bool _isGenerate;
-    private bool _isGoable;
+    [SerializeField]private bool _isGoable;
     private bool _isBigger;
     private bool _isHighlight;
 
@@ -120,10 +120,28 @@ public class Room : MonoBehaviour
 
         connectedRooms = new List<Room>();
 
-        GetComponent<Button>().onClick.AddListener(() => onSelectRoom());
+        Button button = GetComponent<Button>();
+        if (button == null)
+        {
+            Debug.LogError($"Button component is missing on {gameObject.name}!");
+            return;
+        }
+
+        button.onClick.AddListener(() =>
+        {
+            if (onSelectRoom != null)
+            {
+                onSelectRoom.Invoke();
+            }
+            else
+            {
+                Debug.LogError("onSelectRoom delegate is null!");
+            }
+        });
 
         onSelectRoom += OnClickButton;
     }
+
 
     public void Positioning()
     {
@@ -157,8 +175,7 @@ public class Room : MonoBehaviour
             IsGoable = false;
 
             GameManager.Game.CurrentRoom = this;
-
-
+            RoomManager.Instance.EnterRoom(RoomType);
             _clearCheck.SetActive(true);
         }
         else

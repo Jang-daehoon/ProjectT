@@ -8,9 +8,18 @@ using UnityEngine.UI;
 public class UiManager : Singleton<UiManager>
 {
     [SerializeField] private Canvas inGameCanvas;
+
+    [Header("플레이어 상호작용 감지 UI")]
+    [SerializeField] private GameObject interactiveObjUi;
+    public TextMeshProUGUI interactiveText;
+
+
     [SerializeField] private GameObject PlayerStatusUiObj;
     //아르카나 UI
     [SerializeField] private GameObject ArcanaUIObj;
+    //Map UI
+    [SerializeField] private GameObject MapUIObj;
+
     [Header("ArcanaImage")]
     public Image firstArcanaImg;
     public Image secondArcanaImg;
@@ -26,16 +35,18 @@ public class UiManager : Singleton<UiManager>
     [Header("ArcanaDesc")]
     public TextMeshProUGUI firstArcanaDesc;
     public TextMeshProUGUI secondArcanaDesc;
-    public TextMeshProUGUI thirdAracanaDesc;
-
+    public TextMeshProUGUI thirdArcanaDesc;
 
     public bool isDialogUiActive;
     public bool isArcanaUIActive;
-
+    public bool isMapUIActive;
+    public bool isInteractiveUiActive;
     private void Awake()
     {
+        isInteractiveUiActive = false;
         isDialogUiActive = false;
         isArcanaUIActive = false;
+        isMapUIActive = false;
 
     }
     private void Update()
@@ -58,6 +69,11 @@ public class UiManager : Singleton<UiManager>
             return;
         }
 
+        // 기존 리스너 제거
+        firstArcana.onClick.RemoveAllListeners();
+        secondArcana.onClick.RemoveAllListeners();
+        thirdArcana.onClick.RemoveAllListeners();
+
         // 첫 번째 아르카나
         firstArcanaImg.sprite = arcanaData[0].ArcanaImage;
         firstArcanaName.text = arcanaData[0].name;
@@ -71,7 +87,7 @@ public class UiManager : Singleton<UiManager>
         // 세 번째 아르카나
         thirdArcanaImg.sprite = arcanaData[2].ArcanaImage;
         thirdArcanaName.text = arcanaData[2].name;
-        thirdAracanaDesc.text = arcanaData[2].ArcanaDesc;
+        thirdArcanaDesc.text = arcanaData[2].ArcanaDesc;
 
         // 버튼 클릭 이벤트 등록
         firstArcana.onClick.AddListener(() => ArcanaSelect(0));
@@ -79,10 +95,21 @@ public class UiManager : Singleton<UiManager>
         thirdArcana.onClick.AddListener(() => ArcanaSelect(2));
     }
 
+
     public void AracanaUiActive()
     {
-        isArcanaUIActive = true;
-        ArcanaUIObj.SetActive(true);    
+        isArcanaUIActive = !isArcanaUIActive;
+        ArcanaUIObj.SetActive(isArcanaUIActive);    
+    }
+    public void MapUIActive()
+    {
+        isMapUIActive = !isMapUIActive; 
+        MapUIObj.SetActive(isMapUIActive);
+    }
+    public void InteractiveUIActive()
+    {
+        isInteractiveUiActive = !isInteractiveUiActive;
+        interactiveObjUi.SetActive(isInteractiveUiActive);
     }
     // 아르카나 선택 시 동작 처리
     public void ArcanaSelect(int index)
@@ -97,6 +124,7 @@ public class UiManager : Singleton<UiManager>
             if(selectedArcana.EnhanceAttackCnt == 3)
                 ArcanaManager.Instance.canEnhanceMeleeAttack = true;    
         }
+        ResultManager.Instance.getReward = true;
         ArcanaUIObj.SetActive(false);
     }
 }

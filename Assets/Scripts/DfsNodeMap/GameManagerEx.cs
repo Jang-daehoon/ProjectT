@@ -74,7 +74,12 @@ public class GameManagerEx
         {
             if (_mapArray[1, x] != null)
             {
-                _mapArray[1, x].IsGoable = true;
+                _mapArray[1, x].IsGoable = true;  // 방을 Goable로 설정
+                Debug.Log($"Room[{1},{x}] IsGoable set to true");  // 로그로 설정 상태 확인
+            }
+            else
+            {
+                Debug.Log($"Room[{1},{x}] is null, skipping...");  // 해당 방이 없을 경우 로그
             }
         }
     }
