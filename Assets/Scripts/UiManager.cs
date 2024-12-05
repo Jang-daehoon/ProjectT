@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,15 +11,15 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private Canvas inGameCanvas;
 
     [Header("플레이어 상호작용 감지 UI")]
-    [SerializeField] private GameObject interactiveObjUi;
+    public GameObject interactiveObjUi;
     public TextMeshProUGUI interactiveText;
 
 
-    [SerializeField] private GameObject PlayerStatusUiObj;
+    public GameObject PlayerStatusUiObj;
     //아르카나 UI
-    [SerializeField] private GameObject ArcanaUIObj;
+    public GameObject ArcanaUIObj;
     //Map UI
-    [SerializeField] private GameObject MapUIObj;
+    public GameObject MapUIObj;
 
     [Header("ArcanaImage")]
     public Image firstArcanaImg;
@@ -51,7 +52,7 @@ public class UiManager : Singleton<UiManager>
     }
     private void Update()
     {
-        if(isDialogUiActive == true)
+        if(isDialogUiActive == true || isMapUIActive == true || isArcanaUIActive == true)
             PlayerStatusUiObj.SetActive(false);
         else
             PlayerStatusUiObj.SetActive(true);
@@ -95,22 +96,13 @@ public class UiManager : Singleton<UiManager>
         thirdArcana.onClick.AddListener(() => ArcanaSelect(2));
     }
 
+    //UI토글
+    public void ToggleUIElement(GameObject uiElement, ref bool isActive)
+    {
+        isActive = !isActive;
+        uiElement.SetActive(isActive);
+    }
 
-    public void AracanaUiActive()
-    {
-        isArcanaUIActive = !isArcanaUIActive;
-        ArcanaUIObj.SetActive(isArcanaUIActive);    
-    }
-    public void MapUIActive()
-    {
-        isMapUIActive = !isMapUIActive; 
-        MapUIObj.SetActive(isMapUIActive);
-    }
-    public void InteractiveUIActive()
-    {
-        isInteractiveUiActive = !isInteractiveUiActive;
-        interactiveObjUi.SetActive(isInteractiveUiActive);
-    }
     // 아르카나 선택 시 동작 처리
     public void ArcanaSelect(int index)
     {
@@ -124,7 +116,20 @@ public class UiManager : Singleton<UiManager>
             if(selectedArcana.EnhanceAttackCnt == 3)
                 ArcanaManager.Instance.canEnhanceMeleeAttack = true;    
         }
-        ResultManager.Instance.getReward = true;
+        //ChestReward를 가진 오브젝트를 찾아 
+        //ChestReward컴포넌트 내부 변수의 getReward의 값을 true로 변경 
+        // ChestReward를 가진 오브젝트를 찾아서 getReward를 true로 설정
+
+        ChestReward chestReward = FindObjectOfType<ChestReward>(); // 게임 내에 있는 ChestReward 오브젝트를 찾음
+        if (chestReward != null)
+        {
+            chestReward.getReward = true;  // getReward 값을 true로 설정
+            Debug.Log("Reward acquired and getReward is set to true.");
+        }
+        else
+        {
+            Debug.LogWarning("No ChestReward found in the scene.");
+        }
         ArcanaUIObj.SetActive(false);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    public float RewardDropRate = 0.6f; // 보상 획득 확률
     public int spawnCount;  // 소환할 카운트
     public GameObject[] InstantiateEnemyPrefabs; // 소환할 적 프리팹 배열
     public Transform[] SpawnPoints;             // 적 소환 위치 배열
@@ -21,7 +22,8 @@ public class StageManager : MonoBehaviour
 
     private IEnumerator Start()
     {
-        ResultManager.Instance.getReward = false;
+        //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
+        
         yield return new WaitForSeconds(1f);
         SpawnEnemies();
 
@@ -29,12 +31,19 @@ public class StageManager : MonoBehaviour
         yield return new WaitUntil(() => AreAllEnemiesDefeated());
         Debug.Log("모든 적을 처치했습니다!");
 
-        // 처치 완료 시 보상 아이템 생성
-        Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
-        Debug.Log("보상 아이템이 생성되었습니다.");
+        // 처치 완료 시 RewardDropRate 확률에 따라 보상 아이템 생성
+        if (Random.Range(0f, 1f) <= RewardDropRate)  // RewardDropRate 확률로 보상 아이템 생성
+        {
+            Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
+            Debug.Log("보상 아이템이 생성되었습니다.");
+        }
+        else
+        {
+            Debug.Log("보상이 생성되지 않았습니다.");
+        }
+
         RoomManager.Instance.ClearRoom();
-        // 보상 아이템 획득 시 포탈 생성
-        yield return new WaitUntil(() => ResultManager.Instance.getReward == true);
+
         Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
 
     }

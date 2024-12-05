@@ -59,11 +59,11 @@ public class GameManagerEx
 
     public void Init()
     {
-
     }
 
     public void SetMapArray(Room[,] mapArray)
     {
+
         _mapArray = mapArray;
     }
 

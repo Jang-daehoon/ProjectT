@@ -190,6 +190,7 @@ public class Room : MonoBehaviour
         foreach (Room connectedRoom in connectedRooms)
         {
             connectedRoom.IsGoable = true;
+            Debug.Log($"Connected Room {connectedRoom.name} is now goable.");
         }
     }
 }
