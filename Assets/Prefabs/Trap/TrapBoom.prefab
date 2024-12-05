@@ -122,9 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da348b014e94493458621be865778409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
   boomParticle: {fileID: 8381275932472384397, guid: 7d778f23a2f52ec45aafdb49c9478d31, type: 3}
   range: 5
-  damage: 20
   boomDelay: 3
   rangePos: {fileID: 6025328598266251682}
   boomRange: {fileID: 9117402030965089201}
@@ -176,7 +176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6461671153055779103
 Transform:
   m_ObjectHideFlags: 0
