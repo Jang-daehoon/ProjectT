@@ -9,7 +9,7 @@ using UnityEditor;
 using UnityEditor.ShaderGraph.Internal;
 public class EliteGolem : Character
 {
-    public Transform target;
+    private Transform target;
     [Tooltip("공격 범위")]
     public Collider attackRange;
     public ParticleSystem skillParticle;
@@ -55,6 +55,9 @@ public class EliteGolem : Character
     }
     private void Update()
     {
+        target = EliteBossGameMangerTest.Instance.player.transform;
+        //target = GameManager.Instance.player.transform;
+
         switch (currentState)
         {
             case EliteState.IDLE:

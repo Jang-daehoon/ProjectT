@@ -13,4 +13,14 @@ namespace EnemyController
         SKILL,
         DIE
     }
+    public enum BossState
+    {
+        IDLE,
+        CHASE,
+        ATTACK,
+        LEAFSTORM,
+        SKILL2,
+        SKILL3,
+        DIE
+    }
 }
