@@ -48,10 +48,10 @@ public class NMRangedUnit : EnemyUint
         agent.acceleration = 1000f;
         //플레이어 스크립트 가져와서 타겟설정
         GameObject.FindGameObjectWithTag("Player");
-        foreach (var a in attackRange)
+        foreach (UnitRange a in attackRange)
         {
-            a.gameObject.SetActive(false);
             a.tr.time = atkSpeed;
+            a.gameObject.SetActive(false);
         }
     }
 

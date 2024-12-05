@@ -8,12 +8,12 @@ namespace HoonsCodes
     public abstract class Character : MonoBehaviour
     {
         [Header("Character Info")]
-        [SerializeField] protected float maxHp;
+        public float maxHp;
         [SerializeField] protected float curHp;
-        [SerializeField] protected float moveSpeed;
+        [SerializeField] public float moveSpeed;
 
-        [SerializeField] protected float dmgValue;
-        [SerializeField] protected float atkSpeed;   //공격속도
+        [SerializeField] public float dmgValue;
+        [SerializeField] public float atkSpeed;   //공격속도
 
         [SerializeField] protected bool isDead;
         [Header("----------------------------")]

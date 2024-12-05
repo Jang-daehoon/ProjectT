@@ -17,5 +17,6 @@ MonoBehaviour:
   relicID: 0
   relicSprite: {fileID: 0}
   relicDesc: 
-  relicStats: float moveSpeed
+  isLevelPlus: 0
+  statName: 1
   relicStatsPoint: 2

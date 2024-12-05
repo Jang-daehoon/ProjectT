@@ -22,11 +22,13 @@ public class TrapBoom : Trap, ITakeDamage
         // LineRenderer ÄÄÆ÷³ÍÆ® Ãß°¡
         lineRenderer = boomRange.gameObject.GetComponent<LineRenderer>();
         myCollider = gameObject.GetComponent<CapsuleCollider>();
+        boomRange.gameObject.SetActive(false);
     }
 
 
     private IEnumerator Boom()
     {
+        boomRange.gameObject.SetActive(true);
         OnRange();
         MatChange();
         yield return new WaitForSeconds(boomDelay);
@@ -40,9 +42,9 @@ public class TrapBoom : Trap, ITakeDamage
         Collider[] hitColl = Physics.OverlapSphere(rangePos.transform.position, range);
         foreach (Collider coll in hitColl)
         {
-            if (/*coll.CompareTag("Player") ||*/ coll.CompareTag("Enemy"))
+            if (coll.CompareTag("Player") || coll.CompareTag("Enemy"))
             {
-                coll.GetComponent<ITakeDamage>().TakeDamage(damage);
+                //coll.GetComponent<ITakeDamage>().TakeDamage(damage);
                 Debug.Log($"{coll.name} Æø¹ß ÇÇÇØ");
             }
         }
