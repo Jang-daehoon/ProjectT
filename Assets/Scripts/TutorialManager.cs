@@ -84,7 +84,7 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitUntil(() => UiManager.Instance.isMapUIActive == true);
             //튜토리얼 대사 시작
 
-            //맵 UI 클릭 시 해당 위치로 이동 
+                //맵 UI 클릭 시 해당 위치로 이동 
 
 
             //->튜토리얼 종료

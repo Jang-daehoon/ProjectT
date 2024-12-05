@@ -31,6 +31,11 @@ public class ChestReward : MonoBehaviour
         //랜덤한 아르카나 카드 3개중에 하나 선택
         Debug.Log("아르나카 보상을 획득하였습니다.");
     }
+    public void SelectArcana()
+    {
+        getReward = true;
+        ResultManager.Instance.getReward = getReward;
+    }
     // 애니메이션 상태를 체크하는 함수
     private bool IsAnimationFinished(string animationName)
     {
