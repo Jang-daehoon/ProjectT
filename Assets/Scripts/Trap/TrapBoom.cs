@@ -22,13 +22,11 @@ public class TrapBoom : Trap, ITakeDamage
         // LineRenderer 컴포넌트 추가
         lineRenderer = boomRange.gameObject.GetComponent<LineRenderer>();
         myCollider = gameObject.GetComponent<CapsuleCollider>();
-        boomRange.gameObject.SetActive(false);
     }
 
 
     private IEnumerator Boom()
     {
-        boomRange.gameObject.SetActive(true);
         OnRange();
         MatChange();
         yield return new WaitForSeconds(boomDelay);

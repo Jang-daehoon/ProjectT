@@ -50,8 +50,8 @@ public class NMRangedUnit : EnemyUint
         GameObject.FindGameObjectWithTag("Player");
         foreach (var a in attackRange)
         {
-            a.tr.time = atkSpeed;
             a.gameObject.SetActive(false);
+            a.tr.time = atkSpeed;
         }
     }
 
