@@ -519,7 +519,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9485162
+      - time: 0.8354727
         functionName: LeafStormEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
