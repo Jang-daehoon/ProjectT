@@ -31,6 +31,9 @@ namespace HoonsCodes
         public ParticleSystem fireParticle;
         public ParticleSystem xSkillParticle;
 
+        public Transform randomExtraShotPoint;  //랜덤투사체 발사 위치
+
+
         [Header("CheckGround")]
         public LayerMask groundLayer;
         [Header("PlayerData")]
@@ -208,12 +211,20 @@ namespace HoonsCodes
             {
                 AttackCnt = 0;
                 StartCoroutine(ArcanaManager.Instance.EnhanceFireArrow());
+                if(ArcanaManager.Instance.canRandomBulletInit == true)
+                {
+                    StartCoroutine(ArcanaManager.Instance.RandomExtraArrow());
+                }
             }
             else
             {
                 if(ArcanaManager.Instance.canEnhanceMeleeAttack == true)
                     AttackCnt++;
                 StartCoroutine(FireArrow());
+                if (ArcanaManager.Instance.canRandomBulletInit == true)
+                {
+                    StartCoroutine(ArcanaManager.Instance.RandomExtraArrow());
+                }
             }
         }
 
