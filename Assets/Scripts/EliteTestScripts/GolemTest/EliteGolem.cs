@@ -207,6 +207,7 @@ public class EliteGolem : Character
     }
     private IEnumerator HandleSkillState()
     {
+        print(1);
         if (isSkillExecuting == true)
             yield break;
 
@@ -215,8 +216,9 @@ public class EliteGolem : Character
         animator.SetTrigger("Skill");
         agent.isStopped = true; 
         yield return new WaitForSeconds(skillGroggy);
-
+        print(2);
         isSkillExecuting = false;
+
         ChangeState(EliteState.IDLE);
     }
     private IEnumerator UseSkill()
