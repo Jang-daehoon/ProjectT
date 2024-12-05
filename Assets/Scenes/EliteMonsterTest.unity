@@ -1954,6 +1954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone Golem
       objectReference: {fileID: 0}
+    - target: {fileID: 288691541403118600, guid: ea4324e39606b124fbc8962ece08c421, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 718980467788968183, guid: ea4324e39606b124fbc8962ece08c421, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -1.4598496
@@ -6734,7 +6738,7 @@ MonoBehaviour:
   lookSpeed: 3
   attackDelay: 2
   skillCoolTime: 15
-  skillGroggy: 5
+  skillGroggy: 4
 --- !u!195 &1490182636
 NavMeshAgent:
   m_ObjectHideFlags: 0
