@@ -1,0 +1,1876 @@
+fileFormatVersion: 2
+guid: 76cee5628aa6b874c96342f004fa138b
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: celycia_s01_body
+    second: {fileID: 2100000, guid: 57c580065daf60340972f6c7506b3aca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: celycia_s01_weapon
+    second: {fileID: 2100000, guid: 28c4310981d2b6b4b9fec6e91f39e909, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: "Invalid copied Avatar Rig Configuration:\n\tNo human bone found.
+      Ensure both rig type match\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: root|!T-pose
+      takeName: root|!T-pose
+      internalID: -7311808120506753894
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: celycia_s01_body
+        weight: 0
+      - path: celycia_s01_bow
+        weight: 0
+      - path: celycia_s01_quiver
+        weight: 0
+      - path: root
+        weight: 1
+      - path: root/Bone
+        weight: 1
+      - path: root/Bone/Bone.001
+        weight: 1
+      - path: root/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: root/Bone/Controler Leg
+        weight: 1
+      - path: root/Bone/Controler Leg/Controler Leg_end
+        weight: 1
+      - path: root/Bone/Controller Hand
+        weight: 1
+      - path: root/Bone/Controller Hand/Controller Hand_end
+        weight: 1
+      - path: root/Bone/elbowIK.l
+        weight: 1
+      - path: root/Bone/elbowIK.l/elbowIK.l_end
+        weight: 1
+      - path: root/Bone/elbowIK.r
+        weight: 1
+      - path: root/Bone/elbowIK.r/elbowIK.r_end
+        weight: 1
+      - path: root/Bone/footIK.l
+        weight: 1
+      - path: root/Bone/footIK.l/footIK.l_end
+        weight: 1
+      - path: root/Bone/footIK.r
+        weight: 1
+      - path: root/Bone/footIK.r/footIK.r_end
+        weight: 1
+      - path: root/Bone/handIK.l
+        weight: 1
+      - path: root/Bone/handIK.l/handIK.l_end
+        weight: 1
+      - path: root/Bone/handIK.r
+        weight: 1
+      - path: root/Bone/handIK.r/handIK.r_end
+        weight: 1
+      - path: root/Bone/HeadTarget
+        weight: 1
+      - path: root/Bone/HeadTarget/HeadTarget_end
+        weight: 1
+      - path: root/Bone/kneeIK.l
+        weight: 1
+      - path: root/Bone/kneeIK.l/kneeIK.l_end
+        weight: 1
+      - path: root/Bone/kneeIK.r
+        weight: 1
+      - path: root/Bone/kneeIK.r/kneeIK.r_end
+        weight: 1
+      - path: root/Bone/spine
+        weight: 1
+      - path: root/Bone/spine/cloth.l
+        weight: 1
+      - path: root/Bone/spine/cloth.l/cloth.l_end
+        weight: 1
+      - path: root/Bone/spine/cloth.r
+        weight: 1
+      - path: root/Bone/spine/cloth.r/cloth.r_end
+        weight: 1
+      - path: root/Bone/spine/cloth2.l
+        weight: 1
+      - path: root/Bone/spine/cloth2.l/cloth2.l_end
+        weight: 1
+      - path: root/Bone/spine/cloth2.r
+        weight: 1
+      - path: root/Bone/spine/cloth2.r/cloth2.r_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.l
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.l/correctionhip1.l_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.r
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.r/correctionhip1.r_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.l
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.l/correctionhip2.l_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.r
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.r/correctionhip2.r_end
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l/FK_foot.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l/FK_foot.l/FK_foot.l_end
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r/FK_foot.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r/FK_foot.r/FK_foot.r_end
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l/IK_foot.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l/IK_foot.l/IK_foot.l_end
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r/IK_foot.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r/IK_foot.r/IK_foot.r_end
+        weight: 1
+      - path: root/Bone/spine/pelvis.l
+        weight: 1
+      - path: root/Bone/spine/pelvis.l/pelvis.l_end
+        weight: 1
+      - path: root/Bone/spine/pelvis.r
+        weight: 1
+      - path: root/Bone/spine/pelvis.r/pelvis.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.l/breast.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.r/breast.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l/ear.004.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l/ear.004.l/ear.004.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r/ear.004.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r/ear.004.r/ear.004.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002/hair.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002/hair.003/hair.003_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003/hair01.004
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003/hair01.004/hair01.004_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002/hair02.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002/hair02.003/hair02.003_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001/hair03.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001/hair03.002/hair03.002_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001/hair04.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001/hair04.002/hair04.002_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l/FK_hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l/FK_hand.l/FK_hand.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l/IK_hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l/IK_hand.l/IK_hand.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/Cupper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/Cupper_arm.l/Cupper_arm.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x/bow.string.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x/bow.string.x/bow.string.x_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l/f_index.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l/f_index.03.l/f_index.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l/thumb.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l/thumb.03.l/thumb.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l/f_middle.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l/f_middle.03.l/f_middle.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l/f_ring.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l/f_ring.03.l/f_ring.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l/f_pinky.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l/f_pinky.03.l/f_pinky.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r/FK_hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r/FK_hand.r/FK_hand.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r/IK_hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r/IK_hand.r/IK_hand.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/Cupper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/Cupper_arm.r/Cupper_arm.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r/f_index.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r/f_index.03.r/f_index.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r/thumb.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r/thumb.03.r/thumb.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r/f_middle.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r/f_middle.03.r/f_middle.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r/f_ring.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r/f_ring.03.r/f_ring.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r/f_pinky.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r/f_pinky.03.r/f_pinky.03.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/cThigh.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/cThigh.l/cThigh.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/cShin.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/cShin.l/cShin.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l/toe.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l/toe.l/toe.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/cThigh.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/cThigh.r/cThigh.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/cShin.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/cShin.r/cShin.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r/toe.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r/toe.r/toe.r_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: root|Aim
+      takeName: root|Aim
+      internalID: -3917803186756192843
+      firstFrame: 0
+      lastFrame: 75
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: celycia_s01_body
+        weight: 0
+      - path: celycia_s01_bow
+        weight: 0
+      - path: celycia_s01_quiver
+        weight: 0
+      - path: root
+        weight: 1
+      - path: root/Bone
+        weight: 1
+      - path: root/Bone/Bone.001
+        weight: 1
+      - path: root/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: root/Bone/Controler Leg
+        weight: 1
+      - path: root/Bone/Controler Leg/Controler Leg_end
+        weight: 1
+      - path: root/Bone/Controller Hand
+        weight: 1
+      - path: root/Bone/Controller Hand/Controller Hand_end
+        weight: 1
+      - path: root/Bone/elbowIK.l
+        weight: 1
+      - path: root/Bone/elbowIK.l/elbowIK.l_end
+        weight: 1
+      - path: root/Bone/elbowIK.r
+        weight: 1
+      - path: root/Bone/elbowIK.r/elbowIK.r_end
+        weight: 1
+      - path: root/Bone/footIK.l
+        weight: 1
+      - path: root/Bone/footIK.l/footIK.l_end
+        weight: 1
+      - path: root/Bone/footIK.r
+        weight: 1
+      - path: root/Bone/footIK.r/footIK.r_end
+        weight: 1
+      - path: root/Bone/handIK.l
+        weight: 1
+      - path: root/Bone/handIK.l/handIK.l_end
+        weight: 1
+      - path: root/Bone/handIK.r
+        weight: 1
+      - path: root/Bone/handIK.r/handIK.r_end
+        weight: 1
+      - path: root/Bone/HeadTarget
+        weight: 1
+      - path: root/Bone/HeadTarget/HeadTarget_end
+        weight: 1
+      - path: root/Bone/kneeIK.l
+        weight: 1
+      - path: root/Bone/kneeIK.l/kneeIK.l_end
+        weight: 1
+      - path: root/Bone/kneeIK.r
+        weight: 1
+      - path: root/Bone/kneeIK.r/kneeIK.r_end
+        weight: 1
+      - path: root/Bone/spine
+        weight: 1
+      - path: root/Bone/spine/cloth.l
+        weight: 1
+      - path: root/Bone/spine/cloth.l/cloth.l_end
+        weight: 1
+      - path: root/Bone/spine/cloth.r
+        weight: 1
+      - path: root/Bone/spine/cloth.r/cloth.r_end
+        weight: 1
+      - path: root/Bone/spine/cloth2.l
+        weight: 1
+      - path: root/Bone/spine/cloth2.l/cloth2.l_end
+        weight: 1
+      - path: root/Bone/spine/cloth2.r
+        weight: 1
+      - path: root/Bone/spine/cloth2.r/cloth2.r_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.l
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.l/correctionhip1.l_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.r
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.r/correctionhip1.r_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.l
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.l/correctionhip2.l_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.r
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.r/correctionhip2.r_end
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l/FK_foot.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l/FK_foot.l/FK_foot.l_end
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r/FK_foot.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r/FK_foot.r/FK_foot.r_end
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l/IK_foot.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l/IK_foot.l/IK_foot.l_end
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r/IK_foot.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r/IK_foot.r/IK_foot.r_end
+        weight: 1
+      - path: root/Bone/spine/pelvis.l
+        weight: 1
+      - path: root/Bone/spine/pelvis.l/pelvis.l_end
+        weight: 1
+      - path: root/Bone/spine/pelvis.r
+        weight: 1
+      - path: root/Bone/spine/pelvis.r/pelvis.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.l/breast.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.r/breast.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l/ear.004.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l/ear.004.l/ear.004.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r/ear.004.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r/ear.004.r/ear.004.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002/hair.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002/hair.003/hair.003_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003/hair01.004
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003/hair01.004/hair01.004_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002/hair02.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002/hair02.003/hair02.003_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001/hair03.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001/hair03.002/hair03.002_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001/hair04.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001/hair04.002/hair04.002_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l/FK_hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l/FK_hand.l/FK_hand.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l/IK_hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l/IK_hand.l/IK_hand.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/Cupper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/Cupper_arm.l/Cupper_arm.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x/bow.string.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x/bow.string.x/bow.string.x_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l/f_index.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l/f_index.03.l/f_index.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l/thumb.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l/thumb.03.l/thumb.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l/f_middle.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l/f_middle.03.l/f_middle.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l/f_ring.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l/f_ring.03.l/f_ring.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l/f_pinky.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l/f_pinky.03.l/f_pinky.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r/FK_hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r/FK_hand.r/FK_hand.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r/IK_hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r/IK_hand.r/IK_hand.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/Cupper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/Cupper_arm.r/Cupper_arm.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r/f_index.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r/f_index.03.r/f_index.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r/thumb.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r/thumb.03.r/thumb.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r/f_middle.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r/f_middle.03.r/f_middle.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r/f_ring.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r/f_ring.03.r/f_ring.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r/f_pinky.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r/f_pinky.03.r/f_pinky.03.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/cThigh.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/cThigh.l/cThigh.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/cShin.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/cShin.l/cShin.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l/toe.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l/toe.l/toe.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/cThigh.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/cThigh.r/cThigh.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/cShin.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/cShin.r/cShin.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r/toe.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r/toe.r/toe.r_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: root|Idle
+      takeName: root|Idle
+      internalID: 1055271325313466987
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: celycia_s01_body
+        weight: 0
+      - path: celycia_s01_bow
+        weight: 0
+      - path: celycia_s01_quiver
+        weight: 0
+      - path: root
+        weight: 1
+      - path: root/Bone
+        weight: 1
+      - path: root/Bone/Bone.001
+        weight: 1
+      - path: root/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: root/Bone/Controler Leg
+        weight: 1
+      - path: root/Bone/Controler Leg/Controler Leg_end
+        weight: 1
+      - path: root/Bone/Controller Hand
+        weight: 1
+      - path: root/Bone/Controller Hand/Controller Hand_end
+        weight: 1
+      - path: root/Bone/elbowIK.l
+        weight: 1
+      - path: root/Bone/elbowIK.l/elbowIK.l_end
+        weight: 1
+      - path: root/Bone/elbowIK.r
+        weight: 1
+      - path: root/Bone/elbowIK.r/elbowIK.r_end
+        weight: 1
+      - path: root/Bone/footIK.l
+        weight: 1
+      - path: root/Bone/footIK.l/footIK.l_end
+        weight: 1
+      - path: root/Bone/footIK.r
+        weight: 1
+      - path: root/Bone/footIK.r/footIK.r_end
+        weight: 1
+      - path: root/Bone/handIK.l
+        weight: 1
+      - path: root/Bone/handIK.l/handIK.l_end
+        weight: 1
+      - path: root/Bone/handIK.r
+        weight: 1
+      - path: root/Bone/handIK.r/handIK.r_end
+        weight: 1
+      - path: root/Bone/HeadTarget
+        weight: 1
+      - path: root/Bone/HeadTarget/HeadTarget_end
+        weight: 1
+      - path: root/Bone/kneeIK.l
+        weight: 1
+      - path: root/Bone/kneeIK.l/kneeIK.l_end
+        weight: 1
+      - path: root/Bone/kneeIK.r
+        weight: 1
+      - path: root/Bone/kneeIK.r/kneeIK.r_end
+        weight: 1
+      - path: root/Bone/spine
+        weight: 1
+      - path: root/Bone/spine/cloth.l
+        weight: 1
+      - path: root/Bone/spine/cloth.l/cloth.l_end
+        weight: 1
+      - path: root/Bone/spine/cloth.r
+        weight: 1
+      - path: root/Bone/spine/cloth.r/cloth.r_end
+        weight: 1
+      - path: root/Bone/spine/cloth2.l
+        weight: 1
+      - path: root/Bone/spine/cloth2.l/cloth2.l_end
+        weight: 1
+      - path: root/Bone/spine/cloth2.r
+        weight: 1
+      - path: root/Bone/spine/cloth2.r/cloth2.r_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.l
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.l/correctionhip1.l_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.r
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.r/correctionhip1.r_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.l
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.l/correctionhip2.l_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.r
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.r/correctionhip2.r_end
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l/FK_foot.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l/FK_foot.l/FK_foot.l_end
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r/FK_foot.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r/FK_foot.r/FK_foot.r_end
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l/IK_foot.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l/IK_foot.l/IK_foot.l_end
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r/IK_foot.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r/IK_foot.r/IK_foot.r_end
+        weight: 1
+      - path: root/Bone/spine/pelvis.l
+        weight: 1
+      - path: root/Bone/spine/pelvis.l/pelvis.l_end
+        weight: 1
+      - path: root/Bone/spine/pelvis.r
+        weight: 1
+      - path: root/Bone/spine/pelvis.r/pelvis.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.l/breast.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.r/breast.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l/ear.004.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l/ear.004.l/ear.004.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r/ear.004.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r/ear.004.r/ear.004.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002/hair.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002/hair.003/hair.003_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003/hair01.004
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003/hair01.004/hair01.004_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002/hair02.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002/hair02.003/hair02.003_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001/hair03.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001/hair03.002/hair03.002_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001/hair04.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001/hair04.002/hair04.002_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l/FK_hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l/FK_hand.l/FK_hand.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l/IK_hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l/IK_hand.l/IK_hand.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/Cupper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/Cupper_arm.l/Cupper_arm.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x/bow.string.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x/bow.string.x/bow.string.x_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l/f_index.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l/f_index.03.l/f_index.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l/thumb.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l/thumb.03.l/thumb.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l/f_middle.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l/f_middle.03.l/f_middle.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l/f_ring.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l/f_ring.03.l/f_ring.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l/f_pinky.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l/f_pinky.03.l/f_pinky.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r/FK_hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r/FK_hand.r/FK_hand.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r/IK_hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r/IK_hand.r/IK_hand.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/Cupper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/Cupper_arm.r/Cupper_arm.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r/f_index.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r/f_index.03.r/f_index.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r/thumb.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r/thumb.03.r/thumb.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r/f_middle.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r/f_middle.03.r/f_middle.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r/f_ring.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r/f_ring.03.r/f_ring.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r/f_pinky.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r/f_pinky.03.r/f_pinky.03.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/cThigh.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/cThigh.l/cThigh.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/cShin.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/cShin.l/cShin.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l/toe.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l/toe.l/toe.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/cThigh.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/cThigh.r/cThigh.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/cShin.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/cShin.r/cShin.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r/toe.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r/toe.r/toe.r_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: 'root|Walk '
+      takeName: 'root|Walk '
+      internalID: -8589176688227795177
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: celycia_s01_body
+        weight: 0
+      - path: celycia_s01_bow
+        weight: 0
+      - path: celycia_s01_quiver
+        weight: 0
+      - path: root
+        weight: 1
+      - path: root/Bone
+        weight: 1
+      - path: root/Bone/Bone.001
+        weight: 1
+      - path: root/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: root/Bone/Controler Leg
+        weight: 1
+      - path: root/Bone/Controler Leg/Controler Leg_end
+        weight: 1
+      - path: root/Bone/Controller Hand
+        weight: 1
+      - path: root/Bone/Controller Hand/Controller Hand_end
+        weight: 1
+      - path: root/Bone/elbowIK.l
+        weight: 1
+      - path: root/Bone/elbowIK.l/elbowIK.l_end
+        weight: 1
+      - path: root/Bone/elbowIK.r
+        weight: 1
+      - path: root/Bone/elbowIK.r/elbowIK.r_end
+        weight: 1
+      - path: root/Bone/footIK.l
+        weight: 1
+      - path: root/Bone/footIK.l/footIK.l_end
+        weight: 1
+      - path: root/Bone/footIK.r
+        weight: 1
+      - path: root/Bone/footIK.r/footIK.r_end
+        weight: 1
+      - path: root/Bone/handIK.l
+        weight: 1
+      - path: root/Bone/handIK.l/handIK.l_end
+        weight: 1
+      - path: root/Bone/handIK.r
+        weight: 1
+      - path: root/Bone/handIK.r/handIK.r_end
+        weight: 1
+      - path: root/Bone/HeadTarget
+        weight: 1
+      - path: root/Bone/HeadTarget/HeadTarget_end
+        weight: 1
+      - path: root/Bone/kneeIK.l
+        weight: 1
+      - path: root/Bone/kneeIK.l/kneeIK.l_end
+        weight: 1
+      - path: root/Bone/kneeIK.r
+        weight: 1
+      - path: root/Bone/kneeIK.r/kneeIK.r_end
+        weight: 1
+      - path: root/Bone/spine
+        weight: 1
+      - path: root/Bone/spine/cloth.l
+        weight: 1
+      - path: root/Bone/spine/cloth.l/cloth.l_end
+        weight: 1
+      - path: root/Bone/spine/cloth.r
+        weight: 1
+      - path: root/Bone/spine/cloth.r/cloth.r_end
+        weight: 1
+      - path: root/Bone/spine/cloth2.l
+        weight: 1
+      - path: root/Bone/spine/cloth2.l/cloth2.l_end
+        weight: 1
+      - path: root/Bone/spine/cloth2.r
+        weight: 1
+      - path: root/Bone/spine/cloth2.r/cloth2.r_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.l
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.l/correctionhip1.l_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.r
+        weight: 1
+      - path: root/Bone/spine/correctionhip1.r/correctionhip1.r_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.l
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.l/correctionhip2.l_end
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.r
+        weight: 1
+      - path: root/Bone/spine/correctionhip2.r/correctionhip2.r_end
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l/FK_foot.l
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.l/FK_shin.l/FK_foot.l/FK_foot.l_end
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r/FK_foot.r
+        weight: 1
+      - path: root/Bone/spine/FK_thigh.r/FK_shin.r/FK_foot.r/FK_foot.r_end
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l/IK_foot.l
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.l/IK_shin.l/IK_foot.l/IK_foot.l_end
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r/IK_foot.r
+        weight: 1
+      - path: root/Bone/spine/IK_thigh.r/IK_shin.r/IK_foot.r/IK_foot.r_end
+        weight: 1
+      - path: root/Bone/spine/pelvis.l
+        weight: 1
+      - path: root/Bone/spine/pelvis.l/pelvis.l_end
+        weight: 1
+      - path: root/Bone/spine/pelvis.r
+        weight: 1
+      - path: root/Bone/spine/pelvis.r/pelvis.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.l/breast.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/breast.r/breast.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l/ear.004.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.l/ear.001.l/ear.002.l/ear.003.l/ear.004.l/ear.004.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r/ear.004.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/ear.r/ear.001.r/ear.002.r/ear.003.r/ear.004.r/ear.004.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002/hair.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair.001/hair.002/hair.003/hair.003_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003/hair01.004
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair01.001/hair01.002/hair01.003/hair01.004/hair01.004_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002/hair02.003
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair02.001/hair02.002/hair02.003/hair02.003_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001/hair03.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair03.001/hair03.002/hair03.002_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001/hair04.002
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/neck02.x/neck01.x/head.x/hair04.001/hair04.002/hair04.002_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l/FK_hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/FK_upper_arm.l/FK_forearm.l/FK_hand.l/FK_hand.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l/IK_hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/IK_upper_arm.l/IK_forearm.l/IK_hand.l/IK_hand.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/Cupper_arm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/Cupper_arm.l/Cupper_arm.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x/bow.string.x
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/bow.x/bow.string.x/bow.string.x_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l/f_index.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/f_index.01.l/f_index.02.l/f_index.03.l/f_index.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l/thumb.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.01.l/thumb.01.l/thumb.02.l/thumb.03.l/thumb.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l/f_middle.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.02.l/f_middle.01.l/f_middle.02.l/f_middle.03.l/f_middle.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l/f_ring.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.03.l/f_ring.01.l/f_ring.02.l/f_ring.03.l/f_ring.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l/f_pinky.03.l
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.l/upper_arm.l/forearm.l/hand.l/palm.04.l/f_pinky.01.l/f_pinky.02.l/f_pinky.03.l/f_pinky.03.l_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r/FK_hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/FK_upper_arm.r/FK_forearm.r/FK_hand.r/FK_hand.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r/IK_hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/IK_upper_arm.r/IK_forearm.r/IK_hand.r/IK_hand.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/Cupper_arm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/Cupper_arm.r/Cupper_arm.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r/f_index.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/f_index.01.r/f_index.02.r/f_index.03.r/f_index.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r/thumb.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.01.r/thumb.01.r/thumb.02.r/thumb.03.r/thumb.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r/f_middle.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.02.r/f_middle.01.r/f_middle.02.r/f_middle.03.r/f_middle.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r/f_ring.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.03.r/f_ring.01.r/f_ring.02.r/f_ring.03.r/f_ring.03.r_end
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r/f_pinky.03.r
+        weight: 1
+      - path: root/Bone/spine/spine.001/spine.002/spine.003/shoulder.r/upper_arm.r/forearm.r/hand.r/palm.04.r/f_pinky.01.r/f_pinky.02.r/f_pinky.03.r/f_pinky.03.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/cThigh.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/cThigh.l/cThigh.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/cShin.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/cShin.l/cShin.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l/toe.l
+        weight: 1
+      - path: root/Bone/spine/thigh.l/shin.l/foot.l/toe.l/toe.l_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/cThigh.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/cThigh.r/cThigh.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/cShin.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/cShin.r/cShin.r_end
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r/toe.r
+        weight: 1
+      - path: root/Bone/spine/thigh.r/shin.r/foot.r/toe.r/toe.r_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
