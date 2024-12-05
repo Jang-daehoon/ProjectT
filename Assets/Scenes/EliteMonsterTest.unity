@@ -6730,10 +6730,11 @@ MonoBehaviour:
   skillParticle: {fileID: 198662300647181020, guid: 6336235030d2ee74798ea85a6f466afa, type: 3}
   attackParticleRight: {fileID: 957726984}
   attackParticleLeft: {fileID: 1633897555}
+  agent: {fileID: 0}
+  lookSpeed: 3
   attackDelay: 2
   skillCoolTime: 15
   skillGroggy: 3
-  attackWarning: {fileID: 1490182638}
 --- !u!195 &1490182636
 NavMeshAgent:
   m_ObjectHideFlags: 0

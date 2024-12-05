@@ -14,8 +14,11 @@ public class EliteGolem : Character
     public ParticleSystem skillParticle;
     public ParticleSystem attackParticleRight;
     public ParticleSystem attackParticleLeft;
-    public NavMeshAgent agent { get; private set; }
+    public NavMeshAgent agent;
 
+    [Header("이동 관련 수치")]
+    [SerializeField] private float lookSpeed = 3f; // 회전 속도
+    
     [Header("공격 관련 수치")]
     [SerializeField] private float attackDelay = 2f; // 공격간 딜레이
 
@@ -23,7 +26,7 @@ public class EliteGolem : Character
     [SerializeField] private float skillCoolTime = 15.0f; // 스킬 쿨타임
     [SerializeField] private float skillGroggy = 5.0f;
 
-    [SerializeField] private AttackWarning attackWarning; // 경고 관리 스크립트
+    private AttackWarning attackWarning; // 경고 관리 스크립트
 
     private EliteState currentState;
     private bool isPlayerInRange = false; // 플레이어가 범위 내에 있는지 여부
@@ -34,7 +37,9 @@ public class EliteGolem : Character
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        attackWarning = GetComponent<AttackWarning>();
 
+        agent.updateRotation = false;
         attackParticleRight.gameObject.SetActive(false);
         attackParticleLeft.gameObject.SetActive(false);
     }
@@ -152,6 +157,7 @@ public class EliteGolem : Character
 
         EndAttackWarning();
         agent.isStopped = false;
+        Look(lookSpeed);
         agent.SetDestination(target.position);
         animator.SetBool("isChasing", true);
     }
@@ -248,7 +254,16 @@ public class EliteGolem : Character
 
         Destroy(gameObject);
     }
+    public void Look(float lookSpeed)
+    {
+        if (target == null) return; // 타겟이 없으면 리턴
 
+        Vector3 direction = (target.position - transform.position).normalized;
+        direction.y = 0; // Y축 회전을 고정
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * lookSpeed);
+    }
     public bool Attacking()
     {
         var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
