@@ -35,6 +35,9 @@ namespace HoonsCodes
         public ParticleSystem fireParticle;
         public ParticleSystem xSkillParticle;
 
+        public Transform randomExtraShotPoint;  //랜덤투사체 발사 위치
+
+
         [Header("CheckGround")]
         public LayerMask groundLayer;
         [Header("PlayerData")]
@@ -92,13 +95,13 @@ namespace HoonsCodes
             {
                 Debug.Log("보상 상자와 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
-                UiManager.Instance.InteractiveUIActive();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
             else if(other.CompareTag("Potal"))
             {
                 Debug.Log("Potal과 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 포탈을 이용할 수 있어.";
-                UiManager.Instance.InteractiveUIActive();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
         private void OnTriggerStay(Collider other)
@@ -111,7 +114,7 @@ namespace HoonsCodes
             }
             else if(other.CompareTag("Potal") && Input.GetKeyDown(KeyCode.F))
             {
-                UiManager.Instance.MapUIActive();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
             }
 
         }
@@ -121,12 +124,12 @@ namespace HoonsCodes
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
             {
                 Debug.Log("보상 상자 접촉 해제");
-                UiManager.Instance.InteractiveUIActive();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
             else if (other.CompareTag("Potal"))
             {
                 Debug.Log("Potal 접촉 해제");
-                UiManager.Instance.InteractiveUIActive();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
         public override void Move()
@@ -212,12 +215,20 @@ namespace HoonsCodes
             {
                 AttackCnt = 0;
                 StartCoroutine(ArcanaManager.Instance.EnhanceFireArrow());
+                if(ArcanaManager.Instance.canRandomBulletInit == true)
+                {
+                    StartCoroutine(ArcanaManager.Instance.RandomExtraArrow());
+                }
             }
             else
             {
                 if(ArcanaManager.Instance.canEnhanceMeleeAttack == true)
                     AttackCnt++;
                 StartCoroutine(FireArrow());
+                if (ArcanaManager.Instance.canRandomBulletInit == true)
+                {
+                    StartCoroutine(ArcanaManager.Instance.RandomExtraArrow());
+                }
             }
         }
 

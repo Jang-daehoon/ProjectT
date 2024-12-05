@@ -6,9 +6,10 @@ using EnemyController;
 using HoonsCodes;
 using System;
 using UnityEditor;
+using UnityEditor.ShaderGraph.Internal;
 public class EliteGolem : Character
 {
-    public Transform target;
+    private Transform target;
     [Tooltip("공격 범위")]
     public Collider attackRange;
     public ParticleSystem skillParticle;
@@ -18,19 +19,18 @@ public class EliteGolem : Character
 
     [Header("이동 관련 수치")]
     [SerializeField] private float lookSpeed = 3f; // 회전 속도
-    
+
     [Header("공격 관련 수치")]
     [SerializeField] private float attackDelay = 2f; // 공격간 딜레이
 
     [Header("스킬 관련 수치")]
     [SerializeField] private float skillCoolTime = 15.0f; // 스킬 쿨타임
-    [SerializeField] private float skillGroggy = 5.0f;
+    [SerializeField] private float skillGroggy = 4.0f;
 
     private AttackWarning attackWarning; // 경고 관리 스크립트
 
     private EliteState currentState;
     private bool isPlayerInRange = false; // 플레이어가 범위 내에 있는지 여부
-    private bool isSkillExecuting = false; // 스킬 상태 실행 여부 플래그
 
     private void Awake()
     {
@@ -55,6 +55,9 @@ public class EliteGolem : Character
     }
     private void Update()
     {
+        target = EliteBossGameMangerTest.Instance.player.transform;
+        //target = GameManager.Instance.player.transform;
+
         switch (currentState)
         {
             case EliteState.IDLE:
@@ -64,7 +67,6 @@ public class EliteGolem : Character
                 HandleChaseState();
                 break;
             case EliteState.ATTACK:
-                HandleAttackState();
                 break;
             case EliteState.SKILL:
                 // 스킬은 코루틴으로 돌아감
@@ -76,7 +78,7 @@ public class EliteGolem : Character
         // 골렘 사망 테스트
         if (Input.GetKeyDown(KeyCode.Space))
             ChangeState(EliteState.DIE);
-        //print($"현재 상태 : {currentState}, 범위 안? : {isPlayerInRange}");
+
     }
     private void ChangeState(EliteState newState)
     {
@@ -87,11 +89,7 @@ public class EliteGolem : Character
         if (currentState == newState)
             return; // 상태가 이미 동일하면 실행하지 않음
 
-        if (isSkillExecuting && newState != EliteState.DIE)
-            return;
-
-        // 공격 중 이동 금지
-        if (newState != EliteState.ATTACK && Attacking())
+        if (animator.GetBool("isSkillExecuting") == true && newState != EliteState.DIE)
             return;
 
         currentState = newState;
@@ -103,20 +101,13 @@ public class EliteGolem : Character
                 animator.SetBool("isChasing", true);
                 break;
             case EliteState.ATTACK:
-                agent.isStopped = true;
-                agent.SetDestination(transform.position);
-                animator.SetBool("isAttack", true);
+                HandleAttackState();
                 break;
             case EliteState.SKILL:
                 StartCoroutine(HandleSkillState());
                 break;
             case EliteState.DIE:
                 StartCoroutine(HandleDieState());
-                break;
-            case EliteState.IDLE:
-                agent.isStopped = true;
-                animator.SetBool("isChasing", false);
-                animator.SetBool("isAttack", false);
                 break;
         }
     }
@@ -137,14 +128,15 @@ public class EliteGolem : Character
     }
     private void HandleIdleState()
     {
-        if (isPlayerInRange)
+        if (isPlayerInRange == true)
             ChangeState(EliteState.ATTACK);
+
         else if (target != null)
             ChangeState(EliteState.CHASE);
     }
     private void HandleChaseState()
     {
-        if (isPlayerInRange)
+        if (isPlayerInRange == true)
             ChangeState(EliteState.ATTACK);
         else
             Move();
@@ -156,8 +148,8 @@ public class EliteGolem : Character
             return;
 
         EndAttackWarning();
-        agent.isStopped = false;
         Look(lookSpeed);
+        agent.isStopped = false;
         agent.SetDestination(target.position);
         animator.SetBool("isChasing", true);
     }
@@ -167,42 +159,36 @@ public class EliteGolem : Character
         agent.SetDestination(transform.position);
         animator.SetFloat("AttackSpeed", atkSpeed);
         animator.SetBool("isChasing", false);
-        animator.SetBool("isAttack", true);
 
-        if (Attacking())
-        {
-            agent.SetDestination(transform.position); // 현재 위치 유지
-            return;
-        }
-        if (!isPlayerInRange)
+        if (isPlayerInRange == false)
         {
             StartCoroutine(EndAttackWait(EliteState.IDLE));
             return;
         }
         // 공격 실행
+        print("combo 실행됨");
         StartCoroutine(ComboAttack());
     }
 
     private IEnumerator ComboAttack()
     {
+        animator.SetBool("isAttack", true);
         // 첫 번째 공격
         animator.SetTrigger("Attack1");
-        yield return new WaitForSeconds(attackDelay);
 
-        if (isPlayerInRange)
-        {
+        if (isPlayerInRange == true)
             animator.SetTrigger("Attack2");
-            yield return new WaitForSeconds(attackDelay);
-        }
+        
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         yield return new WaitForSeconds(attackDelay);
 
-        if (currentState == EliteState.ATTACK)
-            ChangeState(EliteState.IDLE);
+        animator.SetBool("isAttack", false);
+        ChangeState(EliteState.IDLE);
     }
     private IEnumerator EndAttackWait(EliteState nextState)
     {
         // 애니메이션 시작하는 딜레이 대기
-        yield return new WaitForSeconds(0.1f); 
+        yield return new WaitForSeconds(0.1f);
         // 공격 애니메이션이 끝날 때까지 대기
         while (Attacking())
             yield return null;
@@ -216,16 +202,16 @@ public class EliteGolem : Character
     }
     private IEnumerator HandleSkillState()
     {
-        if (isSkillExecuting)
+        if (animator.GetBool("isSkillExecuting") == true)
             yield break;
 
-        isSkillExecuting = true;
+        animator.SetBool("isSkillExecuting", true);
         EndAttackWarning();
         animator.SetTrigger("Skill");
-        agent.isStopped = true; 
+        agent.isStopped = true;
         yield return new WaitForSeconds(skillGroggy);
+        animator.SetBool("isSkillExecuting", false);
 
-        isSkillExecuting = false;
         ChangeState(EliteState.IDLE);
     }
     private IEnumerator UseSkill()
