@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-    //맵 소환 관련
-    public MapGenerator _mapGenerator;
-
     public bool isFirstTutirial;    //Tutorial 최초 시작
     public DialogSystem firstTutorialDialog;
     public DialogSystem secondTutorialDialog;
@@ -28,9 +26,6 @@ public class TutorialManager : MonoBehaviour
 
     private void Awake()
     {
-        // 맵 생성 && 맵 데이터 넘겨주기
-        _mapGenerator = FindObjectOfType<MapGenerator>();
-        GameManager.Game.SetMapArray(_mapGenerator.GenerateMap());
     }
 
     // Start is called before the first frame update
@@ -39,7 +34,6 @@ public class TutorialManager : MonoBehaviour
         if (isFirstTutirial == false)
         {
             isFirstTutirial = true;
-            GameManager.Game.StartMap();
             Time.timeScale = 0;
             //튜토리얼 대사 시작
             yield return new WaitUntil(() => firstTutorialDialog.UpdateDialog());
@@ -61,7 +55,7 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitUntil(() => AreAllEnemiesDefeated());
             Debug.Log("모든 적을 처치했습니다!");
             //처치 완료 시 보상 아이템 생성 ->튜토리얼이라 확정 생성
-            Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
+            GameObject rewardBox = Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
             Debug.Log("보상 아이템이 생성되었습니다.");
             thirdTutorialDialog.gameObject.SetActive(true);
             yield return null;
@@ -70,10 +64,11 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitUntil(() => thirdTutorialDialog.UpdateDialog());
             Time.timeScale = 1;
 
-            yield return new WaitUntil(() => ResultManager.Instance.getReward == true);
-
+            //생성한 오브젝트의 ChestReward의 getReward가 true가 될때까지 대기
+            yield return new WaitUntil(() => rewardBox.GetComponent<ChestReward>().getReward == true);
+            
             //보상 아이템 획득 시 포탈 생성
-            Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
+           Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
 
             fourthTutorialDialog.gameObject.SetActive(true);
             yield return null;
@@ -83,11 +78,6 @@ public class TutorialManager : MonoBehaviour
             //포탈 상호작용 시 Map UI 활성화
             yield return new WaitUntil(() => UiManager.Instance.isMapUIActive == true);
             //튜토리얼 대사 시작
-
-                //맵 UI 클릭 시 해당 위치로 이동 
-
-
-            //->튜토리얼 종료
         }
         else
             yield break;

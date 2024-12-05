@@ -6,8 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class RoomManager : Singleton<RoomManager>
 {
-
-
+    //맵 소환 관련
+    public MapGenerator _mapGenerator;      
+    private void Awake()
+    {
+        // 맵 생성 && 맵 데이터 넘겨주기
+        _mapGenerator = FindObjectOfType<MapGenerator>();
+        GameManager.Game.SetMapArray(_mapGenerator.GenerateMap());
+        GameManager.Game.StartMap();
+    }
     public void EnterRoom(ERoomType roomType)
     {
         // 플레이어 초기화
@@ -48,7 +55,7 @@ public class RoomManager : Singleton<RoomManager>
 
         // 선택된 씬으로 이동
         ScenesManager.Instance.ChanageScene(selectedStage);
-        UiManager.Instance.MapUIActive();
+        UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
 
         // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
         StartCoroutine(MovePlayerToStartPosition(selectedStage));
@@ -67,6 +74,8 @@ public class RoomManager : Singleton<RoomManager>
     private void OnEnterRestRoom()
     {
         Debug.Log("OnEnterRestRoom");
+        ScenesManager.Instance.ChanageScene("RestScene");
+        
     }
     // 보물 방에 들어갈 때
     private void OnEnterTreasureRoom()
