@@ -26,9 +26,6 @@ public class BeamSkill : MonoBehaviour
     private Transform beamTarget;
     private Vector3 beamTargetPosition; // 단 한 번 저장될 타겟 위치
     [SerializeField]
-    [Header("타겟에 도달했을 때 발생하는 히트 이펙트 오브젝트.")]
-    private GameObject beamTargetHitFX;
-    [SerializeField]
     [Header("빔의 원하는 두께.")]
     private List<float> desiredWidth = new List<float>();
 
@@ -158,12 +155,6 @@ public class BeamSkill : MonoBehaviour
         }
     }
 
-    private void UpdateImpactFX()
-    {
-        beamTargetHitFX.transform.position = beamTargetPosition;
-        beamTargetHitFX.transform.LookAt(this.transform.position);
-    }
-
     //[ButtonMethod]
     private void PreviewBeam()
     {
@@ -273,6 +264,5 @@ public class BeamSkill : MonoBehaviour
         PlayEdgeSystems();
         PlayLineRenderers();
         UpdateParticleDensity();
-        UpdateImpactFX();
     }
 }

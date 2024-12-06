@@ -6909,6 +6909,10 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 210.00005
       objectReference: {fileID: 0}
+    - target: {fileID: 2499578958295531727, guid: a970237e526e7f74387dd34f6ef2b6b6, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2899978576380386764, guid: a970237e526e7f74387dd34f6ef2b6b6, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -7092,6 +7096,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3994222589595198105, guid: a970237e526e7f74387dd34f6ef2b6b6, type: 3}
+    - {fileID: 5102877044524286951, guid: a970237e526e7f74387dd34f6ef2b6b6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1831986058324915984, guid: a970237e526e7f74387dd34f6ef2b6b6, type: 3}
@@ -7468,7 +7473,6 @@ MonoBehaviour:
   beamLifetime: 1
   beamFormationTime: 1
   beamTarget: {fileID: 362983477}
-  beamTargetHitFX: {fileID: 1884215690}
   desiredWidth:
   - 5
   defaultDensity:
@@ -8462,11 +8466,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881892233}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1884215690 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5102877044524286951, guid: a970237e526e7f74387dd34f6ef2b6b6, type: 3}
-  m_PrefabInstance: {fileID: 1448841832}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1946737020
 GameObject:
   m_ObjectHideFlags: 0
