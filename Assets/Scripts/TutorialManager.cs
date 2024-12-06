@@ -33,7 +33,12 @@ public class TutorialManager : MonoBehaviour
     {
         if (isFirstTutirial == false)
         {
+            //FadeOut
+            UiManager.Instance.FadeObj.gameObject.SetActive(true);
             isFirstTutirial = true;
+            UiManager.Instance.FadeObj.isFadeOut = true;
+            yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
+            UiManager.Instance.FadeObj.gameObject.SetActive(false);
             Time.timeScale = 0;
             //튜토리얼 대사 시작
             yield return new WaitUntil(() => firstTutorialDialog.UpdateDialog());

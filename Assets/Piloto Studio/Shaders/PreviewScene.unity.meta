@@ -1,10 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:Assets/Scripts/Relic.meta
 guid: 454ac61f6a41a1645a9d89915454fe03
 folderAsset: yes
 ========
+=======
+>>>>>>> a22303f1923c8a461aa0f7f0a8403d73c121ebb5
 guid: e00a0d34dfb90a140ba8d3a9181bfca3
->>>>>>>> 7c1e7321560bd48aa06b83cf37d4f67f14304ac4:Assets/Piloto Studio/Shaders/PreviewScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

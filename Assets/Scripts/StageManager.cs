@@ -23,7 +23,12 @@ public class StageManager : MonoBehaviour
     private IEnumerator Start()
     {
         //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
-        
+        //FadeOut
+        UiManager.Instance.FadeObj.gameObject.SetActive(true);
+        UiManager.Instance.FadeObj.isFadeOut = true;
+        yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
+        UiManager.Instance.FadeObj.gameObject.SetActive(false);
+
         yield return new WaitForSeconds(1f);
         SpawnEnemies();
 

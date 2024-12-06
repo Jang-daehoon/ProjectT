@@ -13,6 +13,8 @@ public class TitleUi : MonoBehaviour
     [SerializeField] private Button exitBtn;
     [Header("Title UI Set")]
     [SerializeField] private GameObject Title;
+    [Header("Fade InOut Obj")]
+    [SerializeField] private UIFadeInOut FadeObj;
 
     private void Start()
     {
@@ -24,21 +26,25 @@ public class TitleUi : MonoBehaviour
 
     private void OnGameStartClicked()
     {
-        Title.SetActive(false);
         StartCoroutine(StartFirstDescDialog());
         Debug.Log("Game Start Button Clicked");
     }
     private IEnumerator StartFirstDescDialog()
     {
+        FadeObj.gameObject.SetActive(true);
+        //FadeIn 시작
+        FadeObj.isFadeIn = true;
+        yield return new WaitForSeconds(FadeObj.duration);
+
+        firstDescWorld.gameObject.SetActive(true);  
         //대화 로그 실행
         yield return new WaitUntil(() => firstDescWorld.UpdateDialog());
 
-        //원하는 행동 추가 가능
-
         //Scene이동
         Debug.Log("Scene Movement");
-        // 게임 시작 로직 ->Stage1으로 이동
-        ScenesManager.Instance.ChanageScene("TutorialScene");
+
+        LoadingSceneController.LoadScene("TutorialScene");
+        //ScenesManager.Instance.ChanageScene("LoadingScene");
     }
     private void OnOptionClicked()
     {
