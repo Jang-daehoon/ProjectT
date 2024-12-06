@@ -362,5 +362,32 @@ namespace HoonsCodes
             maxHp += Hpplus;
             curHp += Hpplus;
         }
+
+        public void GetRelic(RelicData relicdata)
+        {
+            //이름으로 필드 값 찾기
+            var statsname = typeof(Player).GetField(relicdata.statName);
+            print($"{statsname}");
+            //그필드의 값 float로 변환해서 가져오기
+            float statspoint = (float)statsname.GetValue(this);
+            print($"{statspoint}");
+            //올라갈 스텟값
+            float inpoint;
+            //레벨계산식이 들어가는 유물인가?
+            if (relicdata.isLevelPlus == true)
+            {
+                inpoint = this.Level * relicdata.relicStatsPoint;
+            }
+            else
+            {
+                inpoint = relicdata.relicStatsPoint;
+            }
+            print($"{inpoint}");
+            //합치기
+            //원래스텟  += 추가스텟
+            statspoint += inpoint;
+            //넣기
+            statsname.SetValue(this, statspoint);
+        }
     }
 }

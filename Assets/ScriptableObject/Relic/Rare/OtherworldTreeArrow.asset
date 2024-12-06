@@ -18,5 +18,5 @@ MonoBehaviour:
   relicSprite: {fileID: 0}
   relicDesc: 
   isLevelPlus: 0
-  statName: 3
+  statName: dmgValue
   relicStatsPoint: 50
