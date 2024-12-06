@@ -20,6 +20,8 @@ public class UiManager : Singleton<UiManager>
     public GameObject ArcanaUIObj;
     //Map UI
     public GameObject MapUIObj;
+    //FadeObj
+    public UIFadeInOut FadeObj;
 
     [Header("ArcanaImage")]
     public Image firstArcanaImg;
@@ -91,9 +93,9 @@ public class UiManager : Singleton<UiManager>
         thirdArcanaDesc.text = arcanaData[2].ArcanaDesc;
 
         // 버튼 클릭 이벤트 등록
-        firstArcana.onClick.AddListener(() => ArcanaSelect(0));
-        secondArcana.onClick.AddListener(() => ArcanaSelect(1));
-        thirdArcana.onClick.AddListener(() => ArcanaSelect(2));
+        firstArcana.onClick.AddListener(() => ArcanaSelect(arcanaData[0]));
+        secondArcana.onClick.AddListener(() => ArcanaSelect(arcanaData[1]));
+        thirdArcana.onClick.AddListener(() => ArcanaSelect(arcanaData[2]));
     }
 
     //UI토글
@@ -103,35 +105,50 @@ public class UiManager : Singleton<UiManager>
         uiElement.SetActive(isActive);
     }
 
-    // 아르카나 선택 시 동작 처리
-    public void ArcanaSelect(int index)
+    /// <summary>
+    /// 선택된 아르카나 처리
+    /// </summary>
+    /// <param name="selectedArcana">선택된 아르카나 데이터</param>
+    public void ArcanaSelect(ArcanaData selectedArcana)
     {
-        // 선택된 아르카나의 인덱스를 받아서 처리
-        if (ArcanaManager.Instance.ArcanaData.Length > index)
+        if (selectedArcana == null)
         {
-            ArcanaData selectedArcana = ArcanaManager.Instance.ArcanaData[index];
-            Debug.Log($"Selected Arcana: {selectedArcana.name}");
-
-            // 선택된 아르카나에 대한 로직을 여기에 추가
-            if (selectedArcana.ArcanaId == 0)
-                ArcanaManager.Instance.canEnhanceMeleeAttack = true;
-            if (selectedArcana.ArcanaId == 1)
-                ArcanaManager.Instance.canRandomBulletInit = true;
+            Debug.LogError("Invalid Arcana selected!");
+            return;
         }
-        //ChestReward를 가진 오브젝트를 찾아 
-        //ChestReward컴포넌트 내부 변수의 getReward의 값을 true로 변경 
-        // ChestReward를 가진 오브젝트를 찾아서 getReward를 true로 설정
 
-        ChestReward chestReward = FindObjectOfType<ChestReward>(); // 게임 내에 있는 ChestReward 오브젝트를 찾음
+        Debug.Log($"Selected Arcana: {selectedArcana.name}");
+
+        // 선택된 아르카나에 대한 로직
+        switch (selectedArcana.ArcanaId)
+        {
+            case 0:
+                ArcanaManager.Instance.canEnhanceMeleeAttack = true;
+                break;
+            case 1:
+                ArcanaManager.Instance.canRandomBulletInit = true;
+                break;
+            case 2:
+                ArcanaManager.Instance.canCatalyst = true;
+                break;
+            default:
+                Debug.LogWarning($"Unhandled ArcanaId: {selectedArcana.ArcanaId}");
+                break;
+        }
+
+        // ChestReward 처리
+        ChestReward chestReward = FindObjectOfType<ChestReward>();
         if (chestReward != null)
         {
-            chestReward.getReward = true;  // getReward 값을 true로 설정
+            chestReward.getReward = true;
             Debug.Log("Reward acquired and getReward is set to true.");
         }
         else
         {
             Debug.LogWarning("No ChestReward found in the scene.");
         }
-        ArcanaUIObj.SetActive(false);
+
+        // UI 닫기
+        ToggleUIElement(ArcanaUIObj, ref isArcanaUIActive);
     }
 }
