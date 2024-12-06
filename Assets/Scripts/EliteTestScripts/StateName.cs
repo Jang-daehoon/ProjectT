@@ -19,7 +19,7 @@ namespace EnemyController
         CHASE,
         ATTACK,
         LEAFSTORM,
-        SKILL2,
+        LEAFRAIN,
         SKILL3,
         DIE
     }

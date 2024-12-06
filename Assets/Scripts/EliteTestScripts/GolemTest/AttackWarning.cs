@@ -16,11 +16,6 @@ public class AttackWarning : MonoBehaviour
         warningIndicatorSkill.SetActive(false);
     }
 
-    public void Initialize(Transform owner)
-    {
-        this.owner = owner;
-    }
-
     public void ShowWarning(Vector3 position, Quaternion baseRotation, EliteState state)
     {
         // 땅 레이어와의 교차점 계산
@@ -33,7 +28,6 @@ public class AttackWarning : MonoBehaviour
                 // Quad를 땅의 위치에 배치
                 warningIndicatorSkill.transform.position = hit.point + Vector3.up * 0.01f; // 약간 위로 올림
 
-                // 기본 회전값에 X축 90도 회전 추가
                 warningIndicatorSkill.transform.rotation = baseRotation;
                 warningIndicatorSkill.SetActive(true);
             }

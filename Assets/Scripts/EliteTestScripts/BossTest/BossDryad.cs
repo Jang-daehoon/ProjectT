@@ -12,13 +12,15 @@ public class BossDryad : Character
     public float attackDistance = 25f;
     public NavMeshAgent agent { get; private set; }
     [SerializeField] public LeafStorm leafStormInstance;
+    [SerializeField] public LeafRainSkill leafRainInstance;
     [SerializeField] private float attackDelay = 1.5f; // 공격간 딜레이
 
     [SerializeField] private float skillGroggy = 3.5f;
     [SerializeField] private float LeafStormCoolTime = 20f;
-    [SerializeField] private float LeafRainCoolTime = 20f;
+    [SerializeField] private float LeafRainCoolTime = 10f;
 
     public ParticleSystem LeafStormParticle;
+    public ParticleSystem LeafRainParticle;
 
     private BossState currentState;
     [SerializeField] private bool isPlayerInRange = false; // 플레이어가 범위 내에 있는지 여부
@@ -42,7 +44,6 @@ public class BossDryad : Character
         target = EliteBossGameMangerTest.Instance.player.transform;
         //target = GameManager.Instance.player.transform;
         OnRangeAttack();
-        Look(3f);
 
         switch (currentState)
         {
@@ -50,13 +51,15 @@ public class BossDryad : Character
                 HandleIdleState();
                 break;
             case BossState.CHASE:
+                Look(3f);
                 HandleChaseState();
                 break;
             case BossState.ATTACK:
+                Look(1f); // 플레이어를 바라봄
                 HandleAttackState();
                 break;
             case BossState.LEAFSTORM:
-            case BossState.SKILL2:
+            case BossState.LEAFRAIN:
             case BossState.SKILL3:
                 // 스킬은 코루틴으로 처리
                 break;
@@ -86,7 +89,10 @@ public class BossDryad : Character
                 agent.isStopped = true;
                 break;
             case BossState.LEAFSTORM:
-                StartCoroutine(HandleSkillState(leafStormInstance));
+                StartCoroutine(HandleSkillState(currentState));
+                break;
+            case BossState.LEAFRAIN:
+                StartCoroutine(HandleSkillState(currentState));
                 break;
             case BossState.DIE:
                 StartCoroutine(HandleDieState());
@@ -113,28 +119,48 @@ public class BossDryad : Character
             ChangeState(BossState.IDLE); // 플레이어가 범위에서 벗어나면 IDLE 상태로 전환
     }
 
-    private IEnumerator HandleSkillState(LeafStorm skill)
+    private IEnumerator HandleSkillState(BossState skill)
     {
         if (isSkillExecuting)
             yield break;
 
         isSkillExecuting = true;
-        currentState = BossState.LEAFSTORM; // 스킬 상태를 명시적으로 설정
-        animator.SetTrigger($"{skill.name}");
         agent.isStopped = true;
-        LeafStormParticle.Play();
+        animator.SetTrigger($"{skill}");
+        switch (skill)
+        {
+            case BossState.LEAFSTORM:
+                LeafStormParticle.Play();
+                break;
+            case BossState.LEAFRAIN:
+                LeafRainParticle.Play();
+                leafRainInstance.UseLeafRainSkill();
+                break;
+        }
         yield return new WaitForSeconds(skillGroggy);
+        if (skill == BossState.LEAFRAIN)
+        {
+            yield return new WaitForSeconds(skillGroggy);
+            animator.SetTrigger("Rainning");
+            LeafRainParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
 
         isSkillExecuting = false;
+        yield return new WaitForSeconds(skillGroggy);
         ChangeState(BossState.IDLE);
     }
     private IEnumerator UseSkills()
     {
         while (true)
         {
+            // 리프 스톰 스킬 시전
             yield return new WaitForSeconds(LeafStormCoolTime);
             if (currentState != BossState.DIE)
                 ChangeState(BossState.LEAFSTORM);
+            // 리프 레인 스킬 시전
+            yield return new WaitForSeconds(LeafRainCoolTime);
+            if (currentState != BossState.DIE)
+                ChangeState(BossState.LEAFRAIN);
         }
     }
     public void LeafStormEvent()
@@ -154,7 +180,7 @@ public class BossDryad : Character
     }
     public override void Move()
     {
-        if (currentState == BossState.LEAFSTORM || currentState == BossState.SKILL2 || currentState == BossState.SKILL3)
+        if (currentState == BossState.LEAFSTORM || currentState == BossState.LEAFRAIN || currentState == BossState.SKILL3)
             return;
         if (currentState == BossState.ATTACK) return;
         agent.SetDestination(target.position);
@@ -172,7 +198,6 @@ public class BossDryad : Character
             else
             {
                 animator.SetBool("isChasing", false);
-                Look(1.5f); // 플레이어를 바라봄
                 animator.SetBool("isAttack", true); // 공격 애니메이션 활성화
 
                 yield return new WaitForSeconds(0.1f); // 애니메이션 재생 시간만큼 대기
