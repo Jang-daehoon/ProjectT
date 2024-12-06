@@ -13,16 +13,75 @@ namespace HoonsCodes
         public float EnhancedRadius = 10f; // 강화된 범위 반경
         public ParticleSystem HitParticle;
 
+        public bool isTargeting = false;
+        private Transform target;
+        private Vector3 forwardDir;
+        private float timer = 0;
+
         private void Awake()
         {
             DestroyPrefabs();
         }
 
+        private void Start()
+        {
+            if (isTargeting == true) 
+            {
+                target = findEnemy();
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {
-            // 총알을 전방으로 이동
+            if (isTargeting == false || target == null) { NonTargeting(); }
+            if (isTargeting == true && target != null) 
+            {
+                timer += Time.deltaTime * 10f;
+                forwardDir = transform.forward;
+                Targeting(); 
+            }
+        }
+
+        private void NonTargeting()
+        {
             transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+        }
+
+        private void Targeting()
+        {
+            transform.position += forwardDir * Speed * Time.deltaTime;
+
+            Vector3 targetDir = target.position - transform.position;
+            float Dir = Vector3.Distance(transform.position, target.position);
+
+            if (Dir <= 1.0f)//거리1이면 바로그냥 타겟방향 회전
+            {
+                transform.LookAt(target);
+            }
+            if (targetDir != Vector3.zero && Dir > 1.0f)//적방향으로 천천히 회전
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(targetDir);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, timer * Time.deltaTime);
+            }
+        }
+
+        private Transform findEnemy()
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            Transform closestEnemy = null;
+            float closestDir = Mathf.Infinity;
+
+            foreach (GameObject enemy in enemies)
+            {
+                float dir = Vector3.Distance(transform.position, enemy.transform.position);
+                if (dir < closestDir)
+                {
+                    closestDir = dir;
+                    closestEnemy = enemy.transform;
+                }
+            }
+            return closestEnemy;
         }
 
         private void OnTriggerEnter(Collider other)

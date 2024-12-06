@@ -24,6 +24,8 @@ namespace HoonsCodes
         [SerializeField] private float dashDistance = 5f;  // 대시 거리
         [Header("----------------------------")]
         [Header("SkillInfo")]
+        [Tooltip("화살 추적 여부")]
+        public bool isAtkTarGeting = false;
         [SerializeField] private bool usingSkillX;
         public bool isAttack;
         [SerializeField] private bool isHit;
@@ -246,6 +248,7 @@ namespace HoonsCodes
         private IEnumerator FireArrow()
         {
             BulletProjectile Arrow = Instantiate(bulletProjectile, firePoint.position, transform.rotation);
+            Arrow.isTargeting = this.isAtkTarGeting;
             Arrow.Speed = projectileSpeed;
             Arrow.Damage = dmgValue;
             ParticlePlay(fireParticle);
