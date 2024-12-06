@@ -1,11 +1,19 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
 <<<<<<<< HEAD:Assets/Scripts/Relic.meta
+<<<<<<< HEAD
 guid: 454ac61f6a41a1645a9d89915454fe03
 folderAsset: yes
 ========
 =======
 >>>>>>> a22303f1923c8a461aa0f7f0a8403d73c121ebb5
+=======
+guid: 61bee8a8bcddc1a4f957ebdd72abc986
+folderAsset: yes
+========
+=======
+>>>>>>> 7e62d6cf375c285070de8c6a17468fd4c92a8ca3
+>>>>>>> 1a7811c102b971ba591e28417160a6f072a3f401
 guid: e00a0d34dfb90a140ba8d3a9181bfca3
 DefaultImporter:
   externalObjects: {}

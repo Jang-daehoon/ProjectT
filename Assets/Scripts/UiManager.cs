@@ -22,6 +22,8 @@ public class UiManager : Singleton<UiManager>
     public GameObject MapUIObj;
     //FadeObj
     public UIFadeInOut FadeObj;
+    //UnknownUI Obj
+    public GameObject UnknownUIObj;
 
     [Header("ArcanaImage")]
     public Image firstArcanaImg;
@@ -40,6 +42,14 @@ public class UiManager : Singleton<UiManager>
     public TextMeshProUGUI secondArcanaDesc;
     public TextMeshProUGUI thirdArcanaDesc;
 
+    [Header("UnknownUI")]
+    public TextMeshProUGUI unknownRoomName;
+    public Image unknownRoomImage;
+    public TextMeshProUGUI unknownRoomContext;
+    public Button[] unknownEventButton;
+
+    
+    //활성화 유무 확인 변수
     public bool isDialogUiActive;
     public bool isArcanaUIActive;
     public bool isMapUIActive;
@@ -50,7 +60,6 @@ public class UiManager : Singleton<UiManager>
         isDialogUiActive = false;
         isArcanaUIActive = false;
         isMapUIActive = false;
-
     }
     private void Update()
     {

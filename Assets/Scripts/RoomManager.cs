@@ -90,6 +90,7 @@ public class RoomManager : Singleton<RoomManager>
     // 랜덤 방에 들어갈 때
     private void OnEnterUnknownRoom()
     {
+        //랜덤한 UnknownRoom으로 이동한다.
         Debug.Log("OnEnterUnknownRoom");
     }
     public void ClearRoom()

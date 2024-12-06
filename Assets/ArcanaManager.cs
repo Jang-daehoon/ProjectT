@@ -32,6 +32,7 @@ public class ArcanaManager : Singleton<ArcanaManager>
     public IEnumerator EnhanceFireArrow()
     {
         BulletProjectile enhanceArrow = Instantiate(enhanceMeleeProjectile, GameManager.Instance.player.firePoint.position, GameManager.Instance.player.firePoint.transform.rotation);
+        enhanceArrow.isTargeting = GameManager.Instance.player.isAtkTarGeting;
         enhanceArrow.Speed = GameManager.Instance.player.projectileSpeed;
         enhanceArrow.Damage = ArcanaData[0].baseDamage;
         enhanceArrow.HitParticle = enhanceHitParticle;
@@ -65,6 +66,7 @@ public class ArcanaManager : Singleton<ArcanaManager>
                 GameManager.Instance.player.randomExtraShotPoint.position,
                 GameManager.Instance.player.randomExtraShotPoint.transform.rotation
             );
+            randomProjectile.isTargeting = GameManager.Instance.player.isAtkTarGeting;
 
             // 랜덤 투사체 속도와 데미지 설정
             randomProjectile.Speed = ArcanaData[1].randomExtraShotSpeed;
