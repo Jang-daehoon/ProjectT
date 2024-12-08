@@ -7,6 +7,9 @@ namespace HoonsCodes
 {
     public class Player : Character
     {
+        [Header("플레이어 이동 가능 여부")]
+        public bool canMove;
+
         [Header("Exp")]
         public float exp = 0;
         public int Level = 1;
@@ -53,7 +56,7 @@ namespace HoonsCodes
 
         private void Awake()
         {
-
+            canMove = true;
             rb = GetComponent<Rigidbody>();
             col = GetComponent<Collider>();
             animator = GetComponent<Animator>();
@@ -63,29 +66,33 @@ namespace HoonsCodes
 
         private void Update()
         {
-            if (!isDash && !isAttack && !usingSkillX) // 대시나 공격 중이 아닐 때만 이동
+            // 대시나 공격 중이 아닐 때만 이동, 대사중에 이동 불가.
+            if (!isDash && !isAttack && !usingSkillX && !UiManager.Instance.isDialogUiActive
+                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive) && canMove) 
             {
                 Move();
                 PlayerRotation();
+                LookMouseCursor();
             }
 
-            LookMouseCursor();
-
-            if (Input.GetMouseButton(0) && isAttack == false)
+            if (Input.GetMouseButton(0) && isAttack == false && !UiManager.Instance.isDialogUiActive
+                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive) && canMove)
             {
                 RotateToClickPosition();
                 isAttack = true;  // 공격 상태로 변경
                 animator.SetTrigger("Attack");
             }
 
-            if (Input.GetKeyDown(KeyCode.Q) && usingSkillX == false)
+            if (Input.GetKeyDown(KeyCode.Q) && usingSkillX == false && !UiManager.Instance.isDialogUiActive
+                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive) && canMove)
             {
                 RotateToClickPosition();
                 animator.SetTrigger("SkillX");
                 usingSkillX = true;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && isDash == false)
+            if (Input.GetKeyDown(KeyCode.Space) && isDash == false && !UiManager.Instance.isDialogUiActive
+                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive) && canMove)
             {
                 StartCoroutine(Dodge());
             }
@@ -93,16 +100,23 @@ namespace HoonsCodes
         private void OnTriggerEnter(Collider other)
         {
 
-            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
+            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false
+                && other.GetComponent<ChestReward>().isOpen == false && other.gameObject.layer == 8)
             {
                 Debug.Log("보상 상자와 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
-            else if(other.CompareTag("Potal"))
+            else if (other.CompareTag("Potal"))
             {
                 Debug.Log("Potal과 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 포탈을 이용할 수 있어.";
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
+            else if (other.CompareTag("NPC"))
+            {
+                Debug.Log("???와 접촉");
+                UiManager.Instance.interactiveText.text = "F를 눌러 ???와 상호작용할 수 있어.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
@@ -117,13 +131,19 @@ namespace HoonsCodes
             else if(other.CompareTag("Potal") && Input.GetKeyDown(KeyCode.F))
             {
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
-
+            else if(other.CompareTag("NPC") && other.GetComponent<UnknownNPC>().isTalkDone == false && Input.GetKeyDown(KeyCode.F))
+            {
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi, ref UiManager.Instance.isUnknownUiActive);
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
         }
         private void OnTriggerExit(Collider other)
         {
             //UI상호작용 가능 문구 비활성화
-            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
+            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false 
+                && other.GetComponent<ChestReward>().isOpen == false)
             {
                 Debug.Log("보상 상자 접촉 해제");
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
@@ -131,6 +151,11 @@ namespace HoonsCodes
             else if (other.CompareTag("Potal"))
             {
                 Debug.Log("Potal 접촉 해제");
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
+            else if(other.CompareTag("NPC"))
+            {
+                Debug.Log("???와 접촉해제");
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
@@ -248,7 +273,7 @@ namespace HoonsCodes
         private IEnumerator FireArrow()
         {
             BulletProjectile Arrow = Instantiate(bulletProjectile, firePoint.position, transform.rotation);
-            Arrow.isTargeting = this.isAtkTarGeting;
+            Arrow.isTargeting = ArcanaManager.Instance.canCatalyst;
             Arrow.Speed = projectileSpeed;
             Arrow.Damage = dmgValue;
             ParticlePlay(fireParticle);
