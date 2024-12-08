@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2658543522913968355}
   - component: {fileID: 277466012575575434}
   m_Layer: 0
-  m_Name: RelicObj
+  m_Name: RelicObj0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 995789392654343904}
+  m_Children: []
   m_Father: {fileID: 7021560520149770785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3248850286654387594
@@ -133,12 +132,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4647692684558544843}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.49999997, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 4801064378226676418}
+  m_Father: {fileID: 7021560520149770785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &278567475429374307
 SpriteRenderer:
@@ -227,12 +226,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relicData: {fileID: 11400000, guid: a90cbaf0c0cdea741839adb49d89a33d, type: 2}
-  relicSprite: {fileID: 0}
+  relicLifeTime: 3
+  relicSprite: {fileID: 278567475429374307}
   commonColor: {r: 0, g: 0, b: 0, a: 0}
   unCommonColor: {r: 0, g: 0, b: 0, a: 0}
   rareColor: {r: 0, g: 0, b: 0, a: 0}
-  alpha: 0.3
-  movePos: {x: 0, y: 0, z: 0}
+  meshRenderer: {fileID: 2658543522913968355}
+  relicObj: {fileID: 5382147871842876137}
   upY: 1
   moveRange: 2
 --- !u!1 &5382147871842876137
@@ -264,6 +264,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 995789392654343904}
   - {fileID: 4801064378226676418}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
