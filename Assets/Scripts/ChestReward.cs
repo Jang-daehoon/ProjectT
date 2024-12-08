@@ -149,6 +149,7 @@ public class ChestReward : MonoBehaviour
             int index = Random.Range(0, randomRelic.Count);
             RelicData selectRelic = randomRelic[index];
             //고른 유물을 선택한적있는지 체크
+            //왜 널이뜨는데 
             bool exists = RelicManager.Instance.relicList.Contains(selectRelic);
             if(exists == false)
             {

@@ -511,63 +511,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &757519589
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5382147871842876137, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
-      propertyPath: m_Name
-      value: RelicObj
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021560520149770785, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021560520149770785, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021560520149770785, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021560520149770785, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021560520149770785, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021560520149770785, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021560520149770785, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021560520149770785, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021560520149770785, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021560520149770785, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
 --- !u!114 &799228334 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7999707251636466060, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
@@ -762,6 +705,18 @@ PrefabInstance:
       value: Reward Chest
       objectReference: {fileID: 0}
     - target: {fileID: 7653902373785844539, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653902373785844539, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653902373785844539, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653902373785844539, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
       objectReference: {fileID: 0}
@@ -779,15 +734,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653902373785844539, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7653902373785844539, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7653902373785844539, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7653902373785844539, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1155,9 +1110,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RelicObj, Assembly-CSharp
-        m_MethodName: some
+      - m_Target: {fileID: 1845073642}
+        m_TargetAssemblyTypeName: ChestReward, Assembly-CSharp
+        m_MethodName: RelicSpwan
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1637,6 +1592,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1845073642 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8438911032168474620, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
+  m_PrefabInstance: {fileID: 1301317642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70399a31c44c7c46b0147600c8a5407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1885732720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4624,5 +4590,4 @@ SceneRoots:
   - {fileID: 1627004323}
   - {fileID: 1619224239}
   - {fileID: 1201119794}
-  - {fileID: 757519589}
   - {fileID: 1301317642}
