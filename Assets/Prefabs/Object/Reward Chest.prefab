@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1440075038688374321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1799761869601453320}
+  m_Layer: 0
+  m_Name: RelicObjPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1799761869601453320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440075038688374321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7653902373785844539}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2356215598614772121
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +148,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 416628311890412815}
+  - {fileID: 1799761869601453320}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7626427234957170101
@@ -173,7 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70399a31c44c7c46b0147600c8a5407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RewardDropRate: 0.6
   arcanaDatas:
   - {fileID: 11400000, guid: cc337d26610fb7249b7852efb2e52b5d, type: 2}
   - {fileID: 11400000, guid: 375a422dd2a8f514aaffdd39014328d2, type: 2}
@@ -182,6 +213,23 @@ MonoBehaviour:
   animator: {fileID: 0}
   getReward: 0
   isOpen: 0
+  commonRelic:
+  - {fileID: 11400000, guid: a90cbaf0c0cdea741839adb49d89a33d, type: 2}
+  - {fileID: 11400000, guid: b603333f8abc61042927db9e9a08bbe3, type: 2}
+  - {fileID: 11400000, guid: 4b2f9ce20ac648141a3ea51b5250af70, type: 2}
+  - {fileID: 11400000, guid: 5f786471bec2bab46b83669fae9a5770, type: 2}
+  unCommonRelic:
+  - {fileID: 11400000, guid: 8a1dad67e8a88ec4da1edf15b687c21c, type: 2}
+  - {fileID: 11400000, guid: 509b720f05c076042b1731b66461d5c5, type: 2}
+  - {fileID: 11400000, guid: bb230a0e153dc0e4fbe2f917d274b0e3, type: 2}
+  - {fileID: 11400000, guid: 8898c82aecb57b2449252cb54ba9f830, type: 2}
+  rareRelic:
+  - {fileID: 11400000, guid: c487f8135b382d84c8d67ea53c2100b9, type: 2}
+  - {fileID: 11400000, guid: b6321f60c6707394ca516dff1c4d4899, type: 2}
+  - {fileID: 11400000, guid: 4de560ddd771fe84980d1755ac7b94d1, type: 2}
+  - {fileID: 11400000, guid: 52547d950b1512342b72b6f6205a920b, type: 2}
+  relicSpwanPos: {fileID: 1799761869601453320}
+  relicObj: {fileID: 5382147871842876137, guid: 0a1ea397a7d2fe7429df1405a2f15e99, type: 3}
 --- !u!1 &5661890997925848791
 GameObject:
   m_ObjectHideFlags: 0

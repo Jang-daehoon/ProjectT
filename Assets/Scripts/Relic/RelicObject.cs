@@ -6,6 +6,8 @@ using UnityEngine.WSA;
 
 public class RelicObject : Relic
 {
+    [Tooltip("유물 오브젝트가 남아있는 시간")]
+    public float relicLifeTime;
     [Tooltip("유물 이미지")]
     public SpriteRenderer relicSprite;
     [Tooltip("유물 등급별 색")]
@@ -14,30 +16,66 @@ public class RelicObject : Relic
     public Color rareColor;
     private float alpha = 0.3f;
     //유물 이미지 출력
-    private MeshRenderer meshRenderer;
+    public MeshRenderer meshRenderer;
     //제일 위 부모오브젝트
-    private GameObject relicObj;
+    public GameObject relicObj;
 
     private Vector3 movePos;
     [Tooltip("최대로 올라갈 높이")]
-    public float upY;
+    public float upY = 1f;
     [Tooltip("튀어나갈 범위")]
-    public float moveRange;
+    public float moveRange = 2f;
     private Vector3 startPos, endPos;
     private float timer;
 
     private void Awake()
     {
-        relicObj = this.transform.parent.parent.gameObject;
+        //relicObj = this.transform.parent.parent.gameObject;
+        //relicSprite = GetComponent<SpriteRenderer>();
+        //relicSprite.sprite = relicData.relicSprite;
+        //meshRenderer = GetComponentInParent<MeshRenderer>();
+        ////색깔은 나중에 정하기
+        //commonColor = new Color(Color.white.r, Color.white.g, Color.white.b, alpha);
+        //unCommonColor = new Color(Color.blue.r, Color.blue.g, Color.blue.b, alpha);
+        //rareColor = new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, alpha);
+        ////유물등급에 따라 반투명한 오브젝트 변경
+        //switch(relicData.rarity)
+        //{
+        //    case RelicData.Rarity.Common:
+        //        meshRenderer.material.color = commonColor;
+        //        break;
+        //    case RelicData.Rarity.Uncommon:
+        //        meshRenderer.material.color = unCommonColor;
+        //        break;
+        //    case RelicData.Rarity.Rare:
+        //        meshRenderer.material.color = rareColor;
+        //        break;
+        //}
+    }
+
+    private void Start()
+    {
+    //    float x = UnityEngine.Random.Range(-moveRange, moveRange);
+    //    float z = UnityEngine.Random.Range(-moveRange, moveRange);
+    //    //날아갈포지션 랜덤
+    //    movePos = new Vector3(x, 0f, z);
+    //    startPos = relicObj.transform.position;
+    //    endPos = startPos + movePos;
+    //    endPos.y = 0f;
+    //    StartCoroutine(BulletMove());
+    //    StartCoroutine(RelicDestroy());
+    }
+
+    public void Spwan()
+    {
         relicSprite = GetComponent<SpriteRenderer>();
         relicSprite.sprite = relicData.relicSprite;
-        meshRenderer = GetComponentInParent<MeshRenderer>();
         //색깔은 나중에 정하기
         commonColor = new Color(Color.white.r, Color.white.g, Color.white.b, alpha);
         unCommonColor = new Color(Color.blue.r, Color.blue.g, Color.blue.b, alpha);
         rareColor = new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, alpha);
         //유물등급에 따라 반투명한 오브젝트 변경
-        switch(relicData.rarity)
+        switch (relicData.rarity)
         {
             case RelicData.Rarity.Common:
                 meshRenderer.material.color = commonColor;
@@ -49,10 +87,7 @@ public class RelicObject : Relic
                 meshRenderer.material.color = rareColor;
                 break;
         }
-    }
 
-    private void Start()
-    {
         float x = UnityEngine.Random.Range(-moveRange, moveRange);
         float z = UnityEngine.Random.Range(-moveRange, moveRange);
         //날아갈포지션 랜덤
@@ -61,6 +96,7 @@ public class RelicObject : Relic
         endPos = startPos + movePos;
         endPos.y = 0f;
         StartCoroutine(BulletMove());
+        StartCoroutine(RelicDestroy());
     }
 
     private void Update()
@@ -90,6 +126,13 @@ public class RelicObject : Relic
         }
         //y = 0 으로 포지션 고정
         relicObj.transform.position = new Vector3(endPos.x, 0, endPos.z);
+    }
+
+    private IEnumerator RelicDestroy()
+    {
+        yield return new WaitForSeconds(relicLifeTime);
+        GameManager.Instance.player.GetRelic(relicData);
+        Destroy(this.gameObject);
     }
 
 }
