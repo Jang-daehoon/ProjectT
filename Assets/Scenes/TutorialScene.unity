@@ -26872,6 +26872,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7999707251636466060, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
+      propertyPath: usingSkillX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999707251636466060, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
       propertyPath: randomExtraShotPoint
       value: 
       objectReference: {fileID: 7363479742846875132}
