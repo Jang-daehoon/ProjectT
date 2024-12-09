@@ -5,7 +5,7 @@ using UnityEngine;
 using static UnityEngine.ParticleSystem;
 namespace HoonsCodes
 {
-    public class Player : Character
+    public class Player : Character, ITakeDamage
     {
         [Header("Exp")]
         public float exp = 0;
@@ -51,6 +51,8 @@ namespace HoonsCodes
 
         public Vector3 targetPosition; // 이동할 목표 위치
 
+        private Coroutine HitCoroutine;
+
         private void Awake()
         {
 
@@ -92,7 +94,12 @@ namespace HoonsCodes
         }
         private void OnTriggerEnter(Collider other)
         {
-
+            if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false)
+            {
+                Debug.Log("유물 상자와 접촉");
+                UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
             {
                 Debug.Log("보상 상자와 접촉");
@@ -108,6 +115,11 @@ namespace HoonsCodes
         }
         private void OnTriggerStay(Collider other)
         {
+            if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false
+                && other.GetComponent<RelicBox>().isOpen == false && Input.GetKeyDown(KeyCode.F))
+            {
+                StartCoroutine(other.GetComponent<RelicBox>().RelicResult());
+            }
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false
                 && other.GetComponent<ChestReward>().isOpen == false && Input.GetKeyDown(KeyCode.F))
             {
@@ -122,6 +134,11 @@ namespace HoonsCodes
         }
         private void OnTriggerExit(Collider other)
         {
+            if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false)
+            {
+                Debug.Log("유물 상자 접촉 해제");
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
             //UI상호작용 가능 문구 비활성화
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
             {
@@ -318,9 +335,30 @@ namespace HoonsCodes
             usedParticle.Play();
         }
 
-        public IEnumerator TakeDamage()
+        //피격 -> 한번 피격시 무적시간 1초
+        public void TakeDamage(float damage)
+        {
+            if (HitCoroutine == null)
+            {
+                curHp -= damage;
+                if (curHp <= 0)
+                {
+                    Dead();
+                }
+                Debug.Log($"{damage} 만큼의 피해를 받음, 무적시간 시작");
+                HitCoroutine = StartCoroutine(PlayerHitCoolTime());
+            }
+            else
+            {
+                Debug.Log("무적시간");
+            }
+        }
+
+        private IEnumerator PlayerHitCoolTime()
         {
             yield return new WaitForSeconds(1f);
+            Debug.Log("무적시간 종료");
+            HitCoroutine = null;
         }
 
         public override void Dead()

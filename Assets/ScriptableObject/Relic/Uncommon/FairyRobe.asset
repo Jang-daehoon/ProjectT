@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 721e3bc5bb16b8b4e9ebdf08300f46ae, type: 3}
-  m_Name: RaedHp
+  m_Name: FairyRobe
   m_EditorClassIdentifier: 
-  rarity: 2
-  relicName: 
+  rarity: 1
+  relicName: "\uC694\uC815\uC758 \uB85C\uBE0C"
   relicID: 3
   relicSprite: {fileID: 0}
   relicDesc: 
-  isLevelPlus: 0
+  isLevelPlus: 1
   statName: maxHp
-  relicStatsPoint: 100
+  relicStatsPoint: 10

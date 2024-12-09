@@ -102,7 +102,7 @@ public class MeleeGolem : NMMeleeUnit
                 Vector3 dir = transform.position - other.transform.position;
                 other.GetComponent<Rigidbody>().AddForce(-dir.normalized * 30f, ForceMode.Impulse);
                 Debug.Log($"{other.name} Hit");
-                //collision.gameObject.GetComponent<Player>().TakeDamage();
+                GameManager.Instance.player.TakeDamage(dmgValue);
                 //플레이어 공격
                 isHit = true;
             }

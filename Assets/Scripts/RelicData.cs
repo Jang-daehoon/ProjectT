@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static RelicData;
 
 [CreateAssetMenu(fileName = "Relic Data", menuName = "Scriptable Object/RelicData")]
 public class RelicData : ScriptableObject
@@ -16,6 +17,8 @@ public class RelicData : ScriptableObject
     }
     [Tooltip("유물 등급")]
     public Rarity rarity;
+    [Tooltip("유물 등급 색")]
+    public Color color;
     [Tooltip("유물 이름")]
     public string relicName;
     [Tooltip("유물 ID")]
@@ -30,4 +33,27 @@ public class RelicData : ScriptableObject
     public string statName;
     [Tooltip("오르는 수치")]
     public float relicStatsPoint;
+
+    private void OnEnable()
+    {
+        float alpha = 0.2f;
+        //유물 등급에 따라서 유물등급색 적용
+        Color c;
+        switch (this.rarity)
+        {
+            case Rarity.Common:
+                c = Color.white;
+                break;
+            case Rarity.Uncommon:
+                c = Color.blue;
+                break;
+            case Rarity.Rare:
+                c = Color.yellow;
+                break;
+            default:
+                c = Color.red;
+                break;
+        }
+        color = new Color(c.r, c.g, c.b, alpha);
+    }
 }

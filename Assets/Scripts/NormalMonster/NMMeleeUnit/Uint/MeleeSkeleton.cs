@@ -66,8 +66,16 @@ public class MeleeSkeleton : NMMeleeUnit
         //공격범위 표시
         yield return new WaitForSeconds(atkSpeed * 0.5f);
         Debug.Log("Player를 공격");
-        //타겟 공격
-        //target.GetComponent<Player>().TakeDamage(dmgValue);
+        float dirplayer = Vector3.Distance(transform.position, target.position);
+        if (dirplayer <= range)
+        {
+            //타겟 공격
+            GameManager.Instance.player.TakeDamage(dmgValue);
+        }
+        else
+        {
+            Debug.Log("실패 - 공격범위 밖으로 나감");
+        }
         yield return new WaitForSeconds(atkSpeed * 0.5f);
         isAtkMotion = false;
         atkRange.gameObject.SetActive(false);

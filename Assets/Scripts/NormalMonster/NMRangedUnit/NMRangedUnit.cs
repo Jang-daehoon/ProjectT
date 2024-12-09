@@ -57,6 +57,7 @@ public class NMRangedUnit : EnemyUint
 
     protected virtual void Update()
     {
+        if (isDead == true) return;
         HpBarUpdate();
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (curHp <= 0 && isDead == false)//죽으면 한번 발동

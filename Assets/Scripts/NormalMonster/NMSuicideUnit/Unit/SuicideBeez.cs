@@ -43,8 +43,8 @@ public class SuicideBeez : NMSuicideUnit
         if (dirplayer <= attackRange && isDead == false)
         {
             Debug.Log("Player를 공격");
+            GameManager.Instance.player.TakeDamage(dmgValue);
             //공격
-            //
         }
         Dead();
     }

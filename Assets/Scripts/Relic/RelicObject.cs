@@ -70,26 +70,19 @@ public class RelicObject : Relic
     {
         relicSprite = GetComponent<SpriteRenderer>();
         relicSprite.sprite = relicData.relicSprite;
-        //색깔은 나중에 정하기
-        commonColor = new Color(Color.white.r, Color.white.g, Color.white.b, alpha);
-        unCommonColor = new Color(Color.blue.r, Color.blue.g, Color.blue.b, alpha);
-        rareColor = new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, alpha);
-        //유물등급에 따라 반투명한 오브젝트 변경
-        switch (relicData.rarity)
-        {
-            case RelicData.Rarity.Common:
-                meshRenderer.material.color = commonColor;
-                break;
-            case RelicData.Rarity.Uncommon:
-                meshRenderer.material.color = unCommonColor;
-                break;
-            case RelicData.Rarity.Rare:
-                meshRenderer.material.color = rareColor;
-                break;
-        }
+        //유물등급별 색적용
+        meshRenderer.material.color = relicData.color;
 
-        float x = UnityEngine.Random.Range(-moveRange, moveRange);
-        float z = UnityEngine.Random.Range(-moveRange, moveRange);
+        float x;
+        do
+        {
+            x = UnityEngine.Random.Range(-moveRange, moveRange);
+        } while (x > -1f && x < 1f);
+        float z;
+        do
+        {
+            z = UnityEngine.Random.Range(-moveRange, moveRange);
+        } while (z > -1f && z < 1f);
         //날아갈포지션 랜덤
         movePos = new Vector3(x, 0f, z);
         startPos = relicObj.transform.position;
@@ -132,7 +125,7 @@ public class RelicObject : Relic
     {
         yield return new WaitForSeconds(relicLifeTime);
         GameManager.Instance.player.GetRelic(relicData);
-        Destroy(this.gameObject);
+        Destroy(this.gameObject.transform.parent.gameObject);
     }
 
 }
