@@ -24,4 +24,10 @@ namespace EnemyController
         INVINCIBLE,
         DIE
     }
+    public enum FlowerState
+    {
+        IDLE, 
+        CAST, 
+        DIE
+    }
 }

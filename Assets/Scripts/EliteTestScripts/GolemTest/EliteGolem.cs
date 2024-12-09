@@ -55,8 +55,7 @@ public class EliteGolem : Character
     }
     private void Update()
     {
-        target = EliteBossGameMangerTest.Instance.player.transform;
-        //target = GameManager.Instance.player.transform;
+        target = GameObject.FindWithTag("Player").transform; // 플레이어 태그로 참조
 
         switch (currentState)
         {
@@ -75,10 +74,6 @@ public class EliteGolem : Character
                 // 죽음 상태 처리
                 break;
         }
-        // 골렘 사망 테스트
-        if (Input.GetKeyDown(KeyCode.Space))
-            ChangeState(EliteState.DIE);
-
     }
     private void ChangeState(EliteState newState)
     {

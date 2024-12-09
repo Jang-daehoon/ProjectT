@@ -53,8 +53,7 @@ public class BossDryad : Character
     }
     private void Update()
     {
-        target = EliteBossGameMangerTest.Instance.player.transform;
-        //target = GameManager.Instance.player.transform;
+        target = GameObject.FindWithTag("Player").transform; // 플레이어 태그로 참조
         OnRangeAttack();
 
         switch (currentState)
@@ -83,10 +82,9 @@ public class BossDryad : Character
         }
         //test
         if (Input.GetKeyDown(KeyCode.Space))
-        {
             ChangeState(BossState.INVINCIBLE);
-        }
-
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            ExitInvincibleState();
     }
     private void ChangeState(BossState newState)
     {
@@ -304,20 +302,48 @@ public class BossDryad : Character
     }
     private Vector3 GetRandomPositionAroundBoss()
     {
-        float radius = 10f; // 소환 반경
-        float randomAngle = Random.Range(0, Mathf.PI * 2); // 랜덤 각도
+        float radius = 20f; // 소환 반경
+        float minDistance = 4f; // 몬스터 간 최소 거리
 
-        // 원형 좌표 계산
-        float x = Mathf.Cos(randomAngle) * radius;
-        float z = Mathf.Sin(randomAngle) * radius;
+        Vector3 randomPosition;
+        int maxAttempts = 10; // 최대 시도 횟수
+        int attempts = 0;
 
-        Vector3 randomPosition = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
+        do
+        {
+            attempts++;
+            float randomAngle = Random.Range(0, Mathf.PI * 2); // 랜덤 각도
 
-        // NavMesh 위의 유효한 위치 샘플링
-        if (NavMesh.SamplePosition(randomPosition, out NavMeshHit hit, radius, NavMesh.AllAreas))
-            return hit.position; // NavMesh 위의 위치 반환
+            // 원형 좌표 계산
+            float x = Mathf.Cos(randomAngle) * radius;
+            float z = Mathf.Sin(randomAngle) * radius;
 
-        return transform.position; // 실패 시 보스 위치 반환
+            randomPosition = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
+
+            // NavMesh 위의 유효한 위치 샘플링
+            if (NavMesh.SamplePosition(randomPosition, out NavMeshHit hit, radius, NavMesh.AllAreas))
+            {
+                randomPosition = hit.position; // NavMesh 위의 위치 반환
+
+                // 다른 몬스터와의 간격 확인
+                bool isFarEnough = true;
+                foreach (var monster in summonedMonsters)
+                {
+                    if (Vector3.Distance(randomPosition, monster.transform.position) < minDistance)
+                    {
+                        isFarEnough = false;
+                        break;
+                    }
+                }
+
+                if (isFarEnough)
+                    return randomPosition; // 조건을 만족하면 위치 반환
+            }
+
+        } while (attempts < maxAttempts);
+
+        // 실패 시 보스 위치 반환 (백업)
+        return transform.position;
     }
     private IEnumerator CheckMonstersDefeated()
     {
@@ -335,10 +361,7 @@ public class BossDryad : Character
     public void RemoveMonster(GameObject monster)
     {
         if (summonedMonsters.Contains(monster))
-        {
             summonedMonsters.Remove(monster);
-            Debug.Log($"Monster defeated. Remaining: {summonedMonsters.Count}");
-        }
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -2628,6 +2628,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -6.5853786
       objectReference: {fileID: 0}
+    - target: {fileID: 6461081161248779464, guid: ea4324e39606b124fbc8962ece08c421, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6631647240735408460, guid: ea4324e39606b124fbc8962ece08c421, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -76.94325
@@ -3527,7 +3531,7 @@ MonoBehaviour:
   LaserCol: {fileID: 59500934}
   isPlayerInRange: 0
   isSkillExecuting: 0
-  specialMonsterPrefab: {fileID: 362983472}
+  specialMonsterPrefab: {fileID: 7472518198593169519, guid: 5ca6ea8860d4de945b45481834831b11, type: 3}
 --- !u!54 &586132416
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6304,6 +6308,10 @@ PrefabInstance:
     - target: {fileID: 2266157265114488493, guid: 2eb3f370fbc1c324abd3d85f109a0e09, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266157265114488493, guid: 2eb3f370fbc1c324abd3d85f109a0e09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2266157265114488493, guid: 2eb3f370fbc1c324abd3d85f109a0e09, type: 3}
       propertyPath: m_TagString
