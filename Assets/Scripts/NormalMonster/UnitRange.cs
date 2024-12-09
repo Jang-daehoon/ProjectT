@@ -16,6 +16,7 @@ public class UnitRange : MonoBehaviour
         tr.endColor = new Color(Color.red.r, Color.red.g, Color.red.b, 0.5f);
         tr.time = 1f;
         end = endPos.transform.position;
+        this.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -28,6 +29,7 @@ public class UnitRange : MonoBehaviour
     {
         onDraw = true;
         end = endPos.transform.position;
+        end.y = 0.5f;
     }
 
     private void OnDisable()

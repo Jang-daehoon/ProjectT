@@ -40,7 +40,7 @@ public class RangedDevilTree : NMRangedUnit
         for (int i = 0; i < 3; i++)
         {
             attackRange[i].gameObject.SetActive(false);//사격범위 표시 Off
-            attackRange[i].transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, this.transform.position.z);
+            attackRange[i].transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
             Vector3 bulletPos = new Vector3(0, -30 + (i * 30), 0);
             GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);
             nmbullet.transform.Rotate(bulletPos);

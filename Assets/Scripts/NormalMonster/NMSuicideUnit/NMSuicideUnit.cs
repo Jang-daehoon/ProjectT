@@ -28,6 +28,7 @@ public class NMSuicideUnit : EnemyUint
         moveSpeed = characterData.moveSpeed;
         dmgValue = characterData.damage;
         maxHp = characterData.maxHp;
+        range = 1f;
         curHp = maxHp;
         hpBar.maxHp = this.maxHp;
         hpBar.currentHp = this.curHp;

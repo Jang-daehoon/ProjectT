@@ -28,8 +28,6 @@ public class SuicideBeez : NMSuicideUnit
         boomRange.gameObject.SetActive(true);
         boomRange.OnRange();//공격범위 표시
         Invoke("Boom", attDelay);//그자리에서 딜레이후 자폭
-        //달려가서 자폭(?)
-        //
     }
 
     private void Boom()//자폭
@@ -43,9 +41,11 @@ public class SuicideBeez : NMSuicideUnit
         if (dirplayer <= attackRange && isDead == false)
         {
             Debug.Log("Player를 공격");
+            //target.GetComponent<ITakeDamage>().TakeDamage(dmgValue);
             GameManager.Instance.player.TakeDamage(dmgValue);
             //공격
         }
-        Dead();
+        isDead = true; 
+        animator.SetTrigger("Die");
     }
 }

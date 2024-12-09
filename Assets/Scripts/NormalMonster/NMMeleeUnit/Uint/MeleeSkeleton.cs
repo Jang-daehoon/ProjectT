@@ -12,6 +12,7 @@ public class MeleeSkeleton : NMMeleeUnit
     protected override void Awake()
     {
         base.Awake();
+        range = 2f;
     }
 
     protected override void Start()

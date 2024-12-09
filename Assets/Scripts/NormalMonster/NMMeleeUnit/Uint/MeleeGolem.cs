@@ -19,6 +19,7 @@ public class MeleeGolem : NMMeleeUnit
         base.Awake();
         particle.gameObject.SetActive(false);
         particle.Stop();
+        range = 20f;
     }
 
     protected override void Start()
