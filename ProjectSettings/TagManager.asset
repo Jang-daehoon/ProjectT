@@ -18,9 +18,9 @@ TagManager:
   - UI
   - Enemy
   - Ground
-  - 
-  - 
-  - 
+  - ItemBox
+  - ItemBoxOpen
+  - Invincible
   - 
   - 
   - 

@@ -32,6 +32,7 @@ public class ChestReward : MonoBehaviour
 
     private void OnEnable()
     {
+        arcanaDatas = ArcanaManager.Instance.ArcanaData;
         getReward = false;
         isOpen = false;
     }
@@ -41,6 +42,7 @@ public class ChestReward : MonoBehaviour
     public IEnumerator ArcanaResult()
     {
         isOpen = true;
+        UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
         animator.SetTrigger("Open");
         // 애니메이션이 끝날 때까지 대기
         yield return new WaitUntil(() => IsAnimationFinished("Open"));

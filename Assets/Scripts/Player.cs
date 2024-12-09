@@ -5,8 +5,15 @@ using UnityEngine;
 using static UnityEngine.ParticleSystem;
 namespace HoonsCodes
 {
+<<<<<<< HEAD
     public class Player : Character, ITakeDamage
+=======
+    public class Player : Character, Skills
+>>>>>>> aa634e3bb49cee08fd064190d34b5c678e83062b
     {
+        [Header("플레이어 이동 가능 여부")]
+        public bool canMove;
+
         [Header("Exp")]
         public float exp = 0;
         public int Level = 1;
@@ -55,7 +62,7 @@ namespace HoonsCodes
 
         private void Awake()
         {
-
+            canMove = true;
             rb = GetComponent<Rigidbody>();
             col = GetComponent<Collider>();
             animator = GetComponent<Animator>();
@@ -65,35 +72,55 @@ namespace HoonsCodes
 
         private void Update()
         {
-            if (!isDash && !isAttack && !usingSkillX) // 대시나 공격 중이 아닐 때만 이동
+            // 대시나 공격 중이 아닐 때만 이동, 대사중에 이동 불가.
+            if (!isDash && !isAttack && !usingSkillX && !UiManager.Instance.isDialogUiActive
+                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
+                || UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3) && canMove)
             {
                 Move();
                 PlayerRotation();
+                LookMouseCursor();
             }
 
-            LookMouseCursor();
-
-            if (Input.GetMouseButton(0) && isAttack == false)
+            if (Input.GetMouseButton(0) && isAttack == false && !UiManager.Instance.isDialogUiActive
+                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
+                || UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3) && canMove)
             {
                 RotateToClickPosition();
                 isAttack = true;  // 공격 상태로 변경
                 animator.SetTrigger("Attack");
             }
 
-            if (Input.GetKeyDown(KeyCode.Q) && usingSkillX == false)
+            if (Input.GetKeyDown(KeyCode.Q) && !UiManager.Instance.isDialogUiActive
+                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
+                || UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3) && canMove)
             {
                 RotateToClickPosition();
-                animator.SetTrigger("SkillX");
-                usingSkillX = true;
+                SkillManager.Instance.Multi_Shot_Arrow();
+                UiManager.Instance.UseQSkill();
+            }
+            if(Input.GetKeyDown(KeyCode.W))
+            {
+                SkillManager.Instance.ArrowRain();
+                UiManager.Instance.UseWSkill();
+            }
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                RotateToClickPosition();
+                SkillManager.Instance.ImpaleSkill();
+                UiManager.Instance.UseESkill();
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && isDash == false)
+            if (Input.GetKeyDown(KeyCode.Space) && isDash == false && !UiManager.Instance.isDialogUiActive
+                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive ||
+                UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3) && canMove)
             {
                 StartCoroutine(Dodge());
             }
         }
         private void OnTriggerEnter(Collider other)
         {
+<<<<<<< HEAD
             if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false)
             {
                 Debug.Log("유물 상자와 접촉");
@@ -101,15 +128,26 @@ namespace HoonsCodes
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
+=======
+
+            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false
+                && other.GetComponent<ChestReward>().isOpen == false && other.gameObject.layer == 8)
+>>>>>>> aa634e3bb49cee08fd064190d34b5c678e83062b
             {
                 Debug.Log("보상 상자와 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
-            else if(other.CompareTag("Potal"))
+            else if (other.CompareTag("Potal"))
             {
                 Debug.Log("Potal과 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 포탈을 이용할 수 있어.";
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
+            else if (other.CompareTag("NPC") && other.GetComponent<UnknownNPC>().isTalkDone == false)
+            {
+                Debug.Log("???와 접촉");
+                UiManager.Instance.interactiveText.text = "F를 눌러 ???와 상호작용할 수 있어.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
@@ -126,11 +164,35 @@ namespace HoonsCodes
                 //UI상호작용 가능 문구 출력
                 StartCoroutine(other.GetComponent<ChestReward>().ArcanaResult());
             }
-            else if(other.CompareTag("Potal") && Input.GetKeyDown(KeyCode.F))
+            else if (other.CompareTag("Potal") && Input.GetKeyDown(KeyCode.F))
             {
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
-
+            else if (other.CompareTag("NPC") && other.GetComponent<UnknownNPC>().isTalkDone == false && Input.GetKeyDown(KeyCode.F))
+            {
+                switch (other.GetComponent<UnknownNPC>().npcId)
+                {
+                    case 0:
+                        Debug.Log("해골과 접촉했습니다.");
+                        other.GetComponent<UnknownNPC>().isTalkDone = true;
+                        UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi, ref UiManager.Instance.isUnknownUiActive);
+                        UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+                        break;
+                    case 1:
+                        Debug.Log("더미와 접촉했습니다.");
+                        other.GetComponent<UnknownNPC>().isTalkDone = true;
+                        UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi2, ref UiManager.Instance.isUnknownUiActive);
+                        UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+                        break;
+                    case 2:
+                        Debug.Log("만드라고라와 접촉했습니다.");
+                        other.GetComponent<UnknownNPC>().isTalkDone = true;
+                        UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi3, ref UiManager.Instance.isUnknownUiActive);
+                        UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+                        break;
+                }
+            }
         }
         private void OnTriggerExit(Collider other)
         {
@@ -140,7 +202,8 @@ namespace HoonsCodes
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
             //UI상호작용 가능 문구 비활성화
-            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
+            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false
+                && other.GetComponent<ChestReward>().isOpen == false)
             {
                 Debug.Log("보상 상자 접촉 해제");
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
@@ -148,6 +211,11 @@ namespace HoonsCodes
             else if (other.CompareTag("Potal"))
             {
                 Debug.Log("Potal 접촉 해제");
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
+            else if (other.CompareTag("NPC") && other.GetComponent<UnknownNPC>().isTalkDone == false)
+            {
+                Debug.Log("???와 접촉해제");
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
@@ -230,18 +298,18 @@ namespace HoonsCodes
         public void Attack()
         {
             targetPosition = Vector3.zero;
-            if(ArcanaManager.Instance.canEnhanceMeleeAttack == true && AttackCnt == 3)
+            if (ArcanaManager.Instance.canEnhanceMeleeAttack == true && AttackCnt == 3)
             {
                 AttackCnt = 0;
                 StartCoroutine(ArcanaManager.Instance.EnhanceFireArrow());
-                if(ArcanaManager.Instance.canRandomBulletInit == true)
+                if (ArcanaManager.Instance.canRandomBulletInit == true)
                 {
                     StartCoroutine(ArcanaManager.Instance.RandomExtraArrow());
                 }
             }
             else
             {
-                if(ArcanaManager.Instance.canEnhanceMeleeAttack == true)
+                if (ArcanaManager.Instance.canEnhanceMeleeAttack == true)
                     AttackCnt++;
                 StartCoroutine(FireArrow());
                 if (ArcanaManager.Instance.canRandomBulletInit == true)
@@ -265,7 +333,7 @@ namespace HoonsCodes
         private IEnumerator FireArrow()
         {
             BulletProjectile Arrow = Instantiate(bulletProjectile, firePoint.position, transform.rotation);
-            Arrow.isTargeting = this.isAtkTarGeting;
+            Arrow.isTargeting = ArcanaManager.Instance.canCatalyst;
             Arrow.Speed = projectileSpeed;
             Arrow.Damage = dmgValue;
             ParticlePlay(fireParticle);
@@ -275,8 +343,8 @@ namespace HoonsCodes
 
         private IEnumerator Dodge()
         {
-            usingSkillX = false ;
-            isAttack = false ;
+            usingSkillX = false;
+            isAttack = false;
             targetPosition = Vector3.zero;
             // 회피 시작
             isDash = true;
@@ -429,6 +497,22 @@ namespace HoonsCodes
             statspoint += inpoint;
             //넣기
             statsname.SetValue(this, statspoint);
+        }
+        //스킬
+        public void Multi_Shot_Arrow()
+        {
+            if (canMove && !isAttack && !isDash)  // 공격 중, 대시 중, 이동 중이 아닐 때만 스킬 발동
+            {
+                // 예시: 다중 화살 발사 구현
+                Debug.Log("Multi Shot Arrow 발사!");
+
+                // 다중 화살 발사 로직을 여기에 추가합니다.
+                // 예를 들어, 여러 개의 화살을 발사하는 코드 등
+                for (int i = 0; i < 3; i++)
+                {
+                    FireArrow();  // FireArrow 메서드를 호출해 다중 발사
+                }
+            }
         }
     }
 }

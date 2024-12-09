@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7626427234957170101}
   - component: {fileID: 6311165171145472315}
   - component: {fileID: -8438911032168474620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Reward Chest
   m_TagString: Chest
   m_Icon: {fileID: 0}
@@ -176,8 +176,7 @@ MonoBehaviour:
   arcanaDatas:
   - {fileID: 11400000, guid: cc337d26610fb7249b7852efb2e52b5d, type: 2}
   - {fileID: 11400000, guid: 375a422dd2a8f514aaffdd39014328d2, type: 2}
-  - {fileID: 11400000, guid: 924b1f129e7d60945a4963d88df9514e, type: 2}
-  - {fileID: 11400000, guid: c8811a84809ce8040bcaabd6b76a8fcf, type: 2}
+  - {fileID: 11400000, guid: ee708306a979b1f4b83c1d9fa697fe34, type: 2}
   animator: {fileID: 0}
   getReward: 0
   isOpen: 0

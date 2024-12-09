@@ -75,7 +75,11 @@ public class RoomManager : Singleton<RoomManager>
     {
         Debug.Log("OnEnterRestRoom");
         ScenesManager.Instance.ChanageScene("RestScene");
-        
+        UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
+
+        // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
+        StartCoroutine(MovePlayerToStartPosition("RestScene"));
+
     }
     // 보물 방에 들어갈 때
     private void OnEnterTreasureRoom()
@@ -92,6 +96,12 @@ public class RoomManager : Singleton<RoomManager>
     {
         //랜덤한 UnknownRoom으로 이동한다.
         Debug.Log("OnEnterUnknownRoom");
+        ScenesManager.Instance.ChanageScene("RandomScene1");
+        UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
+
+        // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
+        StartCoroutine(MovePlayerToStartPosition("RandomScene1"));
+
     }
     public void ClearRoom()
     {

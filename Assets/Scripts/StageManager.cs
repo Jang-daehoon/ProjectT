@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    public enum RoomCheck { NOMAL, ELITE, BOSS, UNKNOWN, REST, SHOP}
+    public RoomCheck roomCheck;
+
     public float RewardDropRate = 0.6f; // 보상 획득 확률
     public int spawnCount;  // 소환할 카운트
     public GameObject[] InstantiateEnemyPrefabs; // 소환할 적 프리팹 배열
     public Transform[] SpawnPoints;             // 적 소환 위치 배열
     public List<GameObject> ActiveEnemies = new List<GameObject>(); // 활성화된 적 리스트
+
+    //랜덤 방 관련 
+    public bool unknownClear;
 
     // 보상 아이템 관련
     public GameObject rewardItemPrefab;         // 보상 아이템 프리팹
@@ -22,35 +28,67 @@ public class StageManager : MonoBehaviour
 
     private IEnumerator Start()
     {
-        //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
-        //FadeOut
-        UiManager.Instance.FadeObj.gameObject.SetActive(true);
-        UiManager.Instance.FadeObj.isFadeOut = true;
-        yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
-        UiManager.Instance.FadeObj.gameObject.SetActive(false);
-
-        yield return new WaitForSeconds(1f);
-        SpawnEnemies();
-
-        // 생성된 모든 몬스터 처치 여부 체크
-        yield return new WaitUntil(() => AreAllEnemiesDefeated());
-        Debug.Log("모든 적을 처치했습니다!");
-
-        // 처치 완료 시 RewardDropRate 확률에 따라 보상 아이템 생성
-        if (Random.Range(0f, 1f) <= RewardDropRate)  // RewardDropRate 확률로 보상 아이템 생성
+        switch (roomCheck)
         {
-            Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
-            Debug.Log("보상 아이템이 생성되었습니다.");
+            case RoomCheck.NOMAL:
+                //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
+                //FadeOut
+                GameManager.Instance.player.canMove = false;
+                UiManager.Instance.FadeObj.gameObject.SetActive(true);
+                UiManager.Instance.FadeObj.isFadeOut = true;
+                yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
+                UiManager.Instance.FadeObj.gameObject.SetActive(false);
+                //FadeOut
+                GameManager.Instance.player.canMove = true;
+                yield return new WaitForSeconds(1f);
+                SpawnEnemies();
+
+                // 생성된 모든 몬스터 처치 여부 체크
+                yield return new WaitUntil(() => AreAllEnemiesDefeated());
+                Debug.Log("모든 적을 처치했습니다!");
+
+                // 처치 완료 시 RewardDropRate 확률에 따라 보상 아이템 생성
+                if (Random.Range(0f, 1f) <= RewardDropRate)  // RewardDropRate 확률로 보상 아이템 생성
+                {
+                    Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
+                    Debug.Log("보상 아이템이 생성되었습니다.");
+                }
+                else
+                {
+                    Debug.Log("보상이 생성되지 않았습니다.");
+                }
+
+                RoomManager.Instance.ClearRoom();
+
+                Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
+                break;
+            case RoomCheck.ELITE:
+                break;
+            case RoomCheck.BOSS:
+                break;
+            case RoomCheck.UNKNOWN:
+                //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
+                //FadeOut
+                GameManager.Instance.player.canMove = false;
+                UiManager.Instance.FadeObj.gameObject.SetActive(true);
+                UiManager.Instance.FadeObj.isFadeOut = true;
+                yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
+                UiManager.Instance.FadeObj.gameObject.SetActive(false);
+                //FadeOut
+                GameManager.Instance.player.canMove = true;
+                yield return new WaitForSeconds(1f);
+
+                yield return new WaitUntil(() => unknownClear == true);
+                RoomManager.Instance.ClearRoom();
+
+                Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
+                break;
+            case RoomCheck.REST:
+                break;
+            case RoomCheck.SHOP:
+                break;
         }
-        else
-        {
-            Debug.Log("보상이 생성되지 않았습니다.");
-        }
-
-        RoomManager.Instance.ClearRoom();
-
-        Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
-
+        
     }
 
     // 적 소환 메서드
