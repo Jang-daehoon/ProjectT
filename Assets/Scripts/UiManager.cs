@@ -40,7 +40,11 @@ public class UiManager : Singleton<UiManager>
     public Image qCoolImg;  //쿨타임 회전 이미지
     public TextMeshProUGUI qCoolTimeText;   //쿨타임 텍스트
     public Image wSkill;
+    public Image wCoolImg;
+    public TextMeshProUGUI wCoolTimeText;
     public Image eSkill;
+    public Image eCoolImg;
+    public TextMeshProUGUI eCoolTimeText;
 
     [Header("ArcanaImage")]
     public Image firstArcanaImg;
@@ -104,7 +108,7 @@ public class UiManager : Singleton<UiManager>
         isMapUIActive = false;
 
         isUnknownUiActive = false;
-        isUnknownUiActive2 = false; 
+        isUnknownUiActive2 = false;
         isUnknownUiActive3 = false;
     }
     private void Start()
@@ -123,7 +127,7 @@ public class UiManager : Singleton<UiManager>
     }
     private void Update()
     {
-        if(isDialogUiActive == true || isMapUIActive == true || isArcanaUIActive == true)
+        if (isDialogUiActive == true || isMapUIActive == true || isArcanaUIActive == true)
             PlayerStatusUiObj.SetActive(false);
         else
             PlayerStatusUiObj.SetActive(true);
@@ -134,6 +138,16 @@ public class UiManager : Singleton<UiManager>
         float qCoolTime = SkillManager.Instance.qCoolTime; // Q 스킬의 쿨타임 (초 단위)
         StartCoolTime(qCoolImg, qCoolTimeText, qCoolTime);
         // Q 스킬 로직 추가
+    }
+    public void UseWSkill()
+    {
+        float wCoolTime = SkillManager.Instance.wCoolTime; // w 스킬의 쿨타임 (초 단위)
+        StartCoolTime(wCoolImg, wCoolTimeText, wCoolTime);
+    }
+    public void UseESkill()
+    {
+        float eCoolTime = SkillManager.Instance.eCoolTime;  // e 스킬의 쿨타임 (초 단위)
+        StartCoolTime(eCoolImg, eCoolTimeText, eCoolTime);
     }
     public void StartCoolTime(Image coolImage, TextMeshProUGUI coolTimeText, float coolTime)
     {

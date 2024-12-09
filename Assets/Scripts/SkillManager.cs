@@ -164,33 +164,49 @@ public class SkillManager : Singleton<SkillManager>
     }
     public void ImpaleSkill()
     {
-        if (eCooldownTimer <= 0f)  // 쿨타임 체크
+        if (eCooldownTimer <= 0f) // 쿨타임 체크
         {
             // 시전 파티클 생성
-            ParticleSystem startImpaleEffect = Instantiate(startImpaleParticle, GameManager.Instance.player.transform.position, Quaternion.identity);
+            ParticleSystem startImpaleEffect = Instantiate(
+                startImpaleParticle,
+                GameManager.Instance.player.transform.position,
+                Quaternion.identity
+            );
             Destroy(startImpaleEffect.gameObject, 1f); // 1초 후 시전 파티클 삭제
 
-            ParticleSystem ImpalBullet = Instantiate(impaleSkillBullet, GameManager.Instance.player.transform.position, transform.rotation);
-            
+            // 플레이어가 바라보는 방향으로 발사체 생성
+            Transform playerTransform = GameManager.Instance.player.transform;
+            ParticleSystem impaleBullet = Instantiate(
+                impaleSkillBullet,
+                playerTransform.position, // 플레이어 위치에서 생성
+                Quaternion.LookRotation(playerTransform.forward) // 플레이어가 바라보는 방향으로 회전 설정
+            );
+
             // Impale 스킬 발동 위치 설정
-            Vector3 startPosition = GameManager.Instance.player.transform.position;
+            Vector3 startPosition = playerTransform.position;
 
             // Impale 스킬의 효과 범위 설정
-            Vector3 boxSize = new Vector3(5f, 5f, 5f);  // 박스 크기 (x, y, z)
+            Vector3 boxSize = new Vector3(5f, 5f, 5f); // 박스 크기 (x, y, z)
             Quaternion boxRotation = Quaternion.identity; // 회전 값 (필요에 따라 설정)
 
             // 범위 내 적 찾기
-            Collider[] hitEnemies = Physics.OverlapBox(startPosition, boxSize / 2, boxRotation, LayerMask.GetMask("Enemy"));
+            Collider[] hitEnemies = Physics.OverlapBox(
+                startPosition,
+                boxSize / 2,
+                boxRotation,
+                LayerMask.GetMask("Enemy")
+            );
 
             foreach (Collider enemy in hitEnemies)
             {
                 // 적에 데미지를 입히고 피격 파티클을 생성
                 if (enemy.GetComponent<ITakeDamage>() != null)
                 {
-                    enemy.GetComponent<ITakeDamage>().TakeDamage(GameManager.Instance.player.dmgValue * eDamageMultiplier);
+                    enemy.GetComponent<ITakeDamage>().TakeDamage(
+                        GameManager.Instance.player.dmgValue * eDamageMultiplier
+                    );
 
-                    // 피격 파티클 생성
-                    // 2초 후 피격 파티클 삭제
+                    // 피격 파티클 생성 (생략된 부분 추가 가능)
                 }
             }
 
@@ -202,6 +218,7 @@ public class SkillManager : Singleton<SkillManager>
             Debug.Log("E Skill is on cooldown.");
         }
     }
+
 
 
 }

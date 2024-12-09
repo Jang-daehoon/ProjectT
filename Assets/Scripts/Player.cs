@@ -96,11 +96,13 @@ namespace HoonsCodes
             if(Input.GetKeyDown(KeyCode.W))
             {
                 SkillManager.Instance.ArrowRain();
+                UiManager.Instance.UseWSkill();
             }
             if(Input.GetKeyDown(KeyCode.E))
             {
                 RotateToClickPosition();
                 SkillManager.Instance.ImpaleSkill();
+                UiManager.Instance.UseESkill();
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && isDash == false && !UiManager.Instance.isDialogUiActive
