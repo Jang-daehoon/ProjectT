@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage4.unity
     guid: 6b07434beca270342b515c4468c5bd60
   - enabled: 1
+    path: Assets/Scenes/RandomScene1.unity
+    guid: 39e7e71a2c2c06642b3cd393d024b754
+  - enabled: 1
     path: Assets/Scenes/RestStage.unity
     guid: 6a7b19ddadd0ed74db724814f180e189
   m_configObjects: {}

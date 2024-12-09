@@ -19,20 +19,23 @@ MonoBehaviour:
   ArcanaDesc: "\uBBF8\uC9C0\uC758 \uC874\uC7AC\uC5D0\uAC8C \uBCC4\uC758 \uAC00\uD638\uB97C
     \uBC1B\uC544 3\uBC88\uC9F8 \uACF5\uACA9\uB9C8\uB2E4 \n\uAC15\uD654\uB41C \uACF5\uACA9\uC744
     \uD569\uB2C8\uB2E4."
-  baseDamage: 10
   baseCount: 0
   baseInitBulletRate: 0
   enhanceDamage:
-  - 2
-  - 4
-  - 4
+  - 5
+  - 5
+  - 10
   enhanceCount: 
   enhanceInitBulletRate: []
   EnhanceAttackCnt: 3
   EnhancedBullet: {fileID: 4248079633680169839, guid: 41a37d4da81b2464495a3664461ef192, type: 3}
   EnhancedAttackParticle: {fileID: 5250085959814101915, guid: f526611fae2b8ef4aac445743e49691b, type: 3}
   EnhancedHitParticle: {fileID: 7020040619912168571, guid: c7657b0495cba494799114ea244041ca, type: 3}
-  RandomAddBulletRate: 0
-  randomBulletSpeed: 0
-  RandomBulletPrefab: {fileID: 0}
+  RandomExtraShotRate: 0
+  randomExtraShotSpeed: 0
+  RandomBulletPrefab:
+  - {fileID: 0}
+  RandomAttackParticle: []
+  RandomHitParticle: []
   isCatalyst: 0
+  getCatalystParticle: {fileID: 0}

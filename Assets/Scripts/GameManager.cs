@@ -12,6 +12,7 @@ public class GameManager : Singleton<GameManager>
     public CinemachineVirtualCamera playerCamera;
     public MapGenerator mapGenerator;
     public EventSystem eventSystem;
+    public TutorialManager tutorialManager;
 
     private GameManagerEx _game = new GameManagerEx();
     

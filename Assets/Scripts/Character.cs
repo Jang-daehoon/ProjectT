@@ -9,10 +9,10 @@ namespace HoonsCodes
     {
         [Header("Character Info")]
         public float maxHp;
-        [SerializeField] protected float curHp;
+        public float curHp;
         [SerializeField] public float moveSpeed;
 
-        [SerializeField] public float dmgValue;
+        public float dmgValue;
         [SerializeField] public float atkSpeed;   //공격속도
 
         [SerializeField] protected bool isDead;

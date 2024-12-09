@@ -7,6 +7,16 @@ public class ArcanaManager : Singleton<ArcanaManager>
 {
     [Header("ArcanaData Group")]
     public ArcanaData[] ArcanaData;
+    public List<ArcanaData> removedArcana = new List<ArcanaData>(); // 제외된 아르카나 데이터 리스트
+
+    [Header("Damage Enhancement")]
+    public int curEnhanceLevel = 0; // 현재 증가 단계
+    public float enhanceBaseDamage;          // 기본 데미지
+    public float enhanceAtkDamage;        // 데미지 증가값
+
+    public int randomAtkLevel = 0;
+    public float randomBaseDamage;
+    public float randomAtkDamage;   //데미지 증가값
 
     [Header("아르카나 획득 여부 확인")]
     public bool canEnhanceMeleeAttack;  //아르카나를 통해 강화 공격을 획득하였는가?
@@ -24,17 +34,28 @@ public class ArcanaManager : Singleton<ArcanaManager>
 
     private void Awake()
     {
+        // 강화 공격 초기 파티클 설정
         enhanceAttackParticle = ArcanaData[0].EnhancedAttackParticle;
         enhanceMeleeProjectile = ArcanaData[0].EnhancedBullet;
         enhanceHitParticle = ArcanaData[0].EnhancedHitParticle;
+
+        // 초기 데미지 설정
+        enhanceBaseDamage = GameManager.Instance.player.dmgValue;
+        randomBaseDamage = GameManager.Instance.player.dmgValue / 2;
+
+        //데미지 증가값 처음 선택해 활성화시 baseDamage의 값을 가지고 같은 카드 선택 시 curEnhanceLevel의 값이 baseDamage에 증가되며 이후엔 level이 증가한다.
+        // 첫 단계 데미지 증가값 설정
+        enhanceAtkDamage = enhanceBaseDamage;
+        randomAtkDamage = randomBaseDamage;
     }
+
     //기본공격 강화 (폭발)
     public IEnumerator EnhanceFireArrow()
     {
         BulletProjectile enhanceArrow = Instantiate(enhanceMeleeProjectile, GameManager.Instance.player.firePoint.position, GameManager.Instance.player.firePoint.transform.rotation);
         enhanceArrow.isTargeting = GameManager.Instance.player.isAtkTarGeting;
         enhanceArrow.Speed = GameManager.Instance.player.projectileSpeed;
-        enhanceArrow.Damage = ArcanaData[0].baseDamage;
+        enhanceArrow.Damage = enhanceAtkDamage;
         enhanceArrow.HitParticle = enhanceHitParticle;
         enhanceArrow.isEnhanced = true;
         // ParticleSystem prefab을 소환
@@ -70,7 +91,7 @@ public class ArcanaManager : Singleton<ArcanaManager>
 
             // 랜덤 투사체 속도와 데미지 설정
             randomProjectile.Speed = ArcanaData[1].randomExtraShotSpeed;
-            randomProjectile.Damage = ArcanaData[1].baseDamage;
+            randomProjectile.Damage = randomAtkDamage;
             randomProjectile.HitParticle = ArcanaData[1].RandomHitParticle[randomIndex];
             randomProjectile.isEnhanced = false;
 
@@ -92,6 +113,33 @@ public class ArcanaManager : Singleton<ArcanaManager>
             yield return null;
         }
     }
+    //기본공격 유도체로 변환
+    public void ChanageCatalyst()
+    {
+        // 아르카나 데이터의 유도체 활성화 설정
+        canCatalyst = ArcanaData[2].isCatalyst;
+
+        // 플레이어의 자식 오브젝트로 파티클 생성
+        ParticleSystem CatalystParticle = Instantiate(
+            ArcanaData[2].getCatalystParticle,
+            new Vector3(
+                GameManager.Instance.player.transform.position.x,
+                GameManager.Instance.player.transform.position.y + 1,
+                GameManager.Instance.player.transform.position.z
+            ),
+            GameManager.Instance.player.transform.rotation
+        );
+        CatalystParticle.transform.SetParent(GameManager.Instance.player.transform);
+
+        // ArcanaData[2]를 removedArcana 리스트로 이동
+        removedArcana.Add(ArcanaData[2]);
+
+        // ArcanaData 배열에서 세 번째 데이터 제거
+        List<ArcanaData> arcanaList = new List<ArcanaData>(ArcanaData);
+        arcanaList.RemoveAt(2);
+        ArcanaData = arcanaList.ToArray(); // 배열로 다시 변환
+    }
+
 
 
 }

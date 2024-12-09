@@ -17,7 +17,6 @@ public class ArcanaData : ScriptableObject
     [TextArea(3,3)]public string ArcanaDesc;   //아르카나 카드 설명
 
     [Header("LevelData")]
-    public float baseDamage;    //기본 데미지
     public int baseCount;     //기본 투사체 개수
     public float baseInitBulletRate;    //기본 랜덤투사체 소환 확률;     
 
@@ -41,6 +40,7 @@ public class ArcanaData : ScriptableObject
 
     [Header("모든 공격 유도체로 변경")]
     public bool isCatalyst;
+    public ParticleSystem getCatalystParticle;  //유도체 공격 활성화 시 몸 주변에 아우라가 생성(이상한 가호 효과)
 
     //스킬 강화 데이터 추가
 

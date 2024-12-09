@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8137152101532955719}
   - component: {fileID: 623000469283964960}
   - component: {fileID: 6173478495050517701}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 835202339486501156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leaf_a_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 5359185556885883629}
   - component: {fileID: 2685809442994034985}
   - component: {fileID: 8057693590153483157}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 1204451656669019232}
   - component: {fileID: 793368987061170601}
   - component: {fileID: 4727560111310671536}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 1038337688362163469}
   - component: {fileID: 8632136950493967856}
   - component: {fileID: 235220636133137660}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: BackhPbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 8213773529892766945}
   - component: {fileID: 5042162605574872953}
   - component: {fileID: 5014162791236752097}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 7596304294316190966}
   - component: {fileID: 5454301732364087543}
   - component: {fileID: 3852268663255929268}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 458449778636131176}
   - component: {fileID: 501461603714316010}
   - component: {fileID: 1599213713081169923}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 1720351354971869741}
   - component: {fileID: 1128174110369798189}
   - component: {fileID: 3280518916249839029}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +640,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7501671464125821703}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: head_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2480189671401090649}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leg_02_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 7587852931429966970}
   - component: {fileID: 2760932284856077255}
   - component: {fileID: 8452878295905577761}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -781,7 +781,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2316092435686677815}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leg_01_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ GameObject:
   - component: {fileID: 5446566837399320295}
   - component: {fileID: 9009082089092814287}
   - component: {fileID: 8315412999181542485}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 8030299514943938915}
   - component: {fileID: 7402508826761903128}
   - component: {fileID: 3176225504817030684}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 9126515784600484625}
   - component: {fileID: 3281955066413929111}
   - component: {fileID: 5705268525024089721}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1040,7 +1040,7 @@ GameObject:
   - component: {fileID: 7830066197087585173}
   - component: {fileID: 7766224387243106618}
   - component: {fileID: 3005058086153044707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1196,7 +1196,7 @@ GameObject:
   - component: {fileID: 5791590244532435925}
   - component: {fileID: 8616089064493780700}
   - component: {fileID: 2657869000456055812}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Suicide_Planta
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1351,7 +1351,7 @@ GameObject:
   - component: {fileID: 6346544608554674736}
   - component: {fileID: 4979478875120236992}
   - component: {fileID: 5579742604084353570}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HPbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1426,7 +1426,7 @@ GameObject:
   - component: {fileID: 5805969360465986924}
   - component: {fileID: 2356001032220390539}
   - component: {fileID: 14678618730956975}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1501,7 +1501,7 @@ GameObject:
   - component: {fileID: 1648767440225297501}
   - component: {fileID: 1888925659806725320}
   - component: {fileID: 3879785029859422214}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1576,7 +1576,7 @@ GameObject:
   - component: {fileID: 8701282701596454605}
   - component: {fileID: 3601732375018028487}
   - component: {fileID: 6169270505041175726}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1651,7 +1651,7 @@ GameObject:
   - component: {fileID: 8619763915169206993}
   - component: {fileID: 4252075135347759641}
   - component: {fileID: 3122139120621940188}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1726,7 +1726,7 @@ GameObject:
   - component: {fileID: 7867720081437651410}
   - component: {fileID: 8541795672948343422}
   - component: {fileID: 7908107726989295760}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1800,7 +1800,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5501419043019758490}
   - component: {fileID: 5678418247091064477}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Planta_Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1896,7 +1896,7 @@ GameObject:
   - component: {fileID: 6204131985460864142}
   - component: {fileID: 1350906771920587928}
   - component: {fileID: 2519133374801591921}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1969,7 +1969,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8428570202126545898}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leg_01_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2001,7 +2001,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5417955726082289727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2035,7 +2035,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4337465938015357633}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leaf_a_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2068,7 +2068,7 @@ GameObject:
   - component: {fileID: 6126047745941738563}
   - component: {fileID: 9104532531454843323}
   - component: {fileID: 185917556018601365}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HPbarBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2141,7 +2141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6646173386244777646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leg_02_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2172,7 +2172,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2298732436725192959}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2204,7 +2204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5847437876977642785}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leaf_a_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2237,7 +2237,7 @@ GameObject:
   - component: {fileID: 4580829232511577311}
   - component: {fileID: 4844310980774832707}
   - component: {fileID: 2007442655836712133}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2312,7 +2312,7 @@ GameObject:
   - component: {fileID: 4229446344198089010}
   - component: {fileID: 1302074106989386138}
   - component: {fileID: 4636154040651269448}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2389,7 +2389,7 @@ GameObject:
   - component: {fileID: 2963075738993106577}
   - component: {fileID: 2162307371873048937}
   - component: {fileID: 8493404331971747201}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HPBarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2511,7 +2511,7 @@ GameObject:
   - component: {fileID: 3161227237913320941}
   - component: {fileID: 5620844911905729239}
   - component: {fileID: 7767256636188892643}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2588,7 +2588,7 @@ GameObject:
   - component: {fileID: 4924584169356663602}
   - component: {fileID: 3259597177132578940}
   - component: {fileID: 3813745113296889053}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HPLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2720,7 +2720,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7017421713457772593}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leaf_a_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
