@@ -11,20 +11,31 @@ public class BossDryad : Character
     [Tooltip("일반 공격 거리")]
     public float attackDistance = 25f;
     public NavMeshAgent agent { get; private set; }
-    [SerializeField] public LeafStorm leafStormInstance;
-    [SerializeField] public LeafRainSkill leafRainInstance;
-    [SerializeField] private float attackDelay = 1.5f; // 공격간 딜레이
+    public LeafStorm leafStormInstance;
+    public LeafRainSkill leafRainInstance;
+    [SerializeField] private float attackDelay = 2f; // 공격간 딜레이
 
-    [SerializeField] private float skillGroggy = 3.5f;
+    [SerializeField] private float skillGroggy = 3f;
     [SerializeField] private float LeafStormCoolTime = 20f;
-    [SerializeField] private float LeafRainCoolTime = 10f;
+    [SerializeField] private float LeafRainCoolTime = 20f;
+    [SerializeField] private float BeamCoolTime = 20f;
 
     public ParticleSystem LeafStormParticle;
     public ParticleSystem LeafRainParticle;
+    public ParticleSystem BeamParticle;
+    public ParticleSystem InvincibleParticle;
+    public Collider LaserCol;
 
     private BossState currentState;
     [SerializeField] private bool isPlayerInRange = false; // 플레이어가 범위 내에 있는지 여부
     [SerializeField] private bool isSkillExecuting = false; // 스킬 상태 실행 여부 플래그
+
+    private bool isInvincible = false; // 무적 상태 여부
+    private bool isInvincibleAnim = false; // 무적 애니메이션 실행 여부
+    // 소환된 몬스터 리스트
+    private List<GameObject> summonedMonsters = new List<GameObject>();
+    // 특수 몬스터 프리팹
+    public GameObject specialMonsterPrefab;
 
     private void Awake()
     {
@@ -32,6 +43,7 @@ public class BossDryad : Character
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         agent.updateRotation = false;
+        LaserCol.enabled = false; // Collider 비활성화
     }
     private void Start()
     {
@@ -60,13 +72,21 @@ public class BossDryad : Character
                 break;
             case BossState.LEAFSTORM:
             case BossState.LEAFRAIN:
-            case BossState.SKILL3:
+            case BossState.BEAM:
                 // 스킬은 코루틴으로 처리
+                break;
+            case BossState.INVINCIBLE:
                 break;
             case BossState.DIE:
                 // 죽음 상태 처리
                 break;
         }
+        //test
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ChangeState(BossState.INVINCIBLE);
+        }
+
     }
     private void ChangeState(BossState newState)
     {
@@ -74,7 +94,7 @@ public class BossDryad : Character
             $"{new System.Diagnostics.StackTrace().GetFrame(1).GetMethod().Name}" +
             $" | Current: {currentState} -> New: {newState}");
 
-        if (currentState == newState || isSkillExecuting)
+        if (currentState == newState || isSkillExecuting || isInvincibleAnim)
             return;
 
         currentState = newState;
@@ -93,6 +113,12 @@ public class BossDryad : Character
                 break;
             case BossState.LEAFRAIN:
                 StartCoroutine(HandleSkillState(currentState));
+                break;
+            case BossState.BEAM:
+                StartCoroutine(HandleSkillState(currentState));
+                break;
+            case BossState.INVINCIBLE:
+                StartCoroutine(EnterInvincibleState());
                 break;
             case BossState.DIE:
                 StartCoroutine(HandleDieState());
@@ -126,6 +152,7 @@ public class BossDryad : Character
 
         isSkillExecuting = true;
         agent.isStopped = true;
+        animator.SetBool("isChasing", false);
         animator.SetTrigger($"{skill}");
         switch (skill)
         {
@@ -136,8 +163,19 @@ public class BossDryad : Character
                 LeafRainParticle.Play();
                 leafRainInstance.UseLeafRainSkill();
                 break;
+            case BossState.BEAM:
+                yield return new WaitForSeconds(0.9f);
+                BeamParticle.Play();
+                yield return new WaitForSeconds(1f);
+                LaserCol.enabled = true;
+                break;
         }
-        yield return new WaitForSeconds(skillGroggy);
+        if (skill == BossState.BEAM)
+        {
+            yield return new WaitForSeconds(0.5f);
+            LaserCol.enabled = false;
+        }
+
         if (skill == BossState.LEAFRAIN)
         {
             yield return new WaitForSeconds(skillGroggy);
@@ -146,7 +184,7 @@ public class BossDryad : Character
         }
 
         isSkillExecuting = false;
-        yield return new WaitForSeconds(skillGroggy);
+        yield return new WaitForSeconds(skillGroggy * 2);
         ChangeState(BossState.IDLE);
     }
     private IEnumerator UseSkills()
@@ -161,6 +199,9 @@ public class BossDryad : Character
             yield return new WaitForSeconds(LeafRainCoolTime);
             if (currentState != BossState.DIE)
                 ChangeState(BossState.LEAFRAIN);
+            yield return new WaitForSeconds(BeamCoolTime);
+            if (currentState != BossState.DIE)
+                ChangeState(BossState.BEAM);
         }
     }
     public void LeafStormEvent()
@@ -173,14 +214,16 @@ public class BossDryad : Character
         animator.SetTrigger("Die");
         gameObject.GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        Destroy(gameObject);
+        Dead();
     }
     public override void Dead()
     {
+        Destroy(gameObject);
     }
     public override void Move()
     {
-        if (currentState == BossState.LEAFSTORM || currentState == BossState.LEAFRAIN || currentState == BossState.SKILL3)
+        if (currentState == BossState.LEAFSTORM
+            || currentState == BossState.LEAFRAIN || currentState == BossState.BEAM)
             return;
         if (currentState == BossState.ATTACK) return;
         agent.SetDestination(target.position);
@@ -227,5 +270,85 @@ public class BossDryad : Character
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * lookSpeed);
+    }
+    private IEnumerator EnterInvincibleState()
+    {
+        agent.isStopped = true;
+        animator.SetBool("isChasing", false);
+
+        isInvincible = true; // 무적 상태로 전환
+        isInvincibleAnim = true;
+
+        animator.SetTrigger("INVINCIBLE");
+        InvincibleParticle.Play(); // 무적 파티클 재생
+
+        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(3f);
+
+        // 몬스터 3마리 소환
+        for (int i = 0; i < 3; i++)
+        {
+            Vector3 randomPosition = GetRandomPositionAroundBoss();
+            GameObject monster = Instantiate(specialMonsterPrefab, randomPosition, Quaternion.identity);
+            summonedMonsters.Add(monster);
+        }
+
+        // 몬스터 상태 확인 시작
+        StartCoroutine(CheckMonstersDefeated());
+
+        // 다시 패턴으로
+        isInvincibleAnim = false;
+        agent.isStopped = false;
+        ChangeState(BossState.IDLE);
+    }
+    private Vector3 GetRandomPositionAroundBoss()
+    {
+        float radius = 10f; // 소환 반경
+        float randomAngle = Random.Range(0, Mathf.PI * 2); // 랜덤 각도
+
+        // 원형 좌표 계산
+        float x = Mathf.Cos(randomAngle) * radius;
+        float z = Mathf.Sin(randomAngle) * radius;
+
+        Vector3 randomPosition = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
+
+        // NavMesh 위의 유효한 위치 샘플링
+        if (NavMesh.SamplePosition(randomPosition, out NavMeshHit hit, radius, NavMesh.AllAreas))
+            return hit.position; // NavMesh 위의 위치 반환
+
+        return transform.position; // 실패 시 보스 위치 반환
+    }
+    private IEnumerator CheckMonstersDefeated()
+    {
+        while (summonedMonsters.Count > 0)
+            yield return new WaitForSeconds(1f); // 주기적으로 확인
+
+        // 무적 상태 해제
+        ExitInvincibleState();
+    }
+    private void ExitInvincibleState()
+    {
+        isInvincible = false;
+        InvincibleParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // 무적 파티클 중지
+    }
+    public void RemoveMonster(GameObject monster)
+    {
+        if (summonedMonsters.Contains(monster))
+        {
+            summonedMonsters.Remove(monster);
+            Debug.Log($"Monster defeated. Remaining: {summonedMonsters.Count}");
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (LaserCol.name == "LaserCollider")
+        {
+            if (other.CompareTag("Player"))
+            {
+                // 레이저 플레이어 데미지 처리
+                Debug.Log($"Player hit by Laser!");
+            }
+        }
     }
 }
