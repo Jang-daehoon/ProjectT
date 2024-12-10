@@ -7173,6 +7173,7 @@ GameObject:
   - component: {fileID: 554318366}
   - component: {fileID: 554318365}
   - component: {fileID: 554318364}
+  - component: {fileID: 554318367}
   m_Layer: 5
   m_Name: Sprite_Triangle
   m_TagString: Untagged
@@ -7237,6 +7238,19 @@ RectTransform:
   m_AnchoredPosition: {x: -18, y: 21}
   m_SizeDelta: {x: 24, y: 31}
   m_Pivot: {x: 1, y: 0}
+--- !u!114 &554318367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554318363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa50261dcfc78949ad6583bf80c985d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 1
 --- !u!1001 &561341690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22174,11 +22188,11 @@ MonoBehaviour:
   wDamageMultiplier: 0
   arrowRainBullet: {fileID: 7520478007629400125, guid: d249ed0acc1b72341bceef08babe964a, type: 3}
   arrowRainParticle: {fileID: 4363708317115051805, guid: b08033669d41e2a4197972ee7f5a3fb3, type: 3}
-  eCoolTime: 30
+  eCoolTime: 1
   eDamageMultiplier: 10
   impaleSkillBullet: {fileID: 6966420061541031233, guid: 676108d394f5d0d41aa7c14da676f765, type: 3}
   startImpaleParticle: {fileID: 2168383714331228570, guid: c7dd05a59354c0549892054c062853c3, type: 3}
-  SkillRanage: {fileID: 1229984610350775242, guid: 676108d394f5d0d41aa7c14da676f765, type: 3}
+  skillRange: {fileID: 1229984610350775242, guid: 676108d394f5d0d41aa7c14da676f765, type: 3}
 --- !u!1 &1797723784
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class SkillManager : Singleton<SkillManager>
     public float eDamageMultiplier;
     public ParticleSystem impaleSkillBullet;
     public ParticleSystem startImpaleParticle;
-    public Collider SkillRanage;
+    public Collider skillRange;
 
     private float qCooldownTimer = 0f;  // 쿨타임 타이머 (Q 스킬)
     private float wCooldownTimer = 0f;  // 쿨타임 타이머 (W 스킬)
@@ -162,6 +162,7 @@ public class SkillManager : Singleton<SkillManager>
             Debug.Log("W Skill is on cooldown.");
         }
     }
+
     public void ImpaleSkill()
     {
         if (eCooldownTimer <= 0f) // 쿨타임 체크
@@ -172,42 +173,46 @@ public class SkillManager : Singleton<SkillManager>
                 GameManager.Instance.player.transform.position,
                 Quaternion.identity
             );
-            Destroy(startImpaleEffect.gameObject, 1f); // 1초 후 시전 파티클 삭제
 
-            // 플레이어가 바라보는 방향으로 발사체 생성
-            Transform playerTransform = GameManager.Instance.player.transform;
+            // Impale 스킬 발사체 생성
             ParticleSystem impaleBullet = Instantiate(
                 impaleSkillBullet,
-                playerTransform.position, // 플레이어 위치에서 생성
-                Quaternion.LookRotation(playerTransform.forward) // 플레이어가 바라보는 방향으로 회전 설정
+                GameManager.Instance.player.transform.position,
+                GameManager.Instance.player.transform.rotation
             );
 
-            // Impale 스킬 발동 위치 설정
-            Vector3 startPosition = playerTransform.position;
-
-            // Impale 스킬의 효과 범위 설정
-            Vector3 boxSize = new Vector3(5f, 5f, 5f); // 박스 크기 (x, y, z)
-            Quaternion boxRotation = Quaternion.identity; // 회전 값 (필요에 따라 설정)
-
-            // 범위 내 적 찾기
-            Collider[] hitEnemies = Physics.OverlapBox(
-                startPosition,
-                boxSize / 2,
-                boxRotation,
-                LayerMask.GetMask("Enemy")
-            );
-
-            foreach (Collider enemy in hitEnemies)
+            // 발사체의 Collider 가져오기
+            Collider bulletCollider = impaleBullet.GetComponent<Collider>();
+            if (bulletCollider != null)
             {
-                // 적에 데미지를 입히고 피격 파티클을 생성
-                if (enemy.GetComponent<ITakeDamage>() != null)
-                {
-                    enemy.GetComponent<ITakeDamage>().TakeDamage(
-                        GameManager.Instance.player.dmgValue * eDamageMultiplier
-                    );
+                Vector3 boxCenter = bulletCollider.bounds.center;
+                Vector3 boxSize = bulletCollider.bounds.size;
+                Quaternion boxRotation = impaleBullet.transform.rotation;
 
-                    // 피격 파티클 생성 (생략된 부분 추가 가능)
+                // 범위 내 적 찾기
+                Collider[] hitEnemies = Physics.OverlapBox(
+                    boxCenter,
+                    boxSize / 2,
+                    boxRotation,
+                    LayerMask.GetMask("Enemy")
+                );
+
+                foreach (Collider enemy in hitEnemies)
+                {
+                    // 적에 데미지를 입히고 피격 파티클을 생성
+                    if (enemy.GetComponent<ITakeDamage>() != null)
+                    {
+                        enemy.GetComponent<ITakeDamage>().TakeDamage(
+                            GameManager.Instance.player.dmgValue * eDamageMultiplier
+                        );
+
+                        // 피격 파티클 생성 (필요한 경우)
+                    }
                 }
+            }
+            else
+            {
+                Debug.LogError("ImpaleSkillBullet does not have a Collider component.");
             }
 
             // 쿨타임 시작
@@ -218,7 +223,5 @@ public class SkillManager : Singleton<SkillManager>
             Debug.Log("E Skill is on cooldown.");
         }
     }
-
-
 
 }

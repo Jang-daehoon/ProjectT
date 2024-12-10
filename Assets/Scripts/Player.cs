@@ -5,7 +5,7 @@ using UnityEngine;
 using static UnityEngine.ParticleSystem;
 namespace HoonsCodes
 {
-    public class Player : Character, Skills
+    public class Player : Character
     {
         [Header("플레이어 이동 가능 여부")]
         public bool canMove;
