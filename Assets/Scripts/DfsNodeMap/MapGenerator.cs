@@ -9,7 +9,7 @@ public enum ERoomType
 {
     Elite = 0,
     Enemy = 1,
-    Merchant = 2,
+    //Merchant = 2,
     Rest = 3,
     Treasure = 4,
     Unknown = 5,
@@ -293,7 +293,7 @@ public class MapGenerator : MonoBehaviour
         // 다음 재귀 호출에서 사용할 가능 방 종류를 기본값으로 초기화
         // 다음 함수에 possibleRoomType로 넘겨줄 리스트
         // 4는 보물방임. 따라서 리스트에 넣지 않음
-        List<int> originPossibleRoomTypes = new List<int>() { 0, 1, 2, 3, 5 };
+        List<int> originPossibleRoomTypes = new List<int>() { 0, 1, 3, 5 }; //상점 2는 제외
 
         // 가능한 방 타입이 없을 경우, 디버그 메시지 출력
         if (possibleRoomType?.Count <= 0)
@@ -383,7 +383,6 @@ public class MapGenerator : MonoBehaviour
     /// <returns>가중치 랜덤으로 인해 나온 값</returns>
     private int SelectRoomWeightRandom(List<int> possibleRoomType)
     {
-
         int allPercentage = 0;   // possibleRoomType의 모든 확률 더한 값
         int currentPercentageSum = 0; // 차례대로 확률값을 누적하여 더한 값
         int selectedRoomIndex = 0; // 반환할 값

@@ -141,10 +141,10 @@ namespace HoonsCodes
                 UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
-            else if(other.CompareTag("Godness"))
+            else if(other.CompareTag("Godness") && other.GetComponent<Godness>().isTalkDone == false)
             {
                 Debug.Log("여신과 접촉");
-                UiManager.Instance.interactiveText.text = "여신이 나에게 말을걸고 싶어합니다.";
+                UiManager.Instance.interactiveText.text = "F 여신이 당신을 회복시키려 합니다.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
@@ -190,6 +190,13 @@ namespace HoonsCodes
             {
                 StartCoroutine(other.GetComponent<RelicBox>().RelicResult());
             }
+            else if (other.CompareTag("Godness") && other.GetComponent<Godness>().isTalkDone == false
+                && Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log("여신과 접촉");
+                other.GetComponent<Godness>().Heal();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
         }
         private void OnTriggerExit(Collider other)
         {
@@ -213,6 +220,11 @@ namespace HoonsCodes
             else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false)
             {
                 Debug.Log("유물 상자 접촉 해제");
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
+            else if (other.CompareTag("Godness") && other.GetComponent<Godness>().isTalkDone == false)
+            {
+                Debug.Log("여신과 접촉");
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
