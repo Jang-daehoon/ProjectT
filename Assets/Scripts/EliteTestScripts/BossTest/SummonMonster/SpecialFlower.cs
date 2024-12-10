@@ -4,15 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialFlower : Character
+public class SpecialFlower : EliteUnit
 {
-    private Transform target; // 플레이어 참조
-
-    public float attackInterval = 2.0f; // 공격 간 딜레이
     private bool isCasting = false; // 현재 스킬 시전 중 여부
     private bool IsPlayerInRange = false; // 현재 스킬 시전 중 여부
+    private bool shouldLook = true; // 플레이어를 바라볼 수 있는 상태인지
+
     public Collider attackRange; // 공격 범위
     public ParticleSystem grass; // 파티클 시스템
+
     private FlowerState currentState;
 
     void Start()
@@ -21,7 +21,6 @@ public class SpecialFlower : Character
         ChangeState(FlowerState.IDLE); // 초기 상태 설정
         StartCoroutine(LookTarget());
     }
-
     void Update()
     {
         // 상태별 동작
@@ -38,8 +37,10 @@ public class SpecialFlower : Character
             case FlowerState.DIE:
                 break;
         }
+        //test
+        if(Input.GetKeyDown(KeyCode.Escape))
+            ChangeState(FlowerState.DIE);
     }
-
     private void ChangeState(FlowerState newState)
     {
         if (currentState == newState) return;
@@ -64,26 +65,23 @@ public class SpecialFlower : Character
                 break;
         }
     }
-
     private void HandleIdleState()
     {
         if (IsPlayerInRange == true)
             ChangeState(FlowerState.CAST);
     }
-
     private void HandleCastState()
     {
         if (IsPlayerInRange == false)
             ChangeState(FlowerState.IDLE);
     }
-
     private IEnumerator CastSkill()
     {
         isCasting = true;
 
         while (currentState == FlowerState.CAST)
         {
-            yield return new WaitForSeconds(attackInterval); // 공격 딜레이
+            yield return new WaitForSeconds(attackDelay); // 공격 딜레이
             if (IsPlayerInRange == false)
             {
                 ChangeState(FlowerState.IDLE);
@@ -95,20 +93,22 @@ public class SpecialFlower : Character
             grass.Play(); // 파티클 실행
             AttackPlayer();
 
-            yield return null;
+            // 1초간 바라보기를 멈춤
+            shouldLook = false;
+            yield return new WaitForSeconds(1f);
+            shouldLook = true;
+
             animator.SetBool("isCasting", false);
-            yield return new WaitForSeconds(attackInterval); // 공격 딜레이
+            yield return new WaitForSeconds(attackDelay); // 공격 딜레이
         }
 
         isCasting = false;
     }
-
     private void AttackPlayer()
     {
         if (IsPlayerInRange == true)
         {
             Debug.Log("아야!");
-
         }
     }
     private IEnumerator LookTarget()
@@ -116,32 +116,26 @@ public class SpecialFlower : Character
         while (true)
         {
             if (animator.GetBool("isCasting") == true)
-                yield return new WaitForSeconds(2.5f);
-            Move();
-            yield return null;
+                yield return null;
+
+            else if (shouldLook)
+            {
+                // 바라보는 동작 수행
+                Look(3f);
+            }
+            yield return null; // 매 프레임 대기
         }
     }
-    public override void Move()
-    {
-        if (target == null) return; // 타겟이 없으면 리턴
-
-        Vector3 direction = (target.position - transform.position).normalized;
-        direction.y = 0; // Y축 회전을 고정
-
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 3f);
-    }
-
     private IEnumerator Die()
     {
+        StopCoroutine(LookTarget());
+        gameObject.GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(2.0f); // 죽음 애니메이션 대기
         BossDryad boss = FindObjectOfType<BossDryad>();
         if (boss != null)
             boss.RemoveMonster(gameObject);
         Destroy(gameObject);
     }
-
-
     public override void Dead()
     {
         ChangeState(FlowerState.DIE);

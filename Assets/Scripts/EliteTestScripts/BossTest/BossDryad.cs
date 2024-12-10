@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using EnemyController;
 using HoonsCodes;
+using System.IO;
 
-public class BossDryad : Character
+public class BossDryad : EliteUnit
 {
-    public Transform target;
     [Tooltip("일반 공격 거리")]
     public float attackDistance = 25f;
-    public NavMeshAgent agent { get; private set; }
+
     public LeafStorm leafStormInstance;
     public LeafRainSkill leafRainInstance;
-    [SerializeField] private float attackDelay = 2f; // 공격간 딜레이
 
     [SerializeField] private float skillGroggy = 3f;
     [SerializeField] private float LeafStormCoolTime = 20f;
@@ -27,7 +26,6 @@ public class BossDryad : Character
     public Collider LaserCol;
 
     private BossState currentState;
-    [SerializeField] private bool isPlayerInRange = false; // 플레이어가 범위 내에 있는지 여부
     [SerializeField] private bool isSkillExecuting = false; // 스킬 상태 실행 여부 플래그
 
     private bool isInvincible = false; // 무적 상태 여부
@@ -37,11 +35,9 @@ public class BossDryad : Character
     // 특수 몬스터 프리팹
     public GameObject specialMonsterPrefab;
 
-    private void Awake()
+    protected override void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        base.Awake();
         agent.updateRotation = false;
         LaserCol.enabled = false; // Collider 비활성화
     }
@@ -241,9 +237,9 @@ public class BossDryad : Character
                 animator.SetBool("isChasing", false);
                 animator.SetBool("isAttack", true); // 공격 애니메이션 활성화
 
-                yield return new WaitForSeconds(0.1f); // 애니메이션 재생 시간만큼 대기
+                yield return new WaitForEndOfFrame();
+                yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
-                // 공격 딜레이
                 animator.SetBool("isAttack", false); // 공격 애니메이션 비활성화
                 yield return new WaitForSeconds(attackDelay); // 공격 간 딜레이
             }
@@ -258,16 +254,6 @@ public class BossDryad : Character
             isPlayerInRange = true;
         else
             isPlayerInRange = false;
-    }
-    public void Look(float lookSpeed)
-    {
-        if (target == null) return; // 타겟이 없으면 리턴
-
-        Vector3 direction = (target.position - transform.position).normalized;
-        direction.y = 0; // Y축 회전을 고정
-
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * lookSpeed);
     }
     private IEnumerator EnterInvincibleState()
     {
