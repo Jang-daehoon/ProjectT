@@ -15,8 +15,8 @@ MonoBehaviour:
   info: 1
   characterName: Skeleton
   characterDesc: "\uADFC\uC811\uACF5\uACA9 \uC720\uB2DB"
-  maxHp: 20
-  damage: 0.5
-  moveSpeed: 4
+  maxHp: 100
+  damage: 10
+  moveSpeed: 2
   attackSpeed: 1
   attackDelay: 5

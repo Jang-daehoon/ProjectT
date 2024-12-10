@@ -23,6 +23,9 @@ public class ArcanaData : ScriptableObject
     public float[] enhanceDamage;   //증가한 데미지
     public int[] enhanceCount;  //증가한 투사체 개수            
     public float[] enhanceInitBulletRate;   //증가한 랜덤투사체 확률
+    public float[] enhanceDamageMultiplier;    //증가한 데미지 배율
+    public Vector3[] enhanceSkillScale;   //증가한 스킬 사이즈 증가
+    public float[] cooldownReduction; //쿨타임 감소량
 
     [Header("EnhanceData")]
     [Header("공격 횟수마다 강화공격")]

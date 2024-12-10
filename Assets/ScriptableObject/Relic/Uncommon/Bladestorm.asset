@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Bladestorm
   m_EditorClassIdentifier: 
   rarity: 1
+  color: {r: 0, g: 1, b: 1, a: 1}
   relicName: "\uCE7C\uB0A0\uD3ED\uD48D"
   relicID: 1
   relicSprite: {fileID: 0}
   relicDesc: 
   isLevelPlus: 1
   statName: atkSpeed
-  relicStatsPoint: 0.1
+  relicStatsPoint: 0.5

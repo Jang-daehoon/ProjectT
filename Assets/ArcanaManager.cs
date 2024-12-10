@@ -22,7 +22,12 @@ public class ArcanaManager : Singleton<ArcanaManager>
     public bool canEnhanceMeleeAttack;  //아르카나를 통해 강화 공격을 획득하였는가?
     public bool canRandomBulletInit;    //아르카나를 통해 랜덤 투사체 발사를 획득하였는가?
     public bool canCatalyst;    //아르카나를 통해 모든 공격이 유도체로 변경되었는가?
-    
+
+    public int qSkillLevel = 0;
+    public int wSkillLevel = 0;
+    public int eSkillLevel = 0;
+    public Vector3 skillSize;
+
     public BulletProjectile enhanceMeleeProjectile;   //강화 화살 프리펩
     public ParticleSystem enhanceAttackParticle;    //강화 공격 파티클
     public ParticleSystem enhanceHitParticle;   //강화공격 피격 파티클

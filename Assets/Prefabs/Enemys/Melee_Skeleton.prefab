@@ -273,7 +273,7 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
   atkSpeed: 2
   isDead: 0
   characterData: {fileID: 11400000, guid: b02df03c1d489c34ba6ab5e6684ad706, type: 2}
-  range: 1
+  range: 2
   target: {fileID: 0}
   hpBar: {fileID: 2012961097568090273}
   swordRender: {fileID: 5192813077063782114}
@@ -737,7 +737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4345905167850515948
 Transform:
   m_ObjectHideFlags: 0

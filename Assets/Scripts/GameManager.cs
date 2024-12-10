@@ -15,7 +15,9 @@ public class GameManager : Singleton<GameManager>
     public TutorialManager tutorialManager;
 
     private GameManagerEx _game = new GameManagerEx();
-    
+
+    [Header("À¯¹°")]
+    public List<RelicData> relicList;
 
     public static GameManagerEx Game => Instance._game;
 

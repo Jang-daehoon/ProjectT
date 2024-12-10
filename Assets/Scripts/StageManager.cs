@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public enum RoomCheck { NOMAL, ELITE, BOSS, UNKNOWN, REST, SHOP}
+    public enum RoomCheck { NOMAL, ELITE, BOSS, UNKNOWN, REST, REWARD, SHOP}
     public RoomCheck roomCheck;
 
     public float RewardDropRate = 0.6f; // 보상 획득 확률
@@ -15,6 +15,12 @@ public class StageManager : MonoBehaviour
 
     //랜덤 방 관련 
     public bool unknownClear;
+
+    //휴식 방 관련
+    public bool restRoomClear;
+
+    //보상 방 관련
+    public Transform[] rewardsPos;
 
     // 보상 아이템 관련
     public GameObject rewardItemPrefab;         // 보상 아이템 프리팹
@@ -84,9 +90,49 @@ public class StageManager : MonoBehaviour
                 Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
                 break;
             case RoomCheck.REST:
+                GameManager.Instance.player.canMove = false;
+                UiManager.Instance.FadeObj.gameObject.SetActive(true);
+                UiManager.Instance.FadeObj.isFadeOut = true;
+                yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
+                UiManager.Instance.FadeObj.gameObject.SetActive(false);
+
+                //FadeOut
+                GameManager.Instance.player.canMove = true;
+                yield return new WaitForSeconds(1f);
+
+                yield return new WaitUntil(() => restRoomClear == true);
+                RoomManager.Instance.ClearRoom();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
                 break;
-            case RoomCheck.SHOP:
+
+            case RoomCheck.REWARD:
+                GameManager.Instance.player.canMove = false;
+                UiManager.Instance.FadeObj.gameObject.SetActive(true);
+                UiManager.Instance.FadeObj.isFadeOut = true;
+                yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
+                UiManager.Instance.FadeObj.gameObject.SetActive(false);
+                //FadeOut
+                GameManager.Instance.player.canMove = true;
+                yield return new WaitForSeconds(1f);
+
+                // 랜덤한 위치에 보상 아이템 소환
+                if (rewardsPos.Length > 0)
+                {
+                    int randomIndex = Random.Range(0, rewardsPos.Length); // rewardsPos에서 랜덤한 인덱스 선택
+                    Transform randomPos = rewardsPos[randomIndex]; // 선택된 위치
+                    Instantiate(rewardItemPrefab, randomPos.position, Quaternion.identity); // 보상 소환
+                    Debug.Log($"보상이 위치 {randomIndex}에 소환되었습니다.");
+                }
+                else
+                {
+                    Debug.LogWarning("rewardsPos 배열이 비어있습니다. 보상을 소환할 수 없습니다.");
+                }
+                RoomManager.Instance.ClearRoom();
+                Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
                 break;
+
+            //case RoomCheck.SHOP:
+            //    break;
         }
         
     }

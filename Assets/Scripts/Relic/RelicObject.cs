@@ -2,10 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.WSA;
+using static RelicData;
 
 public class RelicObject : Relic
 {
+    [Tooltip("유물 이펙트")]
+    public ParticleSystem[] particle;
+    private ParticleSystem thisparticl;
+    [Tooltip("플레이어 획득 이펙트")]
+    public ParticleSystem[] playerparticle;
+    public ParticleSystem playerpar;
+    [Tooltip("유물 오브젝트가 남아있는 시간")]
+    public float relicLifeTime;
     [Tooltip("유물 이미지")]
     public SpriteRenderer relicSprite;
     [Tooltip("유물 등급별 색")]
@@ -14,52 +24,63 @@ public class RelicObject : Relic
     public Color rareColor;
     private float alpha = 0.3f;
     //유물 이미지 출력
-    private MeshRenderer meshRenderer;
+    public MeshRenderer meshRenderer;
     //제일 위 부모오브젝트
-    private GameObject relicObj;
+    public GameObject relicObj;
 
     private Vector3 movePos;
     [Tooltip("최대로 올라갈 높이")]
-    public float upY;
+    public float upY = 1f;
     [Tooltip("튀어나갈 범위")]
-    public float moveRange;
+    public float moveRange = 2f;
     private Vector3 startPos, endPos;
     private float timer;
 
-    private void Awake()
+    private RelicUI ui;
+    private bool destroystart = false;
+    private float destroytimer = 0f;
+    private bool isplayer = false;
+
+    public void Spwan()
     {
-        relicObj = this.transform.parent.parent.gameObject;
+        ui = GetComponent<RelicUI>();
+        ui.relicData = relicData;
+        ui.RelicTextUpdate();
         relicSprite = GetComponent<SpriteRenderer>();
         relicSprite.sprite = relicData.relicSprite;
-        meshRenderer = GetComponentInParent<MeshRenderer>();
-        //색깔은 나중에 정하기
-        commonColor = new Color(Color.white.r, Color.white.g, Color.white.b, alpha);
-        unCommonColor = new Color(Color.blue.r, Color.blue.g, Color.blue.b, alpha);
-        rareColor = new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, alpha);
-        //유물등급에 따라 반투명한 오브젝트 변경
-        switch(relicData.rarity)
+        //유물등급별 색적용
+        Color color = new Color(relicData.color.r, relicData.color.g, relicData.color.b, 0.2f);
+        meshRenderer.material.color = color;
+        switch (relicData.rarity)
         {
-            case RelicData.Rarity.Common:
-                meshRenderer.material.color = commonColor;
+            case Rarity.Common:
+                thisparticl = particle[0];
                 break;
-            case RelicData.Rarity.Uncommon:
-                meshRenderer.material.color = unCommonColor;
+            case Rarity.Uncommon:
+                thisparticl = particle[1];
                 break;
-            case RelicData.Rarity.Rare:
-                meshRenderer.material.color = rareColor;
+            case Rarity.Rare:
+                thisparticl = particle[2];
+                break;
+            default:
                 break;
         }
-    }
-
-    private void Start()
-    {
-        float x = UnityEngine.Random.Range(-moveRange, moveRange);
-        float z = UnityEngine.Random.Range(-moveRange, moveRange);
+        float x;
+        do
+        {
+            x = UnityEngine.Random.Range(-moveRange, moveRange);
+        } while (x > -1f && x < 1f);
+        float z;
+        do
+        {
+            z = UnityEngine.Random.Range(-moveRange, moveRange);
+        } while (z > -1f && z < 1f);
         //날아갈포지션 랜덤
         movePos = new Vector3(x, 0f, z);
         startPos = relicObj.transform.position;
         endPos = startPos + movePos;
         endPos.y = 0f;
+        destroytimer = Time.time;
         StartCoroutine(BulletMove());
     }
 
@@ -67,8 +88,15 @@ public class RelicObject : Relic
     {
         //계속 회전
         relicObj.transform.Rotate(new Vector3(0, 100f * Time.deltaTime, 0));
+        if (destroystart == true)
+        {
+            if (Time.time > destroytimer + (relicLifeTime - 1f))
+            {
+                RelicDestroy();
+            }
+        }
     }
-
+    //튀어나오는거
     private Vector3 Parabola(Vector3 start, Vector3 end, float height, float t)
     {
         Func<float, float> f = x => -4 * height * x * x + 4 * height * x;
@@ -90,6 +118,53 @@ public class RelicObject : Relic
         }
         //y = 0 으로 포지션 고정
         relicObj.transform.position = new Vector3(endPos.x, 0, endPos.z);
+        yield return new WaitForSeconds(1f);
+        destroystart = true;
+        ParticleSystem par = Instantiate(thisparticl, transform.position, transform.rotation);
+        par.transform.SetParent(this.transform);
+        thisparticl.Play();
     }
-
+    //접촉안해도 일정시간후 오브젝트삭제 및 플레이어에 스텟적용
+    private void RelicDestroy()
+    {
+        GameManager.Instance.player.GetRelic(relicData);
+        PlayerParticle();
+        Destroy(this.gameObject.transform.parent.gameObject);
+    }
+    //플레이어 접촉시 바로 실행
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (destroystart == false) return;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            RelicDestroy();
+        }
+    }
+    //획득시 플레이어 파티클
+    public void PlayerParticle()
+    {
+        if (relicData.statName == "maxHp")
+        {
+            playerpar = playerparticle[0];
+        }
+        else if (relicData.statName == "moveSpeed")
+        {
+            playerpar = playerparticle[1];
+        }
+        else if (relicData.statName == "atkSpeed")
+        {
+            playerpar = playerparticle[2];
+        }
+        else if (relicData.statName == "dmgValue")
+        {
+            playerpar = playerparticle[3];
+        }
+        else
+        {
+            playerpar = playerparticle[4];
+        }
+        ParticleSystem playerparti = Instantiate(playerpar, GameManager.Instance.player.transform.position, GameManager.Instance.player.transform.rotation);
+        playerparti.transform.SetParent(GameManager.Instance.player.transform);
+        Destroy(playerparti.gameObject, 3f);
+    }
 }

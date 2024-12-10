@@ -1,0 +1,14 @@
+diff a/Assets/Scripts/Player.cs b/Assets/Scripts/Player.cs	(rejected hunks)
+@@ -5,8 +5,12 @@
+ using static UnityEngine.ParticleSystem;
+ namespace HoonsCodes
+ {
++<<<<<<< HEAD
+ 
+     public class Player : Character, ITakeDamage
++=======
++    public class Player : Character
++>>>>>>> fab38172b76d8fc7ebdf8cfa35dc565bf90b8e02
+     {
+         [Header("�÷��̾� �̵� ���� ����")]
+         public bool canMove;

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f9a18e2f1efdc47b01d1ed2ea7a594, type: 3}
+  m_Name: WSkillEnhance
+  m_EditorClassIdentifier: 
+  arcanaInfo: 1
+  ArcanaId: 1
+  ArcanaImage: {fileID: 21300000, guid: 8b15583f1e2b7384a80437cd1b6514ff, type: 3}
+  ArcanaName: "\uC5D8\uD504\uB4E4\uC758 \uC9C0\uC6D0\uC0AC\uACA9"
+  ArcanaDesc: "\uC5D8\uD504\uB4E4\uC774 \uC9C0\uC6D0\uC0AC\uACA9\uC744 \uAC15\uD654\uD569\uB2C8\uB2E4\n\uC2A4\uD0AC
+    \uC0AC\uC774\uC988\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  baseCount: 0
+  baseInitBulletRate: 0
+  enhanceDamage: []
+  enhanceCount: 
+  enhanceInitBulletRate: []
+  enhanceDamageMultiplier: []
+  enhanceSkillScale:
+  - {x: 0.5, y: 0.5, z: 0.5}
+  - {x: 0.7, y: 0.7, z: 0.7}
+  - {x: 1, y: 1, z: 1}
+  cooldownReduction:
+  - 2
+  - 3
+  - 5
+  EnhanceAttackCnt: 0
+  EnhancedBullet: {fileID: 0}
+  EnhancedAttackParticle: {fileID: 0}
+  EnhancedHitParticle: {fileID: 0}
+  RandomExtraShotRate: 0
+  randomExtraShotSpeed: 0
+  RandomBulletPrefab: []
+  RandomAttackParticle: []
+  RandomHitParticle: []
+  isCatalyst: 0
+  getCatalystParticle: {fileID: 0}

@@ -15,8 +15,8 @@ MonoBehaviour:
   info: 1
   characterName: DevilTree
   characterDesc: "\uADFC\uAC70\uB9AC\uACF5\uACA9 \uC720\uB2DB"
-  maxHp: 20
+  maxHp: 90
   damage: 5
-  moveSpeed: 2
+  moveSpeed: 1
   attackSpeed: 1
   attackDelay: 2

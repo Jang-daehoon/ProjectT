@@ -19,6 +19,7 @@ public class MeleeGolem : NMMeleeUnit
         base.Awake();
         particle.gameObject.SetActive(false);
         particle.Stop();
+        range = 20f;
     }
 
     protected override void Start()
@@ -31,9 +32,11 @@ public class MeleeGolem : NMMeleeUnit
     protected override void Update()
     {
         HpBarUpdate();
+        if (isDead == true) return;
         if (curHp <= 0)//죽을때 한번 발동
         {
             isDead = true;
+            animator.SetTrigger("Die");
         }
         if (isGolemAttack == true)
         {
@@ -100,9 +103,9 @@ public class MeleeGolem : NMMeleeUnit
             if (other.CompareTag("Player"))
             {
                 Vector3 dir = transform.position - other.transform.position;
-                other.GetComponent<Rigidbody>().AddForce(-dir.normalized * 30f, ForceMode.Impulse);
+                other.GetComponent<Rigidbody>().AddForce(-dir.normalized * 20f, ForceMode.Impulse);
                 Debug.Log($"{other.name} Hit");
-                //collision.gameObject.GetComponent<Player>().TakeDamage();
+                GameManager.Instance.player.TakeDamage(dmgValue);
                 //플레이어 공격
                 isHit = true;
             }

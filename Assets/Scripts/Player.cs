@@ -5,7 +5,7 @@ using UnityEngine;
 using static UnityEngine.ParticleSystem;
 namespace HoonsCodes
 {
-    public class Player : Character
+    public class Player : Character, ITakeDamage
     {
         [Header("플레이어 이동 가능 여부")]
         public bool canMove;
@@ -54,6 +54,8 @@ namespace HoonsCodes
 
         public Vector3 targetPosition; // 이동할 목표 위치
 
+        private Coroutine HitCoroutine;
+
         private void Awake()
         {
             canMove = true;
@@ -66,55 +68,55 @@ namespace HoonsCodes
 
         private void Update()
         {
-            // 대시나 공격 중이 아닐 때만 이동, 대사중에 이동 불가.
-            if (!isDash && !isAttack && !usingSkillX && !UiManager.Instance.isDialogUiActive
-                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
-                || UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3) && canMove)
+            //UI창때는 아무것도 불가
+            if (UiManager.Instance.isDialogUiActive || UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
+                || UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3 && !canMove)
+            {
+                animator.SetFloat("Speed", 0f);
+                return;
+            }
+            //스킬은 UI창이 아니면 아무때나 사용 가능
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                RotateToClickPosition();
+                SkillManager.Instance.Multi_Shot_Arrow();
+                UiManager.Instance.UseQSkill();
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                SkillManager.Instance.ArrowRain();
+                UiManager.Instance.UseWSkill();
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                RotateToClickPosition();
+                SkillManager.Instance.ImpaleSkill();
+                UiManager.Instance.UseESkill();
+            }
+            // 대시중에는 이동 불가, 공격중에는 이동 불가
+            if (isDash == true || isAttack == true) return;
+            if (!isDash && !isAttack && !usingSkillX )
             {
                 Move();
                 PlayerRotation();
                 LookMouseCursor();
             }
 
-            if (Input.GetMouseButton(0) && isAttack == false && !UiManager.Instance.isDialogUiActive
-                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
-                || UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3) && canMove)
+            if (Input.GetMouseButton(0) && isAttack == false )
             {
                 RotateToClickPosition();
                 isAttack = true;  // 공격 상태로 변경
                 animator.SetTrigger("Attack");
+                animator.SetFloat("FireSpeed", atkSpeed);
             }
 
-            if (Input.GetKeyDown(KeyCode.Q) && !UiManager.Instance.isDialogUiActive
-                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
-                || UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3) && canMove)
-            {
-                RotateToClickPosition();
-                SkillManager.Instance.Multi_Shot_Arrow();
-                UiManager.Instance.UseQSkill();
-            }
-            if(Input.GetKeyDown(KeyCode.W))
-            {
-                SkillManager.Instance.ArrowRain();
-                UiManager.Instance.UseWSkill();
-            }
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                RotateToClickPosition();
-                SkillManager.Instance.ImpaleSkill();
-                UiManager.Instance.UseESkill();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space) && isDash == false && !UiManager.Instance.isDialogUiActive
-                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive ||
-                UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3) && canMove)
+            if (Input.GetKeyDown(KeyCode.Space) && isDash == false )
             {
                 StartCoroutine(Dodge());
             }
         }
         private void OnTriggerEnter(Collider other)
         {
-
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false
                 && other.GetComponent<ChestReward>().isOpen == false && other.gameObject.layer == 8)
             {
@@ -132,6 +134,19 @@ namespace HoonsCodes
             {
                 Debug.Log("???와 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 ???와 상호작용할 수 있어.";
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
+            else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false
+                && other.GetComponent<RelicBox>().isOpen == false && other.gameObject.layer == 8)
+            {
+                Debug.Log("유물 상자와 접촉");
+                UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
+            else if(other.CompareTag("Godness") && other.GetComponent<Godness>().isTalkDone == false)
+            {
+                Debug.Log("여신과 접촉");
+                UiManager.Instance.interactiveText.text = "F 여신이 당신을 회복시키려 합니다.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
@@ -172,6 +187,18 @@ namespace HoonsCodes
                         break;
                 }
             }
+            else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false
+                && other.GetComponent<RelicBox>().isOpen == false && Input.GetKeyDown(KeyCode.F))
+            {
+                StartCoroutine(other.GetComponent<RelicBox>().RelicResult());
+            }
+            else if (other.CompareTag("Godness") && other.GetComponent<Godness>().isTalkDone == false
+                && Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log("여신과 접촉");
+                other.GetComponent<Godness>().Heal();
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
         }
         private void OnTriggerExit(Collider other)
         {
@@ -190,6 +217,16 @@ namespace HoonsCodes
             else if (other.CompareTag("NPC") && other.GetComponent<UnknownNPC>().isTalkDone == false)
             {
                 Debug.Log("???와 접촉해제");
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
+            else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false)
+            {
+                Debug.Log("유물 상자 접촉 해제");
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
+            else if (other.CompareTag("Godness") && other.GetComponent<Godness>().isTalkDone == false)
+            {
+                Debug.Log("여신과 접촉");
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
@@ -377,14 +414,40 @@ namespace HoonsCodes
             usedParticle.Play();
         }
 
-        public IEnumerator TakeDamage()
+        //피격 -> 한번 피격시 무적시간 1초
+        public void TakeDamage(float damage)
+        {
+            if (isTakeHit == false)
+            {
+                animator.SetTrigger("Hit");
+                isTakeHit = true;
+                curHp -= damage;
+                if (curHp <= 0)
+                {
+                    Dead();
+                }
+                Debug.Log($"{damage} 만큼의 피해를 받음, 무적시간 시작");
+                StartCoroutine(PlayerHitCoolTime());
+            }
+            else
+            {
+                Debug.Log("무적시간");
+            }
+        }
+        private bool isTakeHit = false;
+        private IEnumerator PlayerHitCoolTime()
         {
             yield return new WaitForSeconds(1f);
+            Debug.Log("무적시간 종료");
+            isTakeHit = false;
         }
 
         public override void Dead()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 " +
+                "Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 " +
+                "Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 " +
+                "Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 ");
         }
 
         private void InitPlayerStatus()

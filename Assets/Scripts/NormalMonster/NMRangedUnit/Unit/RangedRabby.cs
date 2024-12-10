@@ -33,7 +33,7 @@ public class RangedRabby : NMRangedUnit
 
         yield return new WaitForSeconds(atkSpeed);
         attackRange[0].gameObject.SetActive(false);//사격범위 표시 Off
-        attackRange[0].transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, this.transform.position.z);
+        attackRange[0].transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
         animator.SetTrigger("Attack");
 
         GameObject nmbullet = Instantiate(bullet, shootPos.position, shootPos.rotation);

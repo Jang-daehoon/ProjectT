@@ -226,49 +226,90 @@ public class UiManager : Singleton<UiManager>
     {
         if (selectedArcana == null)
         {
-            Debug.LogError("Invalid Arcana selected!");
+            Debug.LogError("잘못된 아르카나가 선택되었습니다!");
             return;
         }
 
-        Debug.Log($"Selected Arcana: {selectedArcana.name}");
+        Debug.Log($"선택된 아르카나: {selectedArcana.name}");
 
-        // 선택된 아르카나에 대한 로직
-        switch (selectedArcana.ArcanaId)
+        // 아르카나 정보에 따른 처리
+        if (selectedArcana.arcanaInfo == ArcanaData.ArcanaInfo.AttackEnhancement)
         {
-            case 0: //일반공격 강화
-                if(ArcanaManager.Instance.canEnhanceMeleeAttack == false)
-                {
-                    ArcanaManager.Instance.canEnhanceMeleeAttack = true;
-                    Debug.Log("Melee Enhance Activated");
-                }
-                else
-                {
-                    //다시 선택 시 레벨 증가 및 데미지 합산
-                    ArcanaManager.Instance.curEnhanceLevel++;
-                    ArcanaManager.Instance.enhanceAtkDamage += selectedArcana.enhanceDamage[ArcanaManager.Instance.curEnhanceLevel];
-                    Debug.Log($"Melee Enhance Level Up: {ArcanaManager.Instance.curEnhanceLevel}, ResultDamage: {ArcanaManager.Instance.enhanceAtkDamage}");
-                }
-                break;
-            case 1: //랜덤 투사체 강화
-                if (ArcanaManager.Instance.canRandomBulletInit == false)
-                {
-                    ArcanaManager.Instance.canRandomBulletInit = true;
-                    Debug.Log("Random Bullet Init Activated");
-                }
-                else
-                {
-                    ArcanaManager.Instance.randomAtkLevel++;
-                    ArcanaManager.Instance.randomAtkDamage += selectedArcana.enhanceDamage[ArcanaManager.Instance.randomAtkLevel];
-                    Debug.Log($"Random Bullet Level Up: {ArcanaManager.Instance.randomAtkLevel}, ResultDamage: {ArcanaManager.Instance.randomAtkDamage}");
-                }
-                break;
-            case 2: //일반공격 유도체로 변경
-                if(ArcanaManager.Instance.canCatalyst == false)
-                    ArcanaManager.Instance.ChanageCatalyst();
-                break;
-            default:
-                Debug.LogWarning($"Unhandled ArcanaId: {selectedArcana.ArcanaId}");
-                break;
+            Debug.Log($"공격 강화 아르카나 선택: {selectedArcana.name}");
+            switch (selectedArcana.ArcanaId)
+            {
+                case 0: // 일반 공격 강화
+                    Debug.Log("일반 공격 강화 로직 시작.");
+                    if (ArcanaManager.Instance.canEnhanceMeleeAttack == false)
+                    {
+                        ArcanaManager.Instance.canEnhanceMeleeAttack = true;
+                        Debug.Log("근접 공격 강화 활성화됨");
+                    }
+                    else
+                    {
+                        // 다시 선택 시 레벨 증가 및 데미지 합산
+                        ArcanaManager.Instance.curEnhanceLevel++;
+                        ArcanaManager.Instance.enhanceAtkDamage += selectedArcana.enhanceDamage[ArcanaManager.Instance.curEnhanceLevel];
+                        Debug.Log($"근접 공격 강화 레벨 업: {ArcanaManager.Instance.curEnhanceLevel}, 결과 데미지: {ArcanaManager.Instance.enhanceAtkDamage}");
+                    }
+                    break;
+                case 1: // 랜덤 투사체 강화
+                    Debug.Log("랜덤 투사체 강화 로직 시작.");
+                    if (ArcanaManager.Instance.canRandomBulletInit == false)
+                    {
+                        ArcanaManager.Instance.canRandomBulletInit = true;
+                        Debug.Log("랜덤 투사체 초기화 활성화됨");
+                    }
+                    else
+                    {
+                        ArcanaManager.Instance.randomAtkLevel++;
+                        ArcanaManager.Instance.randomAtkDamage += selectedArcana.enhanceDamage[ArcanaManager.Instance.randomAtkLevel];
+                        Debug.Log($"랜덤 투사체 레벨 업: {ArcanaManager.Instance.randomAtkLevel}, 결과 데미지: {ArcanaManager.Instance.randomAtkDamage}");
+                    }
+                    break;
+                case 2: // 일반 공격 유도체로 변경
+                    if (ArcanaManager.Instance.canCatalyst == false)
+                    {
+                        ArcanaManager.Instance.ChanageCatalyst();
+                        Debug.Log("유도체 변경 활성화됨");
+                    }
+                    break;
+                default:
+                    Debug.LogWarning($"처리되지 않은 아르카나 ID: {selectedArcana.ArcanaId}");
+                    break;
+            }
+        }
+        else if (selectedArcana.arcanaInfo == ArcanaData.ArcanaInfo.SkillEnhancement)
+        {
+            Debug.Log($"스킬 강화 아르카나 선택: {selectedArcana.name}");
+            switch (selectedArcana.ArcanaId)
+            {
+                case 0:
+                    ArcanaManager.Instance.qSkillLevel++;
+                    // 쿨타임 감소, 투사체 개수 증가, 데미지 배율 증가
+                    SkillManager.Instance.qCoolTime -= selectedArcana.cooldownReduction[ArcanaManager.Instance.qSkillLevel];
+                    SkillManager.Instance.arrowCount += selectedArcana.enhanceCount[ArcanaManager.Instance.qSkillLevel];
+                    SkillManager.Instance.qDamageMultiplier = selectedArcana.enhanceDamageMultiplier[ArcanaManager.Instance.qSkillLevel];
+
+                    Debug.Log($"Q 스킬 레벨 업: {ArcanaManager.Instance.qSkillLevel}, 쿨타임: {SkillManager.Instance.qCoolTime}, 화살 개수: {SkillManager.Instance.arrowCount}, 데미지 배율: {SkillManager.Instance.qDamageMultiplier}");
+                    break;
+                case 1:
+                    ArcanaManager.Instance.wSkillLevel++;
+                    // 쿨타임 감소, 파티클 스케일 증가
+                    SkillManager.Instance.wCoolTime -= selectedArcana.cooldownReduction[ArcanaManager.Instance.wSkillLevel];
+                    ArcanaManager.Instance.skillSize = selectedArcana.enhanceSkillScale[ArcanaManager.Instance.wSkillLevel];
+
+                    Debug.Log($"W 스킬 레벨 업: {ArcanaManager.Instance.wSkillLevel}, 쿨타임: {SkillManager.Instance.wCoolTime}, 스킬 크기: {ArcanaManager.Instance.skillSize}");
+                    break;
+                case 2:
+                    ArcanaManager.Instance.eSkillLevel++;
+                    // 쿨타임 감소, 데미지 배율 증가
+                    SkillManager.Instance.eCoolTime -= selectedArcana.cooldownReduction[ArcanaManager.Instance.eSkillLevel];
+                    SkillManager.Instance.eDamageMultiplier = selectedArcana.enhanceDamageMultiplier[ArcanaManager.Instance.eSkillLevel];
+
+                    Debug.Log($"E 스킬 레벨 업: {ArcanaManager.Instance.eSkillLevel}, 쿨타임: {SkillManager.Instance.eCoolTime}, 데미지 배율: {SkillManager.Instance.eDamageMultiplier}");
+                    break;
+            }
         }
 
         // ChestReward 처리
@@ -276,14 +317,15 @@ public class UiManager : Singleton<UiManager>
         if (chestReward != null)
         {
             chestReward.getReward = true;
-            Debug.Log("Reward acquired and getReward is set to true.");
+            Debug.Log("보상이 획득되었고 getReward가 true로 설정되었습니다.");
         }
         else
         {
-            Debug.LogWarning("No ChestReward found in the scene.");
+            Debug.LogWarning("씬에서 ChestReward를 찾을 수 없습니다.");
         }
 
         // UI 닫기
         ToggleUIElement(ArcanaUIObj, ref isArcanaUIActive);
     }
+
 }

@@ -8,6 +8,8 @@ TagManager:
   - Chest
   - Potal
   - NPC
+  - RelicBox
+  - Godness
   layers:
   - Default
   - TransparentFX

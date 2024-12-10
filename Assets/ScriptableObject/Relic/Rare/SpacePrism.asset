@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: SpacePrism
   m_EditorClassIdentifier: 
   rarity: 2
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   relicName: "\uC2DC\uACF5 \uD504\uB9AC\uC998"
   relicID: 1
   relicSprite: {fileID: 0}
   relicDesc: 
   isLevelPlus: 0
   statName: atkSpeed
-  relicStatsPoint: 1
+  relicStatsPoint: 5
