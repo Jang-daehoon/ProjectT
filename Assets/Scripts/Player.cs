@@ -197,7 +197,6 @@ namespace HoonsCodes
             {
                 Debug.Log("食重引 羨男");
                 other.GetComponent<Godness>().Heal();
-                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
         private void OnTriggerExit(Collider other)
