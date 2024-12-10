@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UnknownNPC : MonoBehaviour
 {
+    public int npcId;
+
     public bool isTalkDone;
 
     private void Awake()
@@ -11,8 +13,4 @@ public class UnknownNPC : MonoBehaviour
         isTalkDone = false;
     }
 
-    public void RandomUnknownUiSelect()
-    {
-
-    }
 }

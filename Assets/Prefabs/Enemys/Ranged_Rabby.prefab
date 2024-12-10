@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6126522262233866961}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ear_r1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5758568020276060677}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7915265987037993759}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: knot_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5436462913540873218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tail02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 395453493685005271}
   - component: {fileID: 5503022991615236386}
   - component: {fileID: 5503574728604855494}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 5572907579296052005}
   - component: {fileID: 5055740432038702318}
   - component: {fileID: 728539301840227359}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 5132866372463438426}
   - component: {fileID: 1756434643720509599}
   - component: {fileID: 4130033596849866534}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HPbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 8755331702193721884}
   - component: {fileID: 3217799852211436028}
   - component: {fileID: 5607657648132252863}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 8647863148677817180}
   - component: {fileID: 2408974041526139374}
   - component: {fileID: 4692956188151093938}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2305904033593928188}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: knot_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 7815116099058293592}
   - component: {fileID: 467735506190116159}
   - component: {fileID: 4397656046465914044}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HPbarBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 2583305416974323057}
   - component: {fileID: 602611693111193030}
   - component: {fileID: 1090014536840820130}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6383714766666925470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tail03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 7443445362730481610}
   - component: {fileID: 2011719455365360764}
   - component: {fileID: 2338452760190948294}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 539583399175152368}
   - component: {fileID: 2651781605938438803}
   - component: {fileID: 4872252534424851132}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -877,7 +877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8867021487272014803}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ear_l2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -910,7 +910,7 @@ GameObject:
   - component: {fileID: 1202852003768138436}
   - component: {fileID: 899155599966054723}
   - component: {fileID: 1076735443924041582}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -983,7 +983,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6926096658681334985}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EndPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1018,7 +1018,7 @@ GameObject:
   - component: {fileID: 7759783805133112358}
   - component: {fileID: 6918525424955583630}
   - component: {fileID: 4249101110509817214}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HPLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1155,7 +1155,7 @@ GameObject:
   - component: {fileID: 3654848755054789169}
   - component: {fileID: 4248820993622916670}
   - component: {fileID: 1502814301081522651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ranged_Rabby
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1314,7 +1314,7 @@ GameObject:
   - component: {fileID: 2712574874021705349}
   - component: {fileID: 4888719186326404802}
   - component: {fileID: 5094777343145401805}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: BackhPbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1389,7 +1389,7 @@ GameObject:
   - component: {fileID: 3628550708068404567}
   - component: {fileID: 5281302165243492228}
   - component: {fileID: 2124341031567415396}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1464,7 +1464,7 @@ GameObject:
   - component: {fileID: 8068332513751024009}
   - component: {fileID: 8888908924729659868}
   - component: {fileID: 9211751300449857658}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1539,7 +1539,7 @@ GameObject:
   - component: {fileID: 6595396076523797140}
   - component: {fileID: 2597596458319715178}
   - component: {fileID: 3529623196512309513}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1614,7 +1614,7 @@ GameObject:
   - component: {fileID: 3874673415118729619}
   - component: {fileID: 2260190025497761047}
   - component: {fileID: 8333867822190903023}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1689,7 +1689,7 @@ GameObject:
   - component: {fileID: 4257315422936698065}
   - component: {fileID: 6553784514373356645}
   - component: {fileID: 5334154317553188098}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1764,7 +1764,7 @@ GameObject:
   - component: {fileID: 1616995770709178835}
   - component: {fileID: 6637880880614772049}
   - component: {fileID: 9064938469445729417}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1838,7 +1838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3459286009334915755}
   - component: {fileID: 6935653836035103808}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rabby_Queen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1935,7 +1935,7 @@ GameObject:
   - component: {fileID: 1892308947715082519}
   - component: {fileID: 4196291341599018431}
   - component: {fileID: 749582070957866438}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2010,7 +2010,7 @@ GameObject:
   - component: {fileID: 3230163362787077611}
   - component: {fileID: 6179894139354566428}
   - component: {fileID: 2278032743775718488}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2085,7 +2085,7 @@ GameObject:
   - component: {fileID: 863658141243199312}
   - component: {fileID: 8839576032971455670}
   - component: {fileID: 855961177950057547}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2158,7 +2158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8700286947087506876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2189,7 +2189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5843974049826499321}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tail01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2221,7 +2221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8481791067647179268}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ear_r2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2254,7 +2254,7 @@ GameObject:
   - component: {fileID: 7067136028772489738}
   - component: {fileID: 8474425375638738257}
   - component: {fileID: 3529551025791233770}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2327,7 +2327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1259383012067754162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2359,7 +2359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2692573132326467720}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2393,7 +2393,7 @@ GameObject:
   - component: {fileID: 7303367859554178020}
   - component: {fileID: 5558666026262253595}
   - component: {fileID: 8304530470714333062}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2470,7 +2470,7 @@ GameObject:
   - component: {fileID: 5718537701709854270}
   - component: {fileID: 7946362932378232038}
   - component: {fileID: 7912849799519495349}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HPBarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2590,7 +2590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6996752753591163171}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ear_l1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2624,7 +2624,7 @@ GameObject:
   - component: {fileID: 5396782525032284419}
   - component: {fileID: 4991811632999114425}
   - component: {fileID: 7052006097461746383}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hpframe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2699,7 +2699,7 @@ GameObject:
   - component: {fileID: 2905893979488886071}
   - component: {fileID: 7376634680698876940}
   - component: {fileID: 215802359116730967}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RangeMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

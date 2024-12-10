@@ -35,6 +35,17 @@ public class UiManager : Singleton<UiManager>
     public GameObject enterUnknownUi3;
     public GameObject mainUnknownUi3;
 
+    [Header("PlayerSkillImage")]
+    public Image qSkill;
+    public Image qCoolImg;  //쿨타임 회전 이미지
+    public TextMeshProUGUI qCoolTimeText;   //쿨타임 텍스트
+    public Image wSkill;
+    public Image wCoolImg;
+    public TextMeshProUGUI wCoolTimeText;
+    public Image eSkill;
+    public Image eCoolImg;
+    public TextMeshProUGUI eCoolTimeText;
+
     [Header("ArcanaImage")]
     public Image firstArcanaImg;
     public Image secondArcanaImg;
@@ -86,6 +97,8 @@ public class UiManager : Singleton<UiManager>
     public bool isMapUIActive;
     public bool isInteractiveUiActive;
     public bool isUnknownUiActive;
+    public bool isUnknownUiActive2;
+    public bool isUnknownUiActive3;
 
     private void Awake()
     {
@@ -93,15 +106,72 @@ public class UiManager : Singleton<UiManager>
         isDialogUiActive = false;
         isArcanaUIActive = false;
         isMapUIActive = false;
+
         isUnknownUiActive = false;
+        isUnknownUiActive2 = false;
+        isUnknownUiActive3 = false;
+    }
+    private void Start()
+    {
+        unknownEventBtn1.onClick.AddListener(() => UnknownManager.Instance.GetRandomRelic());
+        unknownEventBtn2.onClick.AddListener(() => UnknownManager.Instance.someoneIsWatchingMe());
+        unknownEventBtn3.onClick.AddListener(() => UnknownManager.Instance.RunAway());
+
+        unknownEventBtn2_1.onClick.AddListener(() => UnknownManager.Instance.GetRandomRelic());
+        unknownEventBtn2_2.onClick.AddListener(() => UnknownManager.Instance.someoneIsWatchingMe());
+        unknownEventBtn2_3.onClick.AddListener(() => UnknownManager.Instance.RunAway());
+
+        unknownEventBtn3_1.onClick.AddListener(() => UnknownManager.Instance.GetRandomRelic());
+        unknownEventBtn3_2.onClick.AddListener(() => UnknownManager.Instance.someoneIsWatchingMe());
+        unknownEventBtn3_3.onClick.AddListener(() => UnknownManager.Instance.RunAway());
     }
     private void Update()
     {
-        if(isDialogUiActive == true || isMapUIActive == true || isArcanaUIActive == true)
+        if (isDialogUiActive == true || isMapUIActive == true || isArcanaUIActive == true)
             PlayerStatusUiObj.SetActive(false);
         else
             PlayerStatusUiObj.SetActive(true);
     }
+    //쿨타임 
+    public void UseQSkill()
+    {
+        float qCoolTime = SkillManager.Instance.qCoolTime; // Q 스킬의 쿨타임 (초 단위)
+        StartCoolTime(qCoolImg, qCoolTimeText, qCoolTime);
+        // Q 스킬 로직 추가
+    }
+    public void UseWSkill()
+    {
+        float wCoolTime = SkillManager.Instance.wCoolTime; // w 스킬의 쿨타임 (초 단위)
+        StartCoolTime(wCoolImg, wCoolTimeText, wCoolTime);
+    }
+    public void UseESkill()
+    {
+        float eCoolTime = SkillManager.Instance.eCoolTime;  // e 스킬의 쿨타임 (초 단위)
+        StartCoolTime(eCoolImg, eCoolTimeText, eCoolTime);
+    }
+    public void StartCoolTime(Image coolImage, TextMeshProUGUI coolTimeText, float coolTime)
+    {
+        StartCoroutine(CoolTimeCheck(coolImage, coolTimeText, coolTime));
+    }
+
+    public IEnumerator CoolTimeCheck(Image coolImage, TextMeshProUGUI coolTimeText, float coolTime)
+    {
+        float remainingTime = coolTime;
+        coolImage.fillAmount = 1f;
+        coolTimeText.gameObject.SetActive(true);
+
+        while (remainingTime > 0)
+        {
+            remainingTime -= Time.deltaTime;
+            coolImage.fillAmount = remainingTime / coolTime;
+            coolTimeText.text = Mathf.Ceil(remainingTime).ToString();
+            yield return null;
+        }
+
+        coolImage.fillAmount = 0f;
+        coolTimeText.gameObject.SetActive(false);
+    }
+
 
     /// <summary>
     /// Arcana UI 업데이트

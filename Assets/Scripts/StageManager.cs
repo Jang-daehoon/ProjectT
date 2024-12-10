@@ -28,17 +28,19 @@ public class StageManager : MonoBehaviour
 
     private IEnumerator Start()
     {
-        //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
-        //FadeOut
-        UiManager.Instance.FadeObj.gameObject.SetActive(true);
-        UiManager.Instance.FadeObj.isFadeOut = true;
-        yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
-        UiManager.Instance.FadeObj.gameObject.SetActive(false);
-        yield return new WaitForSeconds(1f);
-
         switch (roomCheck)
         {
             case RoomCheck.NOMAL:
+                //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
+                //FadeOut
+                GameManager.Instance.player.canMove = false;
+                UiManager.Instance.FadeObj.gameObject.SetActive(true);
+                UiManager.Instance.FadeObj.isFadeOut = true;
+                yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
+                UiManager.Instance.FadeObj.gameObject.SetActive(false);
+                //FadeOut
+                GameManager.Instance.player.canMove = true;
+                yield return new WaitForSeconds(1f);
                 SpawnEnemies();
 
                 // 생성된 모든 몬스터 처치 여부 체크
@@ -65,11 +67,20 @@ public class StageManager : MonoBehaviour
             case RoomCheck.BOSS:
                 break;
             case RoomCheck.UNKNOWN:
+                //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
+                //FadeOut
+                GameManager.Instance.player.canMove = false;
+                UiManager.Instance.FadeObj.gameObject.SetActive(true);
+                UiManager.Instance.FadeObj.isFadeOut = true;
+                yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
+                UiManager.Instance.FadeObj.gameObject.SetActive(false);
+                //FadeOut
+                GameManager.Instance.player.canMove = true;
+                yield return new WaitForSeconds(1f);
+
                 yield return new WaitUntil(() => unknownClear == true);
                 RoomManager.Instance.ClearRoom();
 
-                Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
-                Debug.Log("보상 아이템이 생성되었습니다.");
                 Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
                 break;
             case RoomCheck.REST:
