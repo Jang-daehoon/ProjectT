@@ -15,8 +15,8 @@ MonoBehaviour:
   info: 0
   characterName: Planta
   characterDesc: "\uC790\uD3ED\uACF5\uACA9 \uC720\uB2DB"
-  maxHp: 10
+  maxHp: 80
   damage: 50
-  moveSpeed: 7
+  moveSpeed: 3
   attackSpeed: 1
   attackDelay: 5

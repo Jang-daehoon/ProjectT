@@ -46,6 +46,7 @@ public class NMMeleeUnit : EnemyUint
             agent.isStopped = true;
             agent.velocity = Vector3.zero;
             ChangeState(State.Die);
+            animator.SetTrigger("Die");
         }
         if (dirplayer <= range && isDead == false)//공격범위내에 들어오면 공격으로 변경
         {

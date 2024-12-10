@@ -72,6 +72,7 @@ namespace HoonsCodes
             if (UiManager.Instance.isDialogUiActive || UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
                 || UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3 && !canMove)
             {
+                animator.SetFloat("Speed", 0f);
                 return;
             }
             //½ºÅ³Àº UIÃ¢ÀÌ ¾Æ´Ï¸é ¾Æ¹«¶§³ª »ç¿ë °¡´É
@@ -106,6 +107,7 @@ namespace HoonsCodes
                 RotateToClickPosition();
                 isAttack = true;  // °ø°Ý »óÅÂ·Î º¯°æ
                 animator.SetTrigger("Attack");
+                animator.SetFloat("FireSpeed", atkSpeed);
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && isDash == false )
@@ -397,32 +399,37 @@ namespace HoonsCodes
         //ÇÇ°Ý -> ÇÑ¹ø ÇÇ°Ý½Ã ¹«Àû½Ã°£ 1ÃÊ
         public void TakeDamage(float damage)
         {
-            if (HitCoroutine == null)
+            if (isTakeHit == false)
             {
+                animator.SetTrigger("Hit");
+                isTakeHit = true;
                 curHp -= damage;
                 if (curHp <= 0)
                 {
                     Dead();
                 }
                 Debug.Log($"{damage} ¸¸Å­ÀÇ ÇÇÇØ¸¦ ¹ÞÀ½, ¹«Àû½Ã°£ ½ÃÀÛ");
-                HitCoroutine = StartCoroutine(PlayerHitCoolTime());
+                StartCoroutine(PlayerHitCoolTime());
             }
             else
             {
                 Debug.Log("¹«Àû½Ã°£");
             }
         }
-
+        private bool isTakeHit = false;
         private IEnumerator PlayerHitCoolTime()
         {
             yield return new WaitForSeconds(1f);
             Debug.Log("¹«Àû½Ã°£ Á¾·á");
-            HitCoroutine = null;
+            isTakeHit = false;
         }
 
         public override void Dead()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Player »ç¸Á Player »ç¸Á Player »ç¸Á Player »ç¸Á Player »ç¸Á " +
+                "Player »ç¸Á Player »ç¸Á Player »ç¸Á Player »ç¸Á Player »ç¸Á Player »ç¸Á " +
+                "Player »ç¸Á Player »ç¸Á Player »ç¸Á Player »ç¸Á Player »ç¸Á Player »ç¸Á " +
+                "Player »ç¸Á Player »ç¸Á Player »ç¸Á Player »ç¸Á Player »ç¸Á Player »ç¸Á ");
         }
 
         private void InitPlayerStatus()

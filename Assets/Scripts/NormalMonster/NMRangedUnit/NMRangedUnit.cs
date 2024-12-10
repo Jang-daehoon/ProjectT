@@ -59,6 +59,7 @@ public class NMRangedUnit : EnemyUint
     protected virtual void Update()
     {
         HpBarUpdate();
+        if (isDead == true) return;
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (curHp <= 0 && isDead == false)//죽으면 한번 발동
         {
@@ -67,6 +68,7 @@ public class NMRangedUnit : EnemyUint
             agent.isStopped = true;
             agent.velocity = Vector3.zero;
             ChangeState(State.Die);
+            animator.SetTrigger("Die");
         }
         if (dirplayer <= range && isDead == false)//공격범위내에 들어오면 공격으로 변경
         {

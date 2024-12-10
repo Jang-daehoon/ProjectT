@@ -33,27 +33,23 @@ public class RelicData : ScriptableObject
     public string statName;
     [Tooltip("오르는 수치")]
     public float relicStatsPoint;
-
     private void OnEnable()
     {
-        float alpha = 0.2f;
         //유물 등급에 따라서 유물등급색 적용
-        Color c;
         switch (this.rarity)
         {
             case Rarity.Common:
-                c = Color.white;
+                color = Color.white;
                 break;
             case Rarity.Uncommon:
-                c = Color.blue;
+                color = Color.cyan;
                 break;
             case Rarity.Rare:
-                c = Color.yellow;
+                color = Color.yellow;
                 break;
             default:
-                c = Color.red;
+                color = Color.red;
                 break;
         }
-        color = new Color(c.r, c.g, c.b, alpha);
     }
 }

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: RapidFire
   m_EditorClassIdentifier: 
   rarity: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
   relicName: "\uACE0\uC18D\uC5F0\uC0AC\uD3EC"
   relicID: 1
   relicSprite: {fileID: 0}
   relicDesc: 
   isLevelPlus: 0
   statName: atkSpeed
-  relicStatsPoint: 0.5
+  relicStatsPoint: 1

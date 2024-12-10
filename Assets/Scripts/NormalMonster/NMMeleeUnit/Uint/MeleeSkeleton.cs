@@ -26,6 +26,7 @@ public class MeleeSkeleton : NMMeleeUnit
     protected override void Update()
     {
         HpBarUpdate();
+        if (isDead == true) return;
         if (curHp <= 0)//죽을때 한번 발동
         {
             isDead = true;
@@ -42,10 +43,7 @@ public class MeleeSkeleton : NMMeleeUnit
         {
             Move();
         }
-        if (isDead == false)
-        {
-            if (isAtk == true) return;
-        }
+        if (isAtk == true) return;
         base.Update();
     }
 

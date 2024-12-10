@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class RelicBox : MonoBehaviour
 {
+    public ParticleSystem particle;
     public Animator animator;
     public bool getReward;  //보상 획득 여부
 
@@ -17,7 +19,7 @@ public class RelicBox : MonoBehaviour
     public Transform relicSpwanPos;
     public GameObject relicObj;
 
-    private float relicSpwanChance = 0.6f;
+    private float relicSpwanChance = 1f;
     private float common = 0.7f;
     private float unCommon = 0.2f;
     private float rare = 0.1f;
@@ -28,6 +30,8 @@ public class RelicBox : MonoBehaviour
     {
         getReward = false;
         isOpen = false;
+        particle.gameObject.SetActive(true);
+        particle.Play();
     }
 
 
@@ -38,7 +42,7 @@ public class RelicBox : MonoBehaviour
         animator.SetTrigger("Open");
         // 애니메이션이 끝날 때까지 대기
         yield return new WaitUntil(() => IsAnimationFinished("Open"));
-
+        particle.Stop();
         // 보상 획득 상태가 아니면 아르카나 보상 호출
         if (getReward == false)
         {

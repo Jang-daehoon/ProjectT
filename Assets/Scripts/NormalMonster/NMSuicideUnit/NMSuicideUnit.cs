@@ -17,6 +17,8 @@ public class NMSuicideUnit : EnemyUint
 
     public NMSuicideUnitRange boomRange;
 
+    private Vector3 lookPos;
+
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -52,6 +54,7 @@ public class NMSuicideUnit : EnemyUint
     protected virtual void Update()
     {
         HpBarUpdate();
+        if (isDead == true) return;
         if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
             isDead = true;
@@ -60,7 +63,11 @@ public class NMSuicideUnit : EnemyUint
             ChangeState(State.Die);
             animator.SetTrigger("Die");
         }
-        if (isAtk == true) return;//자폭 발동시 정지
+        if (isAtk == true)
+        {
+            transform.position = lookPos;
+            return;//자폭 발동시 정지
+        }
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (dirplayer <= range && isDead == false)//공격범위내에 들어오면 공격으로 변경
         {
@@ -75,7 +82,11 @@ public class NMSuicideUnit : EnemyUint
         switch (state)
         {
             case State.Attack:
-                if (isAtk == false) Attack(); 
+                if (isAtk == false)
+                {
+                    lookPos = transform.position;
+                    Attack();
+                }
                 break;
             case State.Move:
                 Move();
