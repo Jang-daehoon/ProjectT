@@ -13,20 +13,21 @@ public class BossDryad : EliteUnit
 
     public LeafStorm leafStormInstance;
     public LeafRainSkill leafRainInstance;
-
-    [SerializeField] private float skillGroggy = 3f;
-    [SerializeField] private float LeafStormCoolTime = 20f;
-    [SerializeField] private float LeafRainCoolTime = 20f;
-    [SerializeField] private float BeamCoolTime = 20f;
-
     public ParticleSystem LeafStormParticle;
     public ParticleSystem LeafRainParticle;
     public ParticleSystem BeamParticle;
     public ParticleSystem InvincibleParticle;
     public Collider LaserCol;
 
-    private BossState currentState;
-    [SerializeField] private bool isSkillExecuting = false; // 스킬 상태 실행 여부 플래그
+    public Transform projectileSpawnPoint; // 투사체 발사 지점
+    public GameObject projectilePrefab; // 투사체 프리팹
+
+    [SerializeField] private float skillGroggy = 3f;
+    [SerializeField] private float LeafStormCoolTime = 20f;
+    [SerializeField] private float LeafRainCoolTime = 20f;
+    [SerializeField] private float BeamCoolTime = 20f;
+
+    private bool isSkillExecuting = false; // 스킬 상태 실행 여부 플래그
 
     private bool isInvincible = false; // 무적 상태 여부
     private bool isInvincibleAnim = false; // 무적 애니메이션 실행 여부
@@ -34,6 +35,8 @@ public class BossDryad : EliteUnit
     private List<GameObject> summonedMonsters = new List<GameObject>();
     // 특수 몬스터 프리팹
     public GameObject specialMonsterPrefab;
+
+    private BossState currentState;
 
     protected override void Awake()
     {
@@ -77,10 +80,10 @@ public class BossDryad : EliteUnit
                 break;
         }
         //test
-        if (Input.GetKeyDown(KeyCode.Space))
-            ChangeState(BossState.INVINCIBLE);
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-            ExitInvincibleState();
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    ChangeState(BossState.INVINCIBLE);
+        //if (Input.GetKeyDown(KeyCode.LeftShift))
+        //    ExitInvincibleState();
     }
     private void ChangeState(BossState newState)
     {
@@ -237,12 +240,24 @@ public class BossDryad : EliteUnit
                 animator.SetBool("isChasing", false);
                 animator.SetBool("isAttack", true); // 공격 애니메이션 활성화
 
-                yield return new WaitForEndOfFrame();
-                yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+                yield return new WaitForSeconds(0.1f);
 
                 animator.SetBool("isAttack", false); // 공격 애니메이션 비활성화
                 yield return new WaitForSeconds(attackDelay); // 공격 간 딜레이
             }
+        }
+    }
+    private void FireProjectile()
+    {
+        if (projectilePrefab != null && projectileSpawnPoint != null && target != null)
+        {
+            // 투사체 생성
+            GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+
+            // ProjectileBehavior 초기화
+            BossProjectile projectileBehavior = projectile.GetComponent<BossProjectile>();
+
+            projectileBehavior.Initialize(target); // 플레이어를 타겟으로 설정
         }
     }
     public void OnRangeAttack()

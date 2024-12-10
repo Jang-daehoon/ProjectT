@@ -38,8 +38,8 @@ public class SpecialFlower : EliteUnit
                 break;
         }
         //test
-        if(Input.GetKeyDown(KeyCode.Escape))
-            ChangeState(FlowerState.DIE);
+        //if(Input.GetKeyDown(KeyCode.Escape))
+        //    ChangeState(FlowerState.DIE);
     }
     private void ChangeState(FlowerState newState)
     {
