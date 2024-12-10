@@ -1340,8 +1340,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc337d26610fb7249b7852efb2e52b5d, type: 2}
   - {fileID: 11400000, guid: 375a422dd2a8f514aaffdd39014328d2, type: 2}
   - {fileID: 11400000, guid: ee708306a979b1f4b83c1d9fa697fe34, type: 2}
-  - {fileID: 11400000, guid: 924b1f129e7d60945a4963d88df9514e, type: 2}
-  - {fileID: 11400000, guid: c8811a84809ce8040bcaabd6b76a8fcf, type: 2}
+  - {fileID: 11400000, guid: 4150a7f1138881f4da8b96a4a962e08f, type: 2}
+  - {fileID: 11400000, guid: 142f6178126126f43b5813d206849126, type: 2}
+  - {fileID: 11400000, guid: b1a0f642e64bd564fb155933db45fb64, type: 2}
   removedArcana: []
   curEnhanceLevel: 0
   enhanceBaseDamage: 0
@@ -1352,6 +1353,10 @@ MonoBehaviour:
   canEnhanceMeleeAttack: 0
   canRandomBulletInit: 0
   canCatalyst: 0
+  qSkillLevel: 0
+  wSkillLevel: 0
+  eSkillLevel: 0
+  skillSize: {x: 0.3, y: 0.3, z: 0.3}
   enhanceMeleeProjectile: {fileID: 0}
   enhanceAttackParticle: {fileID: 0}
   enhanceHitParticle: {fileID: 0}
@@ -22189,7 +22194,7 @@ MonoBehaviour:
   arrowRainBullet: {fileID: 7520478007629400125, guid: d249ed0acc1b72341bceef08babe964a, type: 3}
   arrowRainParticle: {fileID: 4363708317115051805, guid: b08033669d41e2a4197972ee7f5a3fb3, type: 3}
   eCoolTime: 1
-  eDamageMultiplier: 10
+  eDamageMultiplier: 1.25
   impaleSkillBullet: {fileID: 6966420061541031233, guid: 676108d394f5d0d41aa7c14da676f765, type: 3}
   startImpaleParticle: {fileID: 2168383714331228570, guid: c7dd05a59354c0549892054c062853c3, type: 3}
   skillRange: {fileID: 1229984610350775242, guid: 676108d394f5d0d41aa7c14da676f765, type: 3}

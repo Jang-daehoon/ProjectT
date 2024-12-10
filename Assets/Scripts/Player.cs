@@ -68,9 +68,19 @@ namespace HoonsCodes
 
         private void Update()
         {
+<<<<<<< HEAD
             //UI창때는 아무것도 불가
             if (UiManager.Instance.isDialogUiActive || UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
                 || UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3 && !canMove)
+=======
+            if (isDash)
+                return;
+
+            // 대시나 공격 중이 아닐 때만 이동, 대사중에 이동 불가.
+            if (!isDash && !isAttack && !usingSkillX && !UiManager.Instance.isDialogUiActive
+                && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
+                || UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3) && canMove)
+>>>>>>> e2daa7e181bfe2e9799e54d9d0019de91a5ebbd5
             {
                 return;
             }
@@ -81,12 +91,12 @@ namespace HoonsCodes
                 SkillManager.Instance.Multi_Shot_Arrow();
                 UiManager.Instance.UseQSkill();
             }
-            if(Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 SkillManager.Instance.ArrowRain();
                 UiManager.Instance.UseWSkill();
             }
-            if(Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 RotateToClickPosition();
                 SkillManager.Instance.ImpaleSkill();
@@ -135,7 +145,11 @@ namespace HoonsCodes
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
             else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false
+<<<<<<< HEAD
                 && other.GetComponent<RelicBox>().isOpen == false && other.gameObject.layer == 8)
+=======
+             && other.GetComponent<RelicBox>().isOpen == false && other.gameObject.layer == 8)
+>>>>>>> e2daa7e181bfe2e9799e54d9d0019de91a5ebbd5
             {
                 Debug.Log("유물 상자와 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
@@ -180,7 +194,11 @@ namespace HoonsCodes
                 }
             }
             else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false
+<<<<<<< HEAD
                 && other.GetComponent<RelicBox>().isOpen == false && Input.GetKeyDown(KeyCode.F))
+=======
+                    && other.GetComponent<RelicBox>().isOpen == false && Input.GetKeyDown(KeyCode.F))
+>>>>>>> e2daa7e181bfe2e9799e54d9d0019de91a5ebbd5
             {
                 StartCoroutine(other.GetComponent<RelicBox>().RelicResult());
             }
