@@ -5,12 +5,7 @@ using UnityEngine;
 using static UnityEngine.ParticleSystem;
 namespace HoonsCodes
 {
-<<<<<<< HEAD
-
     public class Player : Character, ITakeDamage
-=======
-    public class Player : Character
->>>>>>> fab38172b76d8fc7ebdf8cfa35dc565bf90b8e02
     {
         [Header("플레이어 이동 가능 여부")]
         public bool canMove;

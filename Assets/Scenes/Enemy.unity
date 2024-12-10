@@ -492,6 +492,7 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   mapGenerator: {fileID: 0}
   eventSystem: {fileID: 0}
+  tutorialManager: {fileID: 0}
   relicList: []
 --- !u!4 &503322191
 Transform:
@@ -528,6 +529,23 @@ MonoBehaviour:
   MapUIObj: {fileID: 0}
   FadeObj: {fileID: 0}
   UnknownUIObj: {fileID: 0}
+  enterUnknownUi: {fileID: 0}
+  mainUnknownUi: {fileID: 0}
+  UnknownUIObj2: {fileID: 0}
+  enterUnknownUi2: {fileID: 0}
+  mainUnknownUi2: {fileID: 0}
+  UnknownUIObj3: {fileID: 0}
+  enterUnknownUi3: {fileID: 0}
+  mainUnknownUi3: {fileID: 0}
+  qSkill: {fileID: 0}
+  qCoolImg: {fileID: 0}
+  qCoolTimeText: {fileID: 0}
+  wSkill: {fileID: 0}
+  wCoolImg: {fileID: 0}
+  wCoolTimeText: {fileID: 0}
+  eSkill: {fileID: 0}
+  eCoolImg: {fileID: 0}
+  eCoolTimeText: {fileID: 0}
   firstArcanaImg: {fileID: 0}
   secondArcanaImg: {fileID: 0}
   thirdArcanaImg: {fileID: 0}
@@ -542,12 +560,32 @@ MonoBehaviour:
   thirdArcanaDesc: {fileID: 0}
   unknownRoomName: {fileID: 0}
   unknownRoomImage: {fileID: 0}
+  unknownMainImage: {fileID: 0}
   unknownRoomContext: {fileID: 0}
-  unknownEventButton: []
+  unknownEventBtn1: {fileID: 0}
+  unknownEventBtn2: {fileID: 0}
+  unknownEventBtn3: {fileID: 0}
+  unknownRoomName2: {fileID: 0}
+  unknownRoomImage2: {fileID: 0}
+  unknownMainImage2: {fileID: 0}
+  unknownRoomContext2: {fileID: 0}
+  unknownEventBtn2_1: {fileID: 0}
+  unknownEventBtn2_2: {fileID: 0}
+  unknownEventBtn2_3: {fileID: 0}
+  unknownRoomName3: {fileID: 0}
+  unknownRoomImage3: {fileID: 0}
+  unknownMainImage3: {fileID: 0}
+  unknownRoomContext3: {fileID: 0}
+  unknownEventBtn3_1: {fileID: 0}
+  unknownEventBtn3_2: {fileID: 0}
+  unknownEventBtn3_3: {fileID: 0}
   isDialogUiActive: 0
   isArcanaUIActive: 0
   isMapUIActive: 0
   isInteractiveUiActive: 0
+  isUnknownUiActive: 0
+  isUnknownUiActive2: 0
+  isUnknownUiActive3: 0
 --- !u!114 &799228334 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7999707251636466060, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
