@@ -141,6 +141,12 @@ namespace HoonsCodes
                 UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
+            else if(other.CompareTag("Godness"))
+            {
+                Debug.Log("여신과 접촉");
+                UiManager.Instance.interactiveText.text = "여신이 나에게 말을걸고 싶어합니다.";
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
         }
         private void OnTriggerStay(Collider other)
         {
