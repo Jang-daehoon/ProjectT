@@ -68,6 +68,9 @@ namespace HoonsCodes
 
         private void Update()
         {
+            if (isDash)
+                return;
+
             // 대시나 공격 중이 아닐 때만 이동, 대사중에 이동 불가.
             if (!isDash && !isAttack && !usingSkillX && !UiManager.Instance.isDialogUiActive
                 && !(UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
@@ -95,12 +98,12 @@ namespace HoonsCodes
                 SkillManager.Instance.Multi_Shot_Arrow();
                 UiManager.Instance.UseQSkill();
             }
-            if(Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 SkillManager.Instance.ArrowRain();
                 UiManager.Instance.UseWSkill();
             }
-            if(Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 RotateToClickPosition();
                 SkillManager.Instance.ImpaleSkill();
@@ -116,13 +119,6 @@ namespace HoonsCodes
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false
-                && other.GetComponent<RelicBox>().isOpen == false && other.gameObject.layer == 8)
-            {
-                Debug.Log("유물 상자와 접촉");
-                UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
-                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
-            }
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false
                 && other.GetComponent<ChestReward>().isOpen == false && other.gameObject.layer == 8)
             {
@@ -142,14 +138,16 @@ namespace HoonsCodes
                 UiManager.Instance.interactiveText.text = "F를 눌러 ???와 상호작용할 수 있어.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
+            else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false
+             && other.GetComponent<RelicBox>().isOpen == false && other.gameObject.layer == 8)
+            {
+                Debug.Log("유물 상자와 접촉");
+                UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
         }
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false
-                && other.GetComponent<RelicBox>().isOpen == false && Input.GetKeyDown(KeyCode.F))
-            {
-                StartCoroutine(other.GetComponent<RelicBox>().RelicResult());
-            }
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false
                 && other.GetComponent<ChestReward>().isOpen == false && Input.GetKeyDown(KeyCode.F))
             {
@@ -185,14 +183,14 @@ namespace HoonsCodes
                         break;
                 }
             }
+            else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false
+                    && other.GetComponent<RelicBox>().isOpen == false && Input.GetKeyDown(KeyCode.F))
+            {
+                StartCoroutine(other.GetComponent<RelicBox>().RelicResult());
+            }
         }
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false)
-            {
-                Debug.Log("유물 상자 접촉 해제");
-                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
-            }
             //UI상호작용 가능 문구 비활성화
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false
                 && other.GetComponent<ChestReward>().isOpen == false)
@@ -208,6 +206,11 @@ namespace HoonsCodes
             else if (other.CompareTag("NPC") && other.GetComponent<UnknownNPC>().isTalkDone == false)
             {
                 Debug.Log("???와 접촉해제");
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+            }
+            else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false)
+            {
+                Debug.Log("유물 상자 접촉 해제");
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
         }
