@@ -20,7 +20,14 @@ namespace EnemyController
         ATTACK,
         LEAFSTORM,
         LEAFRAIN,
-        SKILL3,
+        BEAM,
+        INVINCIBLE,
+        DIE
+    }
+    public enum FlowerState
+    {
+        IDLE, 
+        CAST, 
         DIE
     }
 }

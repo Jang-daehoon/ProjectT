@@ -7,21 +7,17 @@ using HoonsCodes;
 using System;
 using UnityEditor;
 using UnityEditor.ShaderGraph.Internal;
-public class EliteGolem : Character
+public class EliteGolem : EliteUnit
 {
-    private Transform target;
     [Tooltip("공격 범위")]
     public Collider attackRange;
+
     public ParticleSystem skillParticle;
     public ParticleSystem attackParticleRight;
     public ParticleSystem attackParticleLeft;
-    public NavMeshAgent agent;
 
     [Header("이동 관련 수치")]
     [SerializeField] private float lookSpeed = 3f; // 회전 속도
-
-    [Header("공격 관련 수치")]
-    [SerializeField] private float attackDelay = 2f; // 공격간 딜레이
 
     [Header("스킬 관련 수치")]
     [SerializeField] private float skillCoolTime = 15.0f; // 스킬 쿨타임
@@ -30,13 +26,10 @@ public class EliteGolem : Character
     private AttackWarning attackWarning; // 경고 관리 스크립트
 
     private EliteState currentState;
-    private bool isPlayerInRange = false; // 플레이어가 범위 내에 있는지 여부
 
-    private void Awake()
+    protected override void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        base.Awake();
         attackWarning = GetComponent<AttackWarning>();
 
         agent.updateRotation = false;
@@ -49,14 +42,9 @@ public class EliteGolem : Character
         StartCoroutine(GolemRise());
         StartCoroutine(UseSkill());
     }
-    private void OnEnable()
-    {
-        EliteInitStats();
-    }
     private void Update()
     {
-        target = EliteBossGameMangerTest.Instance.player.transform;
-        //target = GameManager.Instance.player.transform;
+        target = GameObject.FindWithTag("Player").transform; // 플레이어 태그로 참조
 
         switch (currentState)
         {
@@ -75,10 +63,6 @@ public class EliteGolem : Character
                 // 죽음 상태 처리
                 break;
         }
-        // 골렘 사망 테스트
-        if (Input.GetKeyDown(KeyCode.Space))
-            ChangeState(EliteState.DIE);
-
     }
     private void ChangeState(EliteState newState)
     {
@@ -240,16 +224,7 @@ public class EliteGolem : Character
 
         Destroy(gameObject);
     }
-    public void Look(float lookSpeed)
-    {
-        if (target == null) return; // 타겟이 없으면 리턴
 
-        Vector3 direction = (target.position - transform.position).normalized;
-        direction.y = 0; // Y축 회전을 고정
-
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * lookSpeed);
-    }
     public bool Attacking()
     {
         var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
@@ -278,19 +253,6 @@ public class EliteGolem : Character
             //    Debug.Log("Player에게 데미지 적용!");
             //}
         }
-    }
-    public override void Dead()
-    {
-    }
-    private void EliteInitStats()
-    {
-        maxHp = characterData.maxHp;
-        curHp = maxHp;
-        atkSpeed = characterData.attackSpeed;
-        attackDelay = characterData.attackDelay;
-        moveSpeed = characterData.moveSpeed;
-        dmgValue = characterData.damage;
-        isDead = false;
     }
     public void ShowAttackWarning()
     {

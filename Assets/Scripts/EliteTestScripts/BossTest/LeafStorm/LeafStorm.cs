@@ -43,4 +43,11 @@ public class LeafStorm : MonoBehaviour
         // 스킬 오브젝트 비활성화 또는 제거
         Destroy(gameObject);
     }
+    protected void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            //TODO : 데미지 들어가는거 구현
+        }
+    }
 }
