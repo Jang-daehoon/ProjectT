@@ -5,11 +5,7 @@ using UnityEngine;
 using static UnityEngine.ParticleSystem;
 namespace HoonsCodes
 {
-<<<<<<< HEAD
     public class Player : Character, ITakeDamage
-=======
-    public class Player : Character, Skills
->>>>>>> aa634e3bb49cee08fd064190d34b5c678e83062b
     {
         [Header("플레이어 이동 가능 여부")]
         public bool canMove;
@@ -120,19 +116,14 @@ namespace HoonsCodes
         }
         private void OnTriggerEnter(Collider other)
         {
-<<<<<<< HEAD
             if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false)
             {
                 Debug.Log("유물 상자와 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
-            if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false)
-=======
-
             if (other.CompareTag("Chest") && other.GetComponent<ChestReward>().getReward == false
                 && other.GetComponent<ChestReward>().isOpen == false && other.gameObject.layer == 8)
->>>>>>> aa634e3bb49cee08fd064190d34b5c678e83062b
             {
                 Debug.Log("보상 상자와 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";
