@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RestStage.unity
     guid: 6a7b19ddadd0ed74db724814f180e189
+  - enabled: 1
+    path: Assets/Scenes/RewardScene.unity
+    guid: 2e965e39d73495146a93cdc985902de7
   m_configObjects: {}

@@ -29,9 +29,10 @@ public class RoomManager : Singleton<RoomManager>
             case ERoomType.Enemy:
                 OnEnterEnemyRoom();
                 break;
-            case ERoomType.Merchant:
+            /*case ERoomType.Merchant:
                 OnEnterMerchantRoom();
                 break;
+            */
             case ERoomType.Rest:
                 OnEnterRestRoom();
                 break;
@@ -74,17 +75,23 @@ public class RoomManager : Singleton<RoomManager>
     private void OnEnterRestRoom()
     {
         Debug.Log("OnEnterRestRoom");
-        ScenesManager.Instance.ChanageScene("RestScene");
+        ScenesManager.Instance.ChanageScene("RestStage");
         UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
 
         // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
-        StartCoroutine(MovePlayerToStartPosition("RestScene"));
+        StartCoroutine(MovePlayerToStartPosition("RestStage"));
 
     }
     // 보물 방에 들어갈 때
     private void OnEnterTreasureRoom()
     {
         Debug.Log("OnEnterTreasureRoom");
+        ScenesManager.Instance.ChanageScene("RewardScene");
+        UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
+
+        // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
+        StartCoroutine(MovePlayerToStartPosition("RewardScene"));
+
     }
     // 보스 방에 들어갈 때
     public void OnEnterBossRoom()
