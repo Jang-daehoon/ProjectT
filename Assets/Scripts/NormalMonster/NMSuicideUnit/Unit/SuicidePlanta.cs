@@ -33,7 +33,7 @@ public class SuicidePlanta : NMSuicideUnit
     }
     private void Boom()//ÀÚÆø
     {
-        animator.SetTrigger("Attack");
+        if (isDead == false) animator.SetTrigger("Attack");
         Instantiate(particle, transform.position, transform.rotation);
         particle.Play();
         var main = particle.main;
@@ -46,7 +46,7 @@ public class SuicidePlanta : NMSuicideUnit
             GameManager.Instance.player.TakeDamage(dmgValue);
             //°ø°Ý
         }
-        animator.SetTrigger("Die");
+        if (isDead == false) animator.SetTrigger("Die");
     }
 
 }

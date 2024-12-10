@@ -27,9 +27,13 @@ public class MeleeSkeleton : NMMeleeUnit
     {
         HpBarUpdate();
         if (isDead == true) return;
-        if (curHp <= 0)//죽을때 한번 발동
+        if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
             isDead = true;
+            col.enabled = false;
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+            animator.SetTrigger("Die");
         }
         if (isAtkMotion == false)
         {
@@ -55,7 +59,7 @@ public class MeleeSkeleton : NMMeleeUnit
         Look();
         atkRange.gameObject.SetActive(true);
         atkRange.OnRange();
-        animator.SetTrigger("Attack");
+        if (isDead == false) animator.SetTrigger("Attack");
         StartCoroutine(AtkOff());
         StartCoroutine(AtkCoolTime());
     }

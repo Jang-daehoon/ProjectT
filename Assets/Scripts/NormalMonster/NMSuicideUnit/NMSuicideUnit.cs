@@ -60,6 +60,7 @@ public class NMSuicideUnit : EnemyUint
             isDead = true;
             col.enabled = false;
             agent.isStopped = true;
+            agent.velocity = Vector3.zero;
             ChangeState(State.Die);
             animator.SetTrigger("Die");
         }

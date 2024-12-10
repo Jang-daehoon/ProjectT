@@ -33,9 +33,12 @@ public class MeleeGolem : NMMeleeUnit
     {
         HpBarUpdate();
         if (isDead == true) return;
-        if (curHp <= 0)//죽을때 한번 발동
+        if (curHp <= 0 == isDead == false)//죽을때 한번 발동
         {
             isDead = true;
+            col.enabled = false;
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
             animator.SetTrigger("Die");
         }
         if (isGolemAttack == true)
@@ -64,7 +67,7 @@ public class MeleeGolem : NMMeleeUnit
 
     private IEnumerator GolemMoveAttack()
     {
-        animator.SetBool("Idel", true);
+        if (isDead == false) animator.SetBool("Idel", true);
         attackRange.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
         attackRange.gameObject.SetActive(true);//이동범위 표시 On
 
@@ -73,8 +76,11 @@ public class MeleeGolem : NMMeleeUnit
         isGolemAttack = true;
         attackRange.gameObject.SetActive(false);//이동범위 표시 Off
         yield return null;
-        animator.SetBool("Idel", false);
-        animator.SetBool("Attack", true);
+        if (isDead == false)
+        {
+            animator.SetBool("Idel", false);
+            animator.SetBool("Attack", true);
+        }
         isHit = false;
         particle.gameObject.SetActive(true);
         particle.Play();
@@ -83,7 +89,7 @@ public class MeleeGolem : NMMeleeUnit
         col.isTrigger = false;
         isGolemAttack = false;
         attackRange.transform.position = this.transform.position;
-        animator.SetBool("Attack", false);
+        if (isDead == false) animator.SetBool("Attack", false);
         particle.gameObject.SetActive(false);
         particle.Stop();
         isGolemAttackCollTime = true;

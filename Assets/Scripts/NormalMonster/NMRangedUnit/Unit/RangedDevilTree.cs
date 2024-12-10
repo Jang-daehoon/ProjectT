@@ -25,7 +25,7 @@ public class RangedDevilTree : NMRangedUnit
         Look();
         StartCoroutine(AtkOff());
         StartCoroutine(CoolTime());
-        animator.SetBool("Idle", true);
+        if (isDead == false) animator.SetBool("Idle", true);
     }
 
     private IEnumerator AtkOff()//공격 딜레이
@@ -36,7 +36,7 @@ public class RangedDevilTree : NMRangedUnit
         }
         yield return new WaitForSeconds(atkSpeed);
         animator.SetBool("Idle", false);
-        animator.SetTrigger("Attack");
+        if (isDead == false) animator.SetTrigger("Attack");
         for (int i = 0; i < 3; i++)
         {
             attackRange[i].gameObject.SetActive(false);//사격범위 표시 Off

@@ -32,7 +32,7 @@ public class SuicideBeez : NMSuicideUnit
 
     private void Boom()//ÀÚÆø
     {
-        animator.SetTrigger("Attack");
+        if (isDead == false) animator.SetTrigger("Attack");
         Instantiate(particle, transform.position, transform.rotation);
         particle.Play();
         var main = particle.main;
@@ -45,7 +45,7 @@ public class SuicideBeez : NMSuicideUnit
             GameManager.Instance.player.TakeDamage(dmgValue);
             //°ø°Ý
         }
-        isDead = true; 
-        animator.SetTrigger("Die");
+        isDead = true;
+        if (isDead == false) animator.SetTrigger("Die");
     }
 }
