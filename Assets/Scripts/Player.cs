@@ -5,6 +5,7 @@ using UnityEngine;
 using static UnityEngine.ParticleSystem;
 namespace HoonsCodes
 {
+
     public class Player : Character, ITakeDamage
     {
         [Header("플레이어 이동 가능 여부")]
@@ -116,7 +117,8 @@ namespace HoonsCodes
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false)
+            if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false
+                && other.GetComponent<RelicBox>().isOpen == false && other.gameObject.layer == 8)
             {
                 Debug.Log("유물 상자와 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 상자를 열 수 있어.";

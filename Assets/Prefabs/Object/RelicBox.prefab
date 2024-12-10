@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4774951089982290146}
   - component: {fileID: 2594444059724060287}
   - component: {fileID: 4258765152360105726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 7303995918156066532}
   - component: {fileID: 2607943919470634217}
   - component: {fileID: 8030771955546301647}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: chest_wooden_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 5320746710004163139}
   - component: {fileID: 5853015350467167536}
   - component: {fileID: 3175302649177451860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: chest_wooden_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5776155934303773507}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RelicObjPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 3923283582661566588}
   - component: {fileID: 2954809619034235039}
   - component: {fileID: 6722244036305573696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: chest_wooden_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 2164369803728905992}
   - component: {fileID: 8547853633295081300}
   - component: {fileID: 1828280624810426382}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: chest_wooden_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 1131548727738490613}
   - component: {fileID: 8840557345911971230}
   - component: {fileID: 3790386001822369260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RelicBox
   m_TagString: RelicBox
   m_Icon: {fileID: 0}

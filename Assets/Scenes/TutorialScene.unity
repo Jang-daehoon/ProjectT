@@ -24882,11 +24882,8 @@ MonoBehaviour:
   playerCamera: {fileID: 1344566793}
   mapGenerator: {fileID: 1349616590}
   eventSystem: {fileID: 630206327}
-<<<<<<< HEAD
-  relicList: []
-=======
   tutorialManager: {fileID: 484203242}
->>>>>>> aa634e3bb49cee08fd064190d34b5c678e83062b
+  relicList: []
 --- !u!1001 &2009636419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26933,10 +26930,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7442429840179179645, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7999707251636466060, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
-      propertyPath: usingSkillX
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7999707251636466060, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
