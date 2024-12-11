@@ -68,20 +68,20 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.42173913
-        functionName: ApplyDamage
+        functionName: SkillApplyDamage
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.4242967
+      - time: 0.4286445
         functionName: EndAttackWarning
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.4248948
+      - time: 0.42924264
         functionName: SkillParticle
         data: 
         objectReferenceParameter: {instanceID: 0}

@@ -11,6 +11,7 @@ public class EliteGolem : EliteUnit
 {
     [Tooltip("공격 범위")]
     public Collider attackRange;
+    public Collider skillRange;
 
     public ParticleSystem skillParticle;
     public ParticleSystem attackParticleRight;
@@ -251,6 +252,22 @@ public class EliteGolem : EliteUnit
             {
                 GameManager.Instance.player.TakeDamage(dmgValue);
                 print("!!!!!!!!!!!!!!!!");
+            }
+        }
+    }
+    public void SkillApplyDamage()
+    {
+        float sphereRadius = skillRange.bounds.extents.x; // 스피어의 반경 설정
+        Vector3 sphereCenter = skillRange.bounds.center; // 스피어의 중심 설정
+
+        Collider[] hitColliders = Physics.OverlapSphere(sphereCenter, sphereRadius, LayerMask.GetMask("Player"));
+
+        foreach (Collider hit in hitColliders)
+        {
+            if (hit.CompareTag("Player"))
+            {
+                GameManager.Instance.player.TakeDamage(dmgValue);
+                Debug.Log("스킬로 플레이어에게 데미지 적용됨!");
             }
         }
     }
