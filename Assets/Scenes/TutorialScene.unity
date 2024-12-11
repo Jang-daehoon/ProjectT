@@ -24972,10 +24972,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4b2f9ce20ac648141a3ea51b5250af70, type: 2}
   - {fileID: 11400000, guid: 5f786471bec2bab46b83669fae9a5770, type: 2}
   unCommonRelic:
-  - {fileID: 11400000, guid: a90cbaf0c0cdea741839adb49d89a33d, type: 2}
-  - {fileID: 11400000, guid: b603333f8abc61042927db9e9a08bbe3, type: 2}
-  - {fileID: 11400000, guid: 4b2f9ce20ac648141a3ea51b5250af70, type: 2}
-  - {fileID: 11400000, guid: 5f786471bec2bab46b83669fae9a5770, type: 2}
+  - {fileID: 11400000, guid: 8a1dad67e8a88ec4da1edf15b687c21c, type: 2}
+  - {fileID: 11400000, guid: 509b720f05c076042b1731b66461d5c5, type: 2}
+  - {fileID: 11400000, guid: bb230a0e153dc0e4fbe2f917d274b0e3, type: 2}
+  - {fileID: 11400000, guid: 8898c82aecb57b2449252cb54ba9f830, type: 2}
   rareRelic:
   - {fileID: 11400000, guid: c487f8135b382d84c8d67ea53c2100b9, type: 2}
   - {fileID: 11400000, guid: 4de560ddd771fe84980d1755ac7b94d1, type: 2}
