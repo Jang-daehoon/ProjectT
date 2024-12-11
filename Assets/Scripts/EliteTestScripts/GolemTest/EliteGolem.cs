@@ -218,11 +218,12 @@ public class EliteGolem : EliteUnit
     }
     private IEnumerator HandleDieState()
     {
+        EndAttackWarning();
         agent.isStopped = true;
         agent.SetDestination(transform.position);
         animator.SetTrigger("Die");
         gameObject.GetComponent<Collider>().enabled = false;
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(1.7f);
 
         Destroy(gameObject);
     }
