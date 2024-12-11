@@ -69,6 +69,7 @@ public class EnemyUint : Character, ITakeDamage
         if (curHp <= 0)
         {
             ChangeState(State.Die);
+            isDead = true;
         }
         if (isAtk == false)
         {
