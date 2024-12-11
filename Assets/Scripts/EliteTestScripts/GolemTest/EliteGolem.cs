@@ -218,11 +218,12 @@ public class EliteGolem : EliteUnit
     }
     private IEnumerator HandleDieState()
     {
+        EndAttackWarning();
         agent.isStopped = true;
         agent.SetDestination(transform.position);
         animator.SetTrigger("Die");
         gameObject.GetComponent<Collider>().enabled = false;
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(1.7f);
 
         Destroy(gameObject);
     }
@@ -269,6 +270,14 @@ public class EliteGolem : EliteUnit
                 GameManager.Instance.player.TakeDamage(dmgValue);
                 Debug.Log("스킬로 플레이어에게 데미지 적용됨!");
             }
+        }
+    }
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        if (curHp <= 0)
+        {
+            ChangeState(EliteState.DIE);
         }
     }
     public void ShowAttackWarning()

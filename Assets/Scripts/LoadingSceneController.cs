@@ -6,17 +6,35 @@ using UnityEngine.UI;
 
 public class LoadingSceneController : MonoBehaviour
 {
-    public Image progressBar;
+    public Image progressBar; 
+    public Image backgroundImage; // 배경 이미지를 변경할 UI 이미지
+    public Sprite eliteSceneBackground; // EliteScene 배경 스프라이트
+    public Sprite bossSceneBackground;  // BossScene 배경 스프라이트
     static string nextScene;
 
     private void Start()
     {
+        SetBackgroundImage();
         StartCoroutine(LoadingSceneProgress());
     }
     public static void LoadScene(string sceneName)
     {
         nextScene = sceneName;
         SceneManager.LoadScene("LoadingScene");
+    }
+    private void SetBackgroundImage()
+    {
+        if (backgroundImage != null)
+        {
+            if (nextScene == "EliteScene")
+            {
+                backgroundImage.sprite = eliteSceneBackground;
+            }
+            else if (nextScene == "BossScene")
+            {
+                backgroundImage.sprite = bossSceneBackground;
+            }
+        }
     }
     public IEnumerator LoadingSceneProgress()
     {
@@ -28,7 +46,7 @@ public class LoadingSceneController : MonoBehaviour
         while (!op.isDone)
         {
             yield return null;
-            if (op.progress < 0.9f)
+            if (op.progress < 0.9f) 
             {
                 progressBar.fillAmount = op.progress;
             }

@@ -364,6 +364,14 @@ public class BossDryad : EliteUnit
         if (summonedMonsters.Contains(monster))
             summonedMonsters.Remove(monster);
     }
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        if (curHp <= 0)
+        {
+            ChangeState(BossState.DIE);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (LaserCol.name == "LaserCollider")

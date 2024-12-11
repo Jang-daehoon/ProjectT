@@ -56,7 +56,7 @@ public class EliteUnit : Character , ITakeDamage
         dmgValue = characterData.damage;
         isDead = false;
     }
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         curHp -= damage;
         hpBar.HpBarUpdate();

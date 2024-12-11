@@ -130,6 +130,14 @@ public class SpecialFlower : EliteUnit
             yield return null; // 매 프레임 대기
         }
     }
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        if (curHp <= 0)
+        {
+            ChangeState(FlowerState.DIE);
+        }
+    }
     private IEnumerator Die()
     {
         StopCoroutine(LookTarget());
