@@ -20,4 +20,4 @@ MonoBehaviour:
   relicDesc: 
   isLevelPlus: 0
   statName: moveSpeed
-  relicStatsPoint: 1
+  relicStatsPoint: 0.5
