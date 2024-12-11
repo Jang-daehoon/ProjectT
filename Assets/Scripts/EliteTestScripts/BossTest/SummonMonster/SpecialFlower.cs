@@ -14,6 +14,10 @@ public class SpecialFlower : EliteUnit
     public ParticleSystem grass; // 파티클 시스템
 
     private FlowerState currentState;
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     void Start()
     {
@@ -23,6 +27,7 @@ public class SpecialFlower : EliteUnit
     }
     void Update()
     {
+        HpBarUpdate();
         // 상태별 동작
         switch (currentState)
         {

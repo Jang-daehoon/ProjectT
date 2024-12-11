@@ -16,8 +16,8 @@ public class EliteUnit : Character , ITakeDamage
     protected void OnEnable()
     {
         BossInitStat();
-        HpBarUpdate();
         hpBar.maxHp = this.maxHp;
+        HpBarUpdate();
     }
     protected void HpBarUpdate()
     {
