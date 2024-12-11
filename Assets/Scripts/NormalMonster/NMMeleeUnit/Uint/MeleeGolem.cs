@@ -32,7 +32,6 @@ public class MeleeGolem : NMMeleeUnit
     protected override void Update()
     {
         HpBarUpdate();
-        if (isDead == true) return;
         if (curHp <= 0 == isDead == false)//죽을때 한번 발동
         {
             isDead = true;
