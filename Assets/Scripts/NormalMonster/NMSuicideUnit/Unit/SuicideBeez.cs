@@ -43,6 +43,6 @@ public class SuicideBeez : NMSuicideUnit
             GameManager.Instance.player.TakeDamage(dmgValue);
             //АјАн
         }
-        if (isDead == false) animator.SetTrigger("Die");
+        if (isDead == true) animator.SetTrigger("Die");
     }
 }
