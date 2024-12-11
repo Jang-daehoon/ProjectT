@@ -1340,8 +1340,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc337d26610fb7249b7852efb2e52b5d, type: 2}
   - {fileID: 11400000, guid: 375a422dd2a8f514aaffdd39014328d2, type: 2}
   - {fileID: 11400000, guid: ee708306a979b1f4b83c1d9fa697fe34, type: 2}
-  - {fileID: 11400000, guid: 924b1f129e7d60945a4963d88df9514e, type: 2}
-  - {fileID: 11400000, guid: c8811a84809ce8040bcaabd6b76a8fcf, type: 2}
+  - {fileID: 11400000, guid: 4150a7f1138881f4da8b96a4a962e08f, type: 2}
+  - {fileID: 11400000, guid: 142f6178126126f43b5813d206849126, type: 2}
+  - {fileID: 11400000, guid: b1a0f642e64bd564fb155933db45fb64, type: 2}
   removedArcana: []
   curEnhanceLevel: 0
   enhanceBaseDamage: 0
