@@ -2939,6 +2939,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 777788320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &187899314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187899315}
+  m_Layer: 0
+  m_Name: EliteMonsterSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187899315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187899314}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -44, y: 0, z: 42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &194982282
 GameObject:
   m_ObjectHideFlags: 0
@@ -7689,11 +7720,15 @@ MonoBehaviour:
   ActiveEnemies: []
   unknownClear: 0
   restRoomClear: 0
+  eliteRoomClear: 0
+  eliteMonsterObj: {fileID: 9148962957747564349, guid: 0ffb3630aaea4ad45b39be19ac334d3c, type: 3}
+  eliteMonsterSpawnPos: {fileID: 187899315}
+  eliteMinionObj: {fileID: 8218977476529634470, guid: 7c09a15b3c8611b4dad62d0c6cedeb60, type: 3}
   rewardsPos: []
   rewardItemPrefab: {fileID: 8912073544688779787, guid: bde780caca13d004aa7e1beea01ce88f, type: 3}
-  rewardSpawnPoint: {fileID: 0}
-  potalPrefab: {fileID: 0}
-  potalSpawnPoint: {fileID: 0}
+  rewardSpawnPoint: {fileID: 2056602819}
+  potalPrefab: {fileID: 7591965459911950615, guid: 67fbb3acaf1e5ce4e8c1eaf18f2ad5ea, type: 3}
+  potalSpawnPoint: {fileID: 1895340348}
 --- !u!1 &421222545
 GameObject:
   m_ObjectHideFlags: 0
@@ -45455,6 +45490,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 777788320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2056602818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2056602819}
+  m_Layer: 0
+  m_Name: RewardSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2056602819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056602818}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -84, y: 0, z: 42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2063185455
 GameObject:
   m_ObjectHideFlags: 0
@@ -47126,3 +47192,5 @@ SceneRoots:
   - {fileID: 1198508414}
   - {fileID: 1895340348}
   - {fileID: 852425508}
+  - {fileID: 2056602819}
+  - {fileID: 187899315}
