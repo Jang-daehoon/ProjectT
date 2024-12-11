@@ -274,12 +274,12 @@ public class EliteGolem : EliteUnit
     }
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.CompareTag("Player") == true)
             isPlayerInRange = true;
     }
     protected void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.CompareTag("Player") == true)
         {
             animator.ResetTrigger("Attack1");
             animator.ResetTrigger("Attack2");
