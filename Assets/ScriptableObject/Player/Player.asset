@@ -18,6 +18,6 @@ MonoBehaviour:
     \uD3C9\uBC94\uD55C \uC0AC\uB78C"
   maxHp: 100
   damage: 10
-  moveSpeed: 5
+  moveSpeed: 7
   attackSpeed: 1
   attackDelay: 1
