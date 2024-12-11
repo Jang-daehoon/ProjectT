@@ -31,6 +31,12 @@ public class StageManager : MonoBehaviour
     public GameObject eliteMinionObj;
 
     //BossRoom 관련
+    [Header("BossRoom 사용될 정보")]
+    public GameObject BossObj;
+    public GameObject BossSpawnPos;
+
+    public ParticleSystem BossSpawnParticle;
+    public bool isBossClear;
 
     //보상 방 관련
     public Transform[] rewardsPos;
@@ -111,6 +117,7 @@ public class StageManager : MonoBehaviour
 
                 break;
             case RoomCheck.BOSS:
+
                 break;
             case RoomCheck.UNKNOWN:
                 //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
