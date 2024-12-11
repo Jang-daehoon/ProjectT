@@ -271,6 +271,14 @@ public class EliteGolem : EliteUnit
             }
         }
     }
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        if (curHp <= 0)
+        {
+            ChangeState(EliteState.DIE);
+        }
+    }
     public void ShowAttackWarning()
     {
         if (currentState == EliteState.SKILL)
