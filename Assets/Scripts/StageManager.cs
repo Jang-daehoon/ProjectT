@@ -19,10 +19,6 @@ public class StageManager : MonoBehaviour
     //휴식 방 관련
     public bool restRoomClear;
 
-    //EliteRoom 관련
-    public bool eliteRoomClear;
-    //EliteRoom
-
     //보상 방 관련
     public Transform[] rewardsPos;
 

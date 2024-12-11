@@ -16,6 +16,11 @@ public class RangedDevilTree : NMRangedUnit
 
     protected override void Update()
     {
+        if (isDead == true)
+        {
+            animator.SetBool("Idle", false);
+            animator.SetTrigger("Die");
+        }
         base.Update();
     }
 
