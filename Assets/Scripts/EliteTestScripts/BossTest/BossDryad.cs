@@ -371,6 +371,7 @@ public class BossDryad : EliteUnit
             if (other.CompareTag("Player"))
             {
                 // 레이저 플레이어 데미지 처리
+                GameManager.Instance.player.TakeDamage(dmgValue * 2f);
                 Debug.Log($"Player hit by Laser!");
             }
         }

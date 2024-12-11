@@ -248,7 +248,10 @@ public class EliteGolem : EliteUnit
         foreach (Collider hit in hitColliders)
         {
             if (hit.CompareTag("Player") == true)
+            {
+                GameManager.Instance.player.TakeDamage(dmgValue);
                 print("!!!!!!!!!!!!!!!!");
+            }
         }
     }
     public void ShowAttackWarning()

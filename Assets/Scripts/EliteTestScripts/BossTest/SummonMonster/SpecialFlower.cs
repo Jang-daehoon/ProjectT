@@ -113,7 +113,8 @@ public class SpecialFlower : EliteUnit
     {
         if (IsPlayerInRange == true)
         {
-            Debug.Log("아야!");
+            GameManager.Instance.player.TakeDamage(dmgValue);
+            Debug.Log("무적 몹한테 맞음 ㅠㅠ");
         }
     }
     private IEnumerator LookTarget()
