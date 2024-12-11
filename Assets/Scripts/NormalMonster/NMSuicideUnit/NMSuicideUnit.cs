@@ -55,13 +55,9 @@ public class NMSuicideUnit : EnemyUint
         if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
             isDead = true;
-            col.enabled = false;
-            agent.isStopped = true;
-            agent.velocity = Vector3.zero;
             ChangeState(State.Die);
-            animator.SetTrigger("Die");
         }
-        if (isAtk == true)
+        if (isAtk == true && isDead == false)
         {
             transform.position = lookPos;
             return;//자폭 발동시 정지

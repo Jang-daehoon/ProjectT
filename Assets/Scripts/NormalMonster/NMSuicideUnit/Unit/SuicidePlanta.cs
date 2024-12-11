@@ -44,7 +44,7 @@ public class SuicidePlanta : NMSuicideUnit
             GameManager.Instance.player.TakeDamage(dmgValue);
             //АјАн
         }
-        if (isDead == false) animator.SetTrigger("Die");
+        animator.SetTrigger("Die");
     }
 
 }

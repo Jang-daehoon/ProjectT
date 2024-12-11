@@ -61,12 +61,7 @@ public class NMRangedUnit : EnemyUint
         if (curHp <= 0 && isDead == false)//죽으면 한번 발동
         {
             isDead = true;
-            col.enabled = false;
-            agent.isStopped = true;
-            agent.velocity = Vector3.zero;
             ChangeState(State.Die);
-            animator.SetTrigger("Die");
-            return;
         }
         if (dirplayer <= range && isDead == false)//공격범위내에 들어오면 공격으로 변경
         {

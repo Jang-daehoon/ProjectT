@@ -56,10 +56,9 @@ public class EnemyHPbar : MonoBehaviour
 
     public void HpBarUpdate()
     {
-        if (coroutine == null)
-        {
-            coroutine = StartCoroutine(ChangeBackHpBar());
-        }
+        //연속으로맞으면 다시 1초 기다림
+        if (coroutine != null) StopCoroutine(coroutine);
+        coroutine = StartCoroutine(ChangeBackHpBar());
     }
 
     private IEnumerator ChangeBackHpBar()
