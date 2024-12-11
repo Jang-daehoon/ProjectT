@@ -64,6 +64,11 @@ public class EnemyUint : Character, ITakeDamage
     {
         curHp -= damage;
         hpBar.HpBarUpdate();
+        if (curHp <= 0)
+        {
+            ChangeState(State.Die);
+            isDead = true;
+        }
         if (isAtk == false)
         {
             animator.SetTrigger("Damage");

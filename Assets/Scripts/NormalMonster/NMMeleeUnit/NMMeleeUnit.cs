@@ -7,7 +7,6 @@ using HoonsCodes;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NMMeleeUnit : EnemyUint
 {
-
     protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
