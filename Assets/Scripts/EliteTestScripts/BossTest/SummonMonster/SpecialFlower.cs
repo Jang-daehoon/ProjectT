@@ -58,6 +58,7 @@ public class SpecialFlower : EliteUnit
             case FlowerState.IDLE:
                 StopAllCoroutines();
                 animator.SetBool("isCasting", false); // 캐스팅 애니메이션 중지
+                StartCoroutine(LookTarget());
                 break;
 
             case FlowerState.CAST:
@@ -83,6 +84,7 @@ public class SpecialFlower : EliteUnit
     private IEnumerator CastSkill()
     {
         isCasting = true;
+        shouldLook = false; // 바라보기를 멈춤
 
         while (currentState == FlowerState.CAST)
         {
@@ -98,15 +100,12 @@ public class SpecialFlower : EliteUnit
             grass.Play(); // 파티클 실행
             AttackPlayer();
 
-            // 1초간 바라보기를 멈춤
-            shouldLook = false;
             yield return new WaitForSeconds(1f);
-            shouldLook = true;
-
             animator.SetBool("isCasting", false);
             yield return new WaitForSeconds(attackDelay); // 공격 딜레이
         }
 
+        shouldLook = true; // 바라보기를 재개
         isCasting = false;
     }
     private void AttackPlayer()
@@ -121,10 +120,7 @@ public class SpecialFlower : EliteUnit
     {
         while (true)
         {
-            if (animator.GetBool("isCasting") == true)
-                yield return null;
-
-            else if (shouldLook)
+            if (shouldLook || !animator.GetBool("isCasting"))
             {
                 // 바라보는 동작 수행
                 Look(3f);
