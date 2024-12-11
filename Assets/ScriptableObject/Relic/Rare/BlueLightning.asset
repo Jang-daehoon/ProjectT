@@ -17,7 +17,7 @@ MonoBehaviour:
   relicName: "\uD478\uB978\uBC88\uAC1C"
   relicID: 0
   relicSprite: {fileID: 21300000, guid: a943077fe1913d349a50a7d8dec25b2a, type: 3}
-  relicDesc: 
+  relicDesc: "\uC774\uB3D9\uC18D\uB3C4 1.5 \uC99D\uAC00"
   isLevelPlus: 0
   statName: moveSpeed
-  relicStatsPoint: 1
+  relicStatsPoint: 1.5

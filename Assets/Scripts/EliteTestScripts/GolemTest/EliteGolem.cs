@@ -44,6 +44,7 @@ public class EliteGolem : EliteUnit
     }
     private void Update()
     {
+        HpBarUpdate();
         target = GameObject.FindWithTag("Player").transform; // 플레이어 태그로 참조
 
         switch (currentState)
@@ -270,13 +271,6 @@ public class EliteGolem : EliteUnit
     public void EndAttackWarning()
     {
         attackWarning.HideWarning();
-    }
-
-    public override void TakeDamage(float damage)
-    {
-        base.TakeDamage(damage);
-        if (curHp <= 0)
-            ChangeState(EliteState.DIE);
     }
     protected void OnTriggerEnter(Collider other)
     {

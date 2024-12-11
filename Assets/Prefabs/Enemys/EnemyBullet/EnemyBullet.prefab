@@ -4893,6 +4893,7 @@ MonoBehaviour:
   bulletSpeed: 20
   bulletDamage: 0.5
   bulletLifeTime: 1
+  hitParticle: {fileID: 7096831063139484799, guid: 9e4ff0eebf205fd4c880347f75434bcb, type: 3}
 --- !u!1 &4694901333909553979
 GameObject:
   m_ObjectHideFlags: 0

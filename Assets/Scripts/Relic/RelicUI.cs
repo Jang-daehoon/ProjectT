@@ -27,6 +27,6 @@ public class RelicUI : MonoBehaviour
         relicname.color = relicData.color;
         relicname.text = relicData.relicName;
         relicpower.color = Color.black;
-        relicpower.text = relicData.statName + "¡ı∞°";
+        relicpower.text = relicData.relicDesc;
     }
 }

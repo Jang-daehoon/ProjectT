@@ -16,12 +16,12 @@ public class EliteUnit : Character , ITakeDamage
     protected void OnEnable()
     {
         BossInitStat();
+        HpBarUpdate();
+        hpBar.maxHp = this.maxHp;
     }
     protected void HpBarUpdate()
     {
-        hpBar.maxHp = this.maxHp;
         hpBar.currentHp = this.curHp;
-        hpBar.GetHpBoost();
     }
     protected virtual void Awake()
     {
@@ -56,7 +56,7 @@ public class EliteUnit : Character , ITakeDamage
         dmgValue = characterData.damage;
         isDead = false;
     }
-    public virtual void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         curHp -= damage;
         hpBar.HpBarUpdate();

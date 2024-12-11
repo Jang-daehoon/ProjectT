@@ -31,10 +31,8 @@ public class EnemyUint : Character, ITakeDamage
     protected bool isAtk = false;
     protected float attDelay;
 
-
     protected void HpBarUpdate()
     {
-        hpBar.maxHp = this.maxHp;
         hpBar.currentHp = this.curHp;
         hpBar.GetHpBoost();
     }
@@ -66,10 +64,6 @@ public class EnemyUint : Character, ITakeDamage
     {
         curHp -= damage;
         hpBar.HpBarUpdate();
-        if (curHp <= 0)
-        {
-            ChangeState(State.Die);
-        }
         if (isAtk == false)
         {
             animator.SetTrigger("Damage");

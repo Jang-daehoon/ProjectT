@@ -68,6 +68,13 @@ public class EnemyHPbar : MonoBehaviour
         backHpHit = true;
         coroutine = null;
     }
+
+    public void HpUpdate()
+    {
+        cam = Camera.main.transform;
+        hpBar.fillAmount = currentHp / maxHp;
+        backHpBar.fillAmount = currentHp / maxHp;
+    }
         
     
 }

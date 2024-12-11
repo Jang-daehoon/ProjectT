@@ -126,12 +126,6 @@ public class SpecialFlower : EliteUnit
             yield return null; // 매 프레임 대기
         }
     }
-    public override void TakeDamage(float damage)
-    {
-        base.TakeDamage(damage);
-        if (curHp <= 0)
-            ChangeState(FlowerState.DIE);
-    }
     private IEnumerator Die()
     {
         StopCoroutine(LookTarget());
@@ -153,6 +147,7 @@ public class SpecialFlower : EliteUnit
             IsPlayerInRange = true; // 플레이어가 범위에 들어옴
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))

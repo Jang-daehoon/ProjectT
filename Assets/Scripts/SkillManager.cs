@@ -147,6 +147,9 @@ public class SkillManager : Singleton<SkillManager>
                     Quaternion.identity // 회전값은 기본 설정
                 );
                 arrowRainEffect.transform.localScale = ArcanaManager.Instance.skillSize;
+                // 특정 지속 시간 후 파티클 제거 (필요한 경우)
+                Destroy(arrowRainEffect.gameObject, 2f); // 2초 후 파티클 삭제
+
                 // 쿨타임 시작
                 wCooldownTimer = wCoolTime;
             }

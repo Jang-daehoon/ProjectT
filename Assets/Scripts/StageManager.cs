@@ -26,7 +26,6 @@ public class StageManager : MonoBehaviour
     public Transform eliteMonsterSpawnPos;
     //Elite Monster의 Minions
     public GameObject eliteMinionObj;
-    
 
     //보상 방 관련
     public Transform[] rewardsPos;

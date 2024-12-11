@@ -15,7 +15,7 @@ public class RelicBox : MonoBehaviour
     public Transform relicSpwanPos;
     public GameObject relicObj;
 
-    private float relicSpwanChance = 1f;
+    private float relicSpwanChance = 0.6f;
     private float common = 0.7f;
     private float unCommon = 0.2f;
     private float rare = 0.1f;

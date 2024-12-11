@@ -580,7 +580,7 @@ MonoBehaviour:
   m_text: "\uC138\uACC4\uAD00 \uC124\uBA85\uC5D0 \uAD00\uD55C \uD14D\uC2A4\uD2B8
     \uB780\uC785\uB2C8\uB2E4."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 40573e89c984a9e48b7156a4b0177877, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0bfbed3968416f44789093ff4e663514, type: 2}
   m_sharedMaterial: {fileID: -6555396258264433518, guid: 5ed08ce39ddcf9641bec57164a832ed2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
