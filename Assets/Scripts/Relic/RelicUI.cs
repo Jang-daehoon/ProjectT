@@ -19,6 +19,7 @@ public class RelicUI : MonoBehaviour
     private void Update()
     {
         canvas.transform.LookAt(canvas.transform.position + cam.rotation * Vector3.forward, cam.rotation * Vector3.up);
+        transform.LookAt(transform.position + cam.rotation * Vector3.forward, cam.rotation * Vector3.up);
     }
 
     public void RelicTextUpdate()
