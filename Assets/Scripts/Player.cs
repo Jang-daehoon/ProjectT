@@ -129,6 +129,7 @@ namespace HoonsCodes
                 Debug.Log("Potal과 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 포탈을 이용할 수 있어.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
+
             }
             else if (other.CompareTag("NPC") && other.GetComponent<UnknownNPC>().isTalkDone == false)
             {
@@ -190,7 +191,9 @@ namespace HoonsCodes
             else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false
                 && other.GetComponent<RelicBox>().isOpen == false && Input.GetKeyDown(KeyCode.F))
             {
+                UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
                 StartCoroutine(other.GetComponent<RelicBox>().RelicResult());
+
             }
             else if (other.CompareTag("Godness") && other.GetComponent<Godness>().isTalkDone == false
                 && Input.GetKeyDown(KeyCode.F))
@@ -218,7 +221,7 @@ namespace HoonsCodes
                 Debug.Log("???와 접촉해제");
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
             }
-            else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().getReward == false)
+            else if (other.CompareTag("RelicBox") && other.GetComponent<RelicBox>().isOpen == false)
             {
                 Debug.Log("유물 상자 접촉 해제");
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);

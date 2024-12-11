@@ -7844,6 +7844,12 @@ MonoBehaviour:
   - {fileID: 244861834}
   - {fileID: 480746698}
   - {fileID: 884314061}
+  - {fileID: 398466411}
+  - {fileID: 2065033091}
+  - {fileID: 2122296986}
+  - {fileID: 791525357}
+  - {fileID: 333442263}
+  - {fileID: 669270398}
   ActiveEnemies: []
   unknownClear: 0
   restRoomClear: 0

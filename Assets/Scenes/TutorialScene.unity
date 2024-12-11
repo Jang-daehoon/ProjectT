@@ -6730,6 +6730,7 @@ MonoBehaviour:
   - {fileID: 885787634}
   - {fileID: 1686650609}
   ActiveEnemies: []
+  enemySpawnParticle: {fileID: 5250884515042193895, guid: 6357ec9189c437647a90b9c6a55820c3, type: 3}
   rewardItemPrefab: {fileID: 3390122346877779082, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
   rewardSpawnPoint: {fileID: 2005171806}
   potalPrefab: {fileID: 7591965459911950615, guid: 67fbb3acaf1e5ce4e8c1eaf18f2ad5ea, type: 3}
@@ -12343,8 +12344,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 10, z: -25}
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 0, y: 15, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12924,7 +12925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 10, z: -15}
+  m_FollowOffset: {x: 0, y: 15, z: -15}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -15829,7 +15830,7 @@ MonoBehaviour:
   m_text: "F\uB97C \uB20C\uB7EC \uC0C1\uC790\uB97C \uC5F4 \uC218 \uC788\uC5B4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0bfbed3968416f44789093ff4e663514, type: 2}
-  m_sharedMaterial: {fileID: -3989429300650757899, guid: 1827ac462775eff4789635cb385ccbca, type: 2}
+  m_sharedMaterial: {fileID: 834724637083881121, guid: 0bfbed3968416f44789093ff4e663514, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16423,14 +16424,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1344566792}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 10, z: -27}
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 0, y: 15, z: -27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1027298431}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!114 &1344566795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16925,11 +16926,11 @@ RectTransform:
   - {fileID: 1275141677}
   m_Father: {fileID: 744162036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -159}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 488.08, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1391329956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22809,7 +22810,7 @@ MonoBehaviour:
   arrowCount: 3
   fireSpeed: 10
   qCoolTime: 18
-  qDamageMultiplier: 0.65
+  qDamageMultiplier: 1.2
   spreadAngle: 60
   multiShotBullet: {fileID: 4165034672710669523, guid: 37d58168002706845a37a3e37a1ddb40, type: 3}
   multiShotParticle: {fileID: 3663995649852042412, guid: 0b6dcd10faba2cc43aedfca95317d904, type: 3}
@@ -22819,9 +22820,10 @@ MonoBehaviour:
   arrowRainBullet: {fileID: 7520478007629400125, guid: d249ed0acc1b72341bceef08babe964a, type: 3}
   arrowRainParticle: {fileID: 4363708317115051805, guid: b08033669d41e2a4197972ee7f5a3fb3, type: 3}
   eCoolTime: 1
-  eDamageMultiplier: 10
+  eDamageMultiplier: 1.75
   impaleSkillBullet: {fileID: 6966420061541031233, guid: 676108d394f5d0d41aa7c14da676f765, type: 3}
   startImpaleParticle: {fileID: 2168383714331228570, guid: c7dd05a59354c0549892054c062853c3, type: 3}
+  impaleSkillHitParticle: {fileID: 6383134296696224264, guid: f0f138a91277d174b802db3875542a66, type: 3}
   skillRange: {fileID: 1229984610350775242, guid: 676108d394f5d0d41aa7c14da676f765, type: 3}
 --- !u!1 &1797723784
 GameObject:
@@ -27706,6 +27708,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1280867921180811342, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 1280867921180811342, guid: 04a806a8633e43e4285fa9a1261d2a07, type: 3}
       propertyPath: m_CollisionDetection
       value: 1

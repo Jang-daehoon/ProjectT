@@ -16,7 +16,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject[] InstantiateEnemyPrefabs; // 소환할 적 프리팹 배열
     public Transform[] SpawnPoints;             // 적 소환 위치 배열
     public List<GameObject> ActiveEnemies = new List<GameObject>(); // 활성화된 적 리스트
-
+    public ParticleSystem enemySpawnParticle;
     // 보상 아이템 관련
     public GameObject rewardItemPrefab;         // 보상 아이템 프리팹
     public Transform rewardSpawnPoint;         // 보상 아이템 생성 위치
@@ -94,6 +94,7 @@ public class TutorialManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, InstantiateEnemyPrefabs.Length);
             GameObject enemy = Instantiate(InstantiateEnemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
+            ParticleSystem spawnParticle = Instantiate(enemySpawnParticle, enemy.transform.position, Quaternion.identity);
             ActiveEnemies.Add(enemy);
         }
     }
