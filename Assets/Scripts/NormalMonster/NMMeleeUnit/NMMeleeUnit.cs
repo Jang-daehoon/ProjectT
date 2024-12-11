@@ -32,8 +32,6 @@ public class NMMeleeUnit : EnemyUint
         agent.speed = moveSpeed;
         agent.angularSpeed = rotationSpeed;
         agent.acceleration = 1000f;
-        //플레이어 스크립트 가져와서 타겟설정
-        GameObject.FindGameObjectWithTag("Player");
     }
 
     protected virtual void Update()

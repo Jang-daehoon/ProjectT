@@ -41,8 +41,6 @@ public class SuicidePlanta : NMSuicideUnit
         float dirplayer = Vector3.Distance(transform.position, target.position);
         if (dirplayer <= attackRange && isDead == false)
         {
-            Debug.Log("Player를 공격");
-            //target.GetComponent<ITakeDamage>().TakeDamage(dmgValue);
             GameManager.Instance.player.TakeDamage(dmgValue);
             //공격
         }

@@ -30,7 +30,7 @@ public class NMSuicideUnit : EnemyUint
         moveSpeed = characterData.moveSpeed;
         dmgValue = characterData.damage;
         maxHp = characterData.maxHp;
-        range = 1f;
+        range = 2f;
         curHp = maxHp;
         hpBar.maxHp = this.maxHp;
         hpBar.currentHp = this.curHp;
@@ -45,8 +45,6 @@ public class NMSuicideUnit : EnemyUint
         agent.speed = moveSpeed;
         agent.angularSpeed = rotationSpeed;
         agent.acceleration = 1000f;
-        //플레이어 스크립트 가져와서 타겟설정
-        GameObject.FindGameObjectWithTag("Player");
         boomRange.radius = attackRange;
         boomRange.gameObject.SetActive(false);
     }
