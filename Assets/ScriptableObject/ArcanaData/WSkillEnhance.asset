@@ -16,8 +16,9 @@ MonoBehaviour:
   ArcanaId: 1
   ArcanaImage: {fileID: 21300000, guid: 8b15583f1e2b7384a80437cd1b6514ff, type: 3}
   ArcanaName: "\uC5D8\uD504\uB4E4\uC758 \uC9C0\uC6D0\uC0AC\uACA9"
-  ArcanaDesc: "\uC5D8\uD504\uB4E4\uC774 \uC9C0\uC6D0\uC0AC\uACA9\uC744 \uAC15\uD654\uD569\uB2C8\uB2E4\n\uC2A4\uD0AC
-    \uC0AC\uC774\uC988\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  ArcanaDesc: "\uC5D8\uD504\uB4E4\uC774 \uC9C0\uC6D0\uC0AC\uACA9\uC744 <b>\uAC15\uD654</b>
+    \uD569\uB2C8\uB2E4\n<b>\uCFE8\uD0C0\uC784\uC774 \uAC10\uC18C</b>\uD558\uACE0\n<b>\uC2A4\uD0AC
+    \uC0AC\uC774\uC988\uAC00 \uC99D\uAC00</b>\uD569\uB2C8\uB2E4."
   baseCount: 0
   baseInitBulletRate: 0
   enhanceDamage: []
