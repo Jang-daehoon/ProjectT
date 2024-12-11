@@ -1167,7 +1167,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -10260,6 +10260,7 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 2b73c86c1b2cd3d49bf4750965915452, type: 2}
   hpBar: {fileID: 7399386749403230543}
   attackDelay: 2
+  isPlayerInRange: 0
   attackRange: {fileID: 5516951522119242599}
   skillParticle: {fileID: 198662300647181020, guid: 6336235030d2ee74798ea85a6f466afa, type: 3}
   attackParticleRight: {fileID: 7061404926432064110}

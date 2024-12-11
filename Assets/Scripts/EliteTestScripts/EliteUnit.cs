@@ -11,7 +11,7 @@ public class EliteUnit : Character , ITakeDamage
     protected NavMeshAgent agent;
     public EnemyHPbar hpBar;
     [SerializeField] protected float attackDelay = 2f; // 공격간 딜레이
-    protected bool isPlayerInRange = false; // 플레이어가 범위 내에 있는지 여부
+    [SerializeField] protected bool isPlayerInRange = false; // 플레이어가 범위 내에 있는지 여부
 
     protected void OnEnable()
     {

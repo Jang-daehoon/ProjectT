@@ -247,12 +247,8 @@ public class EliteGolem : EliteUnit
 
         foreach (Collider hit in hitColliders)
         {
-            //PlayerHealth playerHealth = hit.GetComponent<PlayerHealth>();
-            //if (playerHealth != null)
-            //{
-            //    playerHealth.TakeDamage(attackDamage); // attackDamage는 Golem의 공격력
-            //    Debug.Log("Player에게 데미지 적용!");
-            //}
+            if (hit.CompareTag("Player") == true)
+                print("!!!!!!!!!!!!!!!!");
         }
     }
     public void ShowAttackWarning()
@@ -274,12 +270,12 @@ public class EliteGolem : EliteUnit
     }
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.CompareTag("Player") == true)
             isPlayerInRange = true;
     }
     protected void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.CompareTag("Player") == true)
         {
             animator.ResetTrigger("Attack1");
             animator.ResetTrigger("Attack2");
