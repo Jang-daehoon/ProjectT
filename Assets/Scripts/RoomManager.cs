@@ -104,6 +104,13 @@ public class RoomManager : Singleton<RoomManager>
     public void OnEnterBossRoom()
     {
         Debug.Log("OnEnterBossRoom");
+        Debug.Log("Scene Movement");
+
+        LoadingSceneController.LoadScene("BossScene");
+        UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
+        // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
+        StartCoroutine(MovePlayerToStartPosition("BossScene"));
+
     }
     // 랜덤 방에 들어갈 때
     private void OnEnterUnknownRoom()
