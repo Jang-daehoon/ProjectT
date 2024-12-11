@@ -67,6 +67,9 @@ public class NMMeleeUnit : EnemyUint
                 Move();
                 break;
             case State.Die:
+                col.enabled = false;
+                agent.isStopped = true;
+                agent.velocity = Vector3.zero;
                 animator.SetTrigger("Die");
                 break;
         }

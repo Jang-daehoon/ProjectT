@@ -18,6 +18,10 @@ public class GameManager : Singleton<GameManager>
 
     [Header("À¯¹°")]
     public List<RelicData> relicList;
+    
+    public List<RelicData> commonRelic;
+    public List<RelicData> unCommonRelic;
+    public List<RelicData> rareRelic;
 
     public static GameManagerEx Game => Instance._game;
 
