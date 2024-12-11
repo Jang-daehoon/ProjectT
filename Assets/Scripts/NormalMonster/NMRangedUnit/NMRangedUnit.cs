@@ -69,6 +69,7 @@ public class NMRangedUnit : EnemyUint
             agent.velocity = Vector3.zero;
             ChangeState(State.Die);
             animator.SetTrigger("Die");
+            return;
         }
         if (dirplayer <= range && isDead == false)//공격범위내에 들어오면 공격으로 변경
         {
@@ -89,6 +90,9 @@ public class NMRangedUnit : EnemyUint
                 Move();
                 break;
             case State.Die:
+                col.enabled = false;
+                agent.isStopped = true;
+                agent.velocity = Vector3.zero;
                 animator.SetTrigger("Die");
                 break;
         }

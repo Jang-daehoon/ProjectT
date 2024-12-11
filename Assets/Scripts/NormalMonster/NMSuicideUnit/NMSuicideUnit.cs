@@ -93,6 +93,9 @@ public class NMSuicideUnit : EnemyUint
                 Move();
                 break;
             case State.Die:
+                col.enabled = false;
+                agent.isStopped = true;
+                agent.velocity = Vector3.zero;
                 animator.SetTrigger("Die");
                 break;
         }

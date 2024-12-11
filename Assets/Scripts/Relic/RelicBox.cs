@@ -11,10 +11,6 @@ public class RelicBox : MonoBehaviour
     public bool getReward;  //보상 획득 여부
 
     public bool isOpen;   //상자 열렸는지 확인
-    [Header("유물 데이터")]
-    public List<RelicData> commonRelic;
-    public List<RelicData> unCommonRelic;
-    public List<RelicData> rareRelic;
 
     public Transform relicSpwanPos;
     public GameObject relicObj;
@@ -88,7 +84,7 @@ public class RelicBox : MonoBehaviour
     {
         while (true)
         {
-            if (commonRelic.Count == 0 && commonRelic.Count == 0 && rareRelic.Count == 0)
+            if (GameManager.Instance.commonRelic.Count == 0 && GameManager.Instance.unCommonRelic.Count == 0 && GameManager.Instance.rareRelic.Count == 0)
             {
                 return null;
             }
@@ -98,32 +94,32 @@ public class RelicBox : MonoBehaviour
             //커먼등급 확률 60%
             if (randomValue <= common)
             {
-                if (commonRelic.Count == 0)
+                if (GameManager.Instance.commonRelic.Count == 0)
                 {
                     Debug.Log("커먼등급 유물 다먹음");
                     return null;
                 }
-                randomRelic = commonRelic;
+                randomRelic = GameManager.Instance.commonRelic;
             }
             //언커먼등급 확률 30%
             else if (randomValue <= common + unCommon)
             {
-                if (commonRelic.Count == 0)
+                if (GameManager.Instance.commonRelic.Count == 0)
                 {
                     Debug.Log("언커먼등급 유물 다먹음");
                     return null;
                 }
-                randomRelic = unCommonRelic;
+                randomRelic = GameManager.Instance.unCommonRelic;
             }
             //레어등급 확률 10%
             else
             {
-                if (rareRelic.Count == 0)
+                if (GameManager.Instance.rareRelic.Count == 0)
                 {
                     Debug.Log("레어등급 유물 다먹음");
                     return null;
                 }
-                randomRelic = rareRelic;
+                randomRelic = GameManager.Instance.rareRelic;
             }
             //고른등급중에 한번더 랜덤유물 선택
             int index = Random.Range(0, randomRelic.Count);
@@ -131,17 +127,17 @@ public class RelicBox : MonoBehaviour
             //유물매니저에 얻은유물 추가
             GameManager.Instance.relicList.Add(selectRelic);
             //얻은유물 리스트에서 제거
-            if (randomRelic == commonRelic)
+            if (randomRelic == GameManager.Instance.commonRelic)
             {
-                commonRelic.Remove(commonRelic[index]);
+                GameManager.Instance.commonRelic.RemoveAt(index);
             }
-            if (randomRelic == unCommonRelic)
+            else if (randomRelic == GameManager.Instance.unCommonRelic)
             {
-                unCommonRelic.Remove(unCommonRelic[index]);
+                GameManager.Instance.unCommonRelic.RemoveAt(index);
             }
-            if (randomRelic == rareRelic)
+            else if (randomRelic == GameManager.Instance.rareRelic)
             {
-                rareRelic.Remove(rareRelic[index]);
+                GameManager.Instance.rareRelic.RemoveAt(index);
             }
             return selectRelic;
         }

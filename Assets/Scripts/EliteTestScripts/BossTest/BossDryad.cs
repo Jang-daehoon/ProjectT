@@ -31,6 +31,7 @@ public class BossDryad : EliteUnit
 
     private bool isInvincible = false; // 무적 상태 여부
     private bool isInvincibleAnim = false; // 무적 애니메이션 실행 여부
+    private bool isPhaseChanged = false; // 패턴이 실행되었는지 확인하는 플래그
     // 소환된 몬스터 리스트
     private List<GameObject> summonedMonsters = new List<GameObject>();
     // 특수 몬스터 프리팹
@@ -363,6 +364,20 @@ public class BossDryad : EliteUnit
     {
         if (summonedMonsters.Contains(monster))
             summonedMonsters.Remove(monster);
+    }
+    public override void TakeDamage(float damage)
+    {
+        if (isInvincible == true) return;
+
+        base.TakeDamage(damage);
+
+        if (curHp <= maxHp * 0.3f)
+        {
+            isPhaseChanged = true; // 플래그 설정
+            ChangeState(BossState.INVINCIBLE); // 패턴 실행
+        }
+        if (curHp <= 0)
+            ChangeState(BossState.DIE);
     }
     private void OnTriggerEnter(Collider other)
     {
