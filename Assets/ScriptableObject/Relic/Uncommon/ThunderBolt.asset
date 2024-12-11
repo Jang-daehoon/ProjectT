@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 721e3bc5bb16b8b4e9ebdf08300f46ae, type: 3}
-  m_Name: Bladestorm
+  m_Name: ThunderBolt
   m_EditorClassIdentifier: 
   rarity: 1
   color: {r: 0, g: 1, b: 1, a: 1}
-  relicName: "\uCE7C\uB0A0\uD3ED\uD48D"
+  relicName: "\uBCBC\uB77D"
   relicID: 1
-  relicSprite: {fileID: 21300000, guid: 8d43b83d0338c994db662371b1cdbbc8, type: 3}
+  relicSprite: {fileID: 21300000, guid: 6436d8fc60a03d744950491d2e42fe47, type: 3}
   relicDesc: "\uACF5\uACA9\uC18D\uB3C4 2.5 \uC99D\uAC00"
   isLevelPlus: 0
   statName: atkSpeed

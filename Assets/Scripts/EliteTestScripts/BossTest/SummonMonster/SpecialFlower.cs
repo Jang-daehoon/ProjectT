@@ -14,6 +14,8 @@ public class SpecialFlower : EliteUnit
     public ParticleSystem grass; // 파티클 시스템
 
     private FlowerState currentState;
+
+    private bool isAtkOn = false;
     protected override void Awake()
     {
         base.Awake();
@@ -98,7 +100,7 @@ public class SpecialFlower : EliteUnit
             animator.SetBool("isCasting", true); // 캐스팅 애니메이션 시작
             yield return new WaitForSeconds(1f);
             grass.Play(); // 파티클 실행
-            AttackPlayer();
+            isAtkOn = true;
 
             yield return new WaitForSeconds(1f);
             animator.SetBool("isCasting", false);
@@ -112,8 +114,8 @@ public class SpecialFlower : EliteUnit
     {
         if (IsPlayerInRange == true)
         {
+            Debug.Log("아야!");
             GameManager.Instance.player.TakeDamage(dmgValue);
-            Debug.Log("무적 몹한테 맞음 ㅠㅠ");
         }
     }
     private IEnumerator LookTarget()
@@ -163,6 +165,16 @@ public class SpecialFlower : EliteUnit
         if (other.CompareTag("Player"))
         {
             IsPlayerInRange = false; // 플레이어가 범위를 벗어남
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (isAtkOn == false) return;
+        if (other.CompareTag("Player"))
+        {
+            AttackPlayer();
+            isAtkOn = false;
         }
     }
 }

@@ -19,7 +19,6 @@ public class RangedDevilTree : NMRangedUnit
         if (isDead == true)
         {
             animator.SetBool("Idle", false);
-            animator.SetTrigger("Die");
         }
         base.Update();
     }

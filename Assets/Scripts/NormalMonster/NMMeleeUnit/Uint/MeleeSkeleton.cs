@@ -29,10 +29,7 @@ public class MeleeSkeleton : NMMeleeUnit
         if (curHp <= 0 && isDead == false)//죽을때 한번 발동
         {
             isDead = true;
-            col.enabled = false;
-            agent.isStopped = true;
-            agent.velocity = Vector3.zero;
-            animator.SetTrigger("Die");
+            ChangeState(State.Die);
         }
         if (isAtkMotion == false)
         {
@@ -42,7 +39,13 @@ public class MeleeSkeleton : NMMeleeUnit
         {
             swordRender.enabled = true;
         }
-        if (isCollTime == true)
+        float dirplayer = Vector3.Distance(transform.position, target.position);
+        if (isCollTime == true && dirplayer <= range && isDead == false)
+        {
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+        }
+        else if (isCollTime == true && dirplayer > range && isDead == false)
         {
             Move();
         }

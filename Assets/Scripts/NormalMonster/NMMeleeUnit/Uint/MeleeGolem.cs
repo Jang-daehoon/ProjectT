@@ -35,16 +35,13 @@ public class MeleeGolem : NMMeleeUnit
         if (curHp <= 0 == isDead == false)//죽을때 한번 발동
         {
             isDead = true;
-            col.enabled = false;
-            agent.isStopped = true;
-            agent.velocity = Vector3.zero;
-            animator.SetTrigger("Die");
+            ChangeState(State.Die);
         }
-        if (isGolemAttack == true)
+        if (isGolemAttack == true && isDead == false)
         {
             transform.position = Vector3.Lerp(transform.position, attackRange.end, Time.deltaTime * 2f);
         }
-        if (isGolemAttackCollTime == true)
+        if (isGolemAttackCollTime == true && isDead == false)
         {
             Move();
         }
