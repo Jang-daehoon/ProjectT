@@ -16,7 +16,7 @@ MonoBehaviour:
   color: {r: 0, g: 1, b: 1, a: 1}
   relicName: "\uCC9C\uACF5\uC758\uAC80"
   relicID: 2
-  relicSprite: {fileID: 21300000, guid: da3489a989b315644b2918cb9df15709, type: 3}
+  relicSprite: {fileID: 21300000, guid: caa25f06a90666b4e9ce501b5fe50379, type: 3}
   relicDesc: "\uB370\uBBF8\uC9C0 30 \uC99D\uAC00"
   isLevelPlus: 0
   statName: dmgValue

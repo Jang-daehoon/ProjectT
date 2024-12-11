@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 721e3bc5bb16b8b4e9ebdf08300f46ae, type: 3}
-  m_Name: BlueLightning
+  m_Name: SharpWind
   m_EditorClassIdentifier: 
   rarity: 2
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  relicName: "\uD478\uB978\uBC88\uAC1C"
+  relicName: "\uCE7C\uBC14\uB78C"
   relicID: 0
   relicSprite: {fileID: 21300000, guid: a943077fe1913d349a50a7d8dec25b2a, type: 3}
   relicDesc: "\uC774\uB3D9\uC18D\uB3C4 1.5 \uC99D\uAC00"
