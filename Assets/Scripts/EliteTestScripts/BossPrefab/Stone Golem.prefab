@@ -1148,7 +1148,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8295467599159326072}
@@ -10262,6 +10262,7 @@ MonoBehaviour:
   attackDelay: 2
   isPlayerInRange: 0
   attackRange: {fileID: 5516951522119242599}
+  skillRange: {fileID: 6161427386085332625}
   skillParticle: {fileID: 198662300647181020, guid: 6336235030d2ee74798ea85a6f466afa, type: 3}
   attackParticleRight: {fileID: 7061404926432064110}
   attackParticleLeft: {fileID: 8256789300472888440}
