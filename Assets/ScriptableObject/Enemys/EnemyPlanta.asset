@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3335dd7f5565e4841ba7d28d30719072, type: 3}
   m_Name: EnemyPlanta
   m_EditorClassIdentifier: 
-  info: 0
+  info: 1
   characterName: Planta
   characterDesc: "\uC790\uD3ED\uACF5\uACA9 \uC720\uB2DB"
   maxHp: 80
-  damage: 50
+  damage: 30
   moveSpeed: 3
   attackSpeed: 1
   attackDelay: 5

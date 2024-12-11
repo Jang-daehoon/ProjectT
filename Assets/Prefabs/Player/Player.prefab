@@ -61,8 +61,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 929031314482538986}
   - {fileID: 497051825901116705}
@@ -164,11 +164,11 @@ MonoBehaviour:
   dir: {x: 0, y: 0, z: 0}
   rotSpeed: 5
   isDash: 0
-  dashSpeed: 1
+  dashSpeed: 2
   dashPower: 1
-  dashDuration: 0.5
+  dashDuration: 0.65
   dashCooltime: 1
-  dashDistance: 3
+  dashDistance: 25
   isAtkTarGeting: 0
   usingSkillX: 0
   isAttack: 0

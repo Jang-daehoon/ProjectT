@@ -16,7 +16,7 @@ MonoBehaviour:
   characterName: EliteGolem
   characterDesc: "\uD2B9\uC218\uBAAC\uC2A4\uD130(\uC2A4\uD0AC \uBCF4\uC720)"
   maxHp: 1000
-  damage: 100
+  damage: 20
   moveSpeed: 1
   attackSpeed: 0.8
   attackDelay: 2
