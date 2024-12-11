@@ -6,7 +6,7 @@ public class StageManager : MonoBehaviour
 {
     public enum RoomCheck { NOMAL, ELITE, BOSS, UNKNOWN, REST, REWARD, SHOP}
     public RoomCheck roomCheck;
-
+    [Header("현재 스테이지 정보")]
     public float RewardDropRate = 0.6f; // 보상 획득 확률
     public int spawnCount;  // 소환할 카운트
     public GameObject[] InstantiateEnemyPrefabs; // 소환할 적 프리팹 배열
@@ -14,18 +14,23 @@ public class StageManager : MonoBehaviour
     public List<GameObject> ActiveEnemies = new List<GameObject>(); // 활성화된 적 리스트
 
     //랜덤 방 관련 
+    [Header("랜덤방에 사용될 정보")]
     public bool unknownClear;
 
     //휴식 방 관련
+    [Header("휴식방에 사용될 정보")]
     public bool restRoomClear;
 
     //EliteRoom 관련
+    [Header("EliteRoom에 사용될 정보")]
     public bool eliteRoomClear;
     //Elite MonsterPrefab
     public GameObject eliteMonsterObj;
     public Transform eliteMonsterSpawnPos;
     //Elite Monster의 Minions
     public GameObject eliteMinionObj;
+
+    //BossRoom 관련
 
     //보상 방 관련
     public Transform[] rewardsPos;
