@@ -1355,7 +1355,7 @@ MonoBehaviour:
   qSkillLevel: 0
   wSkillLevel: 0
   eSkillLevel: 0
-  skillSize: {x: 0, y: 0, z: 0}
+  skillSize: {x: 0.3, y: 0.3, z: 0.3}
   enhanceMeleeProjectile: {fileID: 0}
   enhanceAttackParticle: {fileID: 0}
   enhanceHitParticle: {fileID: 0}
@@ -15430,7 +15430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2d089513ae4adfc48a683c362ad9992c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f0a5d8a20be2344c9c4337ee826da55, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17354,7 +17354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a5f9829a049c704fa992203bfc451f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f00bd53df2b7124c927082194b8cb13, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26806,7 +26806,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2c04f4986ebc72e48a8b0c3eb2e42db2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fca6641c1732a2e429e1797321265f21, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
