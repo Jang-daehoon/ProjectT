@@ -31,10 +31,8 @@ public class EnemyUint : Character, ITakeDamage
     protected bool isAtk = false;
     protected float attDelay;
 
-
     protected void HpBarUpdate()
     {
-        hpBar.maxHp = this.maxHp;
         hpBar.currentHp = this.curHp;
         hpBar.GetHpBoost();
     }

@@ -44,6 +44,7 @@ public class EliteGolem : EliteUnit
     }
     private void Update()
     {
+        HpBarUpdate();
         target = GameObject.FindWithTag("Player").transform; // 플레이어 태그로 참조
 
         switch (currentState)
