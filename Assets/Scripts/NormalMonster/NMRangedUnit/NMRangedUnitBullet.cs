@@ -7,6 +7,7 @@ public class NMRangedUnitBullet : MonoBehaviour
     public float bulletSpeed;
     public float bulletDamage;
     public float bulletLifeTime;
+    public ParticleSystem hitParticle;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class NMRangedUnitBullet : MonoBehaviour
             Debug.Log("Player¸¦ °ø°Ý");
             GameManager.Instance.player.TakeDamage(bulletDamage);
             Destroy(this.gameObject);
+            Instantiate(hitParticle, GameManager.Instance.player.transform.position,transform.rotation);
         }
     }
 }
