@@ -272,6 +272,13 @@ public class EliteGolem : EliteUnit
     {
         attackWarning.HideWarning();
     }
+
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        if (curHp <= 0)
+            ChangeState(EliteState.DIE);
+    }
     protected void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))

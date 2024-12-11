@@ -15,6 +15,9 @@ public class ChestReward : MonoBehaviour
     [Header("아르카나 데이터")]
     public bool isOpen;   //상자 열렸는지 확인
 
+    public ParticleSystem chestParticle;
+    public ParticleSystem openChestParticle;
+
     //[Header("유물 데이터")]
     //public List<RelicData> commonRelic;
     //public List<RelicData> unCommonRelic;
@@ -42,6 +45,8 @@ public class ChestReward : MonoBehaviour
     public IEnumerator ArcanaResult()
     {
         isOpen = true;
+        chestParticle.Stop();
+        openChestParticle.Play();
         UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
         animator.SetTrigger("Open");
         // 애니메이션이 끝날 때까지 대기
