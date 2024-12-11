@@ -21,7 +21,11 @@ public class StageManager : MonoBehaviour
 
     //EliteRoom 관련
     public bool eliteRoomClear;
-    //EliteRoom
+    //Elite MonsterPrefab
+    public GameObject eliteMonsterObj;
+    public Transform eliteMonsterSpawnPos;
+    //Elite Monster의 Minions
+    public GameObject eliteMinionObj;
 
     //보상 방 관련
     public Transform[] rewardsPos;
@@ -73,6 +77,33 @@ public class StageManager : MonoBehaviour
                 Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
                 break;
             case RoomCheck.ELITE:
+                //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
+                //FadeOut
+                GameManager.Instance.player.canMove = false;
+                UiManager.Instance.FadeObj.gameObject.SetActive(true);
+                UiManager.Instance.FadeObj.isFadeOut = true;
+                yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
+                UiManager.Instance.FadeObj.gameObject.SetActive(false);
+                //FadeOut
+                GameManager.Instance.player.canMove = true;
+                yield return new WaitForSeconds(1f);
+                SpawnEnemies();
+
+                // 생성된 모든 몬스터 처치 여부 체크
+                yield return new WaitUntil(() => AreAllEnemiesDefeated());
+                Debug.Log("모든 적을 처치했습니다!");
+
+                //Elite 몬스터 소환
+                SpawnElite();
+                yield return new WaitUntil(() => AreAllEnemiesDefeated());
+                Debug.Log("Elite몬스터를 처치했습니다.");
+                eliteRoomClear = true;
+
+                RoomManager.Instance.ClearRoom();
+                Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
+                Debug.Log("보상 아이템이 생성되었습니다.");
+                Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
+
                 break;
             case RoomCheck.BOSS:
                 break;
@@ -84,6 +115,7 @@ public class StageManager : MonoBehaviour
                 UiManager.Instance.FadeObj.isFadeOut = true;
                 yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
                 UiManager.Instance.FadeObj.gameObject.SetActive(false);
+                
                 //FadeOut
                 GameManager.Instance.player.canMove = true;
                 yield return new WaitForSeconds(1f);
@@ -193,4 +225,36 @@ public class StageManager : MonoBehaviour
         ActiveEnemies.RemoveAll(enemy => enemy == null);
         return ActiveEnemies.Count == 0;
     }
+    private void SpawnElite()
+    {
+        // Elite 몬스터 소환
+        if (eliteMonsterObj != null && eliteMonsterSpawnPos != null)
+        {
+            GameObject eliteMonster = Instantiate(eliteMonsterObj, eliteMonsterSpawnPos.position, Quaternion.identity);
+            ActiveEnemies.Add(eliteMonster); // Elite 몬스터를 활성화된 적 리스트에 추가
+            Debug.Log("Elite 몬스터가 소환되었습니다.");
+        }
+        else
+        {
+            Debug.LogWarning("Elite 몬스터 프리팹 또는 소환 위치가 설정되지 않았습니다.");
+        }
+
+        // Minion 소환 (랜덤 위치)
+        int minionCount = 3; // Minion 소환 개수
+        for (int i = 0; i < minionCount; i++)
+        {
+            int spawnIndex = GetRandomUnusedSpawnPoint();
+            if (spawnIndex == -1)
+            {
+                Debug.LogWarning("사용 가능한 소환 위치가 부족합니다.");
+                break;
+            }
+
+            GameObject minion = Instantiate(eliteMinionObj, SpawnPoints[spawnIndex].position, Quaternion.identity);
+            ActiveEnemies.Add(minion); // Minion을 활성화된 적 리스트에 추가
+            usedSpawnIndexes.Add(spawnIndex); // 사용된 위치 기록
+            Debug.Log($"Minion {i + 1}이(가) 소환되었습니다.");
+        }
+    }
+
 }

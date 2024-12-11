@@ -192,17 +192,17 @@ public class UiManager : Singleton<UiManager>
 
         // 첫 번째 아르카나
         firstArcanaImg.sprite = arcanaData[0].ArcanaImage;
-        firstArcanaName.text = arcanaData[0].ArcanaName;
+        firstArcanaName.text = arcanaData[0].name;
         firstArcanaDesc.text = arcanaData[0].ArcanaDesc;
 
         // 두 번째 아르카나
         secondArcanaImg.sprite = arcanaData[1].ArcanaImage;
-        secondArcanaName.text = arcanaData[1].ArcanaName;
+        secondArcanaName.text = arcanaData[1].name;
         secondArcanaDesc.text = arcanaData[1].ArcanaDesc;
 
         // 세 번째 아르카나
         thirdArcanaImg.sprite = arcanaData[2].ArcanaImage;
-        thirdArcanaName.text = arcanaData[2].ArcanaName;
+        thirdArcanaName.text = arcanaData[2].name;
         thirdArcanaDesc.text = arcanaData[2].ArcanaDesc;
 
         // 버튼 클릭 이벤트 등록
