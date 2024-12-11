@@ -64,7 +64,14 @@ public class RoomManager : Singleton<RoomManager>
     // 엘리트 방에 들어갈 때
     public void OnEnterEliteRoom()
     {
+
         Debug.Log("OnEnterEliteRoom");
+        Debug.Log("Scene Movement");
+
+        LoadingSceneController.LoadScene("EliteScene");
+        UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
+        // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
+        StartCoroutine(MovePlayerToStartPosition("EliteScene"));
     }
     // 상인 방에 들어갈 때
     public void OnEnterMerchantRoom()

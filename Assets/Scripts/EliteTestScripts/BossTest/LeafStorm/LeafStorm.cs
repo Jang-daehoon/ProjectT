@@ -9,6 +9,7 @@ public class LeafStorm : MonoBehaviour
     public ParticleSystem stormEnd; // 종료 시 파티클
     public float stormDurationTime = 5f; // 추적 지속 시간
     public float moveSpeed = 6f;
+    public float dmgValue = 20f;
     public Transform target; // 플레이어 위치
 
     private void Start()
@@ -45,9 +46,10 @@ public class LeafStorm : MonoBehaviour
     }
     protected void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.CompareTag("Player"))
         {
             //TODO : 데미지 들어가는거 구현
+            GameManager.Instance.player.TakeDamage(dmgValue * 0.5f);
         }
     }
 }

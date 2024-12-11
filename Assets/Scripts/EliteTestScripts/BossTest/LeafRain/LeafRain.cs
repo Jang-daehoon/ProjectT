@@ -6,7 +6,7 @@ public class LeafRain : MonoBehaviour
 {
     public float damageRadius = 3f; // 데미지 범위
     public LayerMask damageableLayer; // 데미지를 줄 레이어
-    public int damageAmount = 50; // 데미지 양
+    public float dmgValue = 20f; // 데미지 양
     public float colliderActivationDelay = 1.5f; // 콜라이더 활성화 딜레이
     public float lifeTime = 2f; // LeafRain 지속 시간
     private Collider coll;
@@ -34,10 +34,10 @@ public class LeafRain : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, damageRadius, damageableLayer);
         foreach (Collider collider in hitColliders)
         {
-            //if (collider.TryGetComponent(out Character target))
-            //{
-            //    target.TakeDamage(damageAmount);
-            //}
+            if (collider.CompareTag("Player"))
+            {
+                GameManager.Instance.player.TakeDamage(dmgValue);
+            }
         }
     }
 }

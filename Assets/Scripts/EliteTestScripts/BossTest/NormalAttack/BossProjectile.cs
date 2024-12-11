@@ -6,6 +6,7 @@ public class BossProjectile : MonoBehaviour
 {
     public float speed = 10f; // 투사체 속도
     public float lifetime = 5f; // 투사체가 존재하는 시간
+    public float dmgValue = 20f;
     public ParticleSystem explosionEffect; // 터지는 파티클 효과
     public ParticleSystem trailEffect; // 이동 중 파티클 효과
     public LayerMask collisionMask; // 충돌할 레이어 (Player, Ground 등)
@@ -40,7 +41,11 @@ public class BossProjectile : MonoBehaviour
             {
                 ParticleSystem explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
                 explosion.Play();
-                print($"{other.gameObject.name}");
+                if (other.CompareTag("Player") == true)
+                {
+                    print($"{other.gameObject.name}");
+                    GameManager.Instance.player.TakeDamage(dmgValue);
+                }
                 Destroy(explosion.gameObject, explosion.main.duration);
             }
 
