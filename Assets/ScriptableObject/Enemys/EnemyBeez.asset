@@ -16,7 +16,7 @@ MonoBehaviour:
   characterName: BeezDarkness
   characterDesc: "\uC790\uD3ED\uACF5\uACA9 \uC720\uB2DB"
   maxHp: 60
-  damage: 50
+  damage: 30
   moveSpeed: 3
   attackSpeed: 1
   attackDelay: 5

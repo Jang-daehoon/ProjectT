@@ -20,11 +20,11 @@ namespace HoonsCodes
         [SerializeField] private Vector3 dir;
         [SerializeField] private float rotSpeed;
         [SerializeField] private bool isDash;
-        [SerializeField] private float dashSpeed;  // 대시 속도
-        [SerializeField] private float dashPower;   // 대시 파워
-        [SerializeField] private float dashDuration = 0.5f; // 대시 지속 시간
+        [SerializeField] private float dashSpeed = 2f;  // 대시 속도
+        [SerializeField] private float dashPower = 1;   // 대시 파워
+        [SerializeField] private float dashDuration = 0.65f; // 대시 지속 시간
         [SerializeField] private float dashCooltime = 1f;   // 대시 쿨타임
-        [SerializeField] private float dashDistance = 5f;  // 대시 거리
+        [SerializeField] private float dashDistance = 25f;  // 대시 거리
         [Header("----------------------------")]
         [Header("SkillInfo")]
         [Tooltip("화살 추적 여부")]
@@ -416,7 +416,7 @@ namespace HoonsCodes
         //피격 -> 한번 피격시 무적시간 1초
         public void TakeDamage(float damage)
         {
-            if (isTakeHit == false)
+            if (isTakeHit == false && isDash == false)
             {
                 animator.SetTrigger("Hit");
                 isTakeHit = true;
@@ -443,10 +443,8 @@ namespace HoonsCodes
 
         public override void Dead()
         {
-            Debug.Log("Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 " +
-                "Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 " +
-                "Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 " +
-                "Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 Player 사망 ");
+            animator.SetTrigger("Die");
+            //Die애니메이션 끝날때 타이틀로이동
         }
 
         private void InitPlayerStatus()
