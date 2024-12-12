@@ -176,6 +176,7 @@ public class BossDryad : EliteUnit
 
         if (currentState == BossState.INVINCIBLE)
         {
+            isSkillExecuting = false;
             yield break; // 무적 상태로 전환되었으므로 스킬 중단
         }
 
@@ -366,8 +367,8 @@ public class BossDryad : EliteUnit
     public override void TakeDamage(float damage)
     {
         if (isInvincible == true) return;
-        base.TakeDamage(damage);    
-        
+        base.TakeDamage(damage);
+
         if (curHp <= 0)
         {
             ChangeState(BossState.DIE);
