@@ -24,8 +24,7 @@ public class LeafStorm : MonoBehaviour
         float timer = 0f;
         while (timer < stormDurationTime)
         {
-            target = EliteBossGameMangerTest.Instance.player.transform;
-            //target = GameManager.Instance.player.transform;
+            target = GameManager.Instance.player.transform;
             if (target != null)
             {
                 Vector3 direction = (target.position - transform.position).normalized;

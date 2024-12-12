@@ -49,7 +49,7 @@ public class RelicObject : Relic
         relicSprite = GetComponent<SpriteRenderer>();
         relicSprite.sprite = relicData.relicSprite;
         //유물등급별 색적용
-        Color color = new Color(relicData.color.r, relicData.color.g, relicData.color.b, 0.2f);
+        Color color = new Color(relicData.color.r, relicData.color.g, relicData.color.b, 0.02f);
         meshRenderer.material.color = color;
         switch (relicData.rarity)
         {
