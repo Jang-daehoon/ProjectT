@@ -29,6 +29,7 @@ public class SkillManager : Singleton<SkillManager>
     public float eDamageMultiplier;
     public ParticleSystem impaleSkillBullet;
     public ParticleSystem startImpaleParticle;
+    public ParticleSystem impaleSkillHitParticle;
     public Collider skillRange;
 
     private float qCooldownTimer = 0f;  // 쿨타임 타이머 (Q 스킬)
@@ -208,6 +209,7 @@ public class SkillManager : Singleton<SkillManager>
                         );
 
                         // 피격 파티클 생성 (필요한 경우)
+                        ParticleSystem enemyEskillHit = Instantiate(impaleSkillHitParticle, enemy.transform.position, Quaternion.identity);
                     }
                 }
             }

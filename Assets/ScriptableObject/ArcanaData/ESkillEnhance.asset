@@ -23,9 +23,9 @@ MonoBehaviour:
   enhanceCount: 
   enhanceInitBulletRate: []
   enhanceDamageMultiplier:
-  - 1.5
-  - 1.75
   - 1.85
+  - 2
+  - 2.25
   enhanceSkillScale: []
   cooldownReduction:
   - 1

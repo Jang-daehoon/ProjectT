@@ -1,3 +1,4 @@
+using Cinemachine;
 using HoonsCodes;
 using System.Collections;
 using System.Collections.Generic;
@@ -60,6 +61,16 @@ public class RoomManager : Singleton<RoomManager>
 
         // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
         StartCoroutine(MovePlayerToStartPosition(selectedStage));
+        //카메라 설정
+        GameManager.Instance.playerCamera.transform.rotation = Quaternion.Euler(40f, 0f, 0f);
+        // 카메라 설정: FOV 설정
+        GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = 40f; // FOV 설정
+
+        var virtualCamera = GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>();
+        var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+
+        // Follow Offset 수정
+        transposer.m_FollowOffset = new Vector3(0f, 15f, -15f);
     }
     // 엘리트 방에 들어갈 때
     public void OnEnterEliteRoom()
@@ -72,6 +83,16 @@ public class RoomManager : Singleton<RoomManager>
         UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
         // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
         StartCoroutine(MovePlayerToStartPosition("EliteScene"));
+        //카메라 설정
+        GameManager.Instance.playerCamera.transform.rotation = Quaternion.Euler(20f, 0f, 0f);
+        // 카메라 설정: FOV 설정
+        GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = 60f; // FOV 설정
+
+        var virtualCamera = GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>();
+        var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+
+        // Follow Offset 수정
+        transposer.m_FollowOffset = new Vector3(0f, 15f, -30f);
     }
     // 상인 방에 들어갈 때
     public void OnEnterMerchantRoom()
@@ -87,7 +108,16 @@ public class RoomManager : Singleton<RoomManager>
 
         // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
         StartCoroutine(MovePlayerToStartPosition("RestStage"));
+        //카메라 설정
+        GameManager.Instance.playerCamera.transform.rotation = Quaternion.Euler(40f, 0f, 0f);
+        // 카메라 설정: FOV 설정
+        GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = 40f; // FOV 설정
 
+        var virtualCamera = GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>();
+        var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+
+        // Follow Offset 수정
+        transposer.m_FollowOffset = new Vector3(0f, 15f, -15f);
     }
     // 보물 방에 들어갈 때
     private void OnEnterTreasureRoom()
@@ -98,6 +128,16 @@ public class RoomManager : Singleton<RoomManager>
 
         // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
         StartCoroutine(MovePlayerToStartPosition("RewardScene"));
+        //카메라 설정
+        GameManager.Instance.playerCamera.transform.rotation = Quaternion.Euler(40f, 0f, 0f);
+        // 카메라 설정: FOV 설정
+        GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = 40f; // FOV 설정
+
+        var virtualCamera = GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>();
+        var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+
+        // Follow Offset 수정
+        transposer.m_FollowOffset = new Vector3(0f, 15f, -15f);
 
     }
     // 보스 방에 들어갈 때
@@ -110,7 +150,16 @@ public class RoomManager : Singleton<RoomManager>
         UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
         // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
         StartCoroutine(MovePlayerToStartPosition("BossScene"));
+        //카메라 설정
+        GameManager.Instance.playerCamera.transform.rotation = Quaternion.Euler(90f, 90f, 0f);
+        // 카메라 설정: FOV 설정
+        GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = 60f; // FOV 설정
 
+        var virtualCamera = GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>();
+        var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+
+        // Follow Offset 수정
+        transposer.m_FollowOffset = new Vector3(0f, 20f, 0f);
     }
     // 랜덤 방에 들어갈 때
     private void OnEnterUnknownRoom()
@@ -122,15 +171,21 @@ public class RoomManager : Singleton<RoomManager>
 
         // 해당 씬에 있는 플레이어 시작 좌표를 찾아 Player를 이동시킨다.
         StartCoroutine(MovePlayerToStartPosition("RandomScene1"));
+        //카메라 설정
+        GameManager.Instance.playerCamera.transform.rotation = Quaternion.Euler(40f, 0f, 0f);
+        // 카메라 설정: FOV 설정
+        GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>().m_Lens.FieldOfView = 40f; // FOV 설정
+
+        var virtualCamera = GameManager.Instance.playerCamera.GetComponent<CinemachineVirtualCamera>();
+        var transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+
+        // Follow Offset 수정
+        transposer.m_FollowOffset = new Vector3(0f, 15f, -15f);
 
     }
     public void ClearRoom()
     {
         GameManager.Game.CurrentRoom.ClearRoom();
-
-        //확률로 보상 생성
-
-        // 보상획득 시 맵 UI 출력
     }
     private IEnumerator MovePlayerToStartPosition(string selectedStage)
     {

@@ -4979,7 +4979,10 @@ MonoBehaviour:
   Damage: 0
   Speed: 0
   Lifetime: 5
+  isEnhanced: 0
+  EnhancedRadius: 10
   HitParticle: {fileID: 6647649569292493797, guid: fdcc79fb84ebab64185625e79839b050, type: 3}
+  isTargeting: 0
 --- !u!1 &3834423506855619728
 GameObject:
   m_ObjectHideFlags: 0

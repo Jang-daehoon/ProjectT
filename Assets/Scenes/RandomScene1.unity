@@ -3061,7 +3061,17 @@ MonoBehaviour:
   SpawnPoints: []
   ActiveEnemies: []
   unknownClear: 0
-  rewardItemPrefab: {fileID: 3390122346877779082, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
+  restRoomClear: 0
+  eliteRoomClear: 0
+  eliteMonsterObj: {fileID: 0}
+  eliteMonsterSpawnPos: {fileID: 0}
+  eliteMinionObj: {fileID: 0}
+  BossObj: {fileID: 0}
+  BossSpawnPos: {fileID: 0}
+  BossSpawnParticle: {fileID: 0}
+  isBossClear: 0
+  rewardsPos: []
+  rewardItemPrefab: {fileID: 8912073544688779787, guid: bde780caca13d004aa7e1beea01ce88f, type: 3}
   rewardSpawnPoint: {fileID: 133720188}
   potalPrefab: {fileID: 7591965459911950615, guid: 67fbb3acaf1e5ce4e8c1eaf18f2ad5ea, type: 3}
   potalSpawnPoint: {fileID: 317278106}
@@ -9492,7 +9502,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.33333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 495f6d8b76c87954fbba0e30f37d990d, type: 2}
   m_BuildHeightMesh: 0
