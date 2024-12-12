@@ -122,6 +122,8 @@ public class SpecialFlower : EliteUnit
     {
         while (true)
         {
+            if (currentState == FlowerState.DIE)
+                yield break;
             if (shouldLook || !animator.GetBool("isCasting"))
             {
                 // 바라보는 동작 수행
@@ -141,7 +143,6 @@ public class SpecialFlower : EliteUnit
     }
     private IEnumerator Die()
     {
-        StopCoroutine(LookTarget());
         gameObject.GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(2.0f); // 죽음 애니메이션 대기
         BossDryad boss = FindObjectOfType<BossDryad>();
