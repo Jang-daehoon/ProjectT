@@ -1979,7 +1979,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &7080884196619316634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1999,7 +1999,7 @@ MonoBehaviour:
   atkSpeed: 1
   isDead: 0
   characterData: {fileID: 11400000, guid: 040711be2c788b74dbca49bde05e9e80, type: 2}
-  range: 1
+  range: 1.5
   target: {fileID: 0}
   hpBar: {fileID: 1509055793941016073}
   attackRange: 5
