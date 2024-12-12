@@ -35,7 +35,7 @@ public class LoadingSceneController : MonoBehaviour
             {
                 backgroundImage.sprite = bossSceneBackground;
             }
-            else if (nextScene == "TitleScene")
+            else if (nextScene == "Scenes/TitleScene")
             {
                 backgroundImage.sprite = restartBackground;
             }
