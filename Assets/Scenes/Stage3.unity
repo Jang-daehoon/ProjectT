@@ -10630,6 +10630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ed52c355ed7ba4aaee1420e409d2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomCheck: 0
   RewardDropRate: 0.6
   spawnCount: 4
   InstantiateEnemyPrefabs:
@@ -10645,6 +10646,19 @@ MonoBehaviour:
   - {fileID: 217124368}
   - {fileID: 955424891}
   ActiveEnemies: []
+  enemySpawnParticle: {fileID: 5250884515042193895, guid: 1d18b6874ee127b4e9e683f58fcb69fc, type: 3}
+  unknownClear: 0
+  restRoomClear: 0
+  eliteRoomClear: 0
+  eliteMonsterObj: {fileID: 0}
+  eliteMonsterSpawnPos: {fileID: 0}
+  eliteMinionObj: {fileID: 0}
+  eliteSpawnParticle: {fileID: 0}
+  BossObj: {fileID: 0}
+  BossSpawnPos: {fileID: 0}
+  BossSpawnParticle: {fileID: 0}
+  isBossClear: 0
+  rewardsPos: []
   rewardItemPrefab: {fileID: 3390122346877779082, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
   rewardSpawnPoint: {fileID: 1297358418}
   potalPrefab: {fileID: 7591965459911950615, guid: 67fbb3acaf1e5ce4e8c1eaf18f2ad5ea, type: 3}
@@ -13120,7 +13134,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.33333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: b8fb09532397c164b9772ce5baa2308b, type: 2}
   m_BuildHeightMesh: 0

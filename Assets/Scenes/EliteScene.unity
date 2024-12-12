@@ -7851,12 +7851,15 @@ MonoBehaviour:
   - {fileID: 333442263}
   - {fileID: 669270398}
   ActiveEnemies: []
+  enemySpawnParticle: {fileID: 5250884515042193895, guid: 1d18b6874ee127b4e9e683f58fcb69fc, type: 3}
   unknownClear: 0
   restRoomClear: 0
   eliteRoomClear: 0
   eliteMonsterObj: {fileID: 9148962957747564349, guid: 0ffb3630aaea4ad45b39be19ac334d3c, type: 3}
   eliteMonsterSpawnPos: {fileID: 187899315}
   eliteMinionObj: {fileID: 8218977476529634470, guid: 7c09a15b3c8611b4dad62d0c6cedeb60, type: 3}
+  eliteSpawnParticleStone: {fileID: 6369459408962337534, guid: c53c99e6264d26748a910e2145dd27af, type: 3}
+  eliteSpawnParticleMud: {fileID: 4216095700766652389, guid: 04ca5cb732acf0b40a421ffa0bb972d2, type: 3}
   BossObj: {fileID: 0}
   BossSpawnPos: {fileID: 0}
   BossSpawnParticle: {fileID: 0}

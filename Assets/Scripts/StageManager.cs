@@ -12,6 +12,7 @@ public class StageManager : MonoBehaviour
     public GameObject[] InstantiateEnemyPrefabs; // 소환할 적 프리팹 배열
     public Transform[] SpawnPoints;             // 적 소환 위치 배열
     public List<GameObject> ActiveEnemies = new List<GameObject>(); // 활성화된 적 리스트
+    public ParticleSystem enemySpawnParticle;
 
     //랜덤 방 관련 
     [Header("랜덤방에 사용될 정보")]
@@ -29,11 +30,19 @@ public class StageManager : MonoBehaviour
     public Transform eliteMonsterSpawnPos;
     //Elite Monster의 Minions
     public GameObject eliteMinionObj;
+    public ParticleSystem eliteSpawnParticleStone;
+    public ParticleSystem eliteSpawnParticleMud;
 
     //BossRoom 관련
     [Header("BossRoom 사용될 정보")]
     public GameObject BossObj;
     public GameObject BossSpawnPos;
+    [Header("보스방 입장")]
+    public DialogSystem BossRoomEnter;
+    [Header("보스 조우")]
+    public DialogSystem meetBossDialog;
+    [Header("보스 처치")]
+    public DialogSystem excuteBossDialog;
 
     public ParticleSystem BossSpawnParticle;
     public bool isBossClear;
@@ -117,7 +126,40 @@ public class StageManager : MonoBehaviour
 
                 break;
             case RoomCheck.BOSS:
+                //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
+                //FadeOut
+                GameManager.Instance.player.canMove = false;
+                UiManager.Instance.FadeObj.gameObject.SetActive(true);
+                UiManager.Instance.FadeObj.isFadeOut = true;
+                yield return new WaitForSeconds(UiManager.Instance.FadeObj.duration);
+                UiManager.Instance.FadeObj.gameObject.SetActive(false);
+                //FadeOut
+                GameManager.Instance.player.canMove = true;
+                yield return new WaitForSeconds(1f);
 
+                //보스방 진입
+                yield return new WaitUntil(() => BossRoomEnter.UpdateDialog());
+                var bossRoomEnter = FindAnyObjectByType<BossRoomEnterTrigger>();
+
+                //미로 탈출
+                yield return new WaitUntil(() => bossRoomEnter.isMazeOut == true);
+
+                //보스 소환 전 간단한 독백 및 보스 소환 징조 대화 스크립트 
+                yield return new WaitUntil(() => meetBossDialog.UpdateDialog());
+
+                //보스 소환
+                SpawnBoss();
+                //보스 처치까지 대기
+                yield return new WaitUntil(() => AreAllEnemiesDefeated());
+
+                //보스 처치 후 대사 출력
+                yield return new WaitUntil(() => excuteBossDialog.UpdateDialog());
+
+                //fadein
+                UiManager.Instance.FadeObj.isFadeIn = true;
+
+                //로딩씬 Thank you for playing Demo Scene 이동 (Exit버튼이 하나 있다.)
+                //LoadingSceneController.LoadScene("EndingScene");
                 break;
             case RoomCheck.UNKNOWN:
                 //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
@@ -199,6 +241,7 @@ public class StageManager : MonoBehaviour
 
             int randomIndex = Random.Range(0, InstantiateEnemyPrefabs.Length);  // 랜덤으로 적 프리팹 선택
             GameObject enemy = Instantiate(InstantiateEnemyPrefabs[randomIndex], SpawnPoints[spawnIndex].position, Quaternion.identity);
+            ParticleSystem spawnParticle = Instantiate(enemySpawnParticle, enemy.transform.position, Quaternion.identity);
             ActiveEnemies.Add(enemy);  // 활성화된 적 리스트에 추가
             usedSpawnIndexes.Add(spawnIndex);  // 사용된 위치 인덱스 기록
         }
@@ -237,12 +280,17 @@ public class StageManager : MonoBehaviour
         ActiveEnemies.RemoveAll(enemy => enemy == null);
         return ActiveEnemies.Count == 0;
     }
+
     private void SpawnElite()
     {
         // Elite 몬스터 소환
         if (eliteMonsterObj != null && eliteMonsterSpawnPos != null)
         {
             GameObject eliteMonster = Instantiate(eliteMonsterObj, eliteMonsterSpawnPos.position, Quaternion.identity);
+
+            ParticleSystem eliteSpawnParticle = Instantiate(eliteSpawnParticleStone, eliteMonster.transform.position, Quaternion.identity);
+            ParticleSystem eliteSpawnParticle2 = Instantiate(eliteSpawnParticleMud, eliteMonster.transform.position, Quaternion.identity);
+
             ActiveEnemies.Add(eliteMonster); // Elite 몬스터를 활성화된 적 리스트에 추가
             Debug.Log("Elite 몬스터가 소환되었습니다.");
         }
@@ -266,6 +314,25 @@ public class StageManager : MonoBehaviour
             ActiveEnemies.Add(minion); // Minion을 활성화된 적 리스트에 추가
             usedSpawnIndexes.Add(spawnIndex); // 사용된 위치 기록
             Debug.Log($"Minion {i + 1}이(가) 소환되었습니다.");
+        }
+    }
+
+    public void SpawnBoss()
+    {
+        // Boss 몬스터 소환
+        if (BossObj != null && BossSpawnPos != null)
+        {
+            GameObject bossMonster = Instantiate(BossObj, BossSpawnPos.transform.position, Quaternion.identity);
+
+            //보스 소환 파티클 추가
+
+
+            ActiveEnemies.Add(bossMonster); // Elite 몬스터를 활성화된 적 리스트에 추가
+            Debug.Log("Elite 몬스터가 소환되었습니다.");
+        }
+        else
+        {
+            Debug.LogWarning("Elite 몬스터 프리팹 또는 소환 위치가 설정되지 않았습니다.");
         }
     }
 
