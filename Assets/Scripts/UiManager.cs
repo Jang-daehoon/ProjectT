@@ -23,16 +23,10 @@ public class UiManager : Singleton<UiManager>
     //FadeObj
     public UIFadeInOut FadeObj;
     //UnknownUI Obj
+    [Header("UnknownUi Obj")]
     public GameObject UnknownUIObj;
-    public GameObject enterUnknownUi;
     public GameObject mainUnknownUi;
-
-    public GameObject UnknownUIObj2;
-    public GameObject enterUnknownUi2;
     public GameObject mainUnknownUi2;
-
-    public GameObject UnknownUIObj3;
-    public GameObject enterUnknownUi3;
     public GameObject mainUnknownUi3;
 
     [Header("PlayerSkillImage")]
@@ -64,28 +58,16 @@ public class UiManager : Singleton<UiManager>
     public TextMeshProUGUI thirdArcanaDesc;
 
     [Header("UnknownUI")]
-    public TextMeshProUGUI unknownRoomName;
-    public Image unknownRoomImage;
-    public Image unknownMainImage;
-    public TextMeshProUGUI unknownRoomContext;
     public Button unknownEventBtn1;
     public Button unknownEventBtn2;
     public Button unknownEventBtn3;
 
     [Header("UnknownUI2")]
-    public TextMeshProUGUI unknownRoomName2;
-    public Image unknownRoomImage2;
-    public Image unknownMainImage2;
-    public TextMeshProUGUI unknownRoomContext2;
     public Button unknownEventBtn2_1;
     public Button unknownEventBtn2_2;
     public Button unknownEventBtn2_3;
 
     [Header("UnknownUI3")]
-    public TextMeshProUGUI unknownRoomName3;
-    public Image unknownRoomImage3;
-    public Image unknownMainImage3;
-    public TextMeshProUGUI unknownRoomContext3;
     public Button unknownEventBtn3_1;
     public Button unknownEventBtn3_2;
     public Button unknownEventBtn3_3;
@@ -117,8 +99,8 @@ public class UiManager : Singleton<UiManager>
         unknownEventBtn2.onClick.AddListener(() => UnknownManager.Instance.someoneIsWatchingMe());
         unknownEventBtn3.onClick.AddListener(() => UnknownManager.Instance.RunAway());
 
-        unknownEventBtn2_1.onClick.AddListener(() => UnknownManager.Instance.GetRandomRelic());
-        unknownEventBtn2_2.onClick.AddListener(() => UnknownManager.Instance.someoneIsWatchingMe());
+        unknownEventBtn2_1.onClick.AddListener(() => UnknownManager.Instance.someoneIsWatchingMe());
+        unknownEventBtn2_2.onClick.AddListener(() => UnknownManager.Instance.GetRandomRelic());
         unknownEventBtn2_3.onClick.AddListener(() => UnknownManager.Instance.RunAway());
 
         unknownEventBtn3_1.onClick.AddListener(() => UnknownManager.Instance.GetRandomRelic());

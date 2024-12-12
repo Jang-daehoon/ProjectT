@@ -40,11 +40,11 @@ public class UnknownManager : Singleton<UnknownManager>
         }
         else if (UiManager.Instance.isUnknownUiActive2 == true)
         {
-            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi2, ref UiManager.Instance.isUnknownUiActive);
+            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi2, ref UiManager.Instance.isUnknownUiActive2);
         }
         else if (UiManager.Instance.isUnknownUiActive3 == true)
         {
-            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi3, ref UiManager.Instance.isUnknownUiActive);
+            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi3, ref UiManager.Instance.isUnknownUiActive3);
         }
 
         RoomManager.Instance.ClearRoom();
@@ -76,11 +76,11 @@ public class UnknownManager : Singleton<UnknownManager>
         }
         else if (UiManager.Instance.isUnknownUiActive2 == true)
         {
-            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi2, ref UiManager.Instance.isUnknownUiActive);
+            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi2, ref UiManager.Instance.isUnknownUiActive2);
         }
         else if (UiManager.Instance.isUnknownUiActive3 == true)
         {
-            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi3, ref UiManager.Instance.isUnknownUiActive);
+            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi3, ref UiManager.Instance.isUnknownUiActive3);
         }
 
         RoomManager.Instance.ClearRoom();
@@ -109,14 +109,13 @@ public class UnknownManager : Singleton<UnknownManager>
         }
         else if (UiManager.Instance.isUnknownUiActive2 == true)
         {
-            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi2, ref UiManager.Instance.isUnknownUiActive);
+            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi2, ref UiManager.Instance.isUnknownUiActive2);
         }
         else if (UiManager.Instance.isUnknownUiActive3 == true)
         {
-            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi3, ref UiManager.Instance.isUnknownUiActive);
+            UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi3, ref UiManager.Instance.isUnknownUiActive3);
         }
 
         RoomManager.Instance.ClearRoom();
     }
-    
 }

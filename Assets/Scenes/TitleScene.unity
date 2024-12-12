@@ -264,7 +264,6 @@ MonoBehaviour:
   Stage:
   - Stage2
   - Stage3
-  - Stage4
   RestScene: RestStage
 --- !u!1 &503516506
 GameObject:

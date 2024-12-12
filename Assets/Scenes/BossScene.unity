@@ -18266,6 +18266,7 @@ MonoBehaviour:
   SpawnPoints: []
   ActiveEnemies: []
   enemySpawnParticle: {fileID: 0}
+  NPC: []
   unknownClear: 0
   restRoomClear: 0
   eliteRoomClear: 0
@@ -18280,7 +18281,8 @@ MonoBehaviour:
   bossEnterTrigger: {fileID: 0}
   meetBossDialog: {fileID: 785176305}
   excuteBossDialog: {fileID: 1320609880}
-  BossSpawnParticle: {fileID: 0}
+  BossSpawnParticle1: {fileID: 1516035864793789291, guid: 44eaa191e74efd74e95bba52acc81dfe, type: 3}
+  BossSpawnParticle2: {fileID: 4445997677536271729, guid: 479bda5860c87ca41991235e786e7b7e, type: 3}
   isBossClear: 0
   rewardsPos: []
   rewardItemPrefab: {fileID: 0}
@@ -36573,6 +36575,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speakers:
+  - characterImage: {fileID: 1999774921}
+    charNameImage: {fileID: 1125432272}
+    dialogImage: {fileID: 423938330}
+    textName: {fileID: 613189979}
+    textDialogue: {fileID: 1505903930}
+    objectArrow: {fileID: 1060133381}
   - characterImage: {fileID: 1999774921}
     charNameImage: {fileID: 1125432272}
     dialogImage: {fileID: 423938330}

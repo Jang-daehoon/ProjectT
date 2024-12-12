@@ -188,13 +188,13 @@ namespace HoonsCodes
                     case 1:
                         Debug.Log("더미와 접촉했습니다.");
                         other.GetComponent<UnknownNPC>().isTalkDone = true;
-                        UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi2, ref UiManager.Instance.isUnknownUiActive);
+                        UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi2, ref UiManager.Instance.isUnknownUiActive2);
                         UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
                         break;
                     case 2:
                         Debug.Log("만드라고라와 접촉했습니다.");
                         other.GetComponent<UnknownNPC>().isTalkDone = true;
-                        UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi3, ref UiManager.Instance.isUnknownUiActive);
+                        UiManager.Instance.ToggleUIElement(UiManager.Instance.mainUnknownUi3, ref UiManager.Instance.isUnknownUiActive3);
                         UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
                         break;
                 }
