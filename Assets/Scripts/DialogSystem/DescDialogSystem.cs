@@ -149,6 +149,6 @@ public struct DialogData
 {
     public Sprite descImage; //설명에 출력할 이미지
     public int DescIndex;   //대사를 출력할 DialogIndex의 배열 순번
-    [TextArea(5, 5)]
+    [TextArea(7, 7)]
     public string dialogue; //설명할 대사
 }

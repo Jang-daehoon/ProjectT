@@ -581,7 +581,7 @@ MonoBehaviour:
     \uB780\uC785\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0bfbed3968416f44789093ff4e663514, type: 2}
-  m_sharedMaterial: {fileID: -6555396258264433518, guid: 5ed08ce39ddcf9641bec57164a832ed2, type: 2}
+  m_sharedMaterial: {fileID: 834724637083881121, guid: 0bfbed3968416f44789093ff4e663514, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1073,21 +1073,64 @@ MonoBehaviour:
     imageDialog: {fileID: 1848588739}
     textDialogue: {fileID: 676802986}
     objectArrow: {fileID: 649279802}
+  - imageDescObj: {fileID: 565347594}
+    imageDialog: {fileID: 1848588739}
+    textDialogue: {fileID: 676802986}
+    objectArrow: {fileID: 649279802}
+  - imageDescObj: {fileID: 565347594}
+    imageDialog: {fileID: 1848588739}
+    textDialogue: {fileID: 676802986}
+    objectArrow: {fileID: 649279802}
+  - imageDescObj: {fileID: 565347594}
+    imageDialog: {fileID: 1848588739}
+    textDialogue: {fileID: 676802986}
+    objectArrow: {fileID: 649279802}
+  - imageDescObj: {fileID: 565347594}
+    imageDialog: {fileID: 1848588739}
+    textDialogue: {fileID: 676802986}
+    objectArrow: {fileID: 649279802}
   dialogs:
-  - descImage: {fileID: 21300000, guid: b5bc88954acc45f40bbe705d9f125c74, type: 3}
+  - descImage: {fileID: 21300000, guid: d0f3c3d0106bca643bcace9e111b3516, type: 3}
     DescIndex: 0
-    dialogue: "\uC774 \uC138\uACC4\uB294 \uBB58\uAE4C??\n"
-  - descImage: {fileID: 21300000, guid: 674328aa353d5c74cba4525fc1f6f2a8, type: 3}
+    dialogue: "\uCC38 \uC544\uB984\uB2E4\uC6B4 \uC138\uACC4\uB2E4. \uC790\uC5F0\uC774
+      \uD6FC\uC190\uB41C \uD754\uC801\uC740 \uBCF4\uC774\uC9C0\uB3C4 \uC54A\uACE0
+      \uACF5\uAE30\uB97C \uD06C\uAC8C \uB4E4\uC774\uB9C8\uC2DC\uBA74 \uD3D0\uAC00
+      \uBEE5 \uB6AB\uB9B4 \uAC83 \uAC19\uC740 \uC2DC\uC6D0\uD558\uACE0 \uAE68\uB057\uD55C
+      \uACF5\uAE30!!!"
+  - descImage: {fileID: 21300000, guid: d0f3c3d0106bca643bcace9e111b3516, type: 3}
     DescIndex: 1
-    dialogue: "\uC5B4\uB5A4 \uBBF8X\uB188\uC774 \uB098\uB97C \uC774\uC138\uACC4\uB85C
-      \uC804\uC774\uC2DC\uCF1C\uBC84\uB838\uB2E4...\n"
-  - descImage: {fileID: 21300000, guid: 48c45c69c5fcc1446885615997619c81, type: 3}
+    dialogue: "\uC6D0\uB798 \uC138\uACC4\uC5D0\uC11C \uC774\uB7F0 \uACF3\uC5D0 \uC5EC\uD589\uC744
+      \uC654\uB2E4\uBA74 \uC815\uB9D0 \uD589\uBCF5\uD588\uACA0\uC9C0\uB9CC... \uB098\uB294
+      \uC774\uACF3\uC5D0 \uB04C\uB824\uC654\uB2E4... \uC885\uC871\uB3C4 \uBC14\uB010
+      \uCC44..."
+  - descImage: {fileID: 21300000, guid: 70424998fb985ac45b8529fde8aa7792, type: 3}
     DescIndex: 2
-    dialogue: "\uC5EC\uC2E0\uC740 \uB098\uC5D0\uAC8C \uC5B4\uB5A0\uD55C \uB2A5\uB825\uB3C4
-      \uC8FC\uC9C0 \uC54A\uACE0 \uC774 \uC138\uACC4\uC5D0\uC11C \uB9C8\uC655\uC744
-      \uCC98\uCE58\uD574\uB2EC\uB77C\uB294 \uBD80\uD0C1\uC744 \uD588\uB2E4... \n\uADF8\uB798\uB3C4
-      \uD604\uC2E4\uB85C \uB3CC\uC544\uAC00\uAE30 \uC704\uD574 \uC5B4\uB5BB\uAC8C\uB4E0
-      \uC0B4\uC544\uB0A8\uC544\uC8FC\uACA0\uC5B4!!\n"
+    dialogue: "\uB098\uB294 \uAFC8\uC778\uC904 \uC54C\uACE0 \uC88B\uC544\uD558\uBA70,
+      \uC5EC\uC2E0\uC774\uB77C\uB294 \uB140\uC11D\uC5D0\uAC8C \uC18C\uC124\uC5D0\uC11C
+      \uC77D\uC740 \uAC83 \uCC98\uB7FC \uB2A5\uB825\uC744 \uBC1B\uACE0 \uAFC8\uC18D\uC5D0\uC11C
+      \uBAA8\uD5D8\uC744 \uD558\uB294 \uC904 \uC54C\uC558\uB294\uB370...\n"
+  - descImage: {fileID: 21300000, guid: dc4fcb8cbf0a42c4e9c35502d71500ea, type: 3}
+    DescIndex: 3
+    dialogue: "\uB098\uB97C \uBD80\uB978 \uC5EC\uC2E0\uC740 \uB2E4\uB978 \uC5EC\uC2E0\uC774\uC5C8\uB2E4..."
+  - descImage: {fileID: 21300000, guid: dc4fcb8cbf0a42c4e9c35502d71500ea, type: 3}
+    DescIndex: 4
+    dialogue: "\uB098\uB97C \uBD80\uB978 \uC5EC\uC2E0\uC740 \uCEE4\uD53C\uB97C \uB9C8\uC2DC\uB2E4
+      \uD758\uB9B0 \uCEE4\uD53C\uAC00 \uC790\uC2E0\uC758 \uC190\uB4F1\uC5D0 \uB2FF\uC790
+      \uD667\uAE40\uC5D0 \uC18C\uD658\uB9C8\uBC95\uC744 \uC0AC\uC6A9\uD588\uB294\uB370
+      \uB0B4\uAC00 \uB04C\uB824\uC624\uAC8C \uB418\uC5C8\uB2E4."
+  - descImage: {fileID: 21300000, guid: 5e3f10ed6dc3a5a4db5aa69b60f6a811, type: 3}
+    DescIndex: 5
+    dialogue: "\uB358\uC804\uC5D0 \uC9D1\uC5D0 \uB3CC\uC544\uAC00\uAE30 \uC704\uD55C
+      \uCC28\uC6D0\uC5D0 \uB300\uD55C \uC9C0\uC2DD\uC774 \uC788\uC73C\uBA70,  \uCC28\uC6D0
+      \uB9C8\uBC95\uC744 \uBC30\uC6B0\uBA74 \uCC28\uC6D0\uC744 \uB118\uC5B4 \uC9D1\uC73C\uB85C
+      \uB3CC\uC544\uAC08 \uC218 \uC788\uB2E4\uACE0 \uB9D0\uD574\uC8FC\uC5C8\uB2E4."
+  - descImage: {fileID: 21300000, guid: 5e3f10ed6dc3a5a4db5aa69b60f6a811, type: 3}
+    DescIndex: 6
+    dialogue: "\uC804\uD22C\uACBD\uD5D8\uC740 \uC5C6\uC9C0\uB9CC \uC704\uD5D8\uCC9C\uB9CC\uD55C
+      \uC774 \uC138\uACC4\uC5D0\uC11C \uC0B4\uC544\uB0A8\uC544 \uAF2D \uC9D1\uC5D0
+      \uB3CC\uC544\uAC00\uACA0\uC5B4! \n\uADFC\uB370?! \uC804\uD22C\uC5D0 \uAD00\uD55C
+      \uC9C0\uC2DD\uC774\uB098 \uAD50\uC721\uC740 \uD558\uACE0 \uBCF4\uB0B4\uC57C\uC9C0
+      \uBE4C\uC5B4\uBA39\uC744 \uC5EC\uC2E0\uC544!!!"
   isAutoStart: 1
   typingSpeed: 0.05
 --- !u!1 &1354091620
