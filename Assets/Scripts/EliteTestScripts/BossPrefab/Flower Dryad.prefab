@@ -1843,7 +1843,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -1866,22 +1866,23 @@ MonoBehaviour:
   atkSpeed: 0
   isDead: 0
   characterData: {fileID: 0}
-  target: {fileID: 0}
+  hpBar: {fileID: 0}
+  attackDelay: 2
+  isPlayerInRange: 0
   attackDistance: 25
   leafStormInstance: {fileID: 4942624596777062946, guid: bf2b3f7460fe79c4aad120e37279451b, type: 3}
   leafRainInstance: {fileID: 7561957957366000626}
-  attackDelay: 2
-  skillGroggy: 3
-  LeafStormCoolTime: 20
-  LeafRainCoolTime: 20
-  BeamCoolTime: 20
   LeafStormParticle: {fileID: 6710174878038184185}
   LeafRainParticle: {fileID: 8425406109860331518}
   BeamParticle: {fileID: 4596342307243896035}
   InvincibleParticle: {fileID: 4944432687525760060}
   LaserCol: {fileID: 2166895032613524719}
-  isPlayerInRange: 0
-  isSkillExecuting: 0
+  projectileSpawnPoint: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  skillGroggy: 3
+  LeafStormCoolTime: 20
+  LeafRainCoolTime: 20
+  BeamCoolTime: 20
   specialMonsterPrefab: {fileID: 7472518198593169519, guid: 5ca6ea8860d4de945b45481834831b11, type: 3}
 --- !u!114 &7561957957366000626
 MonoBehaviour:
