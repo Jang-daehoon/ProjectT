@@ -148,7 +148,7 @@ public class RelicBox : MonoBehaviour
                 }
             }
             //레어등급 확률 10%
-            else if (randomValue > common + unCommon && isnull != true)
+            else
             {
                 if (GameManager.Instance.rareRelic.Count != 0)
                 {
@@ -158,10 +158,6 @@ public class RelicBox : MonoBehaviour
                 {
                     randomRelic = null;
                 }
-            }
-            else
-            {
-                randomRelic = null;
             }
             if (randomRelic != null)
             {
