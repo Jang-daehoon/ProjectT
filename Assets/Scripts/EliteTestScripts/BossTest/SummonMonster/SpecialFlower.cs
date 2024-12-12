@@ -50,7 +50,7 @@ public class SpecialFlower : EliteUnit
     }
     private void ChangeState(FlowerState newState)
     {
-        if (currentState == newState) return;
+        if (currentState == newState || currentState == FlowerState.DIE) return;
 
         Debug.Log($"State changed: {currentState} -> {newState}");
         currentState = newState;
