@@ -50,7 +50,8 @@ MonoBehaviour:
   stormDuration: {fileID: 4172466238241786733}
   stormEnd: {fileID: 8096494715547604491}
   stormDurationTime: 7
-  moveSpeed: 10
+  moveSpeed: 6
+  dmgValue: 20
   target: {fileID: 0}
 --- !u!136 &1139140204384990049
 CapsuleCollider:
