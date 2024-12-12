@@ -135,8 +135,7 @@ public class StageManager : MonoBehaviour
                 UiManager.Instance.FadeObj.gameObject.SetActive(false);
                 //FadeOut
                 GameManager.Instance.player.canMove = true;
-                yield return new WaitForSeconds(1f);
-
+                yield return null;
                 //보스방 진입
                 yield return new WaitUntil(() => BossRoomEnter.UpdateDialog());
 

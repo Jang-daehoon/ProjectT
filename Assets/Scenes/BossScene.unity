@@ -2600,7 +2600,7 @@ Transform:
   m_GameObject: {fileID: 111475308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 85, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10820,7 +10820,7 @@ Transform:
   m_GameObject: {fileID: 478452531}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.8, y: 3, z: 0}
+  m_LocalPosition: {x: 94.8, y: 3, z: 0}
   m_LocalScale: {x: 20, y: 5, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14991,7 +14991,7 @@ Transform:
   m_GameObject: {fileID: 621089499}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 85, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20104,6 +20104,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speakers:
+  - characterImage: {fileID: 1999774921}
+    charNameImage: {fileID: 1125432272}
+    dialogImage: {fileID: 423938330}
+    textName: {fileID: 613189979}
+    textDialogue: {fileID: 1505903930}
+    objectArrow: {fileID: 1060133381}
+  - characterImage: {fileID: 1999774921}
+    charNameImage: {fileID: 1125432272}
+    dialogImage: {fileID: 423938330}
+    textName: {fileID: 613189979}
+    textDialogue: {fileID: 1505903930}
+    objectArrow: {fileID: 1060133381}
+  - characterImage: {fileID: 1999774921}
+    charNameImage: {fileID: 1125432272}
+    dialogImage: {fileID: 423938330}
+    textName: {fileID: 613189979}
+    textDialogue: {fileID: 1505903930}
+    objectArrow: {fileID: 1060133381}
+  - characterImage: {fileID: 1999774921}
+    charNameImage: {fileID: 1125432272}
+    dialogImage: {fileID: 423938330}
+    textName: {fileID: 613189979}
+    textDialogue: {fileID: 1505903930}
+    objectArrow: {fileID: 1060133381}
   - characterImage: {fileID: 1999774921}
     charNameImage: {fileID: 1125432272}
     dialogImage: {fileID: 423938330}
@@ -28976,7 +29000,7 @@ Transform:
   m_GameObject: {fileID: 1060506429}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -86.58, y: 1.36, z: 0}
+  m_LocalPosition: {x: -1.5800018, y: 1.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35116,7 +35140,7 @@ Transform:
   m_GameObject: {fileID: 1269076434}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31, y: 0, z: 0}
+  m_LocalPosition: {x: 116, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -36555,10 +36579,20 @@ MonoBehaviour:
     textName: {fileID: 613189979}
     textDialogue: {fileID: 1505903930}
     objectArrow: {fileID: 1060133381}
+  - characterImage: {fileID: 1999774921}
+    charNameImage: {fileID: 1125432272}
+    dialogImage: {fileID: 423938330}
+    textName: {fileID: 613189979}
+    textDialogue: {fileID: 1505903930}
+    objectArrow: {fileID: 1060133381}
   dialogs:
   - charPortrait: {fileID: 21300000, guid: 856009e44ffb36e4bb70f28687915c68, type: 3}
     dialogIndex: 0
-    Name: "\uBC84\uD130"
+    Name: "\uC2DC\uC628"
+    dialogue: "\uB4DC\uB77C\uC774\uC5B4\uB4DC\uB97C \uC81C\uC555\uD588\uC5B4!"
+  - charPortrait: {fileID: 21300000, guid: 3aa3012f1bbfe974dbe61914e85e9769, type: 3}
+    dialogIndex: 1
+    Name: "\uB4DC\uB77C\uC774\uC5B4\uB4DC"
     dialogue: "\uB4DC\uB77C\uC774\uC5B4\uB4DC\uB97C \uCC98\uCE58\uD588\uC5B4!!\n"
   isAutoStart: 1
   typingSpeed: 0.1
@@ -49345,7 +49379,7 @@ Transform:
   m_GameObject: {fileID: 1814735152}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 85, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -51760,7 +51794,7 @@ Transform:
   m_GameObject: {fileID: 1878950532}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 95, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

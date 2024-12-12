@@ -6,7 +6,7 @@ using UnityEngine;
 public class BossRoomEnterTrigger : MonoBehaviour
 {
     public GameObject BossHp;
-    public Collider MazeOutCollider;
+    public BoxCollider MazeOutCollider;
     public GameObject BossRoomCloseObj;
     public GameObject MazeObj;
     public Collider camborder;
