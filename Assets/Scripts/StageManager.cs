@@ -161,8 +161,9 @@ public class StageManager : MonoBehaviour
                 UiManager.Instance.FadeObj.gameObject.SetActive(true);
                 UiManager.Instance.FadeObj.isFadeIn = true;
 
+                UiManager.Instance.PlayerStatusUiObj.SetActive(false);
                 //로딩씬 Thank you for playing Demo Scene 이동 (Exit버튼이 하나 있다.)
-                //LoadingSceneController.LoadScene("EndingScene");
+                LoadingSceneController.LoadScene("EndingScene");
                 break;
             case RoomCheck.UNKNOWN:
                 //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
@@ -332,6 +333,8 @@ public class StageManager : MonoBehaviour
 
             ActiveEnemies.Add(bossMonster); // Elite 몬스터를 활성화된 적 리스트에 추가
             Debug.Log("Elite 몬스터가 소환되었습니다.");
+            var bosstriggerEnter = FindAnyObjectByType<BossRoomEnterTrigger>();
+            bosstriggerEnter.isBossSpawn = true;    
         }
         else
         {

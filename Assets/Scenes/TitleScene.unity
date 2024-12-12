@@ -1112,13 +1112,13 @@ MonoBehaviour:
   - descImage: {fileID: 21300000, guid: dc4fcb8cbf0a42c4e9c35502d71500ea, type: 3}
     DescIndex: 3
     dialogue: "\uB098\uB97C \uBD80\uB978 \uC5EC\uC2E0\uC740 \uB2E4\uB978 \uC5EC\uC2E0\uC774\uC5C8\uB2E4..."
-  - descImage: {fileID: 21300000, guid: dc4fcb8cbf0a42c4e9c35502d71500ea, type: 3}
+  - descImage: {fileID: 21300000, guid: f47841e9ab0d8ca4796e23c40c52bd5a, type: 3}
     DescIndex: 4
     dialogue: "\uB098\uB97C \uBD80\uB978 \uC5EC\uC2E0\uC740 \uCEE4\uD53C\uB97C \uB9C8\uC2DC\uB2E4
       \uD758\uB9B0 \uCEE4\uD53C\uAC00 \uC790\uC2E0\uC758 \uC190\uB4F1\uC5D0 \uB2FF\uC790
       \uD667\uAE40\uC5D0 \uC18C\uD658\uB9C8\uBC95\uC744 \uC0AC\uC6A9\uD588\uB294\uB370
       \uB0B4\uAC00 \uB04C\uB824\uC624\uAC8C \uB418\uC5C8\uB2E4."
-  - descImage: {fileID: 21300000, guid: f47841e9ab0d8ca4796e23c40c52bd5a, type: 3}
+  - descImage: {fileID: 21300000, guid: f1e21c1c92527a1458d9a3a4a3fd69a0, type: 3}
     DescIndex: 5
     dialogue: "\uB358\uC804\uC5D0 \uC9D1\uC5D0 \uB3CC\uC544\uAC00\uAE30 \uC704\uD55C
       \uCC28\uC6D0\uC5D0 \uB300\uD55C \uC9C0\uC2DD\uC774 \uC788\uC73C\uBA70,  \uCC28\uC6D0
