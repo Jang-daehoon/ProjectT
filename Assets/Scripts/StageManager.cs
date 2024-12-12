@@ -39,11 +39,11 @@ public class StageManager : MonoBehaviour
     public GameObject BossSpawnPos;
     [Header("보스방 입장")]
     public DialogSystem BossRoomEnter;
+    public BossRoomEnterTrigger bossEnterTrigger;
     [Header("보스 조우")]
     public DialogSystem meetBossDialog;
     [Header("보스 처치")]
     public DialogSystem excuteBossDialog;
-
     public ParticleSystem BossSpawnParticle;
     public bool isBossClear;
 
