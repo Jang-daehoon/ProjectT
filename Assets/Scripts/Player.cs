@@ -25,6 +25,9 @@ namespace HoonsCodes
         [SerializeField] private float dashDuration = 0.65f; // 대시 지속 시간
         [SerializeField] private float dashCooltime = 1f;   // 대시 쿨타임
         [SerializeField] private float dashDistance = 25f;  // 대시 거리
+        private float startTimes;
+        private Vector3 mouseDirection;
+        private Vector3 startPos;
         [Header("----------------------------")]
         [Header("SkillInfo")]
         [Tooltip("화살 추적 여부")]
@@ -112,7 +115,13 @@ namespace HoonsCodes
 
             if (Input.GetKeyDown(KeyCode.Space) && isDash == false )
             {
-                StartCoroutine(Dodge());
+                isDash = true;
+                animator.SetTrigger("Dodge");
+                startPos = transform.position;
+                startTimes = Time.time;
+                mouseDirection = GetMouseDirection();
+                RotateToClickPosition();
+                //StartCoroutine(Dodge());
             }
         }
         private void OnTriggerEnter(Collider other)
@@ -354,44 +363,6 @@ namespace HoonsCodes
             isAttack = false;
         }
 
-        private IEnumerator Dodge()
-        {
-            usingSkillX = false;
-            isAttack = false;
-            targetPosition = Vector3.zero;
-            // 회피 시작
-            isDash = true;
-            animator.SetTrigger("Dodge");
-
-            // 마우스 방향으로 회피 방향 계산
-            Vector3 mouseDirection = GetMouseDirection();
-            RotateToClickPosition();    //마우스 방향 바라보기
-            // 회피 이동 목표 위치 계산
-            Vector3 dodgeTarget = transform.position + mouseDirection * dashDistance;  // 마우스 방향으로 고정 거리 이동
-
-            // 회피 애니메이션이 끝날 때까지 기다리거나 쿨타임을 설정
-            float startTime = Time.time;
-            float journeyLength = Vector3.Distance(transform.position, dodgeTarget); // 이동 거리
-            float endTime = startTime + dashDuration;
-
-            // 이동 시작
-            while (Time.time < endTime)
-            {
-                float distanceCovered = (Time.time - startTime) * dashSpeed;  // 이동 거리
-                float fractionOfJourney = distanceCovered / journeyLength; // 이동 비율
-
-                // 부드럽게 이동
-                transform.position = Vector3.Lerp(transform.position, dodgeTarget, fractionOfJourney);
-                yield return null;
-            }
-
-            // 이동이 끝나면 대시 상태 비활성화
-            isDash = false;
-
-            // 회피 후 쿨타임 처리
-            yield return new WaitForSeconds(dashCooltime); // 쿨타임 대기
-        }
-
         // 마우스 방향 계산 함수
         private Vector3 GetMouseDirection()
         {
@@ -528,6 +499,29 @@ namespace HoonsCodes
                 {
                     FireArrow();  // FireArrow 메서드를 호출해 다중 발사
                 }
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (isDash == false) return;
+            usingSkillX = false;
+            isAttack = false;
+            targetPosition = Vector3.zero;
+            // 회피 시작
+
+            float elapsedTime = Time.time - startTimes;
+            if (elapsedTime < dashDuration)
+            {
+                float distance = Mathf.Lerp(0, dashDistance, elapsedTime / dashDuration);
+                Vector3 moveDir = mouseDirection.normalized;
+
+                rb.velocity = moveDir * (distance / dashDuration);
+            }
+            else
+            {
+                rb.velocity = Vector3.zero;
+                isDash = false;
             }
         }
     }

@@ -129,6 +129,7 @@ public class RelicObject : Relic
     {
         GameManager.Instance.player.GetRelic(relicData);
         PlayerParticle();
+        destroystart = false;
         Destroy(this.gameObject.transform.parent.gameObject);
     }
     //플레이어 접촉시 바로 실행
