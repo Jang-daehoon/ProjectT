@@ -34,7 +34,9 @@ public class MeleeGolem : NMMeleeUnit
         HpBarUpdate();
         if (curHp <= 0 == isDead == false)//죽을때 한번 발동
         {
-            isDead = true;
+            isDead = true; 
+            animator.SetBool("Idel", false);
+            animator.SetBool("Attack", false);
             ChangeState(State.Die);
         }
         if (isGolemAttack == true && isDead == false)

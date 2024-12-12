@@ -44,7 +44,6 @@ public class RoomManager : Singleton<RoomManager>
                 OnEnterUnknownRoom();
                 break;
 
-
         }
     }
     // 일반 적 방에 들어갈 때

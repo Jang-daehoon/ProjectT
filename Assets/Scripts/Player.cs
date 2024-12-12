@@ -28,6 +28,7 @@ namespace HoonsCodes
         private float startTimes;
         private Vector3 mouseDirection;
         private Vector3 startPos;
+        private bool isTakeHit = false;
         [Header("----------------------------")]
         [Header("SkillInfo")]
         [Tooltip("화살 추적 여부")]
@@ -390,7 +391,7 @@ namespace HoonsCodes
         //피격 -> 한번 피격시 무적시간 1초
         public void TakeDamage(float damage)
         {
-            if (isTakeHit == false && isDash == false)
+            if (isTakeHit == false && isDash == false && isDead == false)
             {
                 animator.SetTrigger("Hit");
                 isTakeHit = true;
@@ -407,7 +408,7 @@ namespace HoonsCodes
                 Debug.Log("무적시간");
             }
         }
-        private bool isTakeHit = false;
+
         private IEnumerator PlayerHitCoolTime()
         {
             yield return new WaitForSeconds(1f);
@@ -417,8 +418,15 @@ namespace HoonsCodes
 
         public override void Dead()
         {
+            isDead = true;
             animator.SetTrigger("Die");
             //Die애니메이션 끝날때 타이틀로이동
+        }
+
+        public void PlayerEnding()
+        {
+            //플레이어 Die 애니메이션 종료시 실행
+            
         }
 
         private void InitPlayerStatus()
