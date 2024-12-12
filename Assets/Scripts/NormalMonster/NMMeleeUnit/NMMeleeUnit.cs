@@ -36,6 +36,13 @@ public class NMMeleeUnit : EnemyUint
 
     protected virtual void Update()
     {
+        if (curHp <= 0 && isDead == false)//죽을때 한번 발동
+        {
+            isDead = true; 
+            animator.SetBool("Idel", false);
+            animator.SetBool("Attack", false);
+            ChangeState(State.Die);
+        }
         float dirplayer = Vector3.Distance(transform.position, target.position);//타겟과의 거리
         if (dirplayer <= range && isDead == false)//공격범위내에 들어오면 공격으로 변경
         {

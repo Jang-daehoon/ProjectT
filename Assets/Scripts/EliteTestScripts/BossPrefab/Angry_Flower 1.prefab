@@ -62817,6 +62817,7 @@ MonoBehaviour:
   characterData: {fileID: 0}
   hpBar: {fileID: 5653235773487740519}
   attackDelay: 2
+  isPlayerInRange: 0
   attackRange: {fileID: 3880034854870999421}
   grass: {fileID: 518592289969225543}
 --- !u!54 &1126623231556411758
@@ -62842,7 +62843,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
