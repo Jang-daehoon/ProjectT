@@ -622,7 +622,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 2658543522913968355}
   relicObj: {fileID: 5382147871842876137}
   upY: 1
-  moveRange: 5
+  moveRange: 4
 --- !u!114 &6451678761402695712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,7 +654,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

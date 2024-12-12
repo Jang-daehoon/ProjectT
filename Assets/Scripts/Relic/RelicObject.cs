@@ -32,7 +32,7 @@ public class RelicObject : Relic
     [Tooltip("최대로 올라갈 높이")]
     public float upY = 1f;
     [Tooltip("튀어나갈 범위")]
-    public float moveRange = 2f;
+    public float moveRange = 4f;
     private Vector3 startPos, endPos;
     private float timer;
 
@@ -65,16 +65,17 @@ public class RelicObject : Relic
             default:
                 break;
         }
+        float forrange = 2f;//떨어지지 않을 중심부
         float x;
         do
         {
             x = UnityEngine.Random.Range(-moveRange, moveRange);
-        } while (x > -1f && x < 1f);
+        } while (x > -forrange && x < forrange);
         float z;
         do
         {
             z = UnityEngine.Random.Range(-moveRange, moveRange);
-        } while (z > -1f && z < 1f);
+        } while (z > -forrange && z < forrange);
         //날아갈포지션 랜덤
         movePos = new Vector3(x, 0f, z);
         startPos = relicObj.transform.position;
@@ -133,10 +134,10 @@ public class RelicObject : Relic
         Destroy(this.gameObject.transform.parent.gameObject);
     }
     //플레이어 접촉시 바로 실행
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         if (destroystart == false) return;
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             RelicDestroy();
         }
@@ -159,10 +160,6 @@ public class RelicObject : Relic
         else if (relicData.statName == "dmgValue")
         {
             playerpar = playerparticle[3];
-        }
-        else
-        {
-            playerpar = playerparticle[4];
         }
         ParticleSystem playerparti = Instantiate(playerpar, GameManager.Instance.player.transform.position, GameManager.Instance.player.transform.rotation);
         playerparti.transform.SetParent(GameManager.Instance.player.transform);
