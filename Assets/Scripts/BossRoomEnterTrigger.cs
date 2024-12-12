@@ -11,7 +11,6 @@ public class BossRoomEnterTrigger : MonoBehaviour
     public GameObject MazeObj;
     public Collider camborder;
     public bool isMazeOut;
-    public bool isBossSpawn;
 
     private void Awake()
     {

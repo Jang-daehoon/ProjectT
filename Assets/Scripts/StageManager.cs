@@ -332,8 +332,10 @@ public class StageManager : MonoBehaviour
 
             ActiveEnemies.Add(bossMonster); // Elite 몬스터를 활성화된 적 리스트에 추가
             Debug.Log("Elite 몬스터가 소환되었습니다.");
-            var bosstriggerEnter = FindAnyObjectByType<BossRoomEnterTrigger>();
-            bosstriggerEnter.isBossSpawn = true;    
+            var bossHpUI = FindAnyObjectByType<BossHpBar>();
+            bossHpUI.boss = bossMonster.GetComponent<BossDryad>();
+            bossHpUI.inHp();
+            //bossHpUI.inHp(bossMonster.GetComponent<BossDryad>().maxHp, bossMonster.GetComponent<>);
         }
         else
         {

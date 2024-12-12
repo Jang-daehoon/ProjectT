@@ -370,15 +370,15 @@ public class BossDryad : EliteUnit
         if (isInvincible == true) return;
         base.TakeDamage(damage);    
         
-        // 체력이 30% 이하로 떨어졌는지 확인
-        if (curHp <= maxHp * 0.3f && isPhaseChanged == false)
-        {
-            isPhaseChanged = true; // 플래그 설정
-            ChangeState(BossState.INVINCIBLE); // 무적 패턴 실행
-        }
         if (curHp <= 0)
         {
             ChangeState(BossState.DIE);
+        }
+        // 체력이 30% 이하로 떨어졌는지 확인
+        else if (curHp <= maxHp * 0.3f && isPhaseChanged == false)
+        {
+            isPhaseChanged = true; // 플래그 설정
+            ChangeState(BossState.INVINCIBLE); // 무적 패턴 실행
         }
     }
     private void OnTriggerEnter(Collider other)
