@@ -1198,7 +1198,7 @@ GameObject:
   - component: {fileID: 79372917}
   - component: {fileID: 79372916}
   - component: {fileID: 79372915}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5823,7 +5823,7 @@ GameObject:
   - component: {fileID: 431913072}
   - component: {fileID: 431913071}
   - component: {fileID: 431913070}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6846,7 +6846,7 @@ GameObject:
   - component: {fileID: 489653710}
   - component: {fileID: 489653709}
   - component: {fileID: 489653708}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7864,7 +7864,7 @@ GameObject:
   - component: {fileID: 602242448}
   - component: {fileID: 602242447}
   - component: {fileID: 602242446}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11373,7 +11373,7 @@ GameObject:
   - component: {fileID: 894978875}
   - component: {fileID: 894978874}
   - component: {fileID: 894978873}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11624,7 +11624,7 @@ GameObject:
   - component: {fileID: 903649507}
   - component: {fileID: 903649506}
   - component: {fileID: 903649505}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11840,7 +11840,7 @@ GameObject:
   - component: {fileID: 928358298}
   - component: {fileID: 928358297}
   - component: {fileID: 928358296}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12996,7 +12996,7 @@ GameObject:
   - component: {fileID: 1036326677}
   - component: {fileID: 1036326676}
   - component: {fileID: 1036326675}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13779,7 +13779,7 @@ GameObject:
   - component: {fileID: 1116057075}
   - component: {fileID: 1116057074}
   - component: {fileID: 1116057073}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14814,7 +14814,7 @@ GameObject:
   - component: {fileID: 1228964875}
   - component: {fileID: 1228964874}
   - component: {fileID: 1228964873}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15455,7 +15455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1266933947}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderDeco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15505,7 +15505,7 @@ GameObject:
   - component: {fileID: 1273118784}
   - component: {fileID: 1273118783}
   - component: {fileID: 1273118782}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19273,7 +19273,7 @@ GameObject:
   - component: {fileID: 1592787097}
   - component: {fileID: 1592787096}
   - component: {fileID: 1592787095}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19783,7 +19783,7 @@ GameObject:
   - component: {fileID: 1624605312}
   - component: {fileID: 1624605311}
   - component: {fileID: 1624605310}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21675,7 +21675,7 @@ GameObject:
   - component: {fileID: 1708835172}
   - component: {fileID: 1708835171}
   - component: {fileID: 1708835170}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22726,7 +22726,7 @@ GameObject:
   - component: {fileID: 1797723788}
   - component: {fileID: 1797723787}
   - component: {fileID: 1797723786}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25738,7 +25738,7 @@ GameObject:
   - component: {fileID: 2019063774}
   - component: {fileID: 2019063773}
   - component: {fileID: 2019063772}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
