@@ -6730,7 +6730,7 @@ MonoBehaviour:
   - {fileID: 885787634}
   - {fileID: 1686650609}
   ActiveEnemies: []
-  enemySpawnParticle: {fileID: 5250884515042193895, guid: 6357ec9189c437647a90b9c6a55820c3, type: 3}
+  enemySpawnParticle: {fileID: 5250884515042193895, guid: 1d18b6874ee127b4e9e683f58fcb69fc, type: 3}
   rewardItemPrefab: {fileID: 3390122346877779082, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
   rewardSpawnPoint: {fileID: 2005171806}
   potalPrefab: {fileID: 7591965459911950615, guid: 67fbb3acaf1e5ce4e8c1eaf18f2ad5ea, type: 3}

@@ -12,6 +12,7 @@ public class StageManager : MonoBehaviour
     public GameObject[] InstantiateEnemyPrefabs; // 소환할 적 프리팹 배열
     public Transform[] SpawnPoints;             // 적 소환 위치 배열
     public List<GameObject> ActiveEnemies = new List<GameObject>(); // 활성화된 적 리스트
+    public ParticleSystem enemySpawnParticle;
 
     //랜덤 방 관련 
     [Header("랜덤방에 사용될 정보")]
@@ -29,6 +30,7 @@ public class StageManager : MonoBehaviour
     public Transform eliteMonsterSpawnPos;
     //Elite Monster의 Minions
     public GameObject eliteMinionObj;
+    public ParticleSystem eliteSpawnParticle;
 
     //BossRoom 관련
     [Header("BossRoom 사용될 정보")]
@@ -199,6 +201,7 @@ public class StageManager : MonoBehaviour
 
             int randomIndex = Random.Range(0, InstantiateEnemyPrefabs.Length);  // 랜덤으로 적 프리팹 선택
             GameObject enemy = Instantiate(InstantiateEnemyPrefabs[randomIndex], SpawnPoints[spawnIndex].position, Quaternion.identity);
+            ParticleSystem spawnParticle = Instantiate(enemySpawnParticle, enemy.transform.position, Quaternion.identity);
             ActiveEnemies.Add(enemy);  // 활성화된 적 리스트에 추가
             usedSpawnIndexes.Add(spawnIndex);  // 사용된 위치 인덱스 기록
         }
