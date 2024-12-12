@@ -133,6 +133,7 @@ public class SpecialFlower : EliteUnit
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
+        hpBar.HpBarUpdate();
         if (curHp <= 0)
         {
             ChangeState(FlowerState.DIE);

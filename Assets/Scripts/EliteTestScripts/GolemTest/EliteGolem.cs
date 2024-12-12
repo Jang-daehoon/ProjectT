@@ -275,6 +275,7 @@ public class EliteGolem : EliteUnit
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
+        hpBar.HpBarUpdate();
         if (curHp <= 0)
         {
             ChangeState(EliteState.DIE);

@@ -367,8 +367,9 @@ public class BossDryad : EliteUnit
     }
     public override void TakeDamage(float damage)
     {
+        if (isInvincible == true) return;
         base.TakeDamage(damage);    
-
+        
         // 체력이 30% 이하로 떨어졌는지 확인
         if (curHp <= maxHp * 0.3f && isPhaseChanged == false)
         {

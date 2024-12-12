@@ -62814,7 +62814,7 @@ MonoBehaviour:
   dmgValue: 0
   atkSpeed: 0
   isDead: 0
-  characterData: {fileID: 0}
+  characterData: {fileID: 11400000, guid: 98685ee7d77c628469f7230e003a01f9, type: 2}
   hpBar: {fileID: 5653235773487740519}
   attackDelay: 2
   isPlayerInRange: 0
