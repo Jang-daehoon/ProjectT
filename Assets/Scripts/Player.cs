@@ -24,7 +24,7 @@ namespace HoonsCodes
         [SerializeField] private float dashPower = 1;   // 대시 파워
         [SerializeField] private float dashDuration = 0.65f; // 대시 지속 시간
         [SerializeField] private float dashCooltime = 1f;   // 대시 쿨타임
-        [SerializeField] private float dashDistance = 25f;  // 대시 거리
+        [SerializeField] private float dashDistance = 15f;  // 대시 거리
         private float startTimes;
         private Vector3 mouseDirection;
         private Vector3 startPos;
@@ -72,6 +72,7 @@ namespace HoonsCodes
 
         private void Update()
         {
+            if (isDead == true) return;
             //UI창때는 아무것도 불가
             if (UiManager.Instance.isDialogUiActive || UiManager.Instance.isMapUIActive || UiManager.Instance.isArcanaUIActive
                 || UiManager.Instance.isUnknownUiActive || UiManager.Instance.isUnknownUiActive2 || UiManager.Instance.isUnknownUiActive3 && !canMove)
@@ -491,6 +492,10 @@ namespace HoonsCodes
             //원래스텟  += 추가스텟
             statspoint += inpoint;
             //넣기
+            if (statsname.Name == "maxHp")
+            {
+                curHp += inpoint;
+            }
             statsname.SetValue(this, statspoint);
         }
         //스킬

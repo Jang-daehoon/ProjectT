@@ -15,7 +15,7 @@ public class RelicBox : MonoBehaviour
     public Transform relicSpwanPos;
     public GameObject relicObj;
 
-    private float relicSpwanChance = 0.6f;
+    private float relicSpwanChance = 1f;
     private float common = 0.7f;
     private float unCommon = 0.2f;
     private float rare = 0.1f;
@@ -84,42 +84,10 @@ public class RelicBox : MonoBehaviour
     {
         while (true)
         {
-            if (GameManager.Instance.commonRelic.Count == 0 && GameManager.Instance.unCommonRelic.Count == 0 && GameManager.Instance.rareRelic.Count == 0)
+            List<RelicData> randomRelic = RandomRelicList();
+            if (randomRelic == null)
             {
                 return null;
-            }
-            float randomValue = Random.value;
-            //고를 렐릭 일단정의
-            List<RelicData> randomRelic;
-            //커먼등급 확률 60%
-            if (randomValue <= common)
-            {
-                if (GameManager.Instance.commonRelic.Count == 0)
-                {
-                    Debug.Log("커먼등급 유물 다먹음");
-                    return null;
-                }
-                randomRelic = GameManager.Instance.commonRelic;
-            }
-            //언커먼등급 확률 30%
-            else if (randomValue <= common + unCommon)
-            {
-                if (GameManager.Instance.commonRelic.Count == 0)
-                {
-                    Debug.Log("언커먼등급 유물 다먹음");
-                    return null;
-                }
-                randomRelic = GameManager.Instance.unCommonRelic;
-            }
-            //레어등급 확률 10%
-            else
-            {
-                if (GameManager.Instance.rareRelic.Count == 0)
-                {
-                    Debug.Log("레어등급 유물 다먹음");
-                    return null;
-                }
-                randomRelic = GameManager.Instance.rareRelic;
             }
             //고른등급중에 한번더 랜덤유물 선택
             int index = Random.Range(0, randomRelic.Count);
@@ -141,5 +109,65 @@ public class RelicBox : MonoBehaviour
             }
             return selectRelic;
         }
+    }
+    private List<RelicData> RandomRelicList()
+    {
+        bool isnull = false;
+        //고를 렐릭 일단정의
+        List<RelicData> randomRelic = null;
+        while (isnull == false)
+        {
+            float randomValue = Random.value;
+            if (GameManager.Instance.commonRelic.Count == 0 && GameManager.Instance.unCommonRelic.Count == 0 && GameManager.Instance.rareRelic.Count == 0)
+            {
+                isnull = true;
+                return null;
+            }
+            //커먼등급 확률 60%
+            if (randomValue <= common && isnull != true)
+            {
+                if (GameManager.Instance.commonRelic.Count != 0)
+                {
+                    randomRelic = GameManager.Instance.commonRelic;
+                }
+                else
+                {
+                    randomRelic = null;
+                }
+            }
+            //언커먼등급 확률 30%
+            else if (randomValue <= common + unCommon && isnull != true)
+            {
+                if (GameManager.Instance.unCommonRelic.Count != 0)
+                {
+                    randomRelic = GameManager.Instance.unCommonRelic;
+                }
+                else
+                {
+                    randomRelic = null;
+                }
+            }
+            //레어등급 확률 10%
+            else
+            {
+                if (GameManager.Instance.rareRelic.Count != 0)
+                {
+                    randomRelic = GameManager.Instance.rareRelic;
+                }
+                else
+                {
+                    randomRelic = null;
+                }
+            }
+            if (randomRelic != null)
+            {
+                return randomRelic;
+            }
+            else
+            {
+                randomRelic = null;
+            }
+        }
+        return randomRelic;
     }
 }
