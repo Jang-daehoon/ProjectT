@@ -25,7 +25,11 @@ public class PauseMenu : MonoBehaviour
     }
     public void Debug()
     {
-        // ÇÃ·¹ÀÌ¾î ½ºÅÈ µş±ï
+        GameManager.Instance.player.maxHp = 10000;
+        GameManager.Instance.player.curHp = 10000;
+        GameManager.Instance.player.dmgValue = 100;
+        GameManager.Instance.player.moveSpeed = 12;
+        GameManager.Instance.player.atkSpeed = 10;
     }
     public void Pause()
     {
