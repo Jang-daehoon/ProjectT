@@ -10,7 +10,7 @@ public class LoadingSceneController : MonoBehaviour
     public Image backgroundImage; // 배경 이미지를 변경할 UI 이미지
     public Sprite eliteSceneBackground; // EliteScene 배경 스프라이트
     public Sprite bossSceneBackground;  // BossScene 배경 스프라이트
-    public Sprite restartBackground;  // Restart 배경 스프라이트
+    public Sprite EndingSceneBackground;  // Restart 배경 스프라이트
     static string nextScene;
 
     private void Start()
@@ -35,9 +35,9 @@ public class LoadingSceneController : MonoBehaviour
             {
                 backgroundImage.sprite = bossSceneBackground;
             }
-            else if (nextScene == "Scenes/TitleScene")
+            else if (nextScene == "EndingScene")
             {
-                backgroundImage.sprite = restartBackground;
+                backgroundImage.sprite = EndingSceneBackground;
             }
         }
     }
