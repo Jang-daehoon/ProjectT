@@ -87,7 +87,7 @@ public class MeleeGolem : NMMeleeUnit
         col.isTrigger = false;
         isGolemAttack = false;
         attackRange.transform.position = this.transform.position;
-        if (isDead == false) animator.SetBool("Attack", false);
+        if (isDead == true) animator.SetBool("Attack", false);
         particle.gameObject.SetActive(false);
         particle.Stop();
         isGolemAttackCollTime = true;

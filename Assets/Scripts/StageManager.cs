@@ -30,7 +30,8 @@ public class StageManager : MonoBehaviour
     public Transform eliteMonsterSpawnPos;
     //Elite Monster의 Minions
     public GameObject eliteMinionObj;
-    public ParticleSystem eliteSpawnParticle;
+    public ParticleSystem eliteSpawnParticleStone;
+    public ParticleSystem eliteSpawnParticleMud;
 
     //BossRoom 관련
     [Header("BossRoom 사용될 정보")]
@@ -246,6 +247,10 @@ public class StageManager : MonoBehaviour
         if (eliteMonsterObj != null && eliteMonsterSpawnPos != null)
         {
             GameObject eliteMonster = Instantiate(eliteMonsterObj, eliteMonsterSpawnPos.position, Quaternion.identity);
+
+            ParticleSystem eliteSpawnParticle = Instantiate(eliteSpawnParticleStone, eliteMonster.transform.position, Quaternion.identity);
+            ParticleSystem eliteSpawnParticle2 = Instantiate(eliteSpawnParticleMud, eliteMonster.transform.position, Quaternion.identity);
+
             ActiveEnemies.Add(eliteMonster); // Elite 몬스터를 활성화된 적 리스트에 추가
             Debug.Log("Elite 몬스터가 소환되었습니다.");
         }
