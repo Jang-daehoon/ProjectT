@@ -86,7 +86,7 @@ public class StageManager : MonoBehaviour
                 // 처치 완료 시 RewardDropRate 확률에 따라 보상 아이템 생성
                 if (Random.Range(0f, 1f) <= RewardDropRate)  // RewardDropRate 확률로 보상 아이템 생성
                 {
-                    Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
+                    Instantiate(rewardItemPrefab, rewardSpawnPoint.position, rewardItemPrefab.transform.rotation);
                     Debug.Log("보상 아이템이 생성되었습니다.");
                 }
                 else
@@ -122,7 +122,7 @@ public class StageManager : MonoBehaviour
                 eliteRoomClear = true;
 
                 RoomManager.Instance.ClearRoom();
-                Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
+                Instantiate(rewardItemPrefab, rewardSpawnPoint.position, rewardItemPrefab.transform.rotation);
                 Debug.Log("보상 아이템이 생성되었습니다.");
                 Instantiate(potalPrefab, potalSpawnPoint.position, Quaternion.identity);
 
@@ -218,7 +218,7 @@ public class StageManager : MonoBehaviour
                 {
                     int randomIndex = Random.Range(0, rewardsPos.Length); // rewardsPos에서 랜덤한 인덱스 선택
                     Transform randomPos = rewardsPos[randomIndex]; // 선택된 위치
-                    Instantiate(rewardItemPrefab, randomPos.position, Quaternion.identity); // 보상 소환
+                    Instantiate(rewardItemPrefab, randomPos.position, rewardItemPrefab.transform.rotation); // 보상 소환
                     Debug.Log($"보상이 위치 {randomIndex}에 소환되었습니다.");
                 }
                 else

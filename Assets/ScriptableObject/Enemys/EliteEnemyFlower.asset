@@ -15,7 +15,7 @@ MonoBehaviour:
   info: 1
   characterName: EliteFlower
   characterDesc: "\uD2B9\uC218\uBAAC\uC2A4\uD130(\uC2A4\uD0AC \uBCF4\uC720)"
-  maxHp: 1000
+  maxHp: 200
   damage: 20
   moveSpeed: 0
   attackSpeed: 0.8

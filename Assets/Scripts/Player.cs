@@ -140,7 +140,8 @@ namespace HoonsCodes
                 Debug.Log("Potal과 접촉");
                 UiManager.Instance.interactiveText.text = "F를 눌러 포탈을 이용할 수 있어.";
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
-
+                if (Input.GetKeyDown(KeyCode.F))
+                    UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
             }
             else if (other.CompareTag("NPC") && other.GetComponent<UnknownNPC>().isTalkDone == false)
             {

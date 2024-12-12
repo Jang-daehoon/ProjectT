@@ -22,7 +22,7 @@ public class UnknownManager : Singleton<UnknownManager>
         {
             //렐릭 생성
             //stageManager를 찾아서 spawnPos를 찾아서 해당 위치에 소환
-            Instantiate(stageManager.rewardItemPrefab, stageManager.rewardSpawnPoint.position, Quaternion.identity);
+            Instantiate(stageManager.rewardItemPrefab, stageManager.rewardSpawnPoint.position, stageManager.rewardItemPrefab.transform.rotation);
             Debug.Log("보상 아이템이 생성되었습니다.");
 
             // unknownClear 속성을 true로 설정
