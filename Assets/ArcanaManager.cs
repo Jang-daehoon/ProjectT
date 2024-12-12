@@ -135,7 +135,7 @@ public class ArcanaManager : Singleton<ArcanaManager>
             GameManager.Instance.player.transform.rotation
         );
         CatalystParticle.transform.SetParent(GameManager.Instance.player.transform);
-        CatalystParticle.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        CatalystParticle.transform.localScale = new Vector3(1f, 1f, 1f);
 
         // ArcanaData[2]를 removedArcana 리스트로 이동
         removedArcana.Add(ArcanaData[2]);
