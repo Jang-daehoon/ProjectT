@@ -17,7 +17,7 @@ MonoBehaviour:
   relicName: "\uC2DC\uACF5 \uD504\uB9AC\uC998"
   relicID: 1
   relicSprite: {fileID: 21300000, guid: dea03dfaabd94bc4da79b099f71e6b14, type: 3}
-  relicDesc: "\uACF5\uACA9\uC18D\uB3C4 5 \uC99D\uAC00"
+  relicDesc: "\uACF5\uACA9\uC18D\uB3C4 3 \uC99D\uAC00"
   isLevelPlus: 0
   statName: atkSpeed
   relicStatsPoint: 3

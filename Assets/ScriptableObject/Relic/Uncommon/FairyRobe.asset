@@ -17,7 +17,7 @@ MonoBehaviour:
   relicName: "\uC694\uC815\uC758 \uB85C\uBE0C"
   relicID: 3
   relicSprite: {fileID: 21300000, guid: 2516c901d105c74468003519721d598e, type: 3}
-  relicDesc: "\uCD5C\uB300\uCCB4\uB825 75 \uC99D\uAC00"
+  relicDesc: "\uCD5C\uB300\uCCB4\uB825 150 \uC99D\uAC00"
   isLevelPlus: 0
   statName: maxHp
   relicStatsPoint: 150
