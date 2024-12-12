@@ -59,7 +59,7 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitUntil(() => AreAllEnemiesDefeated());
             Debug.Log("모든 적을 처치했습니다!");
             //처치 완료 시 보상 아이템 생성 ->튜토리얼이라 확정 생성
-            GameObject rewardBox = Instantiate(rewardItemPrefab, rewardSpawnPoint.position, Quaternion.identity);
+            GameObject rewardBox = Instantiate(rewardItemPrefab, rewardSpawnPoint.position, rewardItemPrefab.transform.rotation);
 
             Debug.Log("보상 아이템이 생성되었습니다.");
             thirdTutorialDialog.gameObject.SetActive(true);
