@@ -50,7 +50,7 @@ public class RoomManager : Singleton<RoomManager>
     public void OnEnterEnemyRoom()
     {
         Debug.Log("EnterEnemyRoom");
-        // Stage2, Stage3, Stage4 중 랜덤한 씬을 선택하여 이동
+        // Stage2, Stage3, Stage4 중 랜덤한 씬을 선택하여 이동 Stage4는제거할 예정
         int randomIndex = Random.Range(0, 3); // 0부터 2까지의 랜덤한 숫자
         string selectedStage = ScenesManager.Instance.Stage[randomIndex];
 
