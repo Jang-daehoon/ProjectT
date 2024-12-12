@@ -160,25 +160,23 @@ public class BossDryad : EliteUnit
             case BossState.LEAFRAIN:
                 LeafRainParticle.Play();
                 leafRainInstance.UseLeafRainSkill();
+                yield return new WaitForSeconds(skillGroggy);
+                animator.SetTrigger("Rainning");
+                LeafRainParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 break;
             case BossState.BEAM:
                 yield return new WaitForSeconds(0.9f);
                 BeamParticle.Play();
                 yield return new WaitForSeconds(1f);
                 LaserCol.enabled = true;
+                yield return new WaitForSeconds(0.5f);
+                LaserCol.enabled = false;
                 break;
         }
-        if (skill == BossState.BEAM)
-        {
-            yield return new WaitForSeconds(0.5f);
-            LaserCol.enabled = false;
-        }
 
-        if (skill == BossState.LEAFRAIN)
+        if (currentState == BossState.INVINCIBLE)
         {
-            yield return new WaitForSeconds(skillGroggy);
-            animator.SetTrigger("Rainning");
-            LeafRainParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            yield break; // 무적 상태로 전환되었으므로 스킬 중단
         }
 
         isSkillExecuting = false;
