@@ -421,12 +421,17 @@ namespace HoonsCodes
             isDead = true;
             animator.SetTrigger("Die");
             //Die애니메이션 끝날때 타이틀로이동
+            StartCoroutine(PlayerEnding());
         }
 
-        public void PlayerEnding()
+        public IEnumerator PlayerEnding()
         {
+            UiManager.Instance.FadeObj.gameObject.SetActive(true);
+            UiManager.Instance.FadeObj.isFadeIn = true;
+            yield return new WaitForSeconds(2f);            
             //플레이어 Die 애니메이션 종료시 실행
-            
+            Application.Quit();
+            Debug.Log("게임 끝남");
         }
 
         private void InitPlayerStatus()
