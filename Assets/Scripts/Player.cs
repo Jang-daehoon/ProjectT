@@ -171,7 +171,8 @@ namespace HoonsCodes
                 //UI상호작용 가능 문구 출력
                 StartCoroutine(other.GetComponent<ChestReward>().ArcanaResult());
             }
-            else if (other.CompareTag("Potal") && Input.GetKeyDown(KeyCode.F))
+            else if (canMove && !isDash && !isAttack && !usingSkillX && 
+                other.CompareTag("Potal") && Input.GetKeyDown(KeyCode.F))
             {
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.MapUIObj, ref UiManager.Instance.isMapUIActive);
                 UiManager.Instance.ToggleUIElement(UiManager.Instance.interactiveObjUi, ref UiManager.Instance.isInteractiveUiActive);
