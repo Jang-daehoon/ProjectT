@@ -36591,6 +36591,12 @@ MonoBehaviour:
     textName: {fileID: 613189979}
     textDialogue: {fileID: 1505903930}
     objectArrow: {fileID: 1060133381}
+  - characterImage: {fileID: 1999774921}
+    charNameImage: {fileID: 1125432272}
+    dialogImage: {fileID: 423938330}
+    textName: {fileID: 613189979}
+    textDialogue: {fileID: 1505903930}
+    objectArrow: {fileID: 1060133381}
   dialogs:
   - charPortrait: {fileID: 21300000, guid: 856009e44ffb36e4bb70f28687915c68, type: 3}
     dialogIndex: 0

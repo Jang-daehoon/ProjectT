@@ -15,7 +15,6 @@ public class GameClearEnding : MonoBehaviour
 
     public void GameExit()
     {
-        print("asdasdasd");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
