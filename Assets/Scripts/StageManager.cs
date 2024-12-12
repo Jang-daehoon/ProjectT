@@ -16,6 +16,7 @@ public class StageManager : MonoBehaviour
 
     //랜덤 방 관련 
     [Header("랜덤방에 사용될 정보")]
+    public GameObject[] NPC;
     public bool unknownClear;
 
     //휴식 방 관련
@@ -44,7 +45,8 @@ public class StageManager : MonoBehaviour
     public DialogSystem meetBossDialog;
     [Header("보스 처치")]
     public DialogSystem excuteBossDialog;
-    public ParticleSystem BossSpawnParticle;
+    public ParticleSystem BossSpawnParticle1;
+    public ParticleSystem BossSpawnParticle2;
     public bool isBossClear;
 
     //보상 방 관련
@@ -126,6 +128,7 @@ public class StageManager : MonoBehaviour
 
                 break;
             case RoomCheck.BOSS:
+                //맵이 생성 시 랜덤한 NPC 하나를 활성화한다.
                 //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
                 //FadeOut
                 GameManager.Instance.player.canMove = false;
@@ -166,6 +169,7 @@ public class StageManager : MonoBehaviour
                 LoadingSceneController.LoadScene("EndingScene");
                 break;
             case RoomCheck.UNKNOWN:
+                ActivateRandomNPC();
                 //Fadein Fadeout or Shader를 통한 맵 이동 연출을 실행후 몬스터가 소환되게 로직 추가 예정
                 //FadeOut
                 GameManager.Instance.player.canMove = false;
@@ -229,6 +233,28 @@ public class StageManager : MonoBehaviour
             //    break;
         }
         
+    }
+    private void ActivateRandomNPC()
+    {
+        if (NPC.Length == 0)
+        {
+            Debug.LogWarning("NPC 배열이 비어 있습니다. 활성화할 NPC가 없습니다.");
+            return;
+        }
+
+        // NPC 배열에서 랜덤하게 하나 선택
+        int randomIndex = Random.Range(0, NPC.Length);
+        GameObject selectedNPC = NPC[randomIndex];
+
+        if (selectedNPC != null)
+        {
+            selectedNPC.SetActive(true); // NPC 활성화
+            Debug.Log($"{selectedNPC.name} NPC가 활성화되었습니다.");
+        }
+        else
+        {
+            Debug.LogWarning($"NPC 배열의 {randomIndex}번 요소가 null입니다.");
+        }
     }
 
     // 적 소환 메서드
@@ -323,6 +349,10 @@ public class StageManager : MonoBehaviour
 
     public void SpawnBoss()
     {
+
+        //파티클 사전 생성
+        ParticleSystem bossSpawnParticle1 = Instantiate(BossSpawnParticle1, BossSpawnPos.transform.position, Quaternion.identity);
+        ParticleSystem bossSpawnParticle2 = Instantiate(BossSpawnParticle2, BossSpawnPos.transform.position, Quaternion.identity);
         // Boss 몬스터 소환
         if (BossObj != null && BossSpawnPos != null)
         {
