@@ -19,4 +19,4 @@ MonoBehaviour:
   damage: 30
   moveSpeed: 3
   attackSpeed: 1
-  attackDelay: 5
+  attackDelay: 2
