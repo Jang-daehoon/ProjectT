@@ -25423,17 +25423,17 @@ MonoBehaviour:
   multiShotSkillImg: {fileID: 21300000, guid: 8a5f9829a049c704fa992203bfc451f2, type: 3}
   arrowCount: 3
   fireSpeed: 10
-  qCoolTime: 18
+  qCoolTime: 23
   qDamageMultiplier: 1.2
   spreadAngle: 60
   multiShotBullet: {fileID: 4165034672710669523, guid: 37d58168002706845a37a3e37a1ddb40, type: 3}
   multiShotParticle: {fileID: 3663995649852042412, guid: 0b6dcd10faba2cc43aedfca95317d904, type: 3}
   multishotHitParticle: {fileID: 4087608678707170789, guid: ab6a8de2d69646a449e7455dff363051, type: 3}
-  wCoolTime: 24
+  wCoolTime: 25
   wDamageMultiplier: 0
   arrowRainBullet: {fileID: 7520478007629400125, guid: d249ed0acc1b72341bceef08babe964a, type: 3}
   arrowRainParticle: {fileID: 4363708317115051805, guid: b08033669d41e2a4197972ee7f5a3fb3, type: 3}
-  eCoolTime: 1
+  eCoolTime: 25
   eDamageMultiplier: 1.75
   impaleSkillBullet: {fileID: 6966420061541031233, guid: 676108d394f5d0d41aa7c14da676f765, type: 3}
   startImpaleParticle: {fileID: 2168383714331228570, guid: c7dd05a59354c0549892054c062853c3, type: 3}

@@ -24,6 +24,9 @@ MonoBehaviour:
   - 5
   - 5
   - 10
+  - 12
+  - 13
+  - 15
   enhanceCount: 
   enhanceInitBulletRate: []
   enhanceDamageMultiplier: []

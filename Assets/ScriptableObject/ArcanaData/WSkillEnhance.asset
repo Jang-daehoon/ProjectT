@@ -31,7 +31,9 @@ MonoBehaviour:
   cooldownReduction:
   - 2
   - 3
+  - 4
   - 5
+  - 6
   EnhanceAttackCnt: 0
   EnhancedBullet: {fileID: 0}
   EnhancedAttackParticle: {fileID: 0}

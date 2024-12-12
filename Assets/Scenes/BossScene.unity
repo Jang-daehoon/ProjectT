@@ -20171,7 +20171,7 @@ MonoBehaviour:
   - charPortrait: {fileID: 21300000, guid: 3aa3012f1bbfe974dbe61914e85e9769, type: 3}
     dialogIndex: 5
     Name: "\uB4DC\uB77C\uC774\uC5B4\uB4DC"
-    dialogue: "\uC774\uB7F0 \uBBF8X\uB144\n"
+    dialogue: "\uC774\uB7F0 \uBBF8X\uB144\uC774!!!\n\n"
   isAutoStart: 1
   typingSpeed: 0.1
 --- !u!1001 &790647669
@@ -32643,18 +32643,19 @@ MonoBehaviour:
   - charPortrait: {fileID: 21300000, guid: 856009e44ffb36e4bb70f28687915c68, type: 3}
     dialogIndex: 0
     Name: "\uC2DC\uC628"
-    dialogue: "\uC5EC\uAE34 \uAF43\uC774 \uB9CE\uB2E4\uC57C\uB85C...\n\uB290\uB08C\uC0C1
-      \uB358\uC804\uC758 \uC9C0\uBC30\uC790\uAC00 \uC788\uB294\uAC83 \uAC19\uB2E4\uB85C.."
+    dialogue: "\uC5EC\uAE34 \uAF43\uC774 \uB9CE\uB124?? \uB2EC\uCF64\uD55C \uD5A5\uAE30\uB3C4
+      \uB098\uB294\uB370...\n"
   - charPortrait: {fileID: 21300000, guid: 856009e44ffb36e4bb70f28687915c68, type: 3}
     dialogIndex: 1
     Name: "\uC2DC\uC628"
     dialogue: "\uBE68\uB9AC \uC9C0\uBC30\uC790\uB97C \uCC98\uCE58\uD558\uACE0 \uC232\uC5D0\uC11C
-      \uB098\uAC00\uACE0 \uC2F6\uB2E4.\n\uC774\uC820 \uBC30\uACE0\uD504\uB2E8 \uB9D0\uC774\uC57C.."
+      \uB098\uAC00\uACE0 \uC2F6\uB2E4.\n\uB2EC\uCF64\uD55C \uD5A5\uAE30\uB97C \uB9E1\uC544
+      \uBC30\uACE0\uD504\uB2E8 \uB9D0\uC774\uC57C...\n\n"
   - charPortrait: {fileID: 21300000, guid: 856009e44ffb36e4bb70f28687915c68, type: 3}
     dialogIndex: 2
     Name: "\uC2DC\uC628"
-    dialogue: "\uB9C8\uC9C0\uB9C9 \uB358\uC804\uC758 \uC9C0\uBC30\uC790\uB97C \uCC98\uB2E8\uD558\uB7EC
-      \uCD9C\uBC1C\uD55C\uB2E4\uB85C~"
+    dialogue: "\uD6C4... \uC77C\uB2E8 \uC800 \uC55E\uAE4C\uC9C0 \uAC78\uC5B4\uAC00\uBCF4\uBA74
+      \uBB54\uAC00 \uB098\uC624\uACA0\uC9C0...\n"
   isAutoStart: 1
   typingSpeed: 0.1
 --- !u!1 &1188126217
@@ -36599,6 +36600,30 @@ MonoBehaviour:
     textName: {fileID: 613189979}
     textDialogue: {fileID: 1505903930}
     objectArrow: {fileID: 1060133381}
+  - characterImage: {fileID: 1999774921}
+    charNameImage: {fileID: 1125432272}
+    dialogImage: {fileID: 423938330}
+    textName: {fileID: 613189979}
+    textDialogue: {fileID: 1505903930}
+    objectArrow: {fileID: 1060133381}
+  - characterImage: {fileID: 1999774921}
+    charNameImage: {fileID: 1125432272}
+    dialogImage: {fileID: 423938330}
+    textName: {fileID: 613189979}
+    textDialogue: {fileID: 1505903930}
+    objectArrow: {fileID: 1060133381}
+  - characterImage: {fileID: 1999774921}
+    charNameImage: {fileID: 1125432272}
+    dialogImage: {fileID: 423938330}
+    textName: {fileID: 613189979}
+    textDialogue: {fileID: 1505903930}
+    objectArrow: {fileID: 1060133381}
+  - characterImage: {fileID: 1999774921}
+    charNameImage: {fileID: 1125432272}
+    dialogImage: {fileID: 423938330}
+    textName: {fileID: 613189979}
+    textDialogue: {fileID: 1505903930}
+    objectArrow: {fileID: 1060133381}
   dialogs:
   - charPortrait: {fileID: 21300000, guid: 856009e44ffb36e4bb70f28687915c68, type: 3}
     dialogIndex: 0
@@ -36618,6 +36643,28 @@ MonoBehaviour:
     dialogIndex: 3
     Name: "\uB4DC\uB77C\uC774\uC5B4\uB4DC"
     dialogue: "\uC5EC\uAE34 \uB358\uC804\uC774 \uC544\uB2C8\uC57C!! \uB0B4 \uC9D1\uC774\uB77C\uACE0!!"
+  - charPortrait: {fileID: 21300000, guid: 856009e44ffb36e4bb70f28687915c68, type: 3}
+    dialogIndex: 4
+    Name: "\uC2DC\uC628"
+    dialogue: "\uC5EC\uC2E0\uC774 \uC774\uACF3\uC740 \uB358\uC804\uC774\uB77C\uB358\uB370???\n"
+  - charPortrait: {fileID: 21300000, guid: 3aa3012f1bbfe974dbe61914e85e9769, type: 3}
+    dialogIndex: 5
+    Name: "\uB4DC\uB77C\uC774\uC5B4\uB4DC"
+    dialogue: "\uC544\uB2C8 \uC774 \uC5EC\uC2E0\uC740 \uB178\uB9DD\uC774\uB0AC\uB098!!!
+      \n\uB0B4\uAC00 \uAFC0 \uC548\uC92C\uB2E4\uACE0 \uB610 \uC774\uB7F0 \uAC70\uC9D3\uB9D0\uC744
+      \uD558\uB294\uAC70\uC57C?!\n"
+  - charPortrait: {fileID: 21300000, guid: 856009e44ffb36e4bb70f28687915c68, type: 3}
+    dialogIndex: 6
+    Name: "\uC2DC\uC628"
+    dialogue: "\uC544\uB2C8... \uC774\uACF3\uC774 \uB358\uC804\uC774\uB77C\uB294
+      \uC0AC\uC2E4\uC774 \uAC70\uC9D3\uB9D0\uC774\uB77C\uACE0?!"
+  - charPortrait: {fileID: 21300000, guid: 3aa3012f1bbfe974dbe61914e85e9769, type: 3}
+    dialogIndex: 7
+    Name: "\uB4DC\uB77C\uC774\uC5B4\uB4DC"
+    dialogue: "\uADF8\uB798! \uC544\uBB34\uB798\uB3C4 \uC774\uACF3\uC5D0 \uB300\uD574
+      \uC798 \uBAA8\uB974\uB294 \uAC83 \uAC19\uC73C\uB2C8\n\uB0B4\uAC00 \uC124\uBA85\uD574\uC904\uAED8
+      \uB108 \uB54C\uBB38\uC5D0 \uB09C\uC7A5\uD310\uC774 \uB410\uC9C0\uB9CC, \uC77C\uB2E8
+      \uB4E4\uC5B4\uC640!"
   isAutoStart: 1
   typingSpeed: 0.1
 --- !u!1001 &1321022960
