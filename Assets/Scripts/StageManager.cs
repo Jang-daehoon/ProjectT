@@ -139,23 +139,27 @@ public class StageManager : MonoBehaviour
 
                 //보스방 진입
                 yield return new WaitUntil(() => BossRoomEnter.UpdateDialog());
-                var bossRoomEnter = FindAnyObjectByType<BossRoomEnterTrigger>();
 
+                var bosstriggerEnter = FindAnyObjectByType<BossRoomEnterTrigger>();
+                bosstriggerEnter.MazeOutCollider.gameObject.SetActive(true);
                 //미로 탈출
-                yield return new WaitUntil(() => bossRoomEnter.isMazeOut == true);
-
+                yield return new WaitUntil(() => bosstriggerEnter.isMazeOut == true);
+                bosstriggerEnter.MazeOutCollider.enabled = false;
+                meetBossDialog.gameObject.SetActive(true);
                 //보스 소환 전 간단한 독백 및 보스 소환 징조 대화 스크립트 
                 yield return new WaitUntil(() => meetBossDialog.UpdateDialog());
-
                 //보스 소환
                 SpawnBoss();
+                bosstriggerEnter.BossHp.SetActive(true);
                 //보스 처치까지 대기
                 yield return new WaitUntil(() => AreAllEnemiesDefeated());
 
+                excuteBossDialog.gameObject.SetActive(true);
                 //보스 처치 후 대사 출력
                 yield return new WaitUntil(() => excuteBossDialog.UpdateDialog());
 
                 //fadein
+                UiManager.Instance.FadeObj.gameObject.SetActive(true);
                 UiManager.Instance.FadeObj.isFadeIn = true;
 
                 //로딩씬 Thank you for playing Demo Scene 이동 (Exit버튼이 하나 있다.)
