@@ -23,6 +23,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
+    public void Debug()
+    {
+        // ÇÃ·¹ÀÌ¾î ½ºÅÈ µþ±ï
+    }
     public void Pause()
     {
         pauseMenuCanvas.SetActive(true);
