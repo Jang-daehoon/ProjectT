@@ -15,7 +15,7 @@ MonoBehaviour:
   info: 1
   characterName: "\uB4DC\uB77C\uC774\uC5B4\uB4DC"
   characterDesc: 
-  maxHp: 5000
+  maxHp: 3000
   damage: 20
   moveSpeed: 1
   attackSpeed: 1
