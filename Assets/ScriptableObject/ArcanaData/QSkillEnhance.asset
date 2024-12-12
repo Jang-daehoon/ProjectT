@@ -21,7 +21,7 @@ MonoBehaviour:
   baseCount: 0
   baseInitBulletRate: 0
   enhanceDamage: []
-  enhanceCount: 020000000200000002000000
+  enhanceCount: 0200000002000000020000000300000005000000
   enhanceInitBulletRate: []
   enhanceDamageMultiplier:
   - 1.3
