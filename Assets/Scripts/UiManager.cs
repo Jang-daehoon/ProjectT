@@ -117,18 +117,18 @@ public class UiManager : Singleton<UiManager>
     //쿨타임 
     public void UseQSkill()
     {
-        float qCoolTime = SkillManager.Instance.qCoolTime; // Q 스킬의 쿨타임 (초 단위)
+        float qCoolTime = GameManager.Instance.skillManager.qCoolTime; // Q 스킬의 쿨타임 (초 단위)
         StartCoolTime(qCoolImg, qCoolTimeText, qCoolTime);
         // Q 스킬 로직 추가
     }
     public void UseWSkill()
     {
-        float wCoolTime = SkillManager.Instance.wCoolTime; // w 스킬의 쿨타임 (초 단위)
+        float wCoolTime = GameManager.Instance.skillManager.wCoolTime; // w 스킬의 쿨타임 (초 단위)
         StartCoolTime(wCoolImg, wCoolTimeText, wCoolTime);
     }
     public void UseESkill()
     {
-        float eCoolTime = SkillManager.Instance.eCoolTime;  // e 스킬의 쿨타임 (초 단위)
+        float eCoolTime = GameManager.Instance.skillManager.eCoolTime;  // e 스킬의 쿨타임 (초 단위)
         StartCoolTime(eCoolImg, eCoolTimeText, eCoolTime);
     }
     public void StartCoolTime(Image coolImage, TextMeshProUGUI coolTimeText, float coolTime)
@@ -269,27 +269,27 @@ public class UiManager : Singleton<UiManager>
                 case 0:
                     ArcanaManager.Instance.qSkillLevel++;
                     // 쿨타임 감소, 투사체 개수 증가, 데미지 배율 증가
-                    SkillManager.Instance.qCoolTime -= selectedArcana.cooldownReduction[ArcanaManager.Instance.qSkillLevel];
-                    SkillManager.Instance.arrowCount += selectedArcana.enhanceCount[ArcanaManager.Instance.qSkillLevel];
-                    SkillManager.Instance.qDamageMultiplier = selectedArcana.enhanceDamageMultiplier[ArcanaManager.Instance.qSkillLevel];
+                    GameManager.Instance.skillManager.qCoolTime -= selectedArcana.cooldownReduction[ArcanaManager.Instance.qSkillLevel];
+                    GameManager.Instance.skillManager.arrowCount += selectedArcana.enhanceCount[ArcanaManager.Instance.qSkillLevel];
+                    GameManager.Instance.skillManager.qDamageMultiplier = selectedArcana.enhanceDamageMultiplier[ArcanaManager.Instance.qSkillLevel];
 
-                    Debug.Log($"Q 스킬 레벨 업: {ArcanaManager.Instance.qSkillLevel}, 쿨타임: {SkillManager.Instance.qCoolTime}, 화살 개수: {SkillManager.Instance.arrowCount}, 데미지 배율: {SkillManager.Instance.qDamageMultiplier}");
+                    Debug.Log($"Q 스킬 레벨 업: {ArcanaManager.Instance.qSkillLevel}, 쿨타임: {GameManager.Instance.skillManager.qCoolTime}, 화살 개수: {GameManager.Instance.skillManager.arrowCount}, 데미지 배율: {GameManager.Instance.skillManager.qDamageMultiplier}");
                     break;
                 case 1:
                     ArcanaManager.Instance.wSkillLevel++;
                     // 쿨타임 감소, 파티클 스케일 증가
-                    SkillManager.Instance.wCoolTime -= selectedArcana.cooldownReduction[ArcanaManager.Instance.wSkillLevel];
+                    GameManager.Instance.skillManager.wCoolTime -= selectedArcana.cooldownReduction[ArcanaManager.Instance.wSkillLevel];
                     ArcanaManager.Instance.skillSize = selectedArcana.enhanceSkillScale[ArcanaManager.Instance.wSkillLevel];
 
-                    Debug.Log($"W 스킬 레벨 업: {ArcanaManager.Instance.wSkillLevel}, 쿨타임: {SkillManager.Instance.wCoolTime}, 스킬 크기: {ArcanaManager.Instance.skillSize}");
+                    Debug.Log($"W 스킬 레벨 업: {ArcanaManager.Instance.wSkillLevel}, 쿨타임: {GameManager.Instance.skillManager.wCoolTime}, 스킬 크기: {ArcanaManager.Instance.skillSize}");
                     break;
                 case 2:
                     ArcanaManager.Instance.eSkillLevel++;
                     // 쿨타임 감소, 데미지 배율 증가
-                    SkillManager.Instance.eCoolTime -= selectedArcana.cooldownReduction[ArcanaManager.Instance.eSkillLevel];
-                    SkillManager.Instance.eDamageMultiplier = selectedArcana.enhanceDamageMultiplier[ArcanaManager.Instance.eSkillLevel];
+                    GameManager.Instance.skillManager.eCoolTime -= selectedArcana.cooldownReduction[ArcanaManager.Instance.eSkillLevel];
+                    GameManager.Instance.skillManager.eDamageMultiplier = selectedArcana.enhanceDamageMultiplier[ArcanaManager.Instance.eSkillLevel];
 
-                    Debug.Log($"E 스킬 레벨 업: {ArcanaManager.Instance.eSkillLevel}, 쿨타임: {SkillManager.Instance.eCoolTime}, 데미지 배율: {SkillManager.Instance.eDamageMultiplier}");
+                    Debug.Log($"E 스킬 레벨 업: {ArcanaManager.Instance.eSkillLevel}, 쿨타임: {GameManager.Instance.skillManager.eCoolTime}, 데미지 배율: {GameManager.Instance.skillManager.eDamageMultiplier}");
                     break;
             }
         }

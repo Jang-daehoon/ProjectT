@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillManager : Singleton<SkillManager>
+public class SkillManager : MonoBehaviour
 {
     [Header("Q Skill Multi_Shot_Arrow")]
     public Sprite multiShotSkillImg;
