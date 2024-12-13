@@ -33,7 +33,7 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(player.gameObject);
         DontDestroyOnLoad(playerCamera.gameObject);
         DontDestroyOnLoad(mapGenerator.gameObject);
-        DontDestroyOnLoad(eventSystem.gameObject);
+        DontDestroyOnLoad(eventSystem.gameObject);  
         DontDestroyOnLoad(skillManager.gameObject);
         Init();
     }
