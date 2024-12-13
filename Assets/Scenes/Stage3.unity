@@ -4717,7 +4717,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537010932}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderDeco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5750,7 +5750,7 @@ GameObject:
   - component: {fileID: 619310143}
   - component: {fileID: 619310142}
   - component: {fileID: 619310141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6470,7 +6470,7 @@ GameObject:
   - component: {fileID: 695135052}
   - component: {fileID: 695135051}
   - component: {fileID: 695135050}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7142,7 +7142,7 @@ GameObject:
   - component: {fileID: 774901847}
   - component: {fileID: 774901846}
   - component: {fileID: 774901845}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7310,7 +7310,7 @@ GameObject:
   - component: {fileID: 782901759}
   - component: {fileID: 782901758}
   - component: {fileID: 782901757}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8463,7 +8463,7 @@ GameObject:
   - component: {fileID: 1037502013}
   - component: {fileID: 1037502012}
   - component: {fileID: 1037502011}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9275,7 +9275,7 @@ GameObject:
   - component: {fileID: 1118220548}
   - component: {fileID: 1118220547}
   - component: {fileID: 1118220546}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10647,16 +10647,23 @@ MonoBehaviour:
   - {fileID: 955424891}
   ActiveEnemies: []
   enemySpawnParticle: {fileID: 5250884515042193895, guid: 1d18b6874ee127b4e9e683f58fcb69fc, type: 3}
+  NPC: []
   unknownClear: 0
   restRoomClear: 0
   eliteRoomClear: 0
   eliteMonsterObj: {fileID: 0}
   eliteMonsterSpawnPos: {fileID: 0}
   eliteMinionObj: {fileID: 0}
-  eliteSpawnParticle: {fileID: 0}
+  eliteSpawnParticleStone: {fileID: 0}
+  eliteSpawnParticleMud: {fileID: 0}
   BossObj: {fileID: 0}
   BossSpawnPos: {fileID: 0}
-  BossSpawnParticle: {fileID: 0}
+  BossRoomEnter: {fileID: 0}
+  bossEnterTrigger: {fileID: 0}
+  meetBossDialog: {fileID: 0}
+  excuteBossDialog: {fileID: 0}
+  BossSpawnParticle1: {fileID: 0}
+  BossSpawnParticle2: {fileID: 0}
   isBossClear: 0
   rewardsPos: []
   rewardItemPrefab: {fileID: 3390122346877779082, guid: b613dccef83c7354eafd332cc655ab4c, type: 3}
@@ -10752,7 +10759,7 @@ GameObject:
   - component: {fileID: 1313334300}
   - component: {fileID: 1313334299}
   - component: {fileID: 1313334298}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11077,7 +11084,7 @@ GameObject:
   - component: {fileID: 1353057647}
   - component: {fileID: 1353057646}
   - component: {fileID: 1353057645}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12239,7 +12246,7 @@ GameObject:
   - component: {fileID: 1446292880}
   - component: {fileID: 1446292879}
   - component: {fileID: 1446292878}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12419,7 +12426,7 @@ GameObject:
   - component: {fileID: 1466208501}
   - component: {fileID: 1466208500}
   - component: {fileID: 1466208499}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12792,7 +12799,7 @@ GameObject:
   - component: {fileID: 1492692317}
   - component: {fileID: 1492692316}
   - component: {fileID: 1492692315}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13419,7 +13426,7 @@ GameObject:
   - component: {fileID: 1562091189}
   - component: {fileID: 1562091188}
   - component: {fileID: 1562091187}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14813,7 +14820,7 @@ GameObject:
   - component: {fileID: 1711999500}
   - component: {fileID: 1711999499}
   - component: {fileID: 1711999498}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15859,7 +15866,7 @@ GameObject:
   - component: {fileID: 1815778912}
   - component: {fileID: 1815778911}
   - component: {fileID: 1815778910}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16171,7 +16178,7 @@ GameObject:
   - component: {fileID: 1842705221}
   - component: {fileID: 1842705220}
   - component: {fileID: 1842705219}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16815,7 +16822,7 @@ GameObject:
   - component: {fileID: 1884985978}
   - component: {fileID: 1884985977}
   - component: {fileID: 1884985976}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BorderPlatform (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
