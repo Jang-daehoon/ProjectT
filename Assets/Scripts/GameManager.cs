@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
     public MapGenerator mapGenerator;
     public EventSystem eventSystem;
     public TutorialManager tutorialManager;
-
+    public SkillManager skillManager;
     private GameManagerEx _game = new GameManagerEx();
 
     [Header("À¯¹°")]
@@ -33,7 +33,8 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(player.gameObject);
         DontDestroyOnLoad(playerCamera.gameObject);
         DontDestroyOnLoad(mapGenerator.gameObject);
-        DontDestroyOnLoad(eventSystem.gameObject);  
+        DontDestroyOnLoad(eventSystem.gameObject);
+        DontDestroyOnLoad(skillManager.gameObject);
         Init();
     }
     public void Init()

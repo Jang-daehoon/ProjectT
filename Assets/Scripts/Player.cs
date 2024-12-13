@@ -84,18 +84,18 @@ namespace HoonsCodes
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 RotateToClickPosition();
-                SkillManager.Instance.Multi_Shot_Arrow();
+                GameManager.Instance.skillManager.Multi_Shot_Arrow();
                 UiManager.Instance.UseQSkill();
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
-                SkillManager.Instance.ArrowRain();
+                GameManager.Instance.skillManager.ArrowRain();
                 UiManager.Instance.UseWSkill();
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
                 RotateToClickPosition();
-                SkillManager.Instance.ImpaleSkill();
+                GameManager.Instance.skillManager.ImpaleSkill();
                 UiManager.Instance.UseESkill();
             }
             // 대시중에는 이동 불가, 공격중에는 이동 불가

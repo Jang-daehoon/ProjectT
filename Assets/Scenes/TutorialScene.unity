@@ -28663,6 +28663,7 @@ MonoBehaviour:
   mapGenerator: {fileID: 1349616590}
   eventSystem: {fileID: 630206327}
   tutorialManager: {fileID: 484203242}
+  skillManager: {fileID: 1796281897}
   relicList: []
   commonRelic:
   - {fileID: 11400000, guid: a90cbaf0c0cdea741839adb49d89a33d, type: 2}
